@@ -39,7 +39,7 @@ php -r '
   echo $pdo->query("SELECT p.record_id FROM pack_records p JOIN pack_members m ON m.pack_id = p.pack_id WHERE m.account_id = 1")->fetchColumn(), " ";
   echo $pdo->query("SELECT COUNT(*) FROM sqlite_master WHERE name = \"records_vor_rudel\"")->fetchColumn();
 ' > "$T/m"
-check "Umzug: aktuelle Version, eigenes Rudel, Termin dort, Klartext-Sicherung entfernt" "$(cat $T/m)" "21 1 evt_alt 0"
+check "Umzug: aktuelle Version, eigenes Rudel, Termin dort, Klartext-Sicherung entfernt" "$(cat $T/m)" "22 1 evt_alt 0"
 
 # Zwei Konten mit Sitzung, direkt angelegt.
 php -r '

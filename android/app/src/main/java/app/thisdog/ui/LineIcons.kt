@@ -20,6 +20,7 @@ fun lineIconRes(name: String): Int = when (name) {
     "glocke" -> R.drawable.icon_glocke
     "haken-kreis" -> R.drawable.icon_haken_kreis
     "haken" -> R.drawable.icon_haken
+    "haus" -> R.drawable.icon_haus
     "herz" -> R.drawable.icon_herz
     "heute" -> R.drawable.icon_heute
     "hund" -> R.drawable.icon_hund
@@ -30,6 +31,7 @@ fun lineIconRes(name: String): Int = when (name) {
     "kopieren" -> R.drawable.icon_kopieren
     "kreuz-kreis" -> R.drawable.icon_kreuz_kreis
     "kreuz" -> R.drawable.icon_kreuz
+    "laden" -> R.drawable.icon_laden
     "lampe" -> R.drawable.icon_lampe
     "lupe" -> R.drawable.icon_lupe
     "melden" -> R.drawable.icon_melden
@@ -42,19 +44,23 @@ fun lineIconRes(name: String): Int = when (name) {
     "park" -> R.drawable.icon_park
     "person-minus" -> R.drawable.icon_person_minus
     "person-plus" -> R.drawable.icon_person_plus
+    "pfeife" -> R.drawable.icon_pfeife
     "pin" -> R.drawable.icon_pin
     "plus" -> R.drawable.icon_plus
     "pruefung" -> R.drawable.icon_pruefung
     "rudel" -> R.drawable.icon_rudel
     "sauber" -> R.drawable.icon_sauber
+    "schere" -> R.drawable.icon_schere
     "schluessel" -> R.drawable.icon_schluessel
     "schreiben" -> R.drawable.icon_schreiben
     "sonne" -> R.drawable.icon_sonne
     "spritze" -> R.drawable.icon_spritze
     "stift" -> R.drawable.icon_stift
     "tablette" -> R.drawable.icon_tablette
+    "tasse" -> R.drawable.icon_tasse
     "teilen" -> R.drawable.icon_teilen
     "teilung" -> R.drawable.icon_teilung
+    "tierarzt" -> R.drawable.icon_tierarzt
     "tropfen" -> R.drawable.icon_tropfen
     "warnung" -> R.drawable.icon_warnung
     "wissen" -> R.drawable.icon_wissen

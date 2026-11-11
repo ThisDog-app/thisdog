@@ -70,6 +70,10 @@ fun WalkMap(
     revier: List<Revier.Spot> = emptyList(),
     /** Was gerade verdeckt ist, in Dp: links, oben, rechts, unten. Die Karte richtet sich nach dem freien Teil aus. */
     padding: List<Float> = listOf(0f, 0f, 0f, 0f),
+    /** Adressen (Reiter „Adressen“) als kleine Punkte; der gesponserte in Akzentfarbe mit Schild „Anzeige“. `selected` gilt auch für sie. */
+    services: List<Service> = emptyList(),
+    /** Eine Adresse wurde angetippt. */
+    onSelectService: ((Service) -> Unit)? = null,
 ) {
     val context = LocalContext.current
     val p = LocalPalette.current
@@ -117,10 +121,21 @@ fun WalkMap(
                     circleStrokeColor(Expression.switchCase(Expression.get("hundezone"), Expression.color(accent), Expression.color(ink)))))
                 s.addSource(GeoJsonSource("revier"))
                 s.addLayer(CircleLayer("revier", "revier").withProperties(circleRadius(Expression.get("r")), circleColor(accent), circleOpacity(Expression.get("o")), circleStrokeColor(white), circleStrokeWidth(2f)))
+                // Adressen: klein wie die Ziele; der gesponserte Punkt in Akzentfarbe, darunter gut lesbar „Anzeige“.
+                s.addSource(GeoJsonSource("adressen"))
+                s.addLayer(CircleLayer("adressen", "adressen").withProperties(
+                    circleRadius(Expression.switchCase(Expression.get("anzeige"), Expression.literal(6.5f), Expression.literal(4.5f))),
+                    circleColor(Expression.switchCase(Expression.get("anzeige"), Expression.color(accent), Expression.color(white))),
+                    circleStrokeColor(Expression.switchCase(Expression.get("anzeige"), Expression.color(white), Expression.color(ink))),
+                    circleStrokeWidth(Expression.switchCase(Expression.get("anzeige"), Expression.literal(2f), Expression.literal(1.6f)))))
+                s.addImage("anzeige-schild", adLabel(context, p.surface.toArgb(), p.ink2.toArgb(), p.line.toArgb()))
+                s.addLayer(SymbolLayer("anzeige-schild", "adressen").withFilter(Expression.get("anzeige"))
+                    .withProperties(iconImage("anzeige-schild"), iconAnchor(Property.ICON_ANCHOR_TOP), iconOffset(arrayOf(0f, 9f)), iconAllowOverlap(true), iconIgnorePlacement(true)))
                 s.addSource(GeoJsonSource("auswahl"))
                 s.addLayer(CircleLayer("auswahl", "auswahl").withProperties(circleRadius(15f), circleColor(accent)))
                 // Das Icon des gewählten Ortes: im Strich des Logos, weiß auf Mandarine.
                 s.addImage("ort-hund", iconBitmap(context, Sym.PAW)); s.addImage("ort-park", iconBitmap(context, Sym.PARK))
+                (ServiceKind.entries.map { it.icon } + Sym.PIN).forEach { s.addImage("art-$it", iconBitmap(context, it)) }
                 s.addLayer(SymbolLayer("auswahl-icon", "auswahl").withProperties(iconImage(Expression.get("icon")), iconAllowOverlap(true), iconIgnorePlacement(true)))
                 s.addLayer(SymbolLayer("freunde", "freunde").withProperties(iconImage(Expression.get("bild")), iconAllowOverlap(true), iconIgnorePlacement(true)))
                 s.addLayer(CircleLayer("hier-hof", "hier").withProperties(circleRadius(22f), circleColor(accent), circleOpacity(0.16f)))
@@ -135,13 +150,18 @@ fun WalkMap(
     // Inhalte nachführen.
     // Antippen eines Ortes; die Mitte nach jeder Bewegung.
     val currentPlaces by rememberUpdatedState(places)
+    val currentServices by rememberUpdatedState(services)
     val select by rememberUpdatedState(onSelect)
+    val selectService by rememberUpdatedState(onSelectService)
     val center by rememberUpdatedState(onCenter)
     LaunchedEffect(map) {
         val m = map ?: return@LaunchedEffect
         m.addOnMapClickListener { point ->
-            val hit = m.queryRenderedFeatures(m.projection.toScreenLocation(point), "ziele", "auswahl").firstOrNull()
+            val hit = m.queryRenderedFeatures(m.projection.toScreenLocation(point), "ziele", "adressen", "anzeige-schild", "auswahl").firstOrNull()
             val id = hit?.getStringProperty("id")
+            if (hit?.hasProperty("adresse") == true) {
+                currentServices.firstOrNull { it.id == id }?.let { s -> selectService?.invoke(s); return@addOnMapClickListener true }
+            }
             val p = currentPlaces.firstOrNull { it.id == id }
                 ?: if (hit != null) currentPlaces.minByOrNull { app.thisdog.model.Track.distance(LatLng(point.latitude, point.longitude), it.coordinate) } else null
             if (p != null) { select?.invoke(p); true } else false
@@ -162,7 +182,7 @@ fun WalkMap(
         m.animateCamera(CameraUpdateFactory.paddingTo((padding[0] * d).toDouble(), (padding[1] * d).toDouble(), (padding[2] * d).toDouble(), (padding[3] * d).toDouble()), 250)
     }
 
-    LaunchedEffect(style, track.size, here, places, friends, selected, revier) {
+    LaunchedEffect(style, track.size, here, places, friends, selected, revier, services) {
         val s = style ?: return@LaunchedEffect
         val pts = track.map { Point.fromLngLat(it.lng, it.lat) }
         (s.getSource("strecke") as? GeoJsonSource)?.setGeoJson(if (pts.size > 1) FeatureCollection.fromFeature(Feature.fromGeometry(LineString.fromLngLats(pts))) else FeatureCollection.fromFeatures(emptyList()))
@@ -170,7 +190,12 @@ fun WalkMap(
         (s.getSource("ziele") as? GeoJsonSource)?.setGeoJson(FeatureCollection.fromFeatures(places.map {
             Feature.fromGeometry(Point.fromLngLat(it.lon, it.lat)).apply { addBooleanProperty("hundezone", it.isDogZone); addStringProperty("id", it.id) }
         }))
-        (s.getSource("auswahl") as? GeoJsonSource)?.setGeoJson(FeatureCollection.fromFeatures(places.filter { it.id == selected }.map { Feature.fromGeometry(Point.fromLngLat(it.lon, it.lat)).apply { addStringProperty("icon", if (it.isDogZone) "ort-hund" else "ort-park") } }))
+        (s.getSource("adressen") as? GeoJsonSource)?.setGeoJson(FeatureCollection.fromFeatures(services.filter { it.id != selected }.map {
+            Feature.fromGeometry(Point.fromLngLat(it.lon, it.lat)).apply { addStringProperty("id", it.id); addBooleanProperty("adresse", true); addBooleanProperty("anzeige", it.ad != null) }
+        }))
+        (s.getSource("auswahl") as? GeoJsonSource)?.setGeoJson(FeatureCollection.fromFeatures(
+            places.filter { it.id == selected }.map { Feature.fromGeometry(Point.fromLngLat(it.lon, it.lat)).apply { addStringProperty("icon", if (it.isDogZone) "ort-hund" else "ort-park") } } +
+            services.filter { it.id == selected }.map { Feature.fromGeometry(Point.fromLngLat(it.lon, it.lat)).apply { addStringProperty("icon", "art-${it.icon}"); addStringProperty("id", it.id); addBooleanProperty("adresse", true) } }))
         val most = maxOf(1, revier.maxOfOrNull { it.visits } ?: 1)
         (s.getSource("revier") as? GeoJsonSource)?.setGeoJson(FeatureCollection.fromFeatures(revier.map {
             val part = it.visits.toFloat() / most
@@ -248,6 +273,25 @@ private fun friendMarker(context: android.content.Context, f: FriendSpot, accent
             d.setTint(accent); d.setBounds(r.toInt() - half, r.toInt() - half, r.toInt() + half, r.toInt() + half); d.draw(c)
         }
     }
+    return out
+}
+
+/** Das Schild „Anzeige“ unter dem gesponserten Punkt: Fläche mit feiner Kontur, halbfett – nicht als Kleinstdruck. */
+private fun adLabel(context: android.content.Context, fill: Int, text: Int, line: Int): Bitmap {
+    val d = context.resources.displayMetrics.density
+    val paint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
+        textSize = android.util.TypedValue.applyDimension(android.util.TypedValue.COMPLEX_UNIT_SP, 12f, context.resources.displayMetrics).coerceAtMost(12 * d * 1.3f)
+        typeface = android.graphics.Typeface.create(android.graphics.Typeface.DEFAULT, 600, false)
+    }
+    val label = app.thisdog.i18n.L.t("Anzeige")
+    val padX = 7 * d; val padY = 3 * d
+    val w = paint.measureText(label) + 2 * padX; val h = paint.fontMetrics.let { it.descent - it.ascent } + 2 * padY
+    val out = Bitmap.createBitmap(kotlin.math.ceil(w + 2 * d).toInt(), kotlin.math.ceil(h + 2 * d).toInt(), Bitmap.Config.ARGB_8888)
+    val c = Canvas(out); val r = android.graphics.RectF(d, d, w + d, h + d)
+    paint.style = Paint.Style.FILL; paint.color = fill; c.drawRoundRect(r, h / 2, h / 2, paint)
+    paint.style = Paint.Style.STROKE; paint.strokeWidth = d; paint.color = line; c.drawRoundRect(r, h / 2, h / 2, paint)
+    paint.style = Paint.Style.FILL; paint.color = text
+    c.drawText(label, d + padX, d + padY - paint.fontMetrics.ascent, paint)
     return out
 }
 

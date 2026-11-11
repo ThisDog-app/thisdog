@@ -49,6 +49,11 @@
 	RewriteRule ^datenschutz/?$ rechtliches/datenschutz.html [L]
 	RewriteRule ^impressum/?$ rechtliches/impressum.html [L]
 	RewriteRule ^support/?$ rechtliches/support.html [L]
+
+	# Partnerplätze für Betriebe: buchen unter /partner, verwalten über den Link aus der Mail.
+	RewriteRule ^partner/?$ partner.php [L,QSA]
+	RewriteRule ^partner/verwalten/([A-Za-z0-9_-]+)/?$ partner.php?verwalten=$1 [L,QSA]
+	RewriteRule ^werbebedingungen/?$ rechtliches/werbebedingungen.html [L]
 </IfModule>
 
 # Auslieferung: Textdateien komprimieren

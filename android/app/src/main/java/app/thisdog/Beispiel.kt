@@ -36,6 +36,28 @@ object Beispiel {
         s.save(HealthNote(d = t.addingDays(-16).iso, tags = listOf("Zecke"), text = "Am Hals entfernt, Stelle leicht gerötet."))
     }
 
+    /** `adressen`: Adressen rund um den Standort, mit einem gesponserten Hundefriseur (für den Reiter „Adressen“). */
+    fun services(at: LatLng): app.thisdog.gassi.Services {
+        fun s(n: Int, kind: String, label: String, name: String, dLat: Double, dLon: Double, street: String?, phone: String? = null, website: String? = null,
+              hours: String? = null, emergency: Boolean = false) =
+            app.thisdog.gassi.Service("beispiel/$n", kind, label, name, at.lat + dLat, at.lng + dLon, street, street?.let { "1020 Wien" }, phone, website, hours, emergency)
+        val list = listOf(
+            s(1, "vet", "Tierarzt", "Tierklinik Praterstern", .0021, .0032, "Praterstraße 12", "+43 1 2345678", "tierklinik-praterstern.example", "Mo-Fr 08:00-18:00; Sa 09:00-12:00", emergency = true),
+            s(2, "shop", "Tierbedarf", "Fressnapf Taborstraße", -.0018, .0011, "Taborstraße 40", "+43 1 2160011", "https://example.at", "Mo-Sa 09:00-19:00"),
+            s(3, "cafe", "Hundefreundliches Lokal", "Café Wurstel", .0035, -.0024, "Obere Augartenstraße 1"),
+            s(4, "vet", "Tierarzt", "Tierarztpraxis am Augarten", .0052, -.0008, "Rauscherstraße 5", "+43 1 234 56 78", hours = "Mo-Fr 09:00-12:00,15:00-19:00"),
+            s(5, "school", "Hundeschule", "Hundeschule Pfotenweg", -.0061, .0047, "Vorgartenstraße 120", website = "pfotenweg.example"),
+            s(6, "groomer", "Hundefriseur", "Hundesalon Lockenpracht", .0071, .0062, "Heinestraße 22", "+43 660 1234567"),
+            s(7, "boarding", "Hundepension", "Pension Bello", -.0102, -.0075, null),
+            s(8, "shelter", "Tierheim", "Tierschutzhaus am Prater", -.0125, .0118, "Hauptallee 9"),
+            s(9, "shop", "Tierbedarf", "Napf & Leine", .0093, -.0051, "Klosterneuburger Straße 15"),
+        )
+        val sponsor = app.thisdog.gassi.Service("node/456", "groomer", "Hundefriseur", "Salon Struppi", at.lat + .0028, at.lng - .0039, "Große Sperlgasse 7", "1020 Wien",
+            "+43 1 9876543", "salon-struppi.example", "Di-Fr 10:00-18:00; Sa 09:00-14:00",
+            ad = app.thisdog.gassi.Service.Ad(12, "Erste Pflege für Welpen gratis", "Struppi GmbH"))
+        return app.thisdog.gassi.Services(list.sortedBy { Track.distance(at, it.coordinate) }, sponsor, true)
+    }
+
     /** `vermisst`: Stella ist seit zwei Stunden weg (für den Steckbrief). */
     fun seedLost(s: app.thisdog.data.DogStore) {
         s.save(s.profile.copy(lostSince = LostDog.stamp(java.time.LocalDateTime.now().minusHours(2)), lostWhere = "Augarten, beim Spielplatz",

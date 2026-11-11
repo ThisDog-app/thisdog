@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Erzeugt von android/tools/icons_aus_svg.py aus icon-laden.svg. Nicht von Hand ändern. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android" android:width="24dp" android:height="24dp" android:viewportWidth="24" android:viewportHeight="24">
+    <path android:pathData="M5 8.4 H19 L18.3 19.3 C18.2 20 17.7 20.6 17 20.6 H7 C6.3 20.6 5.8 20 5.7 19.3 Z" android:fillColor="#00000000" android:strokeColor="#FF000000" android:strokeWidth="1.7" android:strokeLineCap="round" android:strokeLineJoin="round" />
+    <path android:pathData="M9 11 V7.2 C9 5.1 10.3 3.6 12 3.6 C13.7 3.6 15 5.1 15 7.2 V11" android:fillColor="#00000000" android:strokeColor="#FF000000" android:strokeWidth="1.7" android:strokeLineCap="round" android:strokeLineJoin="round" />
+</vector>

@@ -462,6 +462,18 @@
         }
       }
     },
+    "Adresse" : {
+
+    },
+    "Adressen" : {
+
+    },
+    "Adressen konnten nicht geladen werden." : {
+
+    },
+    "Adressen werden gesucht …" : {
+
+    },
     "Aktivität" : {
 
     },
@@ -513,7 +525,13 @@
     "Anna" : {
 
     },
+    "Anrufen" : {
+
+    },
     "Antwort an" : {
+
+    },
+    "Anzeige" : {
 
     },
     "Apfel (ohne Kerne)" : {
@@ -588,7 +606,16 @@
     "Besuche" : {
 
     },
+    "Betriebe können je Gegend einen Platz oben in den Adressen kaufen. Er ist immer als Anzeige gekennzeichnet. Die übrige Liste ist nach Entfernung sortiert und nicht käuflich, Bewertungen und Daten bleiben unberührt." : {
+
+    },
     "Bewerten" : {
+
+    },
+    "Bezahlte Platzierung von %@." : {
+
+    },
+    "Bezahlte Platzierung." : {
 
     },
     "Bis" : {
@@ -673,6 +700,9 @@
 
     },
     "Daten wiederherstellen" : {
+
+    },
+    "Daten: OpenStreetMap. Fehlt etwas? Auf [openstreetmap.org](https://www.openstreetmap.org) eintragen." : {
 
     },
     "Datenschutz" : {
@@ -1136,6 +1166,9 @@
     "Hier" : {
 
     },
+    "Hier sind noch keine Adressen verzeichnet." : {
+
+    },
     "Hier wart ihr noch nicht" : {
 
     },
@@ -1166,7 +1199,13 @@
     "Hundefreunde" : {
 
     },
+    "Hundefriseure" : {
+
+    },
     "Hundeschule" : {
+
+    },
+    "Hundeschulen" : {
 
     },
     "Hundespielplatz" : {
@@ -1349,6 +1388,9 @@
     "Link teilen" : {
 
     },
+    "Lokale" : {
+
+    },
     "Los geht's" : {
 
     },
@@ -1368,6 +1410,9 @@
 
     },
     "Medikamente" : {
+
+    },
+    "Mehr zeigen" : {
 
     },
     "Mehrere Tage" : {
@@ -1433,6 +1478,9 @@
     "Name" : {
 
     },
+    "Name oder Art suchen" : {
+
+    },
     "Name, Geburtstag und Gewicht genügen für den Anfang. Daraus entstehen Alter, Geburtstag im Kalender und die Rechner." : {
 
     },
@@ -1476,6 +1524,9 @@
 
     },
     "Nicht laufen" : {
+
+    },
+    "Nichts gefunden." : {
 
     },
     "Niemand außer dir kann ihn ersetzen, auch wir nicht. Und wer ihn hat und in euer Konto kommt, kann eure Daten lesen. Zeig ihn also nur Menschen, denen du deinen Hund anvertrauen würdest." : {
@@ -1538,7 +1589,13 @@
     "Noch niemand hat bewertet" : {
 
     },
+    "Nochmal" : {
+
+    },
     "Normal, täglich unterwegs" : {
+
+    },
+    "Notdienst" : {
 
     },
     "Notfallpass" : {
@@ -1620,6 +1677,9 @@
     "Pause" : {
 
     },
+    "Pensionen" : {
+
+    },
     "Person erkennbar" : {
 
     },
@@ -1681,6 +1741,9 @@
 
     },
     "Rosa-Jochmann-Park" : {
+
+    },
+    "Route" : {
 
     },
     "Rudel" : {
@@ -1901,6 +1964,15 @@
     "Tierarztpraxis am Augarten" : {
 
     },
+    "Tierbedarf" : {
+
+    },
+    "Tierheime" : {
+
+    },
+    "Tierärzte" : {
+
+    },
     "Tipp auf Start, wenn ihr losgeht. Das Telefon kann in die Tasche." : {
 
     },
@@ -2003,6 +2075,9 @@
     "Wartet auf Freigabe" : {
 
     },
+    "Warum steht oben eine Anzeige?" : {
+
+    },
     "Was ansteht" : {
 
     },
@@ -2034,6 +2109,9 @@
 
     },
     "Wasser" : {
+
+    },
+    "Website" : {
 
     },
     "Weiter" : {
@@ -2314,6 +2392,9 @@
 
     },
     "Änderungen gelten für alle Termine dieser Serie." : {
+
+    },
+    "Öffnungszeiten" : {
 
     },
     "Übermorgen" : {

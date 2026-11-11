@@ -188,14 +188,28 @@ fun Modifier.selectionPill(on: Boolean): Modifier {
 @Composable
 fun <T> ReiterLeiste(items: List<Pair<T, String>>, selected: T, modifier: Modifier = Modifier, onSelect: (T) -> Unit) {
     val p = LocalPalette.current
-    Row(modifier.fillMaxWidth().clip(RoundedCornerShape(50)).background(p.surface).padding(3.dp), horizontalArrangement = Arrangement.spacedBy(2.dp)) {
+    val many = items.size > 4
+    BoxWithConstraints(modifier.fillMaxWidth()) {
+    // Fünf Reiter (Gassi) passen auch auf schmalen Telefonen: weniger Rand und, wenn nötig, für alle dieselbe kleinere
+    // Schrift – nie umbrechen, nicht jeder Reiter anders groß.
+    val pad = if (many) 3.dp else 6.dp
+    val measurer = androidx.compose.ui.text.rememberTextMeasurer()
+    val density = androidx.compose.ui.platform.LocalDensity.current
+    val size = if (!many) 15f else {
+        val room = with(density) { ((maxWidth - 6.dp - 2.dp * (items.size - 1)) / items.size - pad * 2).toPx() }
+        val widest = items.maxOf { measurer.measure(it.second, TextStyle(fontSize = 15.sp, fontWeight = FontWeight.SemiBold), maxLines = 1, softWrap = false).size.width }
+        (15f * minOf(1f, room / widest.coerceAtLeast(1))).let { kotlin.math.floor(it * 2) / 2 }.coerceAtLeast(10f)
+    }
+    Row(Modifier.fillMaxWidth().clip(RoundedCornerShape(50)).background(p.surface).padding(3.dp), horizontalArrangement = Arrangement.spacedBy(2.dp)) {
         items.forEach { (value, title) ->
             val on = value == selected
             Box(Modifier.weight(1f).heightIn(min = 38.dp).selectionPill(on)
                 .clickable(role = Role.Tab) { onSelect(value) }.semantics { this.selected = on }, contentAlignment = Alignment.Center) {
-                FitText(title, TextStyle(fontSize = 15.sp, fontWeight = FontWeight.SemiBold, color = if (on) p.accent else p.ink), Modifier.padding(horizontal = 6.dp))
+                FitText(title, TextStyle(fontSize = size.sp, fontWeight = FontWeight.SemiBold, color = if (on) p.accent else p.ink),
+                    Modifier.padding(horizontal = pad), if (many) 10.sp else 12.sp)
             }
         }
+    }
     }
 }
 

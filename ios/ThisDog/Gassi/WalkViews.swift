@@ -25,6 +25,10 @@ struct WalkMap: View {
     var fitsTrack: String? = nil
     /// Das Revier: die Orte, an denen der Hund war, je größer, desto öfter.
     var revier: [Revier.Spot] = []
+    /// Adressen (Reiter „Adressen“): kleine Punkte, der Sponsor in Akzentfarbe mit „Anzeige“ darunter.
+    var services: [Service] = []
+    var sponsor: Service? = nil
+    var onSelectService: ((Service) -> Void)? = nil
 
     /// Nie `.userLocation`: Das fragt selbst nach dem Standort, sobald die Karte entsteht – auch wenn
     /// niemand Gassi geöffnet hat. Die Karte folgt stattdessen dem Standort, den die App schon hat.
@@ -70,6 +74,18 @@ struct WalkMap: View {
                     .onTapGesture { onSelect?(p) }
                     .accessibilityAddTraits(.isButton)
                 }
+            }
+            ForEach(services) { s in
+                Annotation(s.name, coordinate: s.coordinate, anchor: .center) {
+                    servicePin(s, ad: false)
+                }
+                .annotationTitles(.hidden)
+            }
+            if let sponsor {
+                Annotation(sponsor.name, coordinate: sponsor.coordinate, anchor: .top) {
+                    servicePin(sponsor, ad: true)
+                }
+                .annotationTitles(.hidden)
             }
             ForEach(friends) { spot in
                 let info = friendInfo.first { $0.pack == spot.pack }
@@ -131,6 +147,39 @@ struct WalkMap: View {
                 camera = .camera(MapCamera(centerCoordinate: here, distance: follows ? 900 : 2600))
             }
         }
+    }
+
+    /// Eine Adresse auf der Karte; gewählt groß mit dem Icon ihrer Art (wie bei Orten).
+    private func servicePin(_ s: Service, ad: Bool) -> some View {
+        let on = s.id == selected
+        return VStack(spacing: 2) {
+            ZStack {
+                if on {
+                    Circle().fill(Palette.accent).frame(width: 30, height: 30)
+                    LineIcon(s.icon, size: 18).foregroundStyle(.white)
+                } else if ad {
+                    Circle().fill(Palette.accent).overlay(Circle().strokeBorder(.white, lineWidth: 2)).frame(width: 14, height: 14)
+                } else {
+                    Circle().strokeBorder(Palette.ink, lineWidth: 1.6)
+                        .background(Circle().fill(.white)).frame(width: 10, height: 10)
+                }
+            }
+            .frame(width: 34, height: 34)
+            .contentShape(Circle())
+            .onTapGesture { onSelectService?(s) }
+            .accessibilityAddTraits(.isButton)
+            if ad {
+                // Der Punkt sitzt auf der Adresse (Anker oben, Mitte des Kreises), das Schild hängt darunter.
+                Text("Anzeige")
+                    .font(.caption2.weight(.semibold)).foregroundStyle(Palette.ink2)
+                    .padding(.horizontal, 5).padding(.vertical, 1)
+                    .background(Palette.surface, in: Capsule())
+                    .overlay(Capsule().strokeBorder(Palette.ink3, lineWidth: 0.5))
+                    .fixedSize()
+                    .accessibilityHidden(true)
+            }
+        }
+        .offset(y: ad ? -17 : 0)
     }
 
     /// Worauf sich die Karte einstellt: das Revier oder die ganze Strecke.

@@ -11,6 +11,9 @@ nicht hier, sondern in app.sqlite (Tabelle own_places) – ein Import kann sie n
 Läuft einmal im Monat per Cron. Ohne Region: Deutschland, Österreich, Schweiz. Mit Österreich kommen die
 offenen Daten der Stadt Wien dazu (Hundezonen, Hundeverbotszonen, Trinkbrunnen; CC BY 4.0).
 
+Dazu Adressen rund um den Hund (Tabelle services): Tierärzte, Hundefriseure, Tierbedarf, Hundeschulen, Tierheime,
+Hundepensionen und Lokale, in denen Hunde ausdrücklich willkommen sind (dog=yes).
+
 Merkmale (place_facts) aus den Tags und aus dem, was in einem Ort steht: Freilaufen, Zaun, Rasen, Licht,
 Trinkwasser, Bänke, Schatten (Wald oder mindestens drei Bäume), Sackerlspender, Mistkübel.
 """
@@ -117,6 +120,93 @@ def grow(box, meters):
     lat_m = meters / 111320
     lon_m = meters / (111320 * max(0.2, math.cos(math.radians((box[0] + box[1]) / 2))))
     return (box[0] - lat_m, box[1] + lat_m, box[2] - lon_m, box[3] + lon_m)
+
+
+# ---------------------------------------------------------------- Adressen rund um den Hund
+
+# Wie SERVICE_KINDS in api/lib-services.php: Schlüssel und Prüfung der Tags.
+LOKALE = ("cafe", "restaurant", "bar", "pub", "biergarten", "ice_cream")
+SERVICES_SQL = """
+    CREATE TABLE services (id TEXT PRIMARY KEY, kind TEXT NOT NULL, name TEXT NOT NULL, lat REAL NOT NULL, lon REAL NOT NULL,
+                           street TEXT, city TEXT, phone TEXT, website TEXT, hours TEXT, emergency INTEGER NOT NULL DEFAULT 0);
+"""
+
+
+def for_dogs(value):
+    """animal_shelter=cat, animal_boarding=horse …: nur, wenn Hunde dabei sind oder nichts dasteht."""
+    if not value:
+        return True
+    parts = {p.strip() for p in value.lower().replace(",", ";").split(";")}
+    return bool(parts & {"dog", "dogs", "yes", "all", "pet", "pets"})
+
+
+def service_kind(tags):
+    amenity, shop = tags.get("amenity"), tags.get("shop")
+    if amenity == "veterinary":
+        return "vet"
+    if shop == "pet_grooming" or amenity == "animal_grooming":
+        return "groomer"
+    if shop == "pet":
+        return "shop"
+    if amenity == "animal_training" and for_dogs(tags.get("animal_training")):
+        return "school"
+    if amenity == "animal_shelter" and for_dogs(tags.get("animal_shelter")):
+        return "shelter"
+    if amenity == "animal_boarding" and for_dogs(tags.get("animal_boarding")):
+        return "boarding"
+    if amenity in LOKALE and tags.get("dog") == "yes":
+        return "cafe"
+    return None
+
+
+def service_row(oid, tags, lat, lon):
+    kind = service_kind(tags)
+    name = (tags.get("name") or "").strip()
+    if kind is None or not name:
+        return None  # Ohne Namen findet man einen Betrieb nicht wieder
+    get = lambda *keys: next(((tags.get(k) or "").strip() for k in keys if (tags.get(k) or "").strip()), "") or None
+    street = " ".join(x for x in (get("addr:street", "addr:place"), get("addr:housenumber")) if x) or None
+    city = " ".join(x for x in (get("addr:postcode"), get("addr:city")) if x) or None
+    phone = get("phone", "contact:phone", "contact:mobile")
+    if phone:
+        phone = phone.split(";")[0].strip()
+    website = get("website", "contact:website", "url")
+    if website:
+        website = website.split(";")[0].strip()
+    emergency = 1 if kind == "vet" and tags.get("emergency") == "yes" else 0
+    return (oid, kind, name[:120], round(lat, 5), round(lon, 5), street, city, phone, website,
+            (get("opening_hours") or "")[:255] or None, emergency)
+
+
+def import_services(db, pbf):
+    """Zwei Durchläufe: Wege (Betriebe als Gebäude, Mitte aus einer Stichprobe der Punkte), dann alle Knoten."""
+    ways, need = [], set()
+    filt = osmium.filter.KeyFilter("amenity", "shop")
+    for way in osmium.FileProcessor(pbf, osmium.osm.WAY).with_filter(filt):
+        if service_kind(way.tags) is None or not way.tags.get("name"):
+            continue
+        refs = sample([n.ref for n in way.nodes], 6)
+        ways.append(("way/" + str(way.id), {t.k: t.v for t in way.tags}, refs))
+        need.update(refs)
+    where, rows = {}, []
+    for node in osmium.FileProcessor(pbf, osmium.osm.NODE):
+        if not node.location.valid():
+            continue
+        if node.id in need:
+            where[node.id] = (node.location.lat, node.location.lon)
+        if node.tags and ("amenity" in node.tags or "shop" in node.tags):
+            r = service_row("node/" + str(node.id), {t.k: t.v for t in node.tags}, node.location.lat, node.location.lon)
+            if r:
+                rows.append(r)
+    for oid, tags, refs in ways:
+        pts = [where[r] for r in refs if r in where]
+        if pts:
+            r = service_row(oid, tags, sum(p[0] for p in pts) / len(pts), sum(p[1] for p in pts) / len(pts))
+            if r:
+                rows.append(r)
+    db.executemany("INSERT OR IGNORE INTO services VALUES (?,?,?,?,?,?,?,?,?,?,?)", rows)
+    db.commit()
+    return len(rows)
 
 
 def import_region(db, region, pbf):
@@ -340,16 +430,18 @@ def main():
                                   PRIMARY KEY (place_id, key));
         CREATE TABLE sources (name TEXT PRIMARY KEY, label TEXT, license TEXT, fetched_at INTEGER);
         CREATE TABLE regions (name TEXT PRIMARY KEY, min_lat REAL, max_lat REAL, min_lon REAL, max_lon REAL, data_at TEXT, imported_at INTEGER);
-    """)
+    """ + SERVICES_SQL)
     for region in regions:
         t = time.time()
         pbf = download(region, work)
         n = import_region(db, region, pbf)
+        a = import_services(db, pbf)
         os.remove(pbf)
         print(f"{region}: Speicher zuletzt {resource.getrusage(resource.RUSAGE_SELF).ru_maxrss // 1024} MB", flush=True)
-        print(f"{region}: {n} Orte in {time.time() - t:.0f} s", flush=True)
+        print(f"{region}: {n} Orte, {a} Adressen in {time.time() - t:.0f} s", flush=True)
     db.execute("CREATE INDEX places_pos ON places(lat, lon)")
     db.execute("CREATE INDEX places_box ON places(min_lat, max_lat)")
+    db.execute("CREATE INDEX services_pos ON services(lat, lon)")
     if "europe/austria" in regions:
         try:
             m, a, b, w = import_wien(db)

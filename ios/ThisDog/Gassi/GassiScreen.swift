@@ -2,7 +2,7 @@ import MapKit
 import SwiftUI
 
 /// Gassi: Die Karte ist die Hauptsache und füllt den Bildschirm; alles andere liegt darüber (`MapStage`).
-/// Vor der Runde Reiter für Wohin, Runden, Freunde und Revier; jeder nutzt dieselbe Karte.
+/// Vor der Runde Reiter für Wohin, Adressen, Runden, Freunde und Revier; jeder nutzt dieselbe Karte.
 /// Eine angetippte Runde oder ein Ort erscheint in derselben Karte, nicht in einem eigenen Fenster.
 struct GassiScreen: View {
     @Environment(DogStore.self) private var store
@@ -11,6 +11,8 @@ struct GassiScreen: View {
     @Environment(Router.self) private var router
 
     @State private var places: [Place] = []
+    /// Reiter „Adressen“: Tierärzte, Hundefriseure, Tierbedarf … und welche gerade offen ist.
+    @State private var adressen = ServiceList()
     @State private var loadingPlaces = false
     /// Wo die Ziele zuletzt gesucht wurden. Wer sich weiter entfernt, bekommt eine neue Liste.
     @State private var placesCenter: CLLocationCoordinate2D?
@@ -50,8 +52,16 @@ struct GassiScreen: View {
         .onChange(of: selected?.id) { _, id in
             guard id != nil else { return }
             shownWalk = nil
+            adressen.selected = nil
             reiter = .wohin
             makeMapVisible()
+        }
+        .onChange(of: adressen.selected?.id) { _, id in
+            #if DEBUG
+            // Bildschirmfotos der ganzen Adressenseite: `-stufe full` gilt weiter.
+            if ProcessInfo.processInfo.arguments.contains("-adressenseite") { return }
+            #endif
+            if id != nil { makeMapVisible() }
         }
         // Beim Start der Runde (nicht bei Pause und Weiter) die Ortsseite schließen.
         .onChange(of: recorder.phase) { old, phase in
@@ -127,6 +137,16 @@ struct GassiScreen: View {
 
     private var idle: Bool { recorder.phase == .idle }
     private var showsRevier: Bool { idle && finished == nil && reiter == .revier && selected == nil }
+    /// Vor der Runde im Reiter „Adressen“: Die Karte zeigt Adressen statt der Gassi-Ziele.
+    private var showsServices: Bool { idle && finished == nil && walkOnMap == nil && reiter == .adressen && selected == nil }
+
+    /// Höchstens 40 Adressen auf der Karte, die nächsten (gefiltert wie die Liste); die offene immer.
+    private var servicesOnMap: [Service] {
+        guard showsServices else { return [] }
+        var shown = Array(adressen.list(from: recorder.here).prefix(40))
+        if let s = adressen.selected, !adressen.isSponsor(s), !shown.contains(where: { $0.id == s.id }) { shown.append(s) }
+        return shown
+    }
     /// Die Runde, die vor der nächsten auf der Karte liegt.
     private var walkOnMap: Walk? { finished ?? shownWalk }
 
@@ -134,10 +154,13 @@ struct GassiScreen: View {
         MapStage(detent: $detent, fitsContent: !idle && selected == nil) { insets in
             // Auch unterwegs liegen die Orte auf der Karte: gehen, Hundezone, weitergehen ist eine Runde.
             WalkMap(track: idle ? (walkOnMap?.coordinates ?? []) : recorder.coordinates, here: recorder.here,
-                    places: (idle && walkOnMap == nil && !showsRevier) || !idle ? Array(places.prefix(12)) : [], follows: !idle && selected == nil, fallback: lastSpot,
+                    places: (idle && walkOnMap == nil && !showsRevier && !showsServices) || !idle ? Array(places.prefix(12)) : [], follows: !idle && selected == nil, fallback: lastSpot,
                     friends: account.friends.live, friendInfo: account.friends.list, onSelect: { selected = $0 },
-                    selected: selected?.id, focus: selected?.coordinate, focusDistance: 1100,
-                    fitsTrack: showsRevier ? "revier" : walkOnMap?.id, revier: showsRevier ? Revier(store.checkIns).spots : [])
+                    selected: selected?.id ?? (showsServices ? adressen.selected?.id : nil),
+                    focus: selected?.coordinate ?? (showsServices ? adressen.selected?.coordinate : nil), focusDistance: 1100,
+                    fitsTrack: showsRevier ? "revier" : walkOnMap?.id, revier: showsRevier ? Revier(store.checkIns).spots : [],
+                    services: servicesOnMap, sponsor: showsServices && adressen.showsSponsor ? adressen.sponsor?.entry : nil,
+                    onSelectService: { adressen.selected = $0 })
                 .safeAreaPadding(insets)
         } top: {
             nearCard
@@ -233,12 +256,13 @@ struct GassiScreen: View {
     }
 
     private var reiterLeiste: some View {
-        HStack(spacing: 2) {
+        ReiterLayout(spacing: 2) {
             ForEach(GassiReiter.allCases) { r in
                 ReiterButton(title: r.title, on: reiter == r) {
                     withAnimation(.snappy) {
                         reiter = r
                         selected = nil
+                        adressen.selected = nil
                         shownWalk = nil
                         if detent == .peek { detent = .middle }
                     }
@@ -254,11 +278,15 @@ struct GassiScreen: View {
         if let p = selected {
             PlaceScreen(place: p, showsMap: false, onClose: { selected = nil }, onChange: update, parent: String(localized: "Wohin heute?"))
                 .id(p.id)
+        } else if reiter == .adressen, let s = adressen.selected {
+            ServiceScreen(service: s, sponsor: adressen.isSponsor(s) ? adressen.sponsor : nil) { adressen.selected = nil }
+                .id(s.id)
         } else {
             ScrollView {
                 Group {
                     switch reiter {
                     case .wohin: wohinList
+                    case .adressen: ServicesPanel(list: adressen)
                     case .runden: rundenList
                     case .freunde: friendsSection
                     case .revier: RevierPanel()
@@ -672,14 +700,45 @@ private struct WalkNumber: View {
     }
 }
 
+/// Fünf Reiter passen auf schmale Telefone nur, wenn jeder so breit ist wie sein Titel: Gleich breite Fächer
+/// ließen „Adressen“ schrumpfen, während „Wohin“ Luft hat. Was übrig ist, bekommt jeder zu gleichen Teilen.
+private struct ReiterLayout: Layout {
+    var spacing: CGFloat = 0
+
+    private func ideals(_ subviews: Subviews) -> [CGFloat] {
+        subviews.map { $0.sizeThatFits(.unspecified).width }
+    }
+
+    func sizeThatFits(proposal: ProposedViewSize, subviews: Subviews, cache: inout ()) -> CGSize {
+        let gaps = spacing * CGFloat(max(0, subviews.count - 1))
+        let height = subviews.map { $0.sizeThatFits(.unspecified).height }.max() ?? 0
+        return CGSize(width: proposal.width ?? ideals(subviews).reduce(gaps, +), height: height)
+    }
+
+    func placeSubviews(in bounds: CGRect, proposal: ProposedViewSize, subviews: Subviews, cache: inout ()) {
+        let ideal = ideals(subviews)
+        let room = bounds.width - spacing * CGFloat(max(0, subviews.count - 1))
+        let total = ideal.reduce(0, +)
+        // Zu eng: alle im gleichen Verhältnis kleiner (der Titel schrumpft dann selbst, siehe `ReiterButton`).
+        let widths = total > room ? ideal.map { $0 * room / total }
+                                  : ideal.map { $0 + (room - total) / CGFloat(max(1, subviews.count)) }
+        var x = bounds.minX
+        for (v, w) in zip(subviews, widths) {
+            v.place(at: CGPoint(x: x, y: bounds.midY), anchor: .leading, proposal: ProposedViewSize(width: w, height: bounds.height))
+            x += w + spacing
+        }
+    }
+}
+
 /// Die Reiter im Panel über der Karte.
 enum GassiReiter: String, CaseIterable, Identifiable {
-    case wohin, runden, freunde, revier
+    case wohin, adressen, runden, freunde, revier
     var id: String { rawValue }
 
     var title: String {
         switch self {
         case .wohin: String(localized: "Wohin")
+        case .adressen: String(localized: "Adressen")
         case .runden: String(localized: "Runden")
         case .freunde: String(localized: "Freunde")
         case .revier: String(localized: "Revier")

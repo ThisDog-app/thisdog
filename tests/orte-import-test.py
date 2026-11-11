@@ -25,6 +25,17 @@ OSM = """<?xml version='1.0' encoding='UTF-8'?>
 <way id="200"><nd ref="21"/><nd ref="22"/><nd ref="23"/><nd ref="24"/><nd ref="21"/>
   <tag k="leisure" v="park"/><tag k="name" v="Augarten"/></way>
 <node id="30" lat="48.2100" lon="16.4000"><tag k="leisure" v="dog_park"/><tag k="name" v="Hundezone Kanal"/></node>
+<node id="40" lat="48.2150" lon="16.3800"><tag k="amenity" v="veterinary"/><tag k="name" v="Tierklinik Prater"/><tag k="emergency" v="yes"/>
+  <tag k="addr:street" v="Praterstraße"/><tag k="addr:housenumber" v="12"/><tag k="addr:postcode" v="1020"/><tag k="addr:city" v="Wien"/>
+  <tag k="phone" v="+43 1 234; +43 660 1"/><tag k="opening_hours" v="Mo-Fr 08:00-18:00"/></node>
+<node id="41" lat="48.2151" lon="16.3801"><tag k="shop" v="pet"/></node>
+<node id="42" lat="48.2152" lon="16.3802"><tag k="amenity" v="animal_shelter"/><tag k="animal_shelter" v="cat"/><tag k="name" v="Katzenhaus"/></node>
+<node id="43" lat="48.2153" lon="16.3803"><tag k="amenity" v="cafe"/><tag k="dog" v="yes"/><tag k="name" v="Café Wuff"/></node>
+<node id="44" lat="48.2154" lon="16.3804"><tag k="amenity" v="cafe"/><tag k="name" v="Café ohne Angabe"/></node>
+<node id="45" lat="48.2155" lon="16.3805"><tag k="amenity" v="animal_shelter"/><tag k="animal_shelter" v="dog;cat"/><tag k="name" v="Tierheim Nord"/></node>
+<node id="51" lat="48.2160" lon="16.3810"/><node id="52" lat="48.2160" lon="16.3814"/><node id="53" lat="48.2164" lon="16.3814"/>
+<way id="300"><nd ref="51"/><nd ref="52"/><nd ref="53"/><nd ref="51"/><tag k="shop" v="pet_grooming"/><tag k="name" v="Salon Struppi"/>
+  <tag k="contact:website" v="struppi.at"/></way>
 </osm>"""
 
 ZONES = [  # wie HUNDEZONEOGD
@@ -52,7 +63,7 @@ with tempfile.TemporaryDirectory() as t:
                              off_leash INTEGER NOT NULL, fenced INTEGER NOT NULL, min_lat REAL, max_lat REAL, min_lon REAL, max_lon REAL);
         CREATE TABLE place_facts (place_id TEXT NOT NULL, key TEXT NOT NULL, value INTEGER NOT NULL, source TEXT NOT NULL, PRIMARY KEY (place_id, key));
         CREATE TABLE sources (name TEXT PRIMARY KEY, label TEXT, license TEXT, fetched_at INTEGER);
-        CREATE TABLE regions (name TEXT PRIMARY KEY, min_lat REAL, max_lat REAL, min_lon REAL, max_lon REAL, data_at TEXT, imported_at INTEGER);""")
+        CREATE TABLE regions (name TEXT PRIMARY KEY, min_lat REAL, max_lat REAL, min_lon REAL, max_lon REAL, data_at TEXT, imported_at INTEGER);""" + imp.SERVICES_SQL)
     n = imp.import_region(db, "probe", osm)
     facts = lambda pid: {k: (v, s) for k, v, s in db.execute("SELECT key, value, source FROM place_facts WHERE place_id = ?", (pid,))}
     print("Auszug")
@@ -70,6 +81,15 @@ with tempfile.TemporaryDirectory() as t:
     check("Verbotszone als Hinweis am Park", facts("way/200").get("no_dogs_area"), (1, "wien"))
     check("Tränke am Punkt Hundezone Kanal", facts("node/30").get("water_bowl"), (1, "wien"))
     check("Zierbrunnen ist kein Trinkwasser", "water" in facts("way/200"), False)
+
+    print("Adressen")
+    check("Vier Betriebe (ohne Namen, nur Katzen, ohne Hunde-Angabe fallen weg)", imp.import_services(db, osm), 4)
+    svc = {r[0]: r for r in db.execute("SELECT * FROM services")}
+    check("Tierarzt mit Adresse, erster Telefonnummer, Notdienst", svc["node/40"][1:2] + svc["node/40"][5:],
+          ("vet", "Praterstraße 12", "1020 Wien", "+43 1 234", None, "Mo-Fr 08:00-18:00", 1))
+    check("Lokal mit dog=yes", svc["node/43"][1], "cafe")
+    check("Tierheim für Hunde und Katzen", svc["node/45"][1], "shelter")
+    check("Friseur als Gebäude, Mitte und Website", (svc["way/300"][1], svc["way/300"][3] > 48.216, svc["way/300"][8]), ("groomer", True, "struppi.at"))
 
 print("Alles bestanden." if not fails else "FEHLGESCHLAGEN")
 sys.exit(1 if fails else 0)

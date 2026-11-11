@@ -540,6 +540,52 @@ function db_migrate(PDO $pdo): void
 		$pdo->exec('PRAGMA user_version = 21');
 		$pdo->commit();
 	}
+
+	// Partnerplätze: Je Gegend (lib-services.php, sponsor_tile) kann ein Betrieb einen Platz oben in den Adressen
+	// kaufen (partner.php, bezahlt über Stripe). Name und Adresse sind eine Abschrift aus dem Auszug – der wird jeden
+	// Monat neu gebaut, der Platz soll das überstehen. Zählungen nur als Summen je Tag, ohne Personenbezug.
+	if ($version < 22) {
+		$pdo->beginTransaction();
+		$pdo->exec(<<<'SQL'
+			CREATE TABLE sponsors (
+				id              INTEGER PRIMARY KEY AUTOINCREMENT,
+				tile            TEXT NOT NULL,
+				place_id        TEXT NOT NULL,
+				kind            TEXT NOT NULL,
+				name            TEXT NOT NULL,
+				lat             REAL NOT NULL,
+				lon             REAL NOT NULL,
+				street          TEXT,
+				city            TEXT,
+				phone           TEXT,
+				website         TEXT,
+				hours           TEXT,
+				text            TEXT NOT NULL DEFAULT '',
+				advertiser      TEXT NOT NULL,
+				email           TEXT NOT NULL,
+				status          TEXT NOT NULL DEFAULT 'pending',
+				checkout_id     TEXT,
+				customer_id     TEXT,
+				subscription_id TEXT,
+				paid_until      INTEGER,
+				cancels_at      INTEGER,
+				manage_hash     TEXT,
+				created_at      INTEGER NOT NULL,
+				updated_at      INTEGER NOT NULL
+			);
+			CREATE INDEX sponsors_tile ON sponsors(tile, status);
+			CREATE INDEX sponsors_sub ON sponsors(subscription_id);
+			CREATE TABLE sponsor_stats (
+				sponsor_id  INTEGER NOT NULL,
+				day         TEXT NOT NULL,
+				views       INTEGER NOT NULL DEFAULT 0,
+				taps        INTEGER NOT NULL DEFAULT 0,
+				PRIMARY KEY (sponsor_id, day)
+			);
+		SQL);
+		$pdo->exec('PRAGMA user_version = 22');
+		$pdo->commit();
+	}
 }
 
 /**

@@ -13,6 +13,8 @@ declare(strict_types=1);
 
 require_once __DIR__ . '/api/lib-admin.php';
 require_once __DIR__ . '/api/lib-places.php';
+require_once __DIR__ . '/api/lib-services.php';
+require_once __DIR__ . '/api/lib-stripe.php';
 
 $pdo = db();
 $email = admin_or_404($pdo);
@@ -121,6 +123,20 @@ if ($action !== '') {
 			respond(['ok' => true]);
 		case 'delete':
 			$pdo->prepare('DELETE FROM own_places WHERE id = ?')->execute([(int) ($body['id'] ?? 0)]);
+			respond(['ok' => true]);
+		case 'partner_text':
+			// Unpassender Text: weg, der Platz bleibt.
+			$pdo->prepare("UPDATE sponsors SET text = '', updated_at = ? WHERE id = ?")->execute([time(), (int) ($body['id'] ?? 0)]);
+			respond(['ok' => true]);
+		case 'partner_block':
+			// Sperren: sofort unsichtbar, das Abo bei Stripe endet. Eine anteilige Erstattung macht man im Stripe-Dashboard.
+			$q = $pdo->prepare('SELECT subscription_id FROM sponsors WHERE id = ?');
+			$q->execute([(int) ($body['id'] ?? 0)]);
+			$sub = (string) $q->fetchColumn();
+			$pdo->prepare("UPDATE sponsors SET status = 'blocked', updated_at = ? WHERE id = ?")->execute([time(), (int) ($body['id'] ?? 0)]);
+			if ($sub !== '') {
+				try { stripe_cancel($sub); } catch (Throwable $e) { respond(['error' => 'stripe: ' . $e->getMessage()], 502); }
+			}
 			respond(['ok' => true]);
 	}
 	respond(['error' => 'unknown_action'], 400);
@@ -322,6 +338,30 @@ $erkunder = $pdo->query("SELECT s.account_id, a.email, (SELECT COUNT(*) FROM pla
 	<?php endif; ?>
 </section>
 
+<?php
+$partner = $pdo->query("SELECT s.*, (SELECT COALESCE(SUM(views), 0) FROM sponsor_stats WHERE sponsor_id = s.id AND day >= date('now', '-30 days')) AS v,
+	(SELECT COALESCE(SUM(taps), 0) FROM sponsor_stats WHERE sponsor_id = s.id AND day >= date('now', '-30 days')) AS t
+	FROM sponsors s WHERE s.status != 'pending' OR s.created_at > " . (time() - CHECKOUT_HOLD) . " ORDER BY s.status = 'active' DESC, s.created_at DESC LIMIT 100")->fetchAll();
+?>
+<section class="feld liste" id="partner">
+	<h2>Partnerplätze</h2>
+	<p><?= stripe_ready() ? 'Buchung über thisdog.app/partner ist offen (' . htmlspecialchars(euro(sponsor_price())) . ' im Monat).' : 'Buchung noch zu: STRIPE_SECRET_KEY und STRIPE_WEBHOOK_SECRET fehlen in config.php.' ?></p>
+	<?php if (!$partner): ?><p class="leer">Noch keine.</p><?php else: ?>
+	<table><thead><tr><th>Betrieb</th><th>Auftraggeber</th><th>Text</th><th>Stand</th><th>30 Tage</th><th></th></tr></thead><tbody>
+	<?php foreach ($partner as $p): $laeuft = $p['status'] === 'active' && (int) $p['paid_until'] > time() - PAID_GRACE; ?>
+		<tr data-id="<?= (int) $p['id'] ?>" data-lat="<?= $p['lat'] ?>" data-lon="<?= $p['lon'] ?>">
+			<td class="zeigen"><?= htmlspecialchars($p['name']) ?><br><small><?= htmlspecialchars(SERVICE_KINDS[$p['kind']] ?? $p['kind']) ?> · <?= htmlspecialchars((string) $p['city']) ?> · Gegend <?= htmlspecialchars($p['tile']) ?></small></td>
+			<td><?= htmlspecialchars($p['advertiser']) ?><br><small><?= htmlspecialchars($p['email']) ?></small></td>
+			<td><?= htmlspecialchars($p['text']) ?></td>
+			<td><?= $laeuft ? 'läuft bis ' . date('j.n.Y', (int) $p['paid_until']) . ($p['cancels_at'] ? ', gekündigt' : '') : htmlspecialchars(['pending' => 'an der Kasse', 'ended' => 'beendet', 'blocked' => 'gesperrt'][$p['status']] ?? $p['status']) ?></td>
+			<td><?= (int) $p['v'] ?> gezeigt<br><?= (int) $p['t'] ?> geöffnet</td>
+			<td class="aktionen"><?php if ($p['text'] !== ''): ?><button class="leise" data-tu="partner_text">Text entfernen</button><?php endif; ?><?php if ($p['status'] === 'active'): ?><button class="leise" data-tu="partner_block">Sperren</button><?php endif; ?></td>
+		</tr>
+	<?php endforeach; ?>
+	</tbody></table>
+	<?php endif; ?>
+</section>
+
 <section class="feld liste" id="erkunder">
 	<h2>Erkunder</h2>
 	<p>Wer hier steht, sieht in der App auf jeder Ortsseite „Vor Ort prüfen“.</p>
@@ -485,7 +525,7 @@ $('erkunder-neu').addEventListener('submit', async e => {
 });
 
 // Gemeldet und Neu von Nutzern: Zeile antippen zeigt den Ort, die Buttons erledigen ihn.
-for (const tr of document.querySelectorAll('#gemeldet tbody tr, #neu-von-nutzern tbody tr')) {
+for (const tr of document.querySelectorAll('#gemeldet tbody tr, #neu-von-nutzern tbody tr, #partner tbody tr')) {
 	tr.querySelector('.zeigen').onclick = () => tr.dataset.lat && karte.flyTo({ center: [+tr.dataset.lon, +tr.dataset.lat], zoom: 17 });
 	for (const b of tr.querySelectorAll('button')) b.onclick = async () => {
 		const id = tr.dataset.id, was = b.dataset.tu;
@@ -496,6 +536,11 @@ for (const tr of document.querySelectorAll('#gemeldet tbody tr, #neu-von-nutzern
 			if (was === 'erledigt') await post('resolve', { id });
 			if (was === 'passt') await post('reviewed', { id: +id });
 			if (was === 'weg') await post('delete', { id: +id });
+			if (was === 'partner_text') { await post('partner_text', { id: +id }); location.reload(); return; }
+			if (was === 'partner_block') {
+				if (!confirm('Platz sperren und Abo bei Stripe beenden? Eine Erstattung machst du im Stripe-Dashboard.')) { b.disabled = false; return; }
+				await post('partner_block', { id: +id }); location.reload(); return;
+			}
 			tr.remove();
 			laden();
 		} catch (err) { b.disabled = false; b.textContent = 'Nicht geklappt'; }

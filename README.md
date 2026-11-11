@@ -153,7 +153,7 @@ Webordners). Die App legt ihn beim ersten Zugriff an, samt `.htaccess`-Sperre. D
 ```
 config.php        Zugangsdaten
 app.sqlite        Konten, Sitzungen, Rudel, abgeglichene (verschlüsselte) Datensätze, Notfallpässe, eigene Orte, Support
-places.sqlite     Ziele aus OpenStreetMap (server/orte-import.py)
+places.sqlite     Ziele und Adressen aus OpenStreetMap (server/orte-import.py)
 searches.sqlite   anonyme Suchstatistik
 fotos/            Fotos von Orten
 apns-jwt.json     zwischengespeichertes Push-Token
@@ -187,6 +187,7 @@ tests/rudel-test.sh         # Konten, Rudel, Einladen, Abgleich, Grenzen
 tests/schutz-test.sh        # Ende-zu-Ende-Verschlüsselung und Hundefreunde
 tests/orte-test.sh          # Orte, eigene Orte, Admin
 tests/support-test.sh       # Support aus App und Web
+tests/partner-test.sh       # Adressen, Partnerplätze, Stripe (mit Platzhalter statt Stripe)
 python3 tests/orte-import-test.py   # mit einem Python, in dem osmium installiert ist
 ```
 
@@ -207,7 +208,7 @@ Meldet sich jemand zum ersten Mal an, geht eine Nachricht an `NOTIFY_TO` (leer: 
 ### Betreiberseiten
 
 `/admin.php` (Summen über Konten, Hunde, Nutzung), `/admin-support.php` (Anfragen), `/admin-orte.php`
-(eigene Orte, Prüfungen). Zugang hat, wer in der App angemeldet ist **und** in `ADMIN_EMAILS` steht; alle
+(eigene Orte, Prüfungen, Partnerplätze). Zugang hat, wer in der App angemeldet ist **und** in `ADMIN_EMAILS` steht; alle
 anderen bekommen „nicht gefunden“. Ein eigenes Passwort gibt es nicht.
 
 ## Konto, Rudel und Verschlüsselung
@@ -260,6 +261,32 @@ Valhalla (FOSSGIS) und rundet den Startpunkt auf rund 30 m. Zwei Fallstricke:
 
 > `curl_close()` ist seit PHP 8.5 veraltet. Die Warnung landet vor dem JSON im Ausgabestrom und sieht aus
 > wie ein Ausfall der Gegenstelle.
+
+## Adressen und Partnerplätze
+
+Der Reiter „Adressen“ auf Gassi zeigt Tierärzte, Hundefriseure, Tierbedarf, Hundeschulen, Tierheime,
+Hundepensionen und Lokale mit `dog=yes` aus derselben OpenStreetMap-Quelle (`api/services.php`, Tabelle
+`services` in `places.sqlite`). Fehlt ein Betrieb, trägt man ihn in OpenStreetMap ein; der nächste
+monatliche Import bringt ihn mit.
+
+Je Gegend (festes Raster, rund 3 × 3 km, `sponsor_tile` in `api/lib-services.php`) kann ein Betrieb einen
+**Partnerplatz** kaufen: oben in der Liste und hervorgehoben auf der Karte, immer als „Anzeige“ mit
+Auftraggeber gekennzeichnet; sichtbar in der eigenen Gegend und bis 3 km darüber hinaus. Die übrige Liste
+bleibt nach Entfernung sortiert. Gebucht wird nur im Browser unter `/partner` (`partner.php`) als Monatsabo
+über Stripe Checkout – die Apps verkaufen nichts und verlinken nicht dorthin, sonst verlangen Apple und
+Google ihre eigene Abrechnung. Ablauf:
+
+1. Betrieb suchen, Text, Auftraggeber, E-Mail → Stripe-Kasse. Die Gegend ist dabei 30 Minuten reserviert.
+2. `api/stripe.php` bekommt die Meldungen von Stripe (unterschrieben mit `STRIPE_WEBHOOK_SECRET`) und schaltet
+   den Platz frei, verlängert ihn mit jeder bezahlten Rechnung und beendet ihn mit dem Abo.
+3. Der Betrieb bekommt einen Verwaltungslink (`/partner/verwalten/…`): Summen der Einblendungen und Öffnungen,
+   Text ändern, Stripes Kundenbereich für Rechnungen und Kündigung.
+4. In `admin-orte.php` lässt sich ein Text entfernen oder ein Platz sperren (beendet das Abo; Erstattung im
+   Stripe-Dashboard).
+
+Einrichten: `STRIPE_SECRET_KEY`, `STRIPE_WEBHOOK_SECRET`, `SPONSOR_PRICE_CENTS` in `config.php` (siehe
+`config.example.php`); im Stripe-Dashboard Zahlarten und Kundenbereich einschalten. Ohne Schlüssel zeigt
+`/partner` alles, nur der Knopf zur Kasse bleibt aus. Gezählt wird nur als Summe je Tag.
 
 ## Inhalte pflegen
 

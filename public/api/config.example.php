@@ -74,4 +74,14 @@ return [
 	'APNS_TEAM_ID' => '',    // Team-ID des Apple-Entwicklerkontos (wie DEVELOPMENT_TEAM in ios/project.yml)
 	'APNS_KEY_FILE' => '',   // z. B. /home/kunde/stella-daten/AuthKey_ABC123.p8
 	'APNS_TOPIC' => 'app.thisDog',   // Bundle-ID der iOS-App
+
+	// Partnerplätze (thisdog.app/partner): Bezahlung über Stripe. Geheimer Schlüssel unter dashboard.stripe.com ›
+	// Entwickler › API-Schlüssel (sk_live_…, zum Ausprobieren sk_test_…). Der Webhook-Schlüssel (whsec_…) entsteht
+	// beim Anlegen des Endpunkts https://example.org/api/stripe.php mit den Ereignissen checkout.session.completed,
+	// invoice.paid, customer.subscription.updated und customer.subscription.deleted. Fehlt einer, bleibt die Buchung zu.
+	// Zahlarten (Karte, EPS, SEPA-Lastschrift, Apple Pay …) und den Kundenbereich stellt man im Dashboard ein.
+	'STRIPE_SECRET_KEY' => '',
+	'STRIPE_WEBHOOK_SECRET' => '',
+	'SPONSOR_PRICE_CENTS' => 2900,      // Preis je Gegend und Monat in Cent
+	'STRIPE_AUTOMATIC_TAX' => false,    // true, wenn Stripe Tax eingerichtet ist
 ];

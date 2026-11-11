@@ -25,6 +25,7 @@ class MainActivity : ComponentActivity() {
             app.thisdog.ui.GassiDemo.ortseite = intent.getBooleanExtra("ortseite", false)
             app.thisdog.ui.GassiDemo.revierAnsicht = intent.getBooleanExtra("revieransicht", false)
             app.thisdog.ui.GassiDemo.erkunder = intent.getBooleanExtra("erkunder", false)
+            app.thisdog.ui.GassiDemo.adressen = intent.getBooleanExtra("adressen", false)
             // Zum Ansehen: Gassi mit bestimmtem Reiter und Blatt, eine eben beendete oder angetippte Runde.
             intent.getStringExtra("reiter")?.let { app.thisdog.ui.GassiDemo.reiter = it }
             intent.getStringExtra("stufe")?.let { app.thisdog.ui.GassiDemo.stufe = it }

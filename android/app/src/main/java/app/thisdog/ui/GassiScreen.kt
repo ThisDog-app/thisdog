@@ -55,7 +55,7 @@ import java.time.ZoneId
 import java.util.Locale
 
 /** Die Reiter im Panel über der Karte. */
-enum class GassiReiter(val title: String) { WOHIN(L.t("Wohin")), RUNDEN(L.t("Runden")), FREUNDE(L.t("Freunde")), REVIER(L.t("Revier")) }
+enum class GassiReiter(val title: String) { WOHIN(L.t("Wohin")), ADRESSEN(L.t("Adressen")), RUNDEN(L.t("Runden")), FREUNDE(L.t("Freunde")), REVIER(L.t("Revier")) }
 
 /** Wie weit das Blatt über der Karte aufgezogen ist. */
 enum class StageDetent { PEEK, MIDDLE, FULL }
@@ -99,11 +99,13 @@ object GassiDemo {
     var bewertet = false
     var rudel = false; var orte = false; var ortseite = false; var revier = false; var revierAnsicht = false; var erkunder = false
     var reiter: String? = null; var stufe: String? = null; var fertig = false; var rundekarte = false
+    /** Adressen aus [app.thisdog.Beispiel] statt vom Server, mit gesponsertem Eintrag. */
+    var adressen = false
 }
 
 /**
  * Gassi (wie GassiScreen.swift): Die Karte ist die Hauptsache und füllt den Bildschirm; alles andere liegt darüber.
- * Vor der Runde Reiter für Wohin, Runden, Freunde und Revier; jeder nutzt dieselbe Karte.
+ * Vor der Runde Reiter für Wohin, Adressen, Runden, Freunde und Revier; jeder nutzt dieselbe Karte.
  * Eine angetippte Runde oder ein Ort erscheint in derselben Karte, nicht in einem eigenen Fenster.
  */
 @Composable
@@ -195,19 +197,23 @@ fun GassiScreen(onPack: () -> Unit = {}, demoFriends: Boolean = false) {
     val finished = ui.finished
     val walkOnMap = finished ?: ui.shownWalk
     val showsRevier = idle && finished == null && ui.reiter == GassiReiter.REVIER && ui.selected == null
+    // Im Reiter Adressen zeigt die Karte statt der Ziele die gefilterten Adressen.
+    val showsServices = idle && walkOnMap == null && ui.reiter == GassiReiter.ADRESSEN && ui.selected == null
+    val service = serviceUi.selected.takeIf { showsServices }
     val lastSpot = store.walks.maxByOrNull { it.start }?.coordinates?.firstOrNull()
 
-    BackHandler(idle && finished == null && (ui.selected != null || ui.shownWalk != null)) {
-        if (ui.selected != null) ui.selected = null else ui.shownWalk = null
+    BackHandler(idle && finished == null && (ui.selected != null || ui.shownWalk != null || service != null)) {
+        if (ui.selected != null) ui.selected = null else if (service != null) serviceUi.selected = null else ui.shownWalk = null
     }
 
     Box(Modifier.fillMaxSize().background(p.paper)) {
         MapStage(ui.detent, { ui.detent = it }, fitsContent = !idle, map = { padding ->
             WalkMap(Modifier.fillMaxSize(), track = if (idle) walkOnMap?.coordinates.orEmpty() else rec.coordinates, here = rec.here,
                 // Unterwegs bleiben die Orte auf der Karte: gehen, Hundeplatz, weitergehen ist eine Runde.
-                places = if (!idle || walkOnMap == null && !showsRevier) ui.places.take(12) else emptyList(), follows = !idle, fallback = lastSpot,
-                friends = friendSpots(), underStatusBar = true, onSelect = { ui.selected = it }, selected = ui.selected?.id,
-                focus = if (idle) ui.selected?.coordinate else null, focusZoom = 15.4,
+                places = if (!idle || walkOnMap == null && !showsRevier && !showsServices) ui.places.take(12) else emptyList(), follows = !idle, fallback = lastSpot,
+                friends = friendSpots(), underStatusBar = true, onSelect = { ui.selected = it }, selected = if (showsServices) service?.id else ui.selected?.id,
+                focus = if (idle) ui.selected?.coordinate ?: service?.coordinate else null, focusZoom = 15.4,
+                services = if (showsServices) serviceUi.onMap(rec.here) else emptyList(), onSelectService = { serviceUi.selected = it },
                 fitKey = if (showsRevier) "revier" else if (idle) walkOnMap?.id else null,
                 revier = if (showsRevier) app.thisdog.gassi.Revier(store.checkIns).spots else emptyList(), padding = padding)
         }, top = { NearCard(ui) }, header = {
@@ -217,7 +223,7 @@ fun GassiScreen(onPack: () -> Unit = {}, demoFriends: Boolean = false) {
                     HeatBanner()
                     PrimaryButton(L.t("Runde starten"), onClick = start)
                     ReiterLeiste(GassiReiter.entries.map { it to it.title }, ui.reiter) { r ->
-                        ui.reiter = r; ui.selected = null; ui.shownWalk = null
+                        ui.reiter = r; ui.selected = null; ui.shownWalk = null; serviceUi.selected = null
                         if (ui.detent == StageDetent.PEEK) ui.detent = StageDetent.MIDDLE
                     }
                 }
@@ -359,9 +365,15 @@ private fun PanelContent(ui: GassiUi, loading: Boolean, unavailable: Boolean, on
         key(sel.id) { PlaceContent(sel, showsMap = false, onClose = { ui.selected = null }, onChange = ui::update, onPack = onPack, onNotice = { ui.notice = it }, parent = L.t("Wohin heute?")) }
         return
     }
+    val service = serviceUi.selected
+    if (ui.reiter == GassiReiter.ADRESSEN && service != null) {
+        key(service.id) { ServiceContent(service) { serviceUi.selected = null } }
+        return
+    }
     Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(horizontal = 20.dp).padding(top = 8.dp, bottom = 24.dp)) {
         when (ui.reiter) {
             GassiReiter.WOHIN -> WohinList(ui, loading, unavailable, onLocate, onPack)
+            GassiReiter.ADRESSEN -> ServicesPanel(onLocate)
             GassiReiter.RUNDEN -> RundenList(ui)
             GassiReiter.FREUNDE -> FriendsSection(onPack)
             GassiReiter.REVIER -> RevierPanel()

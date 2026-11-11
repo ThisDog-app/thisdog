@@ -2,11 +2,13 @@
 
 Was hier liegt, läuft auf dem Server, aber nicht im Web: nichts davon gehört nach `public/`.
 
-## orte-import.py – Ziele für die Gassirunde
+## orte-import.py – Ziele für die Gassirunde und Adressen
 
 Liest Parks, Wälder, Wiesen und Hundezonen aus OpenStreetMap-Auszügen von Geofabrik
 (Deutschland, Österreich, Schweiz) in `stella-daten/places.sqlite`. `api/places.php` fragt
-diese Datei; Overpass nur noch außerhalb dieser Länder. Eigene Orte stehen in `app.sqlite`
+diese Datei; Overpass nur noch außerhalb dieser Länder. Dazu die Adressen (Tabelle `services`:
+Tierärzte, Hundefriseure, Tierbedarf, Hundeschulen, Tierheime, Pensionen, Lokale mit `dog=yes`)
+für `api/services.php`; die gibt es nur aus dem Import, ohne Overpass. Eigene Orte stehen in `app.sqlite`
 (Tabelle `own_places`, gepflegt unter `/admin-orte.php`) und bleiben bei jedem Import erhalten.
 
 Einrichtung auf dem Server (einmalig; `<server>` ist der ssh-Name, `<home>` das Heimatverzeichnis
