@@ -523,6 +523,23 @@ function db_migrate(PDO $pdo): void
 		$pdo->exec('PRAGMA user_version = 20');
 		$pdo->commit();
 	}
+
+	// Wer ohne E-Mail einen Ort einträgt, sieht ihn sofort; alle anderen erst nach dem Ansehen (admin-orte.php).
+	// Gemeldete Fotos: wer gemeldet hat, damit eine einzelne anonyme Meldung nicht reicht.
+	if ($version < 21) {
+		$pdo->beginTransaction();
+		$pdo->exec('ALTER TABLE own_places ADD COLUMN hidden INTEGER NOT NULL DEFAULT 0');
+		$pdo->exec(<<<'SQL'
+			CREATE TABLE place_photo_reports (
+				photo_id    INTEGER NOT NULL,
+				account_id  INTEGER NOT NULL,
+				created_at  INTEGER NOT NULL,
+				PRIMARY KEY (photo_id, account_id)
+			);
+		SQL);
+		$pdo->exec('PRAGMA user_version = 21');
+		$pdo->commit();
+	}
 }
 
 /**

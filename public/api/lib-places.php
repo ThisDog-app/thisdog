@@ -42,6 +42,19 @@ function distance_m(float $lat1, float $lon1, float $lat2, float $lon2): float
 	return 2 * 6371000 * asin(min(1.0, sqrt($h)));
 }
 
+/**
+ * Darf, was dieses Konto beiträgt, sofort für alle erscheinen? Erkunder und Konten mit E-Mail ja.
+ * Gerätekonten entstehen ohne jede Angabe – zehn pro Stunde und Anschluss –, ihre Fotos und Orte
+ * sieht der Betreiber erst an.
+ */
+function trusted_contributor(PDO $pdo, ?int $me): bool
+{
+	if ($me === null) return false;
+	$q = $pdo->prepare('SELECT 1 FROM accounts WHERE id = ? AND email IS NOT NULL UNION SELECT 1 FROM scouts WHERE account_id = ?');
+	$q->execute([$me, $me]);
+	return (bool) $q->fetchColumn();
+}
+
 /** Ein Ort im Format der App aus einer Zeile von places.sqlite oder own_places. */
 function place_row(array $r, string $id): ?array
 {
@@ -147,11 +160,12 @@ function with_votes(PDO $pdo, array $places): array
 }
 
 /** Eigene Orte dazu; was sie ersetzen oder ausblenden, fällt weg. */
-function with_own(PDO $pdo, array $places, float $lat, float $lon): array
+function with_own(PDO $pdo, array $places, float $lat, float $lon, ?int $me = null): array
 {
 	[$a, $b, $c, $d] = around_box($lat, $lon);
-	$q = $pdo->prepare('SELECT * FROM own_places WHERE lat BETWEEN ? AND ? AND lon BETWEEN ? AND ?');
-	$q->execute([$a, $b, $c, $d]);
+	// Noch nicht angesehene Orte ohne vertrauenswürdige Quelle sieht nur, wer sie eingetragen hat.
+	$q = $pdo->prepare('SELECT * FROM own_places WHERE lat BETWEEN ? AND ? AND lon BETWEEN ? AND ? AND (hidden = 0 OR created_by = ?)');
+	$q->execute([$a, $b, $c, $d, $me ?? -1]);
 	$own = $q->fetchAll();
 	if (!$own) return $places;
 	$hidden = array_filter(array_map(fn($r) => $r['replaces'], $own));
@@ -234,7 +248,7 @@ function store_photo(string $tmp): ?array
 }
 
 /** Freigegebene Fotos und die letzte freigegebene Prüfung je Ort; Prüf-Angaben gelten vor allen anderen. */
-function with_checks(PDO $pdo, array $places): array
+function with_checks(PDO $pdo, array $places, ?int $me = null): array
 {
 	$ids = array_column($places, 'id');
 	if (!$ids) return $places;
@@ -244,8 +258,9 @@ function with_checks(PDO $pdo, array $places): array
 	$q->execute($ids);
 	foreach ($q as $r) $checks[$r['place_id']] = $r;  // die jüngste gewinnt
 	$photos = [];
-	$q = $pdo->prepare("SELECT place_id, id, width, height FROM place_photos WHERE status = 'ok' AND place_id IN ($in) ORDER BY check_id IS NULL, id DESC");
-	$q->execute($ids);
+	// Eigene Fotos, die noch auf Freigabe warten, sieht man selbst schon.
+	$q = $pdo->prepare("SELECT place_id, id, width, height FROM place_photos WHERE (status = 'ok' OR (status = 'pending' AND account_id = ?)) AND place_id IN ($in) ORDER BY check_id IS NULL, id DESC");
+	$q->execute([$me ?? -1, ...$ids]);
 	foreach ($q as $r) $photos[$r['place_id']][] = ['id' => (int) $r['id'], 'w' => (int) $r['width'], 'h' => (int) $r['height']];
 	foreach ($places as &$p) {
 		if (isset($checks[$p['id']])) {

@@ -89,8 +89,11 @@ function action_request(): void
 	$pdo = db();
 	db_gc($pdo);
 
-	// Je Adresse, nicht je Anschluss: Sonst bekäme eine Adresse von vielen Anschlüssen beliebig viele Codes.
-	if (!rate_ok('auth_mail_' . substr(sha1($email), 0, 12), 5, 3600, false)) {
+	// Je Adresse und Anschluss, dazu eine weitere Grenze je Adresse über alle Anschlüsse: Wer fünfmal
+	// fremde Adressen anfordert, sperrt so nur sich selbst aus, nicht den, dem die Adresse gehört.
+	// Und eine Adresse bekommt von vielen Anschlüssen trotzdem nicht beliebig viele Mails.
+	$mailKey = substr(sha1($email), 0, 12);
+	if (!rate_ok('auth_mail_' . $mailKey, 5) || !rate_ok('auth_mail_alle_' . $mailKey, 20, 3600, false)) {
 		respond($answer);
 	}
 
@@ -511,34 +514,53 @@ function action_code(): void
 	$pdo = db();
 	$now = time();
 
-	// Der jüngste offene Code zu dieser Adresse. Wer zweimal angefordert hat,
-	// tippt den zweiten ab.
-	$stmt = $pdo->prepare(<<<'SQL'
-		SELECT * FROM login_tokens
-		WHERE email = ? AND used_at IS NULL AND expires_at > ? AND code_hash IS NOT NULL
-		ORDER BY created_at DESC LIMIT 1
-	SQL);
-	$stmt->execute([$email, $now]);
-	$token = $stmt->fetch();
+	// Der Code gehört zu dem Gerät, das ihn angefordert hat: Dort liegt die Spur aus dem Cookie. So macht eine
+	// fremde Anforderung für dieselbe Adresse den Code nicht ungültig, und Fremde verbrauchen nicht dessen Versuche.
+	// Ohne Spur (Cookie verloren) gilt wie früher der jüngste offene Code, nur ohne dessen Versuche anzutasten.
+	$spur = (string) ($_COOKIE[PENDING_COOKIE] ?? '');
+	$token = false;
+	if ($spur !== '') {
+		$stmt = $pdo->prepare(<<<'SQL'
+			SELECT * FROM login_tokens
+			WHERE email = ? AND mark = ? AND used_at IS NULL AND expires_at > ? AND code_hash IS NOT NULL
+			ORDER BY created_at DESC LIMIT 1
+		SQL);
+		$stmt->execute([$email, secret_hash($spur), $now]);
+		$token = $stmt->fetch();
+	}
+	$gebunden = $token !== false;
+	if (!$gebunden) {
+		$stmt = $pdo->prepare(<<<'SQL'
+			SELECT * FROM login_tokens
+			WHERE email = ? AND used_at IS NULL AND expires_at > ? AND code_hash IS NOT NULL
+			ORDER BY created_at DESC LIMIT 1
+		SQL);
+		$stmt->execute([$email, $now]);
+		$token = $stmt->fetch();
+	}
 
 	if (!$token) respond(['error' => 'bad_code'], 422);
 
-	// Fehlversuche über alle Codes dieser Adresse: Wer immer neue Codes anfordert, probiert sonst je drei aus.
-	$failed = $pdo->prepare('SELECT COALESCE(SUM(tries), 0) FROM login_tokens WHERE email = ? AND created_at > ?');
-	$failed->execute([$email, $now - 3600]);
-	if ((int) $failed->fetchColumn() >= 10) respond(['error' => 'too_many_tries'], 429);
+	// Fehlversuche je Adresse: vom selben Anschluss höchstens zehn, insgesamt höchstens zwanzig pro Stunde.
+	// Wer von einem Anschluss aus rät, sperrt damit nur sich selbst.
+	$failKey = 'auth_fail_' . substr(sha1($email), 0, 12);
+	if (rate_full($failKey, 10) || rate_full($failKey . '_alle', 20, 3600, false)) respond(['error' => 'too_many_tries'], 429);
 
-	// Erst zählen, dann vergleichen – in einem Schritt: Parallele Anfragen bekämen sonst alle den Stand „0 Versuche“.
-	$try = $pdo->prepare('UPDATE login_tokens SET tries = tries + 1 WHERE token_hash = ? AND tries < 3 AND used_at IS NULL');
-	$try->execute([$token['token_hash']]);
-	if ($try->rowCount() !== 1) {
-		// Verbraucht: Sonst ließe sich der Code in Ruhe durchprobieren.
-		$pdo->prepare('UPDATE login_tokens SET used_at = ? WHERE token_hash = ?')
-			->execute([$now, $token['token_hash']]);
-		respond(['error' => 'too_many_tries'], 429);
+	if ($gebunden) {
+		// Erst zählen, dann vergleichen – in einem Schritt: Parallele Anfragen bekämen sonst alle den Stand „0 Versuche“.
+		$try = $pdo->prepare('UPDATE login_tokens SET tries = tries + 1 WHERE token_hash = ? AND tries < 3 AND used_at IS NULL');
+		$try->execute([$token['token_hash']]);
+		if ($try->rowCount() !== 1) {
+			// Verbraucht: Sonst ließe sich der Code in Ruhe durchprobieren.
+			$pdo->prepare('UPDATE login_tokens SET used_at = ? WHERE token_hash = ?')
+				->execute([$now, $token['token_hash']]);
+			respond(['error' => 'too_many_tries'], 429);
+		}
 	}
 
 	if (!hash_equals((string) $token['code_hash'], secret_hash((string) $code))) {
+		rate_ok($failKey, PHP_INT_MAX);
+		rate_ok($failKey . '_alle', PHP_INT_MAX, 3600, false);
 		respond(['error' => 'bad_code'], 422);
 	}
 	if (!attach_allowed($pdo, $token)) respond(['error' => 'bad_code'], 422);

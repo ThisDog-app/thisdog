@@ -14,7 +14,8 @@ declare(strict_types=1);
  *
  *   POST ?action=report_photo {photo, reason}                                              → {ok}
  *
- * Fotos und Prüfungen erscheinen sofort. Ein gemeldetes Foto ist verborgen, bis der Betreiber entscheidet.
+ * Fotos und Orte von Erkundern und Konten mit E-Mail erscheinen sofort, die von Gerätekonten erst nach dem
+ * Ansehen (admin-orte.php). Ein gemeldetes Foto ist verborgen, bis der Betreiber entscheidet.
  *
  * Merkmale: off_leash, fenced, water, clean, grass, shade, bench, bags (Kotbeutelspender),
  * split (getrennte Bereiche für große und kleine Hunde). Nach außen gehen nur Zählungen.
@@ -52,7 +53,7 @@ function is_scout(PDO $pdo, ?int $me): bool
 function place_summary(PDO $pdo, string $id, ?int $me): array
 {
 	$sum = place_votes($pdo, [$id])[$id] ?? ['votes' => (object) [], 'voters' => 0, 'sizes' => [0, 0, 0]];
-	$c = with_checks($pdo, [['id' => $id]])[0];
+	$c = with_checks($pdo, [['id' => $id]], $me)[0];
 	$sum['photos'] = $c['photos'] ?? [];
 	if (isset($c['checkedAt'])) { $sum['checkedAt'] = $c['checkedAt']; $sum['facts'] = $c['facts']; }
 	$sum['scout'] = is_scout($pdo, $me);
@@ -136,8 +137,8 @@ try {
 			$q->execute([$me, time() - 86400]);
 			if ((int) $q->fetchColumn() >= ADDS_PER_DAY) respond(['error' => 'rate_limited'], 429);
 			$pdo->beginTransaction();
-			$pdo->prepare('INSERT INTO own_places (name, kind, lat, lon, created_by, created_at, by_user) VALUES (?, ?, ?, ?, ?, ?, 1)')
-				->execute([$name, $kind, round($lat, 6), round($lon, 6), $me, time()]);
+			$pdo->prepare('INSERT INTO own_places (name, kind, lat, lon, created_by, created_at, by_user, hidden) VALUES (?, ?, ?, ?, ?, ?, 1, ?)')
+				->execute([$name, $kind, round($lat, 6), round($lon, 6), $me, time(), trusted_contributor($pdo, $me) ? 0 : 1]);
 			$id = 'eigen/' . $pdo->lastInsertId();
 			// Was beim Eintragen angekreuzt war, ist die erste Stimme.
 			save_votes($pdo, $id, $me, is_array($body['votes'] ?? null) ? $body['votes'] : []);
@@ -159,9 +160,10 @@ try {
 				$q->execute([$check, $me]);
 				if (!$q->fetchColumn()) $check = null;
 			}
-			$pdo->prepare("INSERT INTO place_photos (place_id, account_id, check_id, file, width, height, label, created_at, status) VALUES (?, ?, ?, ?, ?, ?, ?, ?, 'ok')")
-				->execute([$id, $me, $check, $stored[0], $stored[1], $stored[2], mb_substr(trim((string) ($_POST['label'] ?? '')), 0, 40), time()]);
-			respond(['photo' => ['id' => (int) $pdo->lastInsertId(), 'status' => 'ok']]);
+			$status = trusted_contributor($pdo, $me) ? 'ok' : 'pending';
+			$pdo->prepare('INSERT INTO place_photos (place_id, account_id, check_id, file, width, height, label, created_at, status) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)')
+				->execute([$id, $me, $check, $stored[0], $stored[1], $stored[2], mb_substr(trim((string) ($_POST['label'] ?? '')), 0, 40), time(), $status]);
+			respond(['photo' => ['id' => (int) $pdo->lastInsertId(), 'status' => $status]]);
 
 		case 'check':
 			if (!is_scout($pdo, $me)) respond(['error' => 'forbidden'], 403);
@@ -194,7 +196,14 @@ try {
 			$reason = (string) ($body['reason'] ?? '');
 			if (!in_array($reason, ['person', 'unpassend', 'falscher_ort', 'anderes'], true)) respond(['error' => 'invalid'], 422);
 			if (!rate_ok('photo-report:' . $me, 20)) respond(['error' => 'rate_limited'], 429);
-			$pdo->prepare("UPDATE place_photos SET status = 'reported', report_reason = ?, reported_at = ? WHERE id = ? AND status = 'ok'")->execute([$reason, time(), $pid]);
+			// Eine Meldung von einem Konto mit E-Mail verbirgt das Foto sofort (etwa: eine Person ist zu sehen).
+			// Gerätekonten kann jeder in Mengen anlegen: Von ihnen braucht es zwei verschiedene.
+			$pdo->prepare('INSERT OR IGNORE INTO place_photo_reports (photo_id, account_id, created_at) VALUES (?, ?, ?)')->execute([$pid, $me, time()]);
+			$n = $pdo->prepare('SELECT COUNT(*) FROM place_photo_reports WHERE photo_id = ?');
+			$n->execute([$pid]);
+			if (trusted_contributor($pdo, $me) || (int) $n->fetchColumn() >= 2) {
+				$pdo->prepare("UPDATE place_photos SET status = 'reported', report_reason = ?, reported_at = ? WHERE id = ? AND status = 'ok'")->execute([$reason, time(), $pid]);
+			}
 			respond(['ok' => true]);
 
 		case 'report':

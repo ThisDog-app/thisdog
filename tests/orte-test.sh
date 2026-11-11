@@ -92,6 +92,29 @@ check "Admin sieht es unter Gemeldete Fotos" "$(curl -s -H "$ADM" "$U/admin-orte
 check "Behalten" "$(post "$ADM" photo_ok "{\"id\":$PID}")" "200"
 check "Danach wieder sichtbar" "$(curl -s -o /dev/null -w "%{http_code}" "$U/api/photo.php?id=$PID")" "200"
 
+echo "Gerätekonten (ohne E-Mail)"
+GA="$T/geraet-a.txt"; GB="$T/geraet-b.txt"
+curl -s -c "$GA" -H "Content-Type: application/json" -d '{}' "$U/api/auth.php?action=start" > /dev/null
+curl -s -c "$GB" -H "Content-Type: application/json" -d '{}' "$U/api/auth.php?action=start" > /dev/null
+gup() { curl -s -b "$1" -F "id=$2" -F "foto=@$T/foto.jpg" "$U/api/place.php?action=photo"; }
+GPID=$(gup "$GA" eigen/1 | php -r '$d = json_decode(stream_get_contents(STDIN), true); echo ($d["photo"]["id"] ?? "fehlt") . " " . ($d["photo"]["status"] ?? "");')
+check "Foto eines Gerätekontos wartet auf Freigabe" "${GPID#* }" "pending"
+GPID=${GPID%% *}
+check "…für andere unsichtbar, für sich selbst schon da" "$(curl -s -o /dev/null -w "%{http_code}" "$U/api/photo.php?id=$GPID") $(curl -s "$U/api/place.php?id=eigen/1" | php -r '$d = json_decode(stream_get_contents(STDIN), true); echo count($d["photos"]);') $(curl -s -b "$GA" "$U/api/place.php?id=eigen/1" | php -r '$d = json_decode(stream_get_contents(STDIN), true); echo count($d["photos"]);')" "404 0 1"
+check "Admin sieht es zur Freigabe" "$(curl -s -H "$ADM" "$U/admin-orte.php" | grep -c 'wartet auf Freigabe')" "1"
+check "Freigeben" "$(post "$ADM" photo_ok "{\"id\":$GPID}")" "200"
+check "…dann für alle da" "$(curl -s -o /dev/null -w "%{http_code}" "$U/api/photo.php?id=$GPID")" "200"
+GREP="{\"photo\":$PID,\"reason\":\"unpassend\"}"
+check "Eine Meldung von einem Gerätekonto verbirgt noch nicht" "$(curl -s -b "$GA" -H "Content-Type: application/json" -d "$GREP" "$U/api/place.php?action=report_photo" > /dev/null; curl -s -b "$GA" -H "Content-Type: application/json" -d "$GREP" "$U/api/place.php?action=report_photo" > /dev/null; curl -s -o /dev/null -w "%{http_code}" "$U/api/photo.php?id=$PID")" "200"
+check "…eine zweite von einem anderen schon" "$(curl -s -b "$GB" -H "Content-Type: application/json" -d "$GREP" "$U/api/place.php?action=report_photo" > /dev/null; curl -s -o /dev/null -w "%{http_code}" "$U/api/photo.php?id=$PID")" "404"
+post "$ADM" photo_ok "{\"id\":$PID}" > /dev/null
+curl -s -b "$GA" -H "Content-Type: application/json" -d '{"name":"Geheimwiese","kind":"meadow","lat":48.2232,"lon":16.3872}' "$U/api/place.php?action=add" > /dev/null
+check "Ort eines Gerätekontos sieht zuerst nur es selbst" "$(namen | grep -c Geheimwiese) $(curl -s -b "$GA" "$U/api/places.php?lat=48.22&lon=16.39" | grep -c Geheimwiese)" "0 1"
+check "Admin: noch unsichtbar" "$(curl -s -H "$ADM" "$U/admin-orte.php" | grep -c 'Geheimwiese <span class="ort">· noch unsichtbar')" "1"
+GID=$(php -r '$p = new PDO("sqlite:'"$T"'/daten/app.sqlite"); echo $p->query("SELECT id FROM own_places WHERE name = \"Geheimwiese\"")->fetchColumn();')
+post "$ADM" reviewed "{\"id\":$GID}" > /dev/null
+check "Nach dem Ansehen für alle" "$(namen | grep -c Geheimwiese)" "1"
+
 echo "Prüfen"
 php -r '$p = new PDO("sqlite:'"$T"'/daten/places.sqlite"); $p->exec("INSERT OR REPLACE INTO places VALUES (\"node/2\", \"Hundezone\", \"dog_park\", 48.2194, 16.3942, 1, 1)"); $p->exec("INSERT OR REPLACE INTO place_facts VALUES (\"node/2\", \"water\", 1, \"wien\")");'
 CHK='{"id":"node/2","answers":{"off_leash":1,"fenced":1,"water":0,"clean":1,"grass":1,"shade":0,"bench":1},"lat":48.2195,"lon":16.3943}'

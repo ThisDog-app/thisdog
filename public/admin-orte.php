@@ -24,6 +24,7 @@ function drop_rejected(PDO $pdo): void
 {
 	foreach ($pdo->query("SELECT id, file FROM place_photos WHERE status = 'rejected'") as $r) @unlink(photo_dir() . '/' . basename($r['file']));
 	$pdo->exec("DELETE FROM place_photos WHERE status = 'rejected'");
+	$pdo->exec('DELETE FROM place_photo_reports WHERE photo_id NOT IN (SELECT id FROM place_photos)');
 }
 
 /** Was bisher über einen Ort gilt: Auszug (OSM, Wien), darüber die letzte freigegebene Prüfung. */
@@ -85,13 +86,16 @@ if ($action !== '') {
 			$pdo->prepare('UPDATE place_reports SET resolved_at = ? WHERE place_id = ? AND resolved_at IS NULL')->execute([time(), (string) ($body['id'] ?? '')]);
 			respond(['ok' => true]);
 		case 'reviewed':
-			$pdo->prepare('UPDATE own_places SET reviewed_at = ? WHERE id = ?')->execute([time(), (int) ($body['id'] ?? 0)]);
+			// Angesehen und für gut befunden: Jetzt sehen ihn alle, auch wenn er von einem Gerätekonto kam.
+			$pdo->prepare('UPDATE own_places SET reviewed_at = ?, hidden = 0 WHERE id = ?')->execute([time(), (int) ($body['id'] ?? 0)]);
 			respond(['ok' => true]);
 		case 'photo_ok':
 		case 'photo_no':
 			// Gesehen bzw. gemeldet und für gut befunden: bleibt. Löschen: Datei und Eintrag weg.
 			$st = $action === 'photo_ok' ? 'ok' : 'rejected';
 			$pdo->prepare('UPDATE place_photos SET status = ?, reviewed_at = ?, reported_at = NULL WHERE id = ?')->execute([$st, time(), (int) ($body['id'] ?? 0)]);
+			// Behalten: Was bisher gemeldet war, ist erledigt und zählt bei der nächsten Meldung nicht mit.
+			if ($st === 'ok') $pdo->prepare('DELETE FROM place_photo_reports WHERE photo_id = ?')->execute([(int) ($body['id'] ?? 0)]);
 			if ($st === 'rejected') drop_rejected($pdo);
 			respond(['ok' => true]);
 		case 'check_ok':
@@ -172,7 +176,8 @@ foreach ($pruefungen as &$c) {
 }
 unset($c);
 $gemeldeteFotos = $pdo->query("SELECT * FROM place_photos WHERE status = 'reported' ORDER BY reported_at DESC")->fetchAll();
-$fotos = $pdo->query("SELECT * FROM place_photos WHERE status = 'ok' AND reviewed_at IS NULL AND check_id IS NULL ORDER BY created_at DESC LIMIT 60")->fetchAll();
+// Wartende (von Gerätekonten, für andere noch unsichtbar) zuerst.
+$fotos = $pdo->query("SELECT * FROM place_photos WHERE (status = 'pending' OR (status = 'ok' AND reviewed_at IS NULL AND check_id IS NULL)) ORDER BY status = 'pending' DESC, created_at DESC LIMIT 60")->fetchAll();
 foreach ($gemeldeteFotos as &$f) $f['ort'] = place_lookup($pdo, $f['place_id']);
 unset($f);
 $fotoGrund = ['person' => 'Person erkennbar', 'unpassend' => 'Unpassend', 'falscher_ort' => 'Falscher Ort', 'anderes' => 'Etwas anderes'];
@@ -309,8 +314,8 @@ $erkunder = $pdo->query("SELECT s.account_id, a.email, (SELECT COUNT(*) FROM pla
 		<div class="foto" data-id="<?= (int) $f['id'] ?>">
 			<a href="api/photo.php?id=<?= (int) $f['id'] ?>" target="_blank"><img src="api/photo.php?id=<?= (int) $f['id'] ?>&amp;klein=1" alt=""></a>
 			<b><?= htmlspecialchars($f['ort']['name'] ?? $f['place_id']) ?></b>
-			<span class="ort"><?= $wann((int) $f['created_at']) ?></span>
-			<div><button class="haupt2" data-tu="photo_ok">Gesehen</button><button class="leise" data-tu="photo_no">Löschen</button></div>
+			<span class="ort"><?= $wann((int) $f['created_at']) ?><?= $f['status'] === 'pending' ? ' · wartet auf Freigabe' : '' ?></span>
+			<div><button class="haupt2" data-tu="photo_ok"><?= $f['status'] === 'pending' ? 'Freigeben' : 'Gesehen' ?></button><button class="leise" data-tu="photo_no">Löschen</button></div>
 		</div>
 	<?php endforeach; ?>
 	</div>
@@ -358,7 +363,7 @@ $erkunder = $pdo->query("SELECT s.account_id, a.email, (SELECT COUNT(*) FROM pla
 	<table><thead><tr><th>Ort</th><th>Art</th><th>Eingetragen</th><th></th></tr></thead><tbody>
 	<?php foreach ($neu as $o): ?>
 		<tr data-id="<?= (int) $o['id'] ?>" data-lat="<?= $o['lat'] ?>" data-lon="<?= $o['lon'] ?>">
-			<td class="zeigen"><?= htmlspecialchars($o['name']) ?></td>
+			<td class="zeigen"><?= htmlspecialchars($o['name']) ?><?= $o['hidden'] ? ' <span class="ort">· noch unsichtbar</span>' : '' ?></td>
 			<td><?= htmlspecialchars($artName[$o['kind']] ?? $o['kind']) ?></td>
 			<td class="ort"><?= $wann((int) $o['created_at']) ?><?= $o['vom_konto'] > 1 ? ' · ' . (int) $o['vom_konto'] . ' Orte von diesem Konto' : '' ?></td>
 			<td class="aktionen"><button class="leise" data-tu="passt">Passt</button><button class="leise" data-tu="weg">Löschen</button></td>

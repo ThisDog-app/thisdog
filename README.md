@@ -219,7 +219,13 @@ Sitzung 180 Tage, verlängert sich bei Benutzung). Endpunkte und Abläufe stehen
 
 **Abgleich** (`sync.php`): datensatzweise mit Revisionsnummer je Rudel. Bei derselben Kennung gewinnt der
 jüngere Zeitstempel; Löschungen reisen als Grabstein mit (`payload: null`), `?action=wipe` macht aus
-allem im Rudel Grabsteine.
+allem im Rudel Grabsteine (nur Besitzer). Hundesitter ändern oder löschen höchstens 30 Einträge anderer pro
+Stunde; was darüber hinausgeht, lehnt der Server ab und schickt dem Gerät in derselben Antwort den alten Stand
+zurück (`refused`).
+
+**Anmeldung:** Der Code aus der Mail gilt auf dem Gerät, das ihn angefordert hat (Cookie
+`stella_pending`). Grenzen je Adresse und Anschluss sorgen dafür, dass Fremde mit vielen Anfragen oder
+falschen Codes nur sich selbst aussperren.
 
 **Ende-zu-Ende-Verschlüsselung** (`ios/ThisDog/Crypto/Sealing.swift`,
 `android/app/src/main/java/app/thisdog/crypto/Sealing.kt`):
@@ -243,7 +249,10 @@ Link (QR-Code), mit genau den Feldern, die die App dafür schickt (`public/api/l
 
 `api/places.php` liefert Ziele aus `places.sqlite` (Deutschland, Österreich, Schweiz; in Wien ergänzt
 mit offenen Daten der Stadt) und eigene Orte aus `app.sqlite`, außerhalb davon aus Overpass mit
-Zwischenspeicher je Rasterzelle. Der Standort wird vorher gerundet. `api/route.php` holt den Fußweg bei
+Zwischenspeicher je Rasterzelle. Der Standort wird vorher gerundet. Fotos und eigene Orte von Erkundern
+und Konten mit E-Mail erscheinen sofort; von Gerätekonten (ohne E-Mail) sieht sie zunächst nur, wer sie
+eingetragen hat, bis der Betreiber sie in `admin-orte.php` freigibt. Ein Foto verschwindet nach einer
+Meldung von einem Konto mit E-Mail oder nach Meldungen von zwei Gerätekonten. `api/route.php` holt den Fußweg bei
 Valhalla (FOSSGIS) und rundet den Startpunkt auf rund 30 m. Zwei Fallstricke:
 
 > Ein Filter auf `["name"]` in der Overpass-Abfrage kostet ein Vielfaches an Rechenzeit (gemessen elf

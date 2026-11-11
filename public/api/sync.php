@@ -43,6 +43,12 @@ const MAX_PAYLOAD = 28000;
 const MAX_PAYLOAD_WALK = 170000;
 /** Ein Bild (Hund, Rudelmitglied, Foto im Gesundheitstagebuch): kleines JPEG, als Base64. */
 const MAX_PAYLOAD_AVATAR = 110000;
+/**
+ * So viele Einträge anderer darf ein Hundesitter je Stunde ändern oder löschen. Im Alltag sind es eine
+ * Handvoll; die Grenze hält nur auf, wer mit einem weitergereichten Einladungslink alles leerräumen will.
+ * Eigene Einträge und neue zählen nicht. Den Inhalt kann der Server nicht prüfen – er ist verschlüsselt.
+ */
+const SITTER_FOREIGN_PER_HOUR = 30;
 
 handle_preflight();
 guard_origin();
@@ -131,9 +137,15 @@ function push(PDO $pdo, int $packId, int $accountId, array $body): array
 	$sealed = pack_sealed($pdo, $packId);
 	$changes = [];
 
+	$sitter = !is_owner($pdo, $packId, $accountId);
+	$refused = 0;
+
 	$pdo->beginTransaction();
 	try {
-		$read = $pdo->prepare('SELECT updated_at, payload FROM pack_records WHERE pack_id = ? AND kind = ? AND record_id = ?');
+		$read = $pdo->prepare('SELECT updated_at, payload, changed_by FROM pack_records WHERE pack_id = ? AND kind = ? AND record_id = ?');
+		// Abgelehnt: Der Eintrag bekommt eine neue Revision und einen Stempel, der die Fassung des Geräts
+		// schlägt. So holt sich das Gerät mit derselben Antwort den Stand des Servers zurück.
+		$restore = $pdo->prepare('UPDATE pack_records SET updated_at = ?, rev = ? WHERE pack_id = ? AND kind = ? AND record_id = ?');
 		$write = $pdo->prepare(<<<'SQL'
 			INSERT INTO pack_records (pack_id, kind, record_id, payload, updated_at, rev, changed_by)
 			VALUES (:pack, :kind, :id, :payload, :updated, :rev, :by)
@@ -172,6 +184,13 @@ function push(PDO $pdo, int $packId, int $accountId, array $body): array
 			if ($existing !== false && (int) $existing['updated_at'] > $updated) continue;
 			if ($existing !== false && (int) $existing['updated_at'] === $updated && $existing['payload'] === $payload) continue;
 
+			$foreign = $existing !== false && $existing['payload'] !== null && (int) $existing['changed_by'] !== $accountId;
+			if ($sitter && $foreign && !rate_ok('sitter_' . $packId . '_' . $accountId, SITTER_FOREIGN_PER_HOUR, 3600, false)) {
+				$restore->execute([max($updated, (int) $existing['updated_at']) + 1, next_rev($pdo, $packId), $packId, $kind, $id]);
+				$refused++;
+				continue;
+			}
+
 			$write->execute([
 				':pack' => $packId,
 				':kind' => $kind,
@@ -207,6 +226,7 @@ function push(PDO $pdo, int $packId, int $accountId, array $body): array
 	// Abgleich ist dann eine einzige Runde statt zweier.
 	$result = pull($pdo, $packId, $since);
 	$result['stored'] = $stored;
+	if ($refused > 0) $result['refused'] = $refused;
 	$result['changes'] = $changes;
 	return $result;
 }

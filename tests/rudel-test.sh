@@ -39,7 +39,7 @@ php -r '
   echo $pdo->query("SELECT p.record_id FROM pack_records p JOIN pack_members m ON m.pack_id = p.pack_id WHERE m.account_id = 1")->fetchColumn(), " ";
   echo $pdo->query("SELECT COUNT(*) FROM sqlite_master WHERE name = \"records_vor_rudel\"")->fetchColumn();
 ' > "$T/m"
-check "Umzug: aktuelle Version, eigenes Rudel, Termin dort, Klartext-Sicherung entfernt" "$(cat $T/m)" "20 1 evt_alt 0"
+check "Umzug: aktuelle Version, eigenes Rudel, Termin dort, Klartext-Sicherung entfernt" "$(cat $T/m)" "21 1 evt_alt 0"
 
 # Zwei Konten mit Sitzung, direkt angelegt.
 php -r '
@@ -112,6 +112,14 @@ check "Code bestätigt" "$(dev 'auth.php?action=code' '{"email":"dora@example.or
 check "Adresse hängt jetzt am Gerätekonto, Rudel bleibt" "$(dev 'auth.php?action=me' | j '$d["email"]') $(dev 'pack.php?action=list' | j 'count($d["packs"])')" "dora@example.org 1"
 check "Admin-Liste verträgt Konten ohne Adresse" "$(php -l "$ROOT/public/admin.php" > /dev/null && echo ok)" "ok"
 
+echo "5b. Anmeldecode gehört zum Gerät, das ihn angefordert hat"
+JV="$T/eva.txt"; JX="$T/fremd.txt"
+rq() { curl -s -b "$1" -c "$1" -H "Content-Type: application/json" -d '{"email":"eva@example.org","app":true}' "http://127.0.0.1:$PORT/api/auth.php?action=request"; }
+CV=$(rq "$JV" | j '$d["devCode"] ?? "kein Code"')
+rq "$JX" > /dev/null
+for i in 1 2 3; do curl -s -H "Content-Type: application/json" -d '{"email":"eva@example.org","code":"000000"}' "http://127.0.0.1:$PORT/api/auth.php?action=code" > /dev/null; done
+check "Fremde Anforderung und falsche Versuche ohne Cookie stören Evas Code nicht" "$(curl -s -b "$JV" -c "$JV" -H "Content-Type: application/json" -d "{\"email\":\"eva@example.org\",\"code\":\"$CV\"}" "http://127.0.0.1:$PORT/api/auth.php?action=code" | j 'json_encode($d["signedIn"] ?? $d)')" "true"
+
 echo "6. Rollen und Mitteilungen"
 SURL=$(api "$A" "pack.php?action=invite" "{\"pack\":$PACK_A,\"role\":\"sitter\"}" | j '$d["url"]')
 SSEC=${SURL##*/rudel/}
@@ -130,6 +138,13 @@ check "Sitterin wünscht sich Notfälle" "$(sit 'pack.php?action=notify' '{"pack
 check "…aber nicht für Anna" "$(sit 'pack.php?action=notify' '{"pack":'"$PACK_A"',"member":'"$ANNA_ID"',"wanted":[]}' | j '$d["error"] ?? "geändert"')" "not_yours"
 check "Anna erlaubt ihr nur Notfälle" "$(api "$A" "pack.php?action=notify" '{"pack":'"$PACK_A"',"member":'"$SID"',"allowed":["notfall"]}' | j 'json_encode($d["ok"] ?? $d["error"])')" "true"
 check "Wer was sichtbar bekommt: Sitterin nur Notfall" "$(php -r 'require "'"$ROOT"'/public/api/lib-pack.php"; $m = pack_notify_map(db(), '"$PACK_A"'); echo implode(",", $m['"$SID"'] ?? ["fehlt:" . implode("/", array_keys($m))]);')" "notfall"
+# Ein weitergereichter Sitter-Link soll nicht reichen, um alles zu löschen: Fremde Einträge höchstens 30 pro Stunde.
+MASSE=$(php -r '$r = []; for ($i = 0; $i < 32; $i++) $r[] = ["kind" => "event", "id" => "masse_$i", "updatedAt" => 5000, "payload" => ["title" => "Termin $i"]]; echo json_encode(["records" => $r]);')
+api "$A" "sync.php?action=push&pack=$PACK_A" "$MASSE" > /dev/null
+GRAB=$(php -r '$r = []; for ($i = 0; $i < 32; $i++) $r[] = ["kind" => "event", "id" => "masse_$i", "updatedAt" => 6000, "payload" => null]; echo json_encode(["records" => $r, "since" => 0]);')
+check "Hundesitterin löscht 30 fremde Einträge, nicht mehr" "$(sit "sync.php?action=push&pack=$PACK_A" "$GRAB" | j '$d["stored"] . " " . ($d["refused"] ?? 0) . " " . count(array_filter($d["records"], fn($r) => str_starts_with($r["id"], "masse_") && $r["payload"] !== null && $r["updatedAt"] > 6000))')" "30 2 2"
+check "…die übrigen bleiben für alle da" "$(api "$A" "sync.php?action=pull&since=0&pack=$PACK_A" | j 'count(array_filter($d["records"], fn($r) => str_starts_with($r["id"], "masse_") && $r["payload"] !== null))')" "2"
+check "Eigene Einträge darf sie weiter ändern" "$(sit "sync.php?action=push&pack=$PACK_A" '{"records":[{"kind":"event","id":"masse_0","updatedAt":7000,"payload":{"title":"neu"}}]}' | j '$d["stored"]')" "1"
 check "Die letzte Besitzerin bleibt Besitzerin" "$(api "$A" "pack.php?action=role" "{\"pack\":$PACK_A,\"member\":$ANNA_ID,\"role\":\"sitter\"}" | j '$d["error"] ?? "geändert"')" "last_owner"
 check "Anna macht die Sitterin zur Besitzerin" "$(api "$A" "pack.php?action=role" "{\"pack\":$PACK_A,\"member\":$SID,\"role\":\"owner\"}" | j 'json_encode($d["ok"] ?? $d["error"])')" "true"
 check "…jetzt darf sie einladen" "$(sit 'pack.php?action=invite' "{\"pack\":$PACK_A,\"role\":\"sitter\"}" | j 'isset($d["url"]) ? "ja" : $d["error"]')" "ja"

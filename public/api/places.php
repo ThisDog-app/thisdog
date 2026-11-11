@@ -20,6 +20,7 @@ declare(strict_types=1);
 require_once __DIR__ . '/lib.php';
 require_once __DIR__ . '/lib-db.php';
 require_once __DIR__ . '/lib-places.php';
+require_once __DIR__ . '/auth-session.php';
 
 /** Rasterweite der Zwischenspeicherung: rund 1,1 km. */
 const CELL = 0.01;
@@ -73,23 +74,25 @@ try {
 	$cell = sprintf('%.2f,%.2f', $cellLat, $cellLon);
 
 	$pdo = db();
+	// Eigene, noch nicht angesehene Orte und Fotos sieht man selbst schon.
+	$me = (int) (current_session($pdo)['account_id'] ?? 0) ?: null;
 
 	// Zuerst der eigene Auszug (server/orte-import.py, monatlich). Overpass nur, wo er nichts hat.
 	$auszug = extract_places($cellLat, $cellLon);
 	if ($auszug !== null) {
-		respond(['places' => with_checks($pdo, with_votes($pdo, with_own($pdo, $auszug, $cellLat, $cellLon))), 'cell' => $cell, 'source' => 'auszug']);
+		respond(['places' => with_checks($pdo, with_votes($pdo, with_own($pdo, $auszug, $cellLat, $cellLon, $me)), $me), 'cell' => $cell, 'source' => 'auszug']);
 	}
 
 	$cached = read_cell($pdo, $cell);
 
 	if ($cached !== null) {
-		respond(['places' => with_checks($pdo, with_votes($pdo, with_own($pdo, $cached, $cellLat, $cellLon))), 'cell' => $cell, 'cached' => true]);
+		respond(['places' => with_checks($pdo, with_votes($pdo, with_own($pdo, $cached, $cellLat, $cellLon, $me)), $me), 'cell' => $cell, 'cached' => true]);
 	}
 
 	$ergebnis = fetch_places($cellLat, $cellLon);
 	write_cell($pdo, $cell, $ergebnis['places'], $ergebnis['vollstaendig']);
 	respond([
-		'places' => with_checks($pdo, with_votes($pdo, with_own($pdo, $ergebnis['places'], $cellLat, $cellLon))),
+		'places' => with_checks($pdo, with_votes($pdo, with_own($pdo, $ergebnis['places'], $cellLat, $cellLon, $me)), $me),
 		'cell' => $cell,
 		'cached' => false,
 		'vollstaendig' => $ergebnis['vollstaendig'],
@@ -100,7 +103,7 @@ try {
 	// gerade nicht antwortet, zählt, dass die App etwas anzeigen kann.
 	$stale = isset($pdo, $cell) ? read_cell($pdo, $cell, PHP_INT_MAX) : null;
 	if ($stale !== null) {
-		respond(['places' => with_checks($pdo, with_votes($pdo, with_own($pdo, $stale, $cellLat, $cellLon))), 'cell' => $cell, 'cached' => true, 'stale' => true]);
+		respond(['places' => with_checks($pdo, with_votes($pdo, with_own($pdo, $stale, $cellLat, $cellLon, $me)), $me), 'cell' => $cell, 'cached' => true, 'stale' => true]);
 	}
 	respond(['error' => 'upstream_unavailable'], 503);
 }

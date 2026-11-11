@@ -260,6 +260,15 @@ function client_net(): string
  * Zählt Anfragen je IP (bzw. IPv6-Netz) in einem Zeitfenster; mit `$perIp = false` über alle zusammen.
  * Gibt false zurück, wenn das Limit überschritten ist.
  */
+/** Wie rate_ok, aber ohne mitzuzählen: Ist die Grenze schon erreicht? */
+function rate_full(string $bucket, int $limit, int $windowSeconds = 3600, bool $perIp = true): bool
+{
+	$ip = $perIp ? client_net() : 'alle';
+	$file = sys_get_temp_dir() . '/stella_' . $bucket . '_' . sha1($ip . date('YmdH'));
+	$raw = is_readable($file) ? @json_decode((string) @file_get_contents($file), true) : null;
+	return is_array($raw) && isset($raw['t'], $raw['c']) && (time() - (int) $raw['t']) < $windowSeconds && (int) $raw['c'] >= $limit;
+}
+
 function rate_ok(string $bucket, int $limit, int $windowSeconds = 3600, bool $perIp = true): bool
 {
 	$ip = $perIp ? client_net() : 'alle';

@@ -6,7 +6,7 @@ declare(strict_types=1);
  *
  * Speichert ausschließlich den Begriff, die Anzahl und den Zeitpunkt –
  * keine IP-Adressen, keine Kennungen, keine Verknüpfung zu Personen.
- * Die Liste der häufigen Suchen auf der Startseite kommt von hier.
+ * Nur der Betreiber sieht die Liste (admin.php); öffentlich wird nichts davon ausgegeben.
  */
 
 require __DIR__ . '/lib.php';
@@ -45,7 +45,7 @@ try {
 	$now = time();
 
 	if (($_SERVER['REQUEST_METHOD'] ?? '') === 'POST') {
-		if (!rate_ok('log', 120, 60)) {
+		if (!rate_ok('log', 30, 60)) {
 			respond(['ok' => false, 'msg' => 'rate_limited'], 429);
 		}
 
@@ -73,6 +73,9 @@ try {
 			respond(['ok' => false, 'msg' => 'term_short'], 400);
 		}
 
+		// Derselbe Begriff zählt je Anschluss höchstens einmal pro Stunde: Sonst hebt ein Einzelner ihn nach oben.
+		if (!rate_ok('log_t_' . substr(sha1($term), 0, 16), 1)) respond(['ok' => true]);
+
 		$pdo->beginTransaction();
 		$pdo->prepare('INSERT INTO terms(term, count, last_ts) VALUES(:t, 1, :ts)
 			ON CONFLICT(term) DO UPDATE SET count = count + 1, last_ts = excluded.last_ts')
@@ -89,31 +92,8 @@ try {
 		respond(['ok' => true]);
 	}
 
-	if (isset($_GET['top'])) {
-		$limit = max(1, min(50, (int) ($_GET['limit'] ?? 8)));
-		$days = max(1, min(90, (int) ($_GET['days'] ?? 7)));
-		$lambda = log(2) / ($days * 86400);
-
-		// Begriffe mit @ sind interne Ereignisse und bleiben außen vor.
-		$rows = $pdo->query("SELECT term, count, last_ts FROM terms
-			WHERE term NOT LIKE '@%' AND count > 0")->fetchAll();
-
-		$scored = [];
-		foreach ($rows as $r) {
-			$age = max(0.0, (float) $now - (float) $r['last_ts']);
-			$score = (float) $r['count'] * exp(-$lambda * $age);
-			// Was länger als vier Halbwertszeiten zurückliegt, ist nicht mehr aktuell.
-			if ($score < 0.05) continue;
-			$scored[] = [
-				'term' => $r['term'],
-				'score' => round($score, 4),
-				'count' => (int) $r['count'],
-				'last' => (int) $r['last_ts'],
-			];
-		}
-		usort($scored, fn($a, $b) => $b['score'] <=> $a['score']);
-		respond(array_slice($scored, 0, $limit));
-	}
+	// Eine öffentliche Rangliste gibt es nicht mehr: Niemand las sie, und wer wollte, konnte sie füllen.
+	// Die Begriffe sieht nur der Betreiber (admin.php).
 
 	if (isset($_GET['status'])) {
 		// Pfade und Einrichtung des Servers: nur für den Betreiber, angemeldet.
