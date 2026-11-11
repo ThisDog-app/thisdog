@@ -1,0 +1,18 @@
+ThisDog
+Copyright 2026 Alexander Fillbrandt and the ThisDog contributors
+
+This product is licensed under the Apache License, Version 2.0 (see LICENSE).
+
+The names "ThisDog" and "Stella", the logos, app icons and the photos of the
+dog are not licensed under the Apache License; see THIRD-PARTY.md, section
+"Marken, Logos und Fotos".
+
+This product includes or uses third-party software, fonts and data under
+their own licenses, listed in THIRD-PARTY.md. In particular:
+
+- Bricolage Grotesque, Copyright 2022 The Bricolage Grotesque Project Authors
+  (https://github.com/ateliertriay/bricolage), SIL Open Font License 1.1
+  (ios/ThisDog/Resources/Fonts/OFL.txt).
+- Map and place data © OpenStreetMap contributors, Open Database License
+  (https://www.openstreetmap.org/copyright).
+- Data from Stadt Wien – data.wien.gv.at, CC BY 4.0.

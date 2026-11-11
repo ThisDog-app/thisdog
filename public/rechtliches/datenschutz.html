@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Datenschutz · ThisDog</title>
+<link rel="stylesheet" href="/rechtliches/stil.css">
+</head>
+<body>
+<main>
+<nav><a href="/datenschutz" aria-current="page">Datenschutz</a><a href="/support">Support</a><a href="/impressum">Impressum</a></nav>
+<h1>Datenschutz</h1>
+<p class="stand">ThisDog für iPhone, iPad, Apple Watch und Android und thisdog.app. Stand: 9. November 2026</p>
+
+<div class="kurz">
+	<ul>
+		<li>Ohne Konto bleiben alle Daten auf deinem Gerät.</li>
+		<li>Mit Konto sind die Daten deines Rudels Ende-zu-Ende verschlüsselt. Der Server speichert sie, kann sie aber nicht lesen. Auch der Betreiber nicht.</li>
+		<li>Keine Werbung, kein Tracking, keine Analysedienste, kein Verkauf von Daten.</li>
+	</ul>
+</div>
+
+<h2>Verantwortlich</h2>
+<p>[Name], [Anschrift], [PLZ Ort, Land]. E-Mail: [E-Mail]</p>
+
+<h2>Auf deinem Gerät</h2>
+<p>Das Profil deines Hundes (auf Wunsch mit deinem Namen und deiner Telefonnummer für den Notfallpass), Termine, Gewicht, Impfungen, Entwurmungen, Medikamente, das Gesundheitstagebuch mit seinen Fotos, Gassirunden mit Strecke, Fotos, Merkliste und Checklisten speichert die App auf deinem Gerät. Ob sie in die Gerätesicherung von iOS kommen, legst du in den Einstellungen deines Geräts fest.</p>
+
+<h2>Konto und Rudel</h2>
+<p>Ein Konto entsteht, wenn du jemanden ins Rudel einlädst, einer Einladung folgst oder den Notfallpass freigibst. Dafür brauchst du weder E-Mail-Adresse noch Passwort: Der Server legt ein Konto mit einer zufälligen Nummer an und gibt deinem Gerät einen geheimen Anmeldeschlüssel, der darauf gespeichert bleibt.</p>
+<p>Eine E-Mail-Adresse kannst du freiwillig hinzufügen, damit du von einem neuen Gerät wieder an dein Konto kommst. Dann schickt der Server dir Anmeldelinks und Anmeldecodes an diese Adresse. Die Mails verschickt der Mailserver des Hosting-Anbieters. Ohne Adresse findet ein neues Gerät dein Konto nicht; dann lässt du dich vom Rudel neu einladen.</p>
+<p>Im Rudel teilen sich mehrere Menschen die Daten eines Hundes. Lesbar auf dem Server gespeichert sind dafür nur: deine E-Mail-Adresse, falls du eine angegeben hast, der Name, den du im Rudel angibst, wer zu welchem Rudel gehört, mit welcher Rolle (Besitzer oder Hundesitter), wann jemand beigetreten ist und wer welche Mitteilungen bekommt.</p>
+<p>Alle Daten des Hundes verschlüsselt die App, bevor sie dein Gerät verlassen (AES-GCM, 256 Bit). Den Schlüssel gibt es nur auf den Geräten des Rudels: im Schlüsselbund, über den iCloud-Schlüsselbund mit deinen eigenen Geräten abgeglichen, und im Einladungslink hinter dem „#“, den weder Browser noch App an den Server schicken. Der Server sieht von jedem Datensatz nur die Art (etwa „Termin“), eine zufällige Kennung, den Zeitpunkt der Änderung und welches Konto sie gemacht hat.</p>
+
+<p><b>Wiederherstellungsschlüssel:</b> Die App kann dir den Schlüssel deines Rudels als Text zeigen, damit du nach dem Verlust aller Geräte wieder an die Daten kommst. Kopierst oder druckst du ihn, entscheidest du, wo er liegt; bei uns liegt er nicht. Wer ihn hat und in dein Konto kommt, kann die Daten lesen. Verlierst du ihn und alle Geräte, kann niemand die Daten wiederherstellen, auch wir nicht.</p>
+
+<h2>Mitteilungen</h2>
+<p>Wenn du Mitteilungen erlaubst, speichert der Server die Gerätekennung, die Apple dafür vergibt. Ändert jemand im Rudel etwas, schickt der Server über den Apple Push Notification Service eine Mitteilung wie „Anna hat einen Termin eingetragen“ – aber nur an die, die diese Art von Mitteilung bekommen wollen und dürfen. Hundesitter bekommen nur, was sie selbst einschalten; was jemand bekommen darf, legen die Besitzer im Rudel fest. Titel und Inhalte kennt der Server nicht und schickt sie nicht mit.</p>
+
+<h2>Standort</h2>
+<p>Den Standort liest die App nur mit deiner Erlaubnis.</p>
+<ul>
+	<li><b>Gassirunde:</b> Während einer Runde zeichnet die App die Strecke auf dem Gerät auf, auch wenn das Telefon in der Tasche liegt. Mit dem Beenden hört die Aufzeichnung auf. Gespeicherte Runden gehören zu den verschlüsselten Daten des Rudels.</li>
+	<li><b>Apple Watch:</b> Startest du eine Runde auf der Uhr, zeichnet die Uhr die Strecke mit ihrem eigenen GPS auf, auch ohne iPhone in der Nähe. Mit dem Beenden hört die Aufzeichnung auf. Behältst du die Runde, gibt die Uhr sie über Apples Verbindung zwischen Uhr und iPhone an dein iPhone weiter, dort gehört sie zu den gespeicherten Runden. Verwirfst du sie, ist sie weg. Die Uhr schickt selbst nichts an thisdog.app. Läuft die Runde auf dem iPhone, zeigt die Uhr nur ihren Stand und kann sie steuern.</li>
+	<li><b>„Wohin heute?“:</b> Für Parks, Wiesen und Hundezonen in der Nähe schickt die App den Standort auf etwa einen Kilometer gerundet an thisdog.app. Der Server sucht sie in einem eigenen Auszug aus OpenStreetMap, den er einmal im Monat neu lädt; außerhalb von Deutschland, Österreich und der Schweiz fragt er OpenStreetMap und speichert die Antwort je Kilometerraster zwischen, ohne Bezug zu dir. Findet er nichts, fragt die App Apple Karten.</li>
+	<li><b>Karte:</b> Die Karten kommen von Apple (MapKit). Dabei erfährt Apple, welcher Ausschnitt angezeigt wird.</li>
+	<li>Den zuletzt bekannten Ort speichert die App nur auf dem Gerät, um zu erkennen, ob ein befreundeter Hund in der Nähe ist.</li>
+</ul>
+
+<h2>Hundefreunde</h2>
+<p>Schließt du eine Freundschaft mit einem anderen Hund, bekommt sie einen eigenen Schlüssel, der nur im Einladungslink reist. Während einer Runde geht dein Standort alle 20 Sekunden mit diesem Schlüssel verschlüsselt an die befreundeten Rudel. Der Server kann ihn nicht lesen, hält nur den letzten Punkt und löscht ihn mit dem Ende der Runde, spätestens nach einer Stunde. Name und Foto deines Hundes gehen ebenso verschlüsselt an Freunde. Ob ein Freund in der Nähe losgeht, berechnet das Gerät des Freundes, nicht der Server. Checkst du an einem Ort ein, geht der Name des Ortes mit Zeitpunkt ebenso verschlüsselt an die befreundeten Rudel; der Server löscht das nach drei Stunden. Jede Seite kann die Freundschaft beenden, dann löscht der Server alles, was dazu gehört.</p>
+
+<p><b>Hund in der Nähe (iPhone und iPad):</b> Solange diese Ansicht offen ist, finden sich Geräte in der Nähe direkt über Bluetooth und WLAN, ohne Server und ohne Standort. Dabei sehen andere den Namen deines Hundes. Fragst du jemanden an, geht auch ein kleines Bild deines Hundes mit. Erst wenn die andere Seite annimmt, entsteht eine verschlüsselte Verbindung, über die der Einladungslink samt Schlüssel geht. Schließt du die Ansicht, ist nichts mehr auffindbar.</p>
+<p><b>QR-Code:</b> Zeigst du stattdessen einen QR-Code, enthält er den Einladungslink mit dem Schlüssel. Wer ihn sieht, kann die Einladung einmal einlösen. Zeig ihn also nur der Person, mit der ihr euch verbinden wollt.</p>
+<p><b>Einladung ins Rudel:</b> Ein Einladungslink oder QR-Code ins Rudel gilt sieben Tage für alle, die ihn bekommen, und enthält den Schlüssel des Rudels. Wer ihn hat, kommt in dieser Zeit ins Rudel und kann alle Daten des Hundes lesen. Teil ihn also nur mit Menschen, die dazugehören sollen. Wer im Rudel ist, siehst du in der App.</p>
+
+<h2>Orte und Bewertungen</h2>
+<p>Die Orte für die Gassirunde und ihre Bewertungen sind öffentlich: Jeder, der die App nutzt, sieht sie.</p>
+<ul>
+	<li><b>Bewerten:</b> Sagst du, was es an einem Ort gibt (etwa eingezäunt oder Trinkwasser) und welche Hunde man dort meist trifft, speichert der Server deine Angaben mit deinem Konto, damit jede Stimme nur einmal zählt und du sie ändern kannst. Andere sehen nur die Zählung, nicht wer bewertet hat.</li>
+	<li><b>Ort eintragen:</b> Ein Ort, den du einträgst, steht mit Name, Art und Lage für alle sichtbar auf dem Server, ohne deinen Namen. Wer ihn eingetragen hat, speichert der Server, um Missbrauch begrenzen zu können.</li>
+	<li><b>Fotos:</b> Ein Foto, das du zu einem Ort hochlädst, speichert der Server mit deinem Konto. Vorher entfernt er alle Metadaten, auch den Ort, an dem es aufgenommen wurde. Es ist gleich für alle sichtbar. Meldet jemand ein Foto, ist es bis zur Entscheidung von ThisDog verborgen. Ob auf einem Foto ein Gesicht zu sehen ist, erkennt die App vor dem Hochladen auf deinem Gerät; dafür geht nichts weg. Zeig auf Fotos bitte keine Menschen, die man erkennen kann, und keine Kennzeichen.</li>
+	<li><b>Prüfen vor Ort:</b> Wer für ThisDog Orte prüft, schickt mit der Prüfung den Standort zum Zeitpunkt der Prüfung. Der Server speichert ihn, um zu sehen, dass die Prüfung vor Ort gemacht wurde.</li>
+	<li><b>Melden:</b> Meldest du, dass an einem Ort etwas nicht stimmt, speichert der Server Ort, Grund und dein Konto, bis die Meldung erledigt ist.</li>
+	<li><b>Einchecken:</b> Check-ins gehören zu den verschlüsselten Daten des Rudels. Der Server zählt keine Besuche und weiß nicht, wo dein Hund war.</li>
+	<li><b>Quellen:</b> Die Orte stammen aus OpenStreetMap (© OpenStreetMap-Mitwirkende, ODbL), in Wien ergänzt mit offenen Daten der Stadt Wien (data.wien.gv.at, CC BY 4.0).</li>
+</ul>
+
+<h2>Notfallpass</h2>
+<p>Gibst du den Notfallpass frei, liegen diese Angaben lesbar auf thisdog.app, damit jemand, der deinen Hund findet, sie ohne App sehen kann: Name, Foto, Rasse, Geschlecht und Alter des Hundes, Chipnummer, dein Name und deine Telefonnummer, Tierarzt, Unverträglichkeiten und laufende Medikamente. Meldest du deinen Hund als entlaufen, kommen dazu: seit wann, wo er zuletzt gesehen wurde und dein Hinweis für Finder. Den Steckbrief teilst du selbst, wo du willst; wer den Link bekommt, sieht die Seite. Mit „wieder da“ verschwinden diese Angaben von der Seite. Die Seite ist nur über die zufällige Adresse im QR-Code erreichbar und wird nicht von Suchmaschinen erfasst. Der Server zählt, wie oft sie geöffnet wurde, und schickt dem Rudel eine Mitteilung, wenn jemand sie aufruft. Sperrst du den Pass, löscht der Server die Seite und alle Angaben darauf.</p>
+
+<h2>Fotos</h2>
+<p>Für das Bild deines Hundes, dein Bild im Rudel und Einträge im Gesundheitstagebuch wählst du ein Foto aus oder nimmst eines auf. Die App bekommt nur dieses eine Foto, nicht deine übrige Mediathek. Sie verkleinert es und speichert es mit den verschlüsselten Daten des Rudels.</p>
+
+<h2>Food-Check</h2>
+<ul>
+	<li><b>Foto:</b> Was auf einem Foto zu sehen ist, erkennt die App auf deinem Gerät (Apple Vision, auf Android Google ML Kit, ohne Verbindung zu Google). Das Foto verlässt das Gerät nicht.</li>
+	<li><b>Strichcode:</b> Scannst du einen Strichcode, fragt die App die Datenbank von Open Food Facts (Open Food Facts, Frankreich) nach dem Produkt. Dorthin geht nur die Strichcode-Nummer, keine Angabe zu dir; dabei verarbeitet Open Food Facts technisch die IP-Adresse deines Geräts. Die Produktdaten stehen unter der Open Database License (ODbL).</li>
+</ul>
+
+<h2>Wetter und Hitzewarnung</h2>
+<p>Für die Hitzewarnung vor der Runde fragt die App höchstens alle halbe Stunde das Wetter ab, mit dem auf etwa einen Kilometer gerundeten Standort: auf iPhone und Apple Watch bei Apple Wetter (WeatherKit), auf Android beim Norwegischen Meteorologischen Institut (MET Norway, api.met.no). Mehr geht dafür nicht weg.</p>
+
+<h2>Kalender und Erinnerungen</h2>
+<p>Mit deiner Erlaubnis trägt die App Termine in einen eigenen Kalender „ThisDog“ auf deinem Gerät ein und erinnert dich mit Mitteilungen, die das Gerät selbst plant. Dafür geht nichts an den Server.</p>
+
+<h2>Inhalte und Server-Protokolle</h2>
+<p>Lebensmittel und Ratgeber bringt die App mit und lädt Aktualisierungen von thisdog.app. Bei jedem Abruf verarbeitet der Webserver technisch die IP-Adresse deines Geräts und die aufgerufene Adresse. Diese Zugriffsprotokolle werden nach sieben Tagen gelöscht.</p>
+
+<h2>Wer Daten verarbeitet</h2>
+<ul>
+	<li><b>Hetzner Online GmbH</b>, Industriestr. 25, 91710 Gunzenhausen, Deutschland: Server und Mailversand, als Auftragsverarbeiter. Die Server stehen in der EU.</li>
+	<li><b>Apple</b>: Zustellung von Mitteilungen, Karten, Ortsnamen, Wetter und der iCloud-Schlüsselbund, nach den Datenschutzbestimmungen von Apple.</li>
+	<li><b>Google</b> (nur Android): Ortsnamen für „Wo zuletzt gesehen?“ beim entlaufenen Hund über den Geocoder des Geräts.</li>
+	<li><b>MET Norway</b> (nur Android): Wetter für die Hitzewarnung.</li>
+	<li><b>Open Food Facts</b>: Produktdaten zu einem gescannten Strichcode.</li>
+</ul>
+<p>Darüber hinaus gibt niemand Daten weiter.</p>
+
+<h2>Löschen</h2>
+<p>In der App unter „Einstellungen“ löschst du mit „Konto löschen“ dein Konto mit deiner E-Mail-Adresse, falls angegeben, deinen Anmeldungen und Gerätekennungen. Rudel, in denen niemand sonst ist, verschwinden mit allen Daten, dem Notfallpass und den Freundschaften. Deine Bewertungen verschwinden ebenfalls, ebenso gemeldete Fotos. Orte, Fotos und Prüfungen, die du beigetragen hast, bleiben ohne Bezug zu dir bestehen. Sind noch andere im Rudel, behalten sie die gemeinsamen Daten. Was auf deinem Gerät liegt, bleibt dort, bis du die App löschst.</p>
+
+<h2>Rechtsgrundlagen</h2>
+<p>Konto, Rudel und Abgleich: Art. 6 Abs. 1 lit. b DSGVO (Nutzung der App). Standort, Wetter, Mitteilungen, Kalender, Hundefreunde, Food-Check per Strichcode und Notfallpass: Art. 6 Abs. 1 lit. a DSGVO (Einwilligung, jederzeit widerrufbar in der App oder in den Einstellungen des Geräts). Zugriffsprotokolle: Art. 6 Abs. 1 lit. f DSGVO (sicherer Betrieb).</p>
+
+<h2>Deine Rechte</h2>
+<p>Du hast das Recht auf Auskunft, Berichtigung, Löschung, Einschränkung der Verarbeitung, Datenübertragbarkeit und Widerspruch. Weil die Daten des Rudels verschlüsselt sind, kann der Betreiber über sie nur sagen, dass es sie gibt, nicht was darin steht. Beschweren kannst du dich bei der österreichischen Datenschutzbehörde, Barichgasse 40–42, 1030 Wien, <a href="https://www.dsb.gv.at">dsb.gv.at</a>.</p>
+
+<footer>ThisDog · Mit Liebe für Stella in Wien gebaut.</footer>
+</main>
+</body>
+</html>

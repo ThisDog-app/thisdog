@@ -1,0 +1,5 @@
+# Xcode erzeugt aus project.yml
+ThisDog.xcodeproj/
+build/
+DerivedData/
+*.xcuserstate

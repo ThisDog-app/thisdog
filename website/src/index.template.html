@@ -1,0 +1,724 @@
+<meta charset="utf-8">
+<title>ThisDog – Heute mal eine andere Runde?</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Neue Wege für dich und deinen Hund: ThisDog merkt sich eure Runden, zeigt dir Wiesen und Hundezonen in der Nähe und erinnert an Impfung und Wurmkur. Einmal 9,99 €, kein Abo, keine Werbung.">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="author" content="Alex, Stellas Mensch">
+<meta name="apple-mobile-web-app-title" content="ThisDog">
+<link rel="canonical" href="https://thisdog.app/">
+<meta name="theme-color" content="#FFFFFF" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#16141A" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="/icons/v2/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/icons/v2/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="ThisDog">
+<meta property="og:locale" content="de_DE">
+<meta property="og:url" content="https://thisdog.app/">
+<meta property="og:title" content="ThisDog – Heute mal eine andere Runde?">
+<meta property="og:description" content="Eure Runden, neue Wege in der Nähe und alles, was dein Hund sonst noch braucht.">
+<meta property="og:image" content="https://thisdog.app/media/og-runde.jpg">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="ThisDog: „Heute mal eine andere Runde?“ Daneben die Startseite der App und Stella, ein rotbrauner Zwergpudel">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="ThisDog – Heute mal eine andere Runde?">
+<meta name="twitter:description" content="Eure Runden, neue Wege in der Nähe und alles, was dein Hund sonst noch braucht.">
+<meta name="twitter:image" content="https://thisdog.app/media/og-runde.jpg">
+<meta name="twitter:image:alt" content="ThisDog: „Heute mal eine andere Runde?“ Daneben die Startseite der App und Stella, ein rotbrauner Zwergpudel">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"ThisDog","url":"https://thisdog.app/","inLanguage":"de"}</script>
+<style>
+/* Viel Weiß, ruhige Schrift. Das Einzige, was führt, ist die Leine: Sie verbindet die Abschnitte und wächst
+   beim Scrollen mit, bis sie am Ende eingerollt ist wie im Logo. */
+@font-face {
+  font-family: "Bricolage";
+  src: url(data:font/woff2;base64,{{FONT}}) format("woff2");
+  font-weight: 200 800;
+  font-stretch: 75% 100%;
+  font-display: swap;
+}
+:root {
+  --paper: #FFFFFF; --ink: #241E2B; --ink-2: #6B6478; --ink-3: #A29CAF; --line: #ECEAF1;
+  --accent: #EE6A24; --link: #B8480F; --soft: #FDF1EA; --field: #F6F6F8;
+  --ok: #1F7F53; --warn: #9A6400; --bad: #BE3B31;
+  --font: "Bricolage", -apple-system, "Helvetica Neue", system-ui, sans-serif;
+  --gutter: clamp(20px, 5vw, 56px); --wide: 1320px; --bar: 64px; --air: clamp(110px, 16vw, 230px);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #16141A; --ink: #F1EEF4; --ink-2: #B3ACBF; --ink-3: #7F788B; --line: #2C2733;
+    --accent: #FF8746; --link: #FF9A63; --soft: #2C201B; --field: #211E26;
+    --ok: #5CC995; --warn: #F4BE55; --bad: #F07A6E; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #16141A; --ink: #F1EEF4; --ink-2: #B3ACBF; --ink-3: #7F788B; --line: #2C2733;
+  --accent: #FF8746; --link: #FF9A63; --soft: #2C201B; --field: #211E26;
+  --ok: #5CC995; --warn: #F4BE55; --bad: #F07A6E; color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 400 18px/1.6 var(--font); -webkit-font-smoothing: antialiased; overflow-x: clip; }
+img { max-width: 100%; display: block; }
+a { color: var(--link); text-underline-offset: 3px; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 6px; }
+h1, h2, h3, p, dl, dd { margin: 0; }
+h1, h2, dt { font-weight: 500; letter-spacing: -0.012em; text-wrap: balance; }
+h1 { font-size: clamp(40px, 5.6vw, 84px); line-height: 1.06; }
+h2 { font-size: clamp(30px, 3.6vw, 52px); line-height: 1.12; }
+.lead { font-size: clamp(18px, 1.6vw, 21px); color: var(--ink-2); max-width: 28em; margin-top: 22px; text-wrap: pretty; }
+.lead + .lead { margin-top: 14px; }
+
+/* Die Seite und die Leine dahinter */
+.page { position: relative; }
+.wrap { width: min(var(--wide), 100%); margin-inline: auto; padding-inline: var(--gutter); position: relative; }
+#leash { position: absolute; left: 0; top: 0; width: 100%; height: 100%; pointer-events: none; overflow: visible; }
+#leash path { fill: none; stroke: var(--accent); stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+#leash circle { fill: var(--accent); }
+
+/* Geräte: echte Gehäuse aus Xcode, alle Maße in Prozent, damit Rundungen und Ränder mitwachsen. */
+.frame { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 2; display: block; }
+.scr { position: absolute; overflow: hidden; background: #000; }
+.iphone > .scr { left: 3.8991%; top: 1.8722%; width: 92.2018%; height: 96.2555%; }
+/* Der Bildschirm wird mit Apples eigener Maske zugeschnitten (dieselbe, die das Loch im Rahmen stanzt):
+   Apples Ecken sind kontinuierliche Kurven, ein border-radius-Kreis passt nicht hinein.
+   Darunter liegt dieselbe Form etwas größer in Schwarz, damit an der Kante kein Hintergrund durchscheint. */
+.iphone::before { content: ""; position: absolute; background: #000; transform: scale(1.015); }
+.iphone::before { left: 3.8991%; top: 1.8722%; width: 92.2018%; height: 96.2555%; }
+.iphone > .scr, .iphone::before { -webkit-mask: url(media/maske-iphone.webp) 0 0 / 100% 100% no-repeat; mask: url(media/maske-iphone.webp) 0 0 / 100% 100% no-repeat; }
+/* Das iPad im Querformat: dasselbe Gehäuse, um 90° gedreht; der Rand ist ringsum gleich breit. */
+.iphone { position: relative; width: min(300px, 70vw); aspect-ratio: 436 / 908; }
+.scr > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.duo-folded { position: relative; aspect-ratio: 514 / 706; }
+.duo-folded > .scr, .duo-folded::before { left: 5.0584%; top: 1.9830%; width: 90.6615%; height: 96.0340%; -webkit-mask: url(media/maske-duo.webp) 0 0 / 100% 100% no-repeat; mask: url(media/maske-duo.webp) 0 0 / 100% 100% no-repeat; }
+.duo-folded::before { content: ""; position: absolute; background: #000; transform: scale(1.015); }
+
+.iphone { width: min(clamp(260px, 22vw, 330px), 66vw); flex: none; filter: drop-shadow(0 24px 40px rgba(36, 30, 43, .10)); }
+
+/* Kopfzeile: deckend in der Farbe, die auch Safari oben zeigt. */
+.head { position: sticky; top: 0; z-index: 20; background: var(--paper); padding-top: env(safe-area-inset-top, 0px); }
+.bar { display: flex; align-items: center; justify-content: space-between; gap: 16px; height: var(--bar); font-size: 15px; color: var(--ink-2);
+  padding-left: max(var(--gutter), env(safe-area-inset-left, 0px)); padding-right: max(var(--gutter), env(safe-area-inset-right, 0px)); width: min(var(--wide), 100%); margin-inline: auto; }
+.brand { display: flex; align-items: center; gap: 10px; font-weight: 500; font-size: 20px; text-decoration: none; color: var(--ink); }
+.brand .mark { width: 28px; height: 28px; color: var(--accent); }
+.brand .mark svg { width: 100%; height: 100%; }
+
+/* Einstieg */
+.hero { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(32px, 6vw, 88px); align-items: center; padding-block: clamp(48px, 8vw, 110px) var(--air); }
+.hero-visual { position: relative; width: min(600px, 100%); justify-self: end; padding-bottom: 56px; }
+.hero-photo { width: 76%; margin-left: auto; }
+.hero-photo img { width: 100%; aspect-ratio: 3 / 4; object-fit: cover; object-position: 50% 30%; border-radius: 6.5% / 5%; }
+.hero-photo figcaption { font-size: 15px; color: var(--ink-2); margin-top: 10px; text-align: right; }
+.hero-visual .iphone { position: absolute; left: 0; bottom: 0; width: 52%; }
+.hero .soon { margin-top: 18px; font-size: 16px; color: var(--ink-2); }
+@media (max-width: 820px) { .hero { grid-template-columns: 1fr; } .hero-visual { justify-self: center; } }
+
+/* Abschnitte: Text und Gerät, viel Luft dazwischen */
+.step { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: clamp(40px, 11vw, 190px); align-items: center; padding-block: 0 var(--air); }
+.step.flip { grid-template-columns: auto minmax(0, 1fr); }
+.step.flip .iphone { order: -1; }
+@media (min-width: 1100px) { .step.flip .iphone { margin-left: clamp(0px, 5vw, 90px); } }
+@media (max-width: 820px) { .step, .step.flip { grid-template-columns: 1fr; } .step .iphone, .step.flip .iphone { order: 1; justify-self: center; } }
+.quiet { padding-block: 0 var(--air); }
+.quiet > div { max-width: 34em; }
+.bello { margin-left: clamp(0px, 7vw, 110px); }
+@media (max-width: 819px) { .bello { margin-left: 0; } }
+
+/* Aufklappen: Das Scrollen klappt das Duo auf (--p von 0 bis 1), die Anzeige darunter zeigt, wie weit es ist. */
+.unfold { position: relative; margin-bottom: var(--air); background: var(--paper); height: 230vh; }
+.unfold-stage { --stage: calc(100svh - var(--bar)); position: sticky; top: var(--bar); height: var(--stage); overflow: clip; display: flex; flex-direction: column; justify-content: center; align-items: center;
+  gap: clamp(14px, 3vh, 32px); padding: 12px max(var(--gutter), env(safe-area-inset-right, 0px)) 12px max(var(--gutter), env(safe-area-inset-left, 0px)); }
+.unfold-copy { width: min(calc(var(--wide) - 2 * var(--gutter)), 100%); }
+
+.unfold-copy .lead { max-width: 40em; margin-top: 12px; font-size: clamp(17px, 1.6vw, 20px); }
+.duo-box { --w: min(860px, 100%, calc((var(--stage) - 290px) * 1.41)); display: grid; justify-items: center; gap: 14px; width: 100%; }
+.duo { --p: 1; --closed: 1; width: var(--w); aspect-ratio: 995 / 706; perspective: 2400px; display: flex; position: relative;
+  transform: translateX(calc((1 - var(--p)) * -25%)) scale(calc(1 + (1 - var(--p)) * (var(--closed) - 1))); }
+.duo .half { width: 50%; height: 100%; position: relative; }
+.duo .clip { position: absolute; inset: 0; overflow: hidden; }
+.duo .whole { position: absolute; top: 0; width: 200%; height: 100%; }
+.duo .left .whole { left: 0; } .duo .right .whole { left: -100%; }
+.duo .dscr { position: absolute; left: 2.2111%; top: 2.6204%; width: 95.5779%; height: 94.7592%; overflow: hidden; background: #000; -webkit-mask: url(media/maske-duo-offen.webp) 0 0 / 100% 100% no-repeat; mask: url(media/maske-duo-offen.webp) 0 0 / 100% 100% no-repeat; }
+.duo .dscr img { width: 100%; height: 100%; object-fit: cover; }
+.duo .left { transform-origin: right center; transform: rotateY(calc((1 - var(--p)) * 178deg)); z-index: 2; }
+/* Vorder- und Rückseite nach Klappwinkel umblenden (WebKit beachtet backface-visibility hier nicht). */
+.duo .left .clip { opacity: clamp(0, (var(--p) - 0.47) * 30, 1); }
+.duo .left .back { position: absolute; inset: 0; transform: rotateY(180deg); opacity: clamp(0, (0.53 - var(--p)) * 30, 1); display: grid; place-items: center; }
+.duo .left .back .duo-folded { width: 103.32%; }
+.duo .right { opacity: clamp(0, var(--p) * 10, 1); }
+.fold-meter { --p: 1; width: min(var(--w), 420px); display: grid; gap: 8px; font-size: 15px; color: var(--ink-2); }
+.fold-track { height: 4px; border-radius: 2px; background: var(--line); position: relative; }
+.fold-track i { position: absolute; inset: 0; border-radius: 2px; background: var(--accent); transform-origin: left; transform: scaleX(var(--p)); }
+.fold-track b { position: absolute; top: 50%; left: calc(var(--p) * 100%); width: 14px; height: 14px; margin: -7px 0 0 -7px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 3px var(--paper); }
+.fold-text { position: relative; min-height: 1.5em; text-align: center; }
+.fold-text span { position: absolute; inset: 0; }
+.fold-text .a { opacity: clamp(0, (0.25 - var(--p)) * 10, 1); }
+.fold-text .b { opacity: clamp(0, (var(--p) - 0.75) * 10, 1); }
+.fold-text .m { opacity: clamp(0, min((var(--p) - 0.3) * 10, (0.7 - var(--p)) * 10), 1); }
+/* Hochformat: zugeklappt wäre das Duo nur halb so breit wie der Platz, deshalb größer. */
+@media (orientation: portrait) { .duo { --closed: 1.2; margin-block: 4%; } }
+/* Querformat (auch das iPhone quer): Text links, Duo rechts, die Höhe gehört dem Gerät. */
+@media (orientation: landscape) {
+  .unfold-stage { flex-direction: row; gap: clamp(20px, 4vw, 72px);
+    padding-left: max(var(--gutter), calc((100vw - var(--wide)) / 2 + var(--gutter)), env(safe-area-inset-left, 0px));
+    padding-right: max(var(--gutter), calc((100vw - var(--wide)) / 2 + var(--gutter)), env(safe-area-inset-right, 0px)); }
+  .unfold-copy { flex: 0 1 30%; min-width: 0; }
+  .unfold-copy h2 { font-size: clamp(24px, 3.2vw, 46px); }
+  .unfold-copy .lead { font-size: clamp(15px, 1.5vw, 19px); }
+  .duo-box { flex: 1 1 0; min-width: 0; width: auto; --w: min(100%, calc((var(--stage) - 74px) * 1.41)); gap: 10px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .unfold { height: auto; } .unfold-stage { position: relative; height: auto; } .fold-meter { display: none; }
+  .duo { --p: 1 !important; }
+}
+
+
+/* Was sonst noch drin ist */
+.more dl { margin-top: clamp(40px, 6vw, 72px); }
+.rows { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(40px, 5vw, 72px) clamp(36px, 5.5vw, 84px); }
+.rows dt { font-size: clamp(21px, 2vw, 25px); line-height: 1.25; margin-bottom: 8px; }
+.rows dd { color: var(--ink-2); text-wrap: pretty; }
+@media (max-width: 1099px) { .rows { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 640px) { .rows { grid-template-columns: 1fr; } }
+
+/* Food-Check: ein ruhiges Feld */
+.food { padding-block: 0 var(--air); display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr); gap: clamp(30px, 10vw, 160px); align-items: start; }
+@media (max-width: 819px) { .food { grid-template-columns: 1fr; } }
+.food-box { min-width: 0; }
+#q { width: 100%; font: 400 20px/1.2 var(--font); padding: .85em 1em; border: 0; border-radius: 14px; background: var(--field); color: var(--ink); }
+#q::placeholder { color: var(--ink-3); }
+.tries { display: flex; flex-wrap: wrap; gap: 6px 16px; margin-top: 12px; font-size: 16px; }
+.tries button { font: inherit; color: var(--ink-2); background: none; border: 0; padding: 4px 0; text-decoration: underline; text-decoration-color: var(--line); text-underline-offset: 4px; cursor: pointer; }
+.tries button:hover { color: var(--ink); }
+.result { margin-top: 22px; min-height: 150px; }
+.verdict { font-size: 24px; font-weight: 500; line-height: 1.2; }
+.verdict.ok { color: var(--ok); } .verdict.warn { color: var(--warn); } .verdict.bad { color: var(--bad); }
+.result .about { font-size: 15px; color: var(--ink-2); margin-bottom: 2px; }
+.result .why { margin-top: 6px; color: var(--ink); }
+.result .next { margin-top: 10px; color: var(--ink); font-weight: 500; }
+.also { display: flex; flex-wrap: wrap; gap: 6px 14px; margin-top: 12px; font-size: 16px; color: var(--ink-2); }
+.also button { font: inherit; color: var(--ink); background: none; border: 0; padding: 0; text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
+.small { font-size: 15px; color: var(--ink-2); margin-top: 18px; }
+
+.end { padding-block: 0 clamp(120px, 16vw, 200px); display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 0 clamp(40px, 8vw, 120px); align-items: end; }
+.end .gone { grid-column: 1 / -1; margin-bottom: 18px; }
+.end h2 { font-size: clamp(40px, 6.4vw, 92px); line-height: 1.04; }
+.end .lead { margin-top: 0; }
+@media (max-width: 819px) { .end { grid-template-columns: 1fr; } .end .lead { margin-top: 22px; } }
+.mail { display: inline-block; margin-top: 28px; background: var(--accent); color: #fff; font-weight: 500; padding: 13px 26px; border-radius: 99px; text-decoration: none; }
+footer { padding-block: 28px; font-size: 15px; color: var(--ink-2); }
+footer .wrap { display: flex; flex-wrap: wrap; gap: 8px 22px; justify-content: space-between; }
+footer nav { display: flex; gap: 18px; }
+footer a { color: inherit; }
+
+/* Stellas Kopf an der Spitze der Leine (das Logo). Läuft mit, schaut in die Laufrichtung, wippt beim Scrollen nur leicht. */
+#tip { position: absolute; left: 0; top: 0; width: 44px; height: 44px; margin: -22px 0 0 -22px; padding: 4px; border: 0; background: none; color: var(--accent); cursor: pointer; z-index: 1; opacity: 0; transition: opacity .3s; will-change: transform; }
+#tip.on { opacity: 1; }
+#tip .face { display: block; width: 100%; height: 100%; transition: transform .45s ease; }
+#tip svg { width: 100%; height: 100%; display: block; }
+#tip.moving svg { animation: trot .7s ease-in-out infinite alternate; }
+@keyframes trot { from { transform: rotate(-2deg); } to { transform: rotate(2deg); } }
+#tip .wuff { position: absolute; left: 50%; bottom: 100%; transform: translate(-50%, 6px) scale(.8); font: 500 15px/1 var(--font); color: var(--ink); background: var(--soft); padding: 7px 11px; border-radius: 99px; opacity: 0; pointer-events: none; transition: opacity .2s, transform .25s cubic-bezier(.2,1.6,.4,1); white-space: nowrap; }
+#tip.bark .wuff { opacity: 1; transform: translate(-50%, 0) scale(1); }
+@media (max-width: 819px) { #tip { width: 34px; height: 34px; margin: -17px 0 0 -17px; } }
+
+/* Kopfzeile unterwegs */
+.status { display: flex; align-items: center; gap: 12px; font-variant-numeric: tabular-nums; }
+.status .pulse { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); display: none; animation: pulse 1.6s ease-in-out infinite; }
+.walking .status .pulse { display: block; }
+@keyframes pulse { 50% { opacity: .3; } }
+.status button { font: 500 15px/1 var(--font); color: var(--link); background: none; border: 0; padding: 10px 2px; cursor: pointer; display: none; }
+.auto .status button { display: block; }
+.go { display: inline-block; margin-top: 30px; font: 500 17px/1 var(--font); color: #fff; background: var(--accent); padding: 15px 28px; border: 0; border-radius: 99px; cursor: pointer; transition: transform .2s cubic-bezier(.2,1.6,.4,1); }
+.go:hover { transform: translateY(-2px) rotate(-1deg); }
+.go:active { transform: scale(.96); }
+
+/* Das Wort, das wechselt */
+.word { display: inline-block; transition: transform .45s cubic-bezier(.2,.9,.2,1), opacity .35s; }
+.word.out { transform: translateY(-.35em); opacity: 0; }
+.word.pre { transform: translateY(.35em); opacity: 0; transition: none; }
+
+/* Einblenden und Geräte, die sich beim Scrollen gerade rücken. Versteckt nur mit Skript. */
+.rise { transition: transform .9s cubic-bezier(.2,.8,.2,1), opacity .8s; }
+html.js .rise:not(.in) { transform: translateY(26px); opacity: 0; }
+.tilt { --t: 1; transform: translateY(calc((1 - var(--t)) * 70px)) rotate(calc((1 - var(--t)) * var(--lean, 5deg))); }
+.step.flip .tilt { --lean: -5deg; }
+.hero-photo img { transition: transform .5s cubic-bezier(.2,1.5,.4,1); }
+.hero-photo:hover img, .hero-photo.pet img { transform: rotate(-1.6deg) scale(1.015); }
+html.js:not(.ready) .hero-visual .iphone { transform: translate(-30px, 40px) rotate(-7deg); opacity: 0; }
+.hero-visual .iphone { rotate: -3deg; transition: transform 1.1s cubic-bezier(.2,.8,.2,1) .2s, opacity .8s .2s; }
+html.js:not(.ready) .hero-photo { transform: translateY(24px); opacity: 0; }
+.hero-photo { transition: transform 1s cubic-bezier(.2,.8,.2,1), opacity .8s; }
+
+/* Die Zeit im Telefon läuft: über dem Bildschirmfoto, Maße in Hundertsteln der Bildschirmbreite. */
+.live .scr { container-type: inline-size; }
+.live i { position: absolute; z-index: 1; display: flex; align-items: baseline; padding-top: .2cqw; background: #F6F6F8; color: #241E2B; font: normal 700 10cqw/1 var(--font); font-stretch: 75%; font-variant-numeric: tabular-nums; }
+.live .clock { left: 4.4%; top: 58.6%; width: 52%; height: 7.8%; font-size: 21cqw; }
+.live .km { left: 4.4%; top: 72.8%; width: 26%; height: 4.6%; font-size: 11.6cqw; }
+.live .tempo { left: 37.2%; top: 72.8%; width: 36%; height: 4.6%; font-size: 11.6cqw; }
+.live u { text-decoration: none; font: 400 4.9cqw/1 var(--font); font-stretch: 100%; color: #69627A; margin-left: 1.4cqw; }
+.gone { min-height: 1.6em; }
+
+html.still *, html.still *::before, html.still *::after { transition: none !important; animation: none !important; }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+  html.js .rise:not(.in) { transform: none; opacity: 1; }
+  .tilt { --t: 1 !important; }
+  .go { display: none; }
+}
+</style>
+<script>document.documentElement.classList.add('js')</script>
+
+<div class="head">
+  <div class="bar">
+    <a class="brand" href="#top"><span class="mark" aria-hidden="true">{{MARK}}</span>ThisDog</a>
+    <span class="status" id="status" aria-live="off"><i class="pulse"></i><span id="statusText">Bald für iPhone und iPad</span><button type="button" id="pause">Pause</button></span>
+  </div>
+</div>
+
+<div class="page" id="top">
+  <svg id="leash" aria-hidden="true"><path/><circle class="a" r="4"/><circle class="b" r="4"/></svg>
+  <button id="tip" type="button" aria-label="Stella bellt"><span class="face">{{MARK}}</span><span class="wuff" aria-hidden="true">Wuff!</span></button>
+
+  <header class="wrap hero" data-lane="start">
+    <div>
+      <h1 aria-label="Heute mal eine andere Runde?"><span aria-hidden="true">Heute mal eine andere <span class="word" id="word">Runde</span>?</span></h1>
+      <p class="lead">Dein Hund steht schon an der Tür. ThisDog merkt sich eure Runden, zeigt dir neue Wege und hilft dir, im Blick zu behalten, wie es ihm geht.</p>
+      <button class="go" type="button" id="go">Runde starten</button>
+      <p class="soon">Kommt bald in den App Store.</p>
+    </div>
+    <div class="hero-visual">
+      <figure class="hero-photo" style="margin:0 0 0 auto"><img src="media/stella.jpg" alt="Stella, ein rotbrauner Zwergpudel, sitzt mit Leine auf einem Kissen in der Sonne"><figcaption>Das ist Stella.</figcaption></figure>
+      <div class="iphone "><div class="scr"><img src="media/iphone-heute.jpg" alt="Die Startseite von ThisDog: Zeit für eine Runde?, die Woche als Leine und Orte, an denen ihr noch nicht wart" loading="lazy"></div><img class="frame" src="media/rahmen-iphone.webp" alt=""></div>
+    </div>
+  </header>
+
+  <section class="wrap step flip" data-lane="gap">
+    <div>
+      <h2 class="rise">Leine dran, Start tippen, los.</h2>
+      <p class="lead rise">Das Telefon bleibt in der Tasche, die Hände sind frei für Leine und Leckerli. Zu Hause siehst du, wie weit ihr gekommen seid und wie oft ihr diese Woche draußen wart.</p>
+    </div>
+    <div class="iphone live tilt" data-t><div class="scr"><i class="clock" data-live="clock" aria-hidden="true">23:41</i><i class="km" aria-hidden="true"><b data-live="km" style="font-weight:inherit">1,84</b><u>km</u></i><i class="tempo" aria-hidden="true">12:52<u>/km</u></i><img src="media/iphone-runde.jpg" alt="Eine laufende Runde in ThisDog: die Karte mit dem bisherigen Weg, darunter Zeit, Strecke und Tempo" loading="lazy"></div><img class="frame" src="media/rahmen-iphone.webp" alt=""></div>
+  </section>
+  <section class="unfold" data-lane="center" id="orte" aria-label="Parks und Hundezonen in der Nähe, gezeigt auf dem iPhone Duo">
+  <div class="unfold-stage">
+    <div class="unfold-copy">
+      <h2>Morgen mal woanders lang?</h2>
+      <p class="lead">Eure Runde kennt dein Hund längst auswendig. Neue Wege und neue Gerüche sind für ihn das Größte. ThisDog zeigt dir Wiesen und Hundezonen in der Nähe und sagt dir vorher, ob er dort frei laufen kann und Wasser findet.</p>
+    </div>
+    <div class="duo-box">
+      <div class="duo" id="duo">
+        <div class="half left"><div class="clip"><div class="whole"><div class="dscr"><img src="media/duo-orte.jpg" alt="Das aufgeklappte iPhone Duo: links eine Karte, rechts die Hundezone Venediger-Au-Park: Freilaufen, eingezäunt, Trinkwasser und Bänke gibt es"></div><img class="frame" src="media/rahmen-duo-offen.webp" alt=""></div></div><div class="back"><div class="duo-folded"><div class="scr"><img src="media/duo-orte-zu.jpg" alt=""></div><img class="frame" src="media/rahmen-duo.webp" alt=""></div></div></div>
+        <div class="half right"><div class="clip"><div class="whole"><div class="dscr"><img src="media/duo-orte.jpg" alt=""></div><img class="frame" src="media/rahmen-duo-offen.webp" alt=""></div></div></div>
+      </div>
+      <div class="fold-meter" id="meter" aria-hidden="true">
+        <div class="fold-track"><i></i><b></b></div>
+        <div class="fold-text"><span class="a">Weiterscrollen, dann klappt es auf</span><span class="m">Gleich siehst du mehr</span><span class="b">Schau vorher, ob es euch dort gefällt</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+  <section class="wrap step" data-lane="gap">
+    <div class="iphone tilt" data-t><div class="scr"><img src="media/iphone-revier.jpg" alt="Stellas Revier: eine Karte mit fünf Orten und 31 Besuchen, dazu die Abzeichen Stammgast und Auf Entdeckungstour" loading="lazy"></div><img class="frame" src="media/rahmen-iphone.webp" alt=""></div>
+    <div>
+      <h2 class="rise">Mit jeder Runde wächst euer Revier.</h2>
+      <p class="lead rise">Markier die Orte, an denen es euch gefällt. Nach und nach entsteht eure eigene Karte, mit der Wiese, auf der er am liebsten tobt, und der Hundezone, in der er seine Freunde trifft. Zehnmal am selben Ort, und ihr seid dort Stammgäste.</p>
+    </div>
+  </section>
+
+  <section class="wrap quiet" data-lane="after">
+    <div class="bello">
+      <h2 class="rise">Vielleicht ist Bello auch gerade draußen.</h2>
+      <p class="lead rise">Hat dein Hund einen besten Kumpel? Verbindet euch, dann seht ihr unterwegs, ob ihr euch gerade nah seid, und ThisDog sagt Bescheid, wenn jemand in der Nähe losgeht. Nach der Runde sehen die anderen nicht mehr, wo du bist.</p>
+    </div>
+  </section>
+
+  <section class="wrap food" data-lane="gap">
+    <div>
+      <h2 class="rise">Und wenn unterwegs etwas im Maul landet?</h2>
+      <p class="lead rise">Tipp ein, was es war, dann weißt du gleich, ob es harmlos ist oder ob du lieber die Tierarztpraxis anrufst. Probier es hier aus, in der App steht dasselbe.</p>
+    </div>
+    <div class="food-box">
+        <input id="q" type="search" placeholder="Schokolade, Käse, Apfel …" aria-label="Lebensmittel suchen" autocomplete="off" autocorrect="off" spellcheck="false" aria-controls="result">
+        <div class="tries" aria-label="Beispiele"><button type="button">Trauben</button><button type="button">Banane</button><button type="button">Hüttenkäse</button></div>
+        <div class="result" id="result" aria-live="polite"></div>
+        <noscript><p class="small">Der Food-Check braucht JavaScript.</p></noscript>
+        <p class="small">Eine erste Einschätzung, kein Ersatz für deine Tierarztpraxis.</p>
+    </div>
+  </section>
+
+  <section class="wrap step flip" data-lane="gap">
+    <div>
+      <h2 class="rise">Und falls dein Hund einmal wegläuft.</h2>
+      <p class="lead rise">Daran denkt niemand gern, aber es ist schnell vorbereitet. Ein QR-Code am Halsband: Wer deinen Hund findet, hält die Handykamera drauf und sieht, wen er anrufen soll und was dein Hund nicht verträgt. Sobald das jemand öffnet, bekommst du Bescheid.</p>
+    </div>
+    <div class="iphone tilt" data-t><div class="scr"><img src="media/iphone-finder.jpg" alt="Der Notfallpass, wie ihn ein Finder sieht: Ich heiße Stella, Knopf zum Anrufen, verträgt kein Huhn, Chipnummer, Tierarzt" loading="lazy"></div><img class="frame" src="media/rahmen-iphone.webp" alt=""></div>
+  </section>
+
+  <section class="wrap more quiet" data-lane="edge">
+    <h2 class="rise">Und damit es ihm auch sonst gut geht</h2>
+    <dl class="rows">
+      <div class="rise"><dt>Impfung, Wurmkur, Tierarzt</dt><dd>Merken musst du dir das nicht mehr. ThisDog erinnert dich rechtzeitig, auf Wunsch auch im Kalender deines iPhones.</dd></div>
+      <div class="rise"><dt>Wer war heute schon mit ihm draußen?</dt><dd>Partner, Eltern, Hundesitter: Lade alle ein, die sich mit um deinen Hund kümmern. Was jemand einträgt, sehen die anderen.</dd></div>
+      <div class="rise"><dt>Wie viel Futter braucht er?</dt><dd>ThisDog rechnet es aus Gewicht, Alter und Bewegung aus. Das ist ein guter Startwert. Ob es passt, siehst du an deinem Hund.</dd></div>
+      <div class="rise"><dt>Wenn es mal nicht klappt</dt><dd>Er kommt nicht zurück, zieht an der Leine oder zittert an Silvester? 22 Anleitungen helfen dir in Ruhe, Schritt für Schritt.</dd></div>
+      <div class="rise"><dt>Was kostet das?</dt><dd>Einmal 9,99 €. Kein Abo, keine Werbung, mit Familienfreigabe.</dd></div>
+      <div class="rise"><dt>Wer sieht unsere Daten?</dt><dd>Nur du und die Menschen, die du einlädst. Termine, Gesundheit, Runden und Fotos sind so verschlüsselt, dass nicht einmal wir sie lesen können. Öffentlich ist nur, was öffentlich sein soll: dein Notfallpass und Bewertungen von Orten. Mehr in der <a href="https://thisdog.app/datenschutz">Datenschutzerklärung</a>.</dd></div>
+    </dl>
+  </section>
+
+  <section class="wrap end" data-lane="end">
+    <p class="gone rise" id="gone"></p>
+    <h2 class="rise">Bis bald draußen.</h2>
+    <div class="rise">
+      <p class="lead">ThisDog kommt zuerst für iPhone und iPad. Schreib uns kurz, dann melden wir uns, sobald es so weit ist. Mehr machen wir mit deiner Adresse nicht.</p>
+      <a class="mail" href="mailto:hey@thisdog.app?subject=Sag%20mir%20Bescheid%2C%20wenn%20ThisDog%20da%20ist">Sag mir Bescheid</a>
+    </div>
+  </section>
+</div>
+
+<footer>
+  <div class="wrap"><span>ThisDog kommt von Alex aus Wien, Stellas Mensch.</span><nav aria-label="Weitere Seiten"><a href="https://thisdog.app/support">Support</a><a href="https://thisdog.app/datenschutz">Datenschutz</a><a href="https://thisdog.app/impressum">Impressum</a></nav></div>
+</footer>
+
+<script type="application/json" id="foods">{{FOODS}}</script>
+<script>
+// Der Food-Check: dieselben Daten wie in der App, gesucht wird im Browser, nichts verlässt die Seite.
+(() => {
+  const foods = JSON.parse(document.getElementById('foods').textContent);
+  const q = document.getElementById('q'), out = document.getElementById('result');
+  const label = { ok: 'Erlaubt', warn: 'Nur mit Vorsicht', bad: 'Nicht geeignet' };
+  const rank = { bad: 0, warn: 1, ok: 2 };
+  const norm = (s) => s.toLowerCase().replace(/ä/g, 'a').replace(/ö/g, 'o').replace(/ü/g, 'u').replace(/ß/g, 'ss').replace(/\(.*?\)/g, ' ').replace(/[^a-z0-9 ]/g, ' ').replace(/\s+/g, ' ').trim();
+  const stem = (s) => s.length > 4 ? s.replace(/(en|er|n|e|s)$/, '') : s;
+  const near = (a, b) => { // Tippfehler: Abstand höchstens 1, bei langen Wörtern 2
+    if (Math.abs(a.length - b.length) > 2) return false;
+    let p = Array.from({ length: b.length + 1 }, (_, i) => i);
+    for (let i = 1; i <= a.length; i++) { const c = [i]; for (let j = 1; j <= b.length; j++) c[j] = Math.min(p[j] + 1, c[j - 1] + 1, p[j - 1] + (a[i - 1] !== b[j - 1])); p = c; }
+    return p[b.length] <= (a.length > 7 ? 2 : 1);
+  };
+  const index = foods.map((f) => ({ f, terms: [f.name, ...(f.aliases || [])].map(norm) }));
+  const search = (raw) => {
+    const n = norm(raw), s = stem(n);
+    if (n.length < 2) return [];
+    const hits = [];
+    for (const { f, terms } of index) {
+      let best = 0;
+      terms.forEach((t, i) => {
+        const w = i === 0 ? 1 : .9, ts = stem(t);
+        let v = 0;
+        if (t === n || ts === s) v = 1;
+        else if (t.startsWith(n)) v = .85;
+        else if (t.split(' ').some((p) => p.startsWith(s))) v = .75;
+        else if (s.length >= 3 && t.includes(s)) v = .55;
+        else if (ts.length >= 4 && s.includes(ts)) v = .5; // „Weintrauben“ findet „Trauben“
+        else if (s.length >= 4 && t.split(' ').some((p) => near(s, stem(p)))) v = .4;
+        best = Math.max(best, v * w);
+      });
+      if (best) hits.push({ f, best });
+    }
+    return hits.sort((a, b) => b.best - a.best || rank[a.f.status] - rank[b.f.status] || a.f.name.localeCompare(b.f.name, 'de')).map((h) => h.f);
+  };
+  const el = (tag, cls, text) => { const e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; };
+  const show = (f, others) => {
+    out.replaceChildren();
+    out.append(el('p', 'about', f.name), el('p', 'verdict ' + f.status, label[f.status]), el('p', 'why', f.reason));
+    if (f.status === 'bad') out.append(el('p', 'next', 'Schon passiert? Ruf am besten gleich deine Tierarztpraxis an und sag, was und wie viel es war.'));
+    if (others.length) {
+      const also = el('div', 'also');
+      also.append(el('span', '', 'Oder meinst du:'));
+      for (const o of others) { const b = el('button', '', o.name); b.type = 'button'; b.addEventListener('click', () => { q.value = o.name; update(); }); also.append(b); }
+      out.append(also);
+    }
+  };
+  const update = () => {
+    const v = q.value.trim();
+    if (norm(v).length < 2) { show(foods.find((f) => f.name === 'Trauben'), []); return; }
+    const hits = search(v);
+    if (hits.length) { show(hits[0], hits.slice(1, 4)); return; }
+    out.replaceChildren(el('p', 'about', v), el('p', 'verdict', 'Das haben wir noch nicht in der Liste.'),
+      el('p', 'why', 'Das heißt nicht, dass es harmlos ist. Frag im Zweifel deine Tierarztpraxis.'));
+  };
+  q.addEventListener('input', update);
+  document.querySelectorAll('.tries button').forEach((b) => b.addEventListener('click', () => { q.value = b.textContent; update(); }));
+  update();
+})();
+// Das Scrollen klappt das Duo auf; die Anzeige zeigt, wie weit.
+(() => {
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const stage = document.getElementById('orte'), duo = document.getElementById('duo'), meter = document.getElementById('meter');
+  const update = () => {
+    const r = stage.getBoundingClientRect();
+    const span = Math.max(1, r.height - stage.firstElementChild.offsetHeight);
+    const t = Math.min(1, Math.max(0, (-r.top + 64) / (span * 0.85)));
+    const p = (t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2).toFixed(4);
+    duo.style.setProperty('--p', p); meter.style.setProperty('--p', p);
+  };
+  addEventListener('scroll', update, { passive: true });
+  addEventListener('resize', update);
+  update();
+})();
+// Die Leine: läuft durch die freien Gassen neben den Inhalten, schlängelt sich dabei wie eine lockere Leine und
+// macht im Weißraum zwischen den Abschnitten Bögen und Schlaufen. Sie wächst beim Scrollen, Stellas Kopf läuft an
+// der Spitze mit. Am Ende rollt sie sich ein wie im Logo.
+(() => {
+  const root = document.documentElement, page = document.querySelector('.page'), svg = document.getElementById('leash');
+  const path = svg.querySelector('path'), a = svg.querySelector('.a'), b = svg.querySelector('.b');
+  const tip = document.getElementById('tip'), face = tip.querySelector('.face');
+  const statusText = document.getElementById('statusText'), gone = document.getElementById('gone');
+  const still = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const KM = 3.2; // So lang ist die Runde über die ganze Seite.
+  let len = 0, table = [], current = 0, hideFrom = 0, hideTo = 0;
+  const fmtKm = (x) => x.toLocaleString('de-DE', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+
+  const lanes = (box) => {
+    const narrow = innerWidth < 820, hero = document.querySelector('.hero');
+    const heroLeft = hero.getBoundingClientRect().left + parseFloat(getComputedStyle(hero).paddingLeft) - box.left;
+    const edge = narrow ? 9 : Math.max(14, heroLeft - 44);
+    const out = [];
+    for (const s of page.querySelectorAll('[data-lane]')) {
+      const kind = s.dataset.lane, r = s.getBoundingClientRect(), kids = [...s.children].map((c) => c.getBoundingClientRect());
+      const top = r.top - box.top, bottom = r.bottom - box.top - parseFloat(getComputedStyle(s).paddingBottom);
+      let x = edge, room = narrow ? 5 : Math.min(edge - 10, 18);
+      if (!narrow) {
+        if (kind === 'gap') { const [l, q] = [...kids].sort((m, n) => m.left - n.left); x = (l.right + q.left) / 2 - box.left; room = Math.min((q.left - l.right) / 2 - 22, 38); }
+        if (kind === 'after') { x = kids[0].right - box.left + 70; room = 40; }
+        if (kind === 'center') { x = box.width / 2; room = 0; }
+      }
+      out.push({ kind, x, room: Math.max(0, room), top, bottom, s });
+    }
+    return out;
+  };
+
+  // Mehrere Schwingungen übereinander, damit es nicht nach Sinuskurve aussieht. Fest, nicht zufällig:
+  // Die Leine sieht bei jedem Laden gleich aus.
+  const wander = (y, seed) => Math.sin(y / 83 + seed) * .5 + Math.sin(y / 37 + seed * 2.3) * .22 + Math.sin(y / 191 + seed * .7) * .55;
+
+  // Glatte Linie durch alle Punkte (Catmull-Rom).
+  const smooth = (P) => {
+    let d = `M${P[0][0].toFixed(1)},${P[0][1].toFixed(1)}`;
+    for (let i = 0; i < P.length - 1; i++) {
+      const p0 = P[i - 1] || P[i], p1 = P[i], p2 = P[i + 1], p3 = P[i + 2] || p2;
+      d += ` C${(p1[0] + (p2[0] - p0[0]) / 6).toFixed(1)},${(p1[1] + (p2[1] - p0[1]) / 6).toFixed(1)} ${(p2[0] - (p3[0] - p1[0]) / 6).toFixed(1)},${(p2[1] - (p3[1] - p1[1]) / 6).toFixed(1)} ${p2[0].toFixed(1)},${p2[1].toFixed(1)}`;
+    }
+    return d;
+  };
+
+  const build = () => {
+    const box = page.getBoundingClientRect(), L = lanes(box), narrow = innerWidth < 820, W = box.width;
+    const hidden = L.find((l) => l.kind === 'center');
+    if (hidden) { hideFrom = hidden.top; hideTo = hidden.bottom; }
+    const soon = L[0].s.querySelector('.soon').getBoundingClientRect();
+    const sx = narrow ? 9 : soon.left - box.left, sy = soon.bottom - box.top + 30;
+    const P = [[sx, sy]];
+    let px = sx, py = sy;
+    L.slice(1).forEach((l, i) => {
+      const end = l.kind === 'end', seed = i * 1.7 + .4;
+      const topY = l.top - 14;
+      const bot = end ? l.s.querySelector('.mail').getBoundingClientRect().bottom - box.top + 44 : l.bottom + (l.kind === 'center' ? 28 : 10);
+      // Durch den Weißraum: ein weiter Bogen, jeder zweite mit einer Schlaufe.
+      const gap = topY - py, n = Math.max(6, Math.round(gap / 22));
+      const wide = narrow ? Math.min(W * .34, 130) : Math.min(W * .14, 190);
+      const side = i % 2 ? 1 : -1;
+      let skip = null;
+      const out = narrow ? 1 : side;
+      for (let k = 1; k <= n; k++) {
+        const u = k / n, e = u * u * (3 - 2 * u);
+        // Quadriert: Der Bogen beginnt und endet senkrecht, ohne Knick am Übergang zur Gasse.
+        const belly = Math.sin(u * Math.PI) ** 2;
+        const x = px + (l.x - px) * e + out * wide * belly * (gap > 90 ? 1 : .3) + Math.sin(u * 9 + seed) * 5 * belly;
+        const y = py + gap * u;
+        if (skip && Math.hypot(x - skip[0], y - skip[1]) < skip[2]) continue;
+        P.push([x, y]);
+        if (k === Math.round(n * .5) && i % 2 === 0 && gap > 110 && P.length > 1) {
+          // Eine Schlinge: Die Leine läuft in Laufrichtung hinein, kreuzt sich selbst und läuft geradeaus weiter.
+          const [qx, qy] = P[P.length - 2];
+          const dl = Math.hypot(x - qx, y - qy) || 1, ux = (x - qx) / dl, uy = (y - qy) / dl;
+          const r = Math.min(gap * .15, narrow ? 17 : 26), turn = out > 0 ? -1 : 1, drift = r * .42, reach = Math.PI * drift + 6;
+          while (P.length > 1 && Math.hypot(P[P.length - 1][0] - x, P[P.length - 1][1] - y) < reach) P.pop();
+          for (let m = 0; m <= 16; m++) {
+            const w = -Math.PI + m / 16 * 2 * Math.PI, along = drift * w - r * Math.sin(w), off = r * (1 + Math.cos(w)) * turn;
+            P.push([x + ux * along - uy * off, y + uy * along + ux * off]);
+          }
+          skip = [x, y, reach];
+        }
+      }
+      // Durch die Gasse des Abschnitts: geschlängelt, aber innerhalb des freien Platzes.
+      const steps = Math.max(2, Math.round((bot - topY) / 26));
+      for (let k = 1; k <= steps; k++) {
+        const y = topY + (bot - topY) * k / steps, fade = Math.min(1, Math.min(k, steps - k) / 3);
+        P.push([l.x + wander(y, seed) * l.room * fade, y]);
+      }
+      px = l.x; py = bot;
+    });
+    // Die Locke am Ende, wie im Logo.
+    const s = narrow ? .6 : 1, c = (x, y) => [px + x * s, py + y * s];
+    P.push(c(4, 26), c(26, 48), c(62, 56), c(100, 44), c(118, 18), c(106, -8), c(84, -14), c(64, -4), c(64, 14), c(84, 20));
+    path.setAttribute('d', smooth(P));
+    a.setAttribute('cx', sx); a.setAttribute('cy', sy);
+    b.setAttribute('cx', px + 84 * s); b.setAttribute('cy', py + 20 * s);
+    svg.setAttribute('viewBox', `0 0 ${box.width} ${box.height}`);
+    len = path.getTotalLength();
+    path.style.strokeDasharray = len;
+    table = [];
+    let far = -1;
+    for (let i = 0; i <= 900; i++) { const l = len * i / 900, y = path.getPointAtLength(l).y; if (y > far) { far = y; table.push([y, l]); } }
+    draw();
+  };
+
+  const lengthAt = (y) => {
+    let lo = 0, hi = table.length - 1;
+    if (y <= table[0][0]) return 0;
+    if (y >= table[hi][0]) return table[hi][1];
+    while (hi - lo > 1) { const m = (lo + hi) >> 1; if (table[m][0] <= y) lo = m; else hi = m; }
+    const [ya, la] = table[lo], [yb, lb] = table[hi];
+    return la + (lb - la) * (y - ya) / (yb - ya || 1);
+  };
+
+  let moveTimer = 0, heading = 1, facesLeft = false, turned = -9999;
+  const draw = () => {
+    if (!table.length) return;
+    if (still) { path.style.strokeDashoffset = 0; b.style.opacity = 1; tip.style.display = 'none'; return; }
+    const y = innerHeight * .66 - page.getBoundingClientRect().top;
+    const atEnd = scrollY + innerHeight >= root.scrollHeight - 40;
+    const l = atEnd ? len : lengthAt(y);
+    if (Math.abs(l - current) > 1) { tip.classList.add('moving'); clearTimeout(moveTimer); moveTimer = setTimeout(() => tip.classList.remove('moving'), 180); }
+    if (Math.abs(l - current) > .5) heading = l - current;
+    current = l;
+    path.style.strokeDashoffset = len - l;
+    const done = l >= len - 1;
+    b.style.opacity = done ? 1 : 0;
+    const pt = path.getPointAtLength(l), ahead = path.getPointAtLength(Math.min(len, l + 90)), back = path.getPointAtLength(Math.max(0, l - 90));
+    tip.style.transform = `translate(${pt.x.toFixed(1)}px, ${pt.y.toFixed(1)}px)`;
+    // Hinter dem Duo läuft die Leine verdeckt, dann ist auch Stella weg.
+    tip.classList.toggle('on', l > 4 && !done && !(pt.y > hideFrom && pt.y < hideTo));
+    // Sie dreht sich nur, wenn die Leine länger in eine Richtung läuft, nicht bei jeder kleinen Welle.
+    const dx = (ahead.x - back.x) * (heading < 0 ? -1 : 1), now = performance.now();
+    if (Math.abs(dx) > 50 && (dx < 0) !== facesLeft && now - turned > 1200) { facesLeft = dx < 0; turned = now; }
+    face.style.transform = facesLeft ? 'scaleX(-1)' : 'scaleX(1)';
+    // Die Kilometer dieser Runde stehen in der Kopfzeile.
+    const km = KM * l / len;
+    if (l > 30 || auto) {
+      root.classList.add('walking');
+      statusText.textContent = done ? `${fmtKm(KM)} km, gute Runde!` : auto ? `${clock()}, ${fmtKm(km)} km` : `Unterwegs, ${fmtKm(km)} km`;
+    } else if (!auto) {
+      root.classList.remove('walking');
+      statusText.textContent = 'Bald für iPhone und iPad';
+    }
+    if (done && gone && !gone.textContent) gone.textContent = `Das waren gerade ${fmtKm(KM)} km mit dem Daumen. Dein Hund hätte lieber echte.`;
+  };
+
+  // „Runde starten“: Die Seite läuft von selbst los, bis du selbst scrollst oder Pause tippst.
+  let auto = false, paused = false, began = 0, banked = 0, last = 0, carry = 0;
+  const go = document.getElementById('go'), pause = document.getElementById('pause');
+  const clock = () => { const s = Math.floor(banked + (paused ? 0 : (performance.now() - began) / 1000)); return `${String(Math.floor(s / 60)).padStart(2, '0')}:${String(s % 60).padStart(2, '0')}`; };
+  const speed = () => Math.max(70, innerHeight * .11);
+  const walk = (now) => {
+    if (!auto || paused) return;
+    const dt = Math.min(50, now - last); last = now;
+    carry += speed() * dt / 1000;
+    const whole = Math.floor(carry); carry -= whole;
+    if (whole) scrollBy(0, whole);
+    if (scrollY + innerHeight >= root.scrollHeight - 2) { stop(); return; }
+    draw();
+    requestAnimationFrame(walk);
+  };
+  const stop = () => { auto = false; paused = false; root.classList.remove('auto'); pause.textContent = 'Pause'; draw(); };
+  const setPaused = (v) => {
+    paused = v; pause.textContent = v ? 'Weiter' : 'Pause';
+    if (v) { banked += (performance.now() - began) / 1000; }
+    else { began = performance.now(); last = began; requestAnimationFrame(walk); }
+    draw();
+  };
+  go.addEventListener('click', () => {
+    auto = true; paused = false; banked = 0; began = performance.now(); last = began; carry = 0;
+    root.classList.add('auto', 'walking');
+    requestAnimationFrame(walk);
+  });
+  pause.addEventListener('click', () => setPaused(!paused));
+  // Wer selbst scrollt, übernimmt die Leine.
+  for (const ev of ['wheel', 'touchstart']) addEventListener(ev, () => { if (auto) stop(); }, { passive: true });
+
+  // Antippen: Wuff!
+  let barkTimer = 0;
+  tip.addEventListener('click', () => { tip.classList.add('bark'); clearTimeout(barkTimer); barkTimer = setTimeout(() => tip.classList.remove('bark'), 1100); navigator.vibrate?.(30); });
+  const photo = document.querySelector('.hero-photo');
+  photo.addEventListener('click', () => { photo.classList.add('pet'); setTimeout(() => photo.classList.remove('pet'), 500); });
+
+  addEventListener('scroll', draw, { passive: true });
+  addEventListener('resize', build);
+  addEventListener('load', build);
+  document.fonts && document.fonts.ready.then(build);
+  build();
+})();
+// Kleinigkeiten: Auftritt, Einblenden, Geräte rücken sich gerade, das Wort in der Überschrift, die Uhr im Telefon,
+// der Food-Check tippt selbst. Bewegung nur, wenn gewünscht; ohne Skript steht alles still an seinem Platz.
+(() => {
+  const root = document.documentElement;
+  const reveals = [...document.querySelectorAll('.rise')];
+  const showAll = () => { reveals.forEach((e) => e.classList.add('in')); root.classList.add('ready'); };
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) { showAll(); return; }
+  requestAnimationFrame(() => requestAnimationFrame(() => root.classList.add('ready')));
+  setTimeout(() => root.classList.add('ready'), 400);
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver((es) => { for (const e of es) if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }, { rootMargin: '0px 0px -12% 0px' });
+    reveals.forEach((e) => io.observe(e));
+  } else showAll();
+  setTimeout(() => { if (!reveals.some((e) => e.classList.contains('in'))) showAll(); }, 3000);
+  // Zeichnet der Browser kaum (manche eingebetteten Ansichten), läuft die Animationsuhr nicht: dann ohne Übergänge.
+  if (document.visibilityState === 'visible') {
+    let frames = 0;
+    const tick = () => { frames++; if (frames < 10) requestAnimationFrame(tick); };
+    requestAnimationFrame(tick);
+    setTimeout(() => { if (frames < 3 && document.visibilityState === 'visible') { root.classList.add('still'); showAll(); } }, 2000);
+  }
+  const tilts = [...document.querySelectorAll('.tilt')];
+  const tilt = () => { for (const el of tilts) { const r = el.getBoundingClientRect(), t = Math.min(1, Math.max(0, (innerHeight - r.top) / (innerHeight * .6))); el.style.setProperty('--t', (1 - Math.pow(1 - t, 3)).toFixed(3)); } };
+  addEventListener('scroll', tilt, { passive: true });
+  tilt();
+
+  // „Heute mal eine andere …?“
+  const word = document.getElementById('word'), words = ['Runde', 'Wiese', 'Pfütze', 'Hundezone', 'Route'];
+  let w = 0;
+  setInterval(() => {
+    if (document.hidden || scrollY > innerHeight) return;
+    word.classList.add('out');
+    setTimeout(() => {
+      w = (w + 1) % words.length;
+      word.textContent = words[w];
+      word.classList.replace('out', 'pre');
+      word.offsetWidth;
+      word.classList.remove('pre');
+    }, 340);
+  }, 2800);
+
+  // Die Uhr im Telefon läuft weiter, solange es zu sehen ist.
+  let s = 23 * 60 + 41, m = 1840, seen = false;
+  const live = document.querySelector('.live');
+  if ('IntersectionObserver' in window) new IntersectionObserver(([e]) => { seen = e.isIntersecting; }).observe(live);
+  setInterval(() => {
+    if (!seen) return;
+    s += 1; m += 1.3;
+    live.querySelector('[data-live="clock"]').textContent = `${String(Math.floor(s / 60)).padStart(2, '0')}:${String(s % 60).padStart(2, '0')}`;
+    live.querySelector('[data-live="km"]').textContent = (m / 1000).toLocaleString('de-DE', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+  }, 1000);
+
+  // Der Food-Check tippt selbst, bis jemand selbst tippt.
+  const q = document.getElementById('q'), out = document.getElementById('result');
+  const demo = ['Trauben', 'Banane', 'Hüttenkäse', 'Schokolade'];
+  let on = true, inView = false, timer = 0, i = 0, c = 0;
+  const type = () => {
+    clearTimeout(timer);
+    if (!on || !inView) return;
+    const w = demo[i % demo.length];
+    if (c < w.length) { c++; q.value = w.slice(0, c); timer = setTimeout(type, 90 + Math.random() * 70); return; }
+    q.dispatchEvent(new Event('input'));
+    timer = setTimeout(() => { c = 0; i++; q.value = ''; type(); }, 3400);
+  };
+  const quit = () => { on = false; clearTimeout(timer); out.setAttribute('aria-live', 'polite'); };
+  out.setAttribute('aria-live', 'off');
+  q.addEventListener('pointerdown', quit); q.addEventListener('focus', quit);
+  document.querySelectorAll('.tries button').forEach((b) => b.addEventListener('pointerdown', quit));
+  if ('IntersectionObserver' in window) new IntersectionObserver(([e]) => { inView = e.isIntersecting; if (inView) type(); else clearTimeout(timer); }, { threshold: .4 }).observe(q);
+})();
+</script>

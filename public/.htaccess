@@ -1,0 +1,116 @@
+# Zugangsdaten stehen in api/config.php (nicht im Repository).
+# Vorlage: api/config.example.php
+
+# Eine Adresse für alles: https://thisdog.app
+#
+# Jede andere Schreibweise – ohne Verschlüsselung, mit www, unter der alten
+# Domain – wird dauerhaft dorthin umgeleitet. Das ist nicht nur Kosmetik: Der
+# Service Worker, der Speicher der App und die Anmeldecookies hängen alle an
+# der Adresse. Wer unter zwei Namen unterwegs ist, hat zwei getrennte Apps.
+<IfModule mod_rewrite.c>
+	RewriteEngine On
+
+	# Verschlüsselung erzwingen. Der zweite Test ist der wichtige: Hinter
+	# einem Proxy meldet Apache selbst «kein HTTPS», obwohl die Verbindung
+	# verschlüsselt ankommt – ohne ihn liefe die Umleitung im Kreis.
+	RewriteCond %{HTTPS} !=on
+	RewriteCond %{HTTP:X-Forwarded-Proto} !=https
+	RewriteCond %{HTTP:X-Forwarded-Ssl} !=on
+	RewriteRule ^ https://thisdog.app%{REQUEST_URI} [R=301,L]
+
+	# Alles, was nicht genau «thisdog.app» heißt, kommt hierher.
+	RewriteCond %{HTTP_HOST} !^thisdog\.app$ [NC]
+	RewriteRule ^ https://thisdog.app%{REQUEST_URI} [R=301,L]
+
+	# Der Anmeldelink aus der Mail: thisdog.app/anmelden/<Geheimnis>.
+	#
+	# Er steht in einer Nachricht, die ein Mensch liest, und sieht deshalb
+	# nicht aus wie ein Skriptaufruf mit zwei Parametern. Dahinter liegt
+	# unverändert api/auth.php – die alte Adresse bleibt gültig, damit
+	# Links, die schon unterwegs sind, weiter funktionieren.
+	RewriteRule ^anmelden/([A-Za-z0-9_-]+)/?$ api/auth.php?action=verify&t=$1 [L]
+
+	# Einladung ins Rudel: thisdog.app/rudel/<Geheimnis>. Mit installierter App
+	# öffnet iOS den Link direkt in der App (Universal Link); sonst zeigt die
+	# Seite, wie man dazukommt.
+	RewriteRule ^rudel/([A-Za-z0-9_-]+)/?$ rudel.php?t=$1 [L]
+
+	# Notfallpass: thisdog.app/notfall/<Schlüssel> – die Seite hinter dem QR-Code
+	# am Halsband. Bewusst kein Universal Link: Wer den Hund findet, hat die App
+	# meist nicht, und die Halter sollen dieselbe Seite sehen wie der Finder.
+	RewriteRule ^notfall/([A-Za-z0-9_-]+)/?$ notfall.php?t=$1 [L]
+
+	# Einladung als Hundefreund: thisdog.app/freund/<Geheimnis>#k=<Schlüssel>.
+	# Wie beim Rudel öffnet iOS den Link in der App; den Schlüssel hinter dem
+	# „#“ schickt kein Browser an den Server.
+	RewriteRule ^freund/([A-Za-z0-9_-]+)/?$ freund.php [L]
+
+	# Datenschutz und Impressum, für App Store Connect und aus der App heraus verlinkt.
+	RewriteRule ^datenschutz/?$ rechtliches/datenschutz.html [L]
+	RewriteRule ^impressum/?$ rechtliches/impressum.html [L]
+	RewriteRule ^support/?$ rechtliches/support.html [L]
+</IfModule>
+
+# Auslieferung: Textdateien komprimieren
+<IfModule mod_deflate.c>
+	AddOutputFilterByType DEFLATE text/html text/css text/javascript application/javascript application/json image/svg+xml application/manifest+json
+</IfModule>
+
+# Universal Links: Apple liest diese Datei ohne Endung und will JSON.
+<Files "apple-app-site-association">
+	ForceType application/json
+</Files>
+
+<IfModule mod_headers.c>
+	Header always set X-Content-Type-Options "nosniff"
+	Header always set Referrer-Policy "strict-origin-when-cross-origin"
+
+	# Niemand darf die App in einen fremden Rahmen setzen. Ohne diese Sperre
+	# ließe sich eine unsichtbare Kopie über eine fremde Seite legen und der
+	# Besucher klickt dort, wo er nicht klicken will – etwa auf «Konto löschen».
+	# Beides gesetzt: Der alte Kopf wird noch von Browsern gelesen, die
+	# `frame-ancestors` nicht kennen.
+	Header always set X-Frame-Options "DENY"
+	Header always set Content-Security-Policy "frame-ancestors 'none'"
+
+	# Was die Seite selbst nutzt, darf sie – Kamera und Standort für den
+	# Food-Check und die Gassirunden. Ein eingebetteter Rahmen bekommt nichts.
+	Header always set Permissions-Policy "camera=(self), geolocation=(self), microphone=(), payment=(), usb=()"
+
+	# Ein halbes Jahr nur über HTTPS. Bewusst ohne `preload` und ohne
+	# Subdomains: Beides ist schwer zurückzunehmen, wenn eine Subdomain einmal
+	# ohne Zertifikat auskommen muss.
+	Header always set Strict-Transport-Security "max-age=15552000"
+
+	# Der Service Worker und die Versionsdatei dürfen nie aus dem Cache kommen,
+	# sonst erreichen Aktualisierungen die Installationen nicht.
+	<FilesMatch "(service-worker\.js|version\.json)$">
+		Header set Cache-Control "no-cache, no-store, must-revalidate"
+	</FilesMatch>
+
+	# Seiten immer beim Server nachfragen, sonst sehen Wiederkehrende nach einer Änderung noch die alte Fassung.
+	<FilesMatch "\.html$">
+		Header set Cache-Control "no-cache"
+	</FilesMatch>
+
+	# Unveränderliche Medien lange vorhalten
+	<FilesMatch "\.(webp|png|jpg|jpeg|ico|woff2)$">
+		Header set Cache-Control "public, max-age=31536000, immutable"
+	</FilesMatch>
+
+	# Programmcode täglich prüfen lassen
+	<FilesMatch "\.(js|css)$">
+		Header set Cache-Control "public, max-age=86400, must-revalidate"
+	</FilesMatch>
+</IfModule>
+
+<IfModule mod_mime.c>
+	AddType application/manifest+json .webmanifest
+	AddType image/webp .webp
+	AddType font/woff2 .woff2
+</IfModule>
+
+# Konfiguration und Datenbank nicht ausliefern
+<FilesMatch "(config\.php|\.sqlite|\.sqlite-wal|\.sqlite-shm|\.log)$">
+	Require all denied
+</FilesMatch>

@@ -1,0 +1,2339 @@
+{
+  "sourceLanguage" : "de",
+  "strings" : {
+    " %lld" : {
+
+    },
+    " Uhr" : {
+
+    },
+    " auf dem iPhone" : {
+
+    },
+    " ist seit %@ hier" : {
+
+    },
+    " km" : {
+
+    },
+    "%@  %@" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@  %2$@"
+          }
+        }
+      }
+    },
+    "%@ bis %@" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@ bis %2$@"
+          }
+        }
+      }
+    },
+    "%@ bis jetzt. Viel Spaß!" : {
+
+    },
+    "%@ endet" : {
+
+    },
+    "%@ entfernt" : {
+
+    },
+    "%@ fällig: %@" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@ fällig: %2$@"
+          }
+        }
+      }
+    },
+    "%@ hinzufügen" : {
+
+    },
+    "%@ in %@" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@ in %2$@"
+          }
+        }
+      }
+    },
+    "%@ in „Wo ist?“ suchen" : {
+
+    },
+    "%@ ist unterwegs" : {
+
+    },
+    "%@ kcal" : {
+
+    },
+    "%@ keine Runde" : {
+
+    },
+    "%@ m²" : {
+
+    },
+    "%@ möchte %@ kennenlernen" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@ möchte %2$@ kennenlernen"
+          }
+        }
+      }
+    },
+    "%@ und %@ sind jetzt Freunde." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@ und %2$@ sind jetzt Freunde."
+          }
+        }
+      }
+    },
+    "%@ war %lld-mal hier" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@ war %2$lld-mal hier"
+          }
+        }
+      }
+    },
+    "%@ war einmal hier" : {
+
+    },
+    "%@ war unterwegs" : {
+
+    },
+    "%@ wartet schon." : {
+
+    },
+    "%@ wird %lld" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@ wird %2$lld"
+          }
+        }
+      }
+    },
+    "%@ °C" : {
+
+    },
+    "%@%@ kg seit %@" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@%2$@ kg seit %3$@"
+          }
+        }
+      }
+    },
+    "%@, %@" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@, %2$@"
+          }
+        }
+      }
+    },
+    "%@, %@ entfernt" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@, %2$@ entfernt"
+          }
+        }
+      }
+    },
+    "%@, %@, %@" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@, %2$@, %3$@"
+          }
+        }
+      }
+    },
+    "%@, %lld Fotos" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@, %2$lld Fotos"
+          }
+        }
+      }
+    },
+    "%@, %lld Min." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@, %2$lld Min."
+          }
+        }
+      }
+    },
+    "%@, %lld. %@" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@, %2$lld. %3$@"
+          }
+        }
+      }
+    },
+    "%@, Runde etwa %@, %lld Min." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@, Runde etwa %2$@, %3$lld Min."
+          }
+        }
+      }
+    },
+    "%@, heute fällig" : {
+
+    },
+    "%@, in %lld Tagen fällig" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@, in %2$lld Tagen fällig"
+          }
+        }
+      }
+    },
+    "%@, in 1 Tag fällig" : {
+
+    },
+    "%@, seit %lld Tagen fällig" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@, seit %2$lld Tagen fällig"
+          }
+        }
+      }
+    },
+    "%@s Revier" : {
+
+    },
+    "%@s letzte Runde: %@, %@." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@s letzte Runde: %2$@, %3$@."
+          }
+        }
+      }
+    },
+    "%@’ Revier" : {
+
+    },
+    "%lld" : {
+
+    },
+    "%lld " : {
+
+    },
+    "%lld %@" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$lld %2$@"
+          }
+        }
+      }
+    },
+    "%lld Abzeichen" : {
+
+    },
+    "%lld Besuche" : {
+
+    },
+    "%lld Jahre" : {
+
+    },
+    "%lld Lebensmittel" : {
+
+    },
+    "%lld Menschen haben bewertet" : {
+
+    },
+    "%lld Menschen haben bisher bewertet" : {
+
+    },
+    "%lld Min." : {
+
+    },
+    "%lld Minuten" : {
+
+    },
+    "%lld Monate" : {
+
+    },
+    "%lld Orte" : {
+
+    },
+    "%lld Prüfungen warten aufs Netz" : {
+
+    },
+    "%lld Sonntage in Folge" : {
+
+    },
+    "%lld Std. %lld Min." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$lld Std. %2$lld Min."
+          }
+        }
+      }
+    },
+    "%lld Stunden" : {
+
+    },
+    "%lld Tage" : {
+
+    },
+    "%lld m" : {
+
+    },
+    "%lld verschiedene Orte" : {
+
+    },
+    "%lld von %lld" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$lld von %2$lld"
+          }
+        }
+      }
+    },
+    "%lld × %@ g" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$lld × %2$@ g"
+          }
+        }
+      }
+    },
+    "%lld-mal geöffnet, zuletzt %@." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$lld-mal geöffnet, zuletzt %2$@."
+          }
+        }
+      }
+    },
+    "%lld. %@" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$lld. %2$@"
+          }
+        }
+      }
+    },
+    "%lld. %@ %@" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$lld. %2$@ %3$@"
+          }
+        }
+      }
+    },
+    "%lld. Besuch" : {
+
+    },
+    "%lld°" : {
+
+    },
+    "--%@\r\nContent-Disposition: form-data; name=\"%@\"\r\n\r\n%@\r\n" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "--%1$@\r\nContent-Disposition: form-data; name=\"%2$@\"\r\n\r\n%3$@\r\n"
+          }
+        }
+      }
+    },
+    "--%@\r\nContent-Disposition: form-data; name=\"%@\"; filename=\"foto.jpg\"\r\nContent-Type: image/jpeg\r\n\r\n" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "--%1$@\r\nContent-Disposition: form-data; name=\"%2$@\"; filename=\"foto.jpg\"\r\nContent-Type: image/jpeg\r\n\r\n"
+          }
+        }
+      }
+    },
+    "1 Besuch" : {
+
+    },
+    "1 Jahr" : {
+
+    },
+    "1 Mensch hat bewertet" : {
+
+    },
+    "1 Mensch hat bisher bewertet" : {
+
+    },
+    "1 Minute" : {
+
+    },
+    "1 Monat" : {
+
+    },
+    "1 Ort" : {
+
+    },
+    "1 Prüfung wartet aufs Netz" : {
+
+    },
+    "Ab heute, %lld Tage" : {
+
+    },
+    "Abbrechen" : {
+
+    },
+    "Abgeglichen um %@ Uhr" : {
+
+    },
+    "Abgelehnt" : {
+
+    },
+    "Abgleich nicht möglich, die Änderungen bleiben auf dem Gerät." : {
+
+    },
+    "Abmelden" : {
+
+    },
+    "Abnehmen gehört tierärztlich begleitet: Zu schnell schadet." : {
+
+    },
+    "Abzeichen %@, %@" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Abzeichen %1$@, %2$@"
+          }
+        }
+      }
+    },
+    "Aktivität" : {
+
+    },
+    "Alex" : {
+
+    },
+    "Alle" : {
+
+    },
+    "Alle Kategorien" : {
+
+    },
+    "Alle Rechner brauchen das Gewicht. Trag es unter „Hund“ ein, dann rechnet die App mit den echten Werten." : {
+
+    },
+    "Alle drei Monate" : {
+
+    },
+    "Alle sechs Monate" : {
+
+    },
+    "Alle zwei Wochen" : {
+
+    },
+    "Allergien, Unverträglichkeiten" : {
+
+    },
+    "Am" : {
+
+    },
+    "Andere Adresse" : {
+
+    },
+    "Andere sehen den Ort sofort. Dein Name steht nicht dabei." : {
+
+    },
+    "Anderes Foto wählen" : {
+
+    },
+    "Angekommen" : {
+
+    },
+    "Angemeldet als" : {
+
+    },
+    "Anmeldelink schicken" : {
+
+    },
+    "Anna" : {
+
+    },
+    "Antwort an" : {
+
+    },
+    "Apfel (ohne Kerne)" : {
+
+    },
+    "Asphalt" : {
+
+    },
+    "Auch: %@" : {
+
+    },
+    "Auf Entdeckungstour" : {
+
+    },
+    "Auf dem Foto ist ein Gesicht zu sehen." : {
+
+    },
+    "Auf die Merkliste" : {
+
+    },
+    "Auf diesem Gerät fehlt der Schlüssel des Rudels." : {
+
+    },
+    "Augarten" : {
+
+    },
+    "Aus OpenStreetMap" : {
+
+    },
+    "Aus der Mediathek" : {
+
+    },
+    "Ausdrucken" : {
+
+    },
+    "Banane" : {
+
+    },
+    "Beenden" : {
+
+    },
+    "Befreundete Hunde seht ihr auf der Karte, solange ihr beide gerade Gassi geht. Geht einer in eurer Nähe los, sagt ThisDog Bescheid." : {
+
+    },
+    "Beginn" : {
+
+    },
+    "Behalten" : {
+
+    },
+    "Bei Hitze, Sport oder Trockenfutter mehr. Deutlich mehr Trinken über Tage gehört in der Praxis abgeklärt." : {
+
+    },
+    "Beim Gassi einchecken, dann sammeln sich hier die Orte." : {
+
+    },
+    "Belag bei %@ °C Luft" : {
+
+    },
+    "Beleuchtet" : {
+
+    },
+    "Besonderes" : {
+
+    },
+    "Besonderheiten" : {
+
+    },
+    "Besuch" : {
+
+    },
+    "Besuche" : {
+
+    },
+    "Bewerten" : {
+
+    },
+    "Bis" : {
+
+    },
+    "Bricolage Grotesque" : {
+
+    },
+    "Bänke" : {
+
+    },
+    "CFBundleShortVersionString" : {
+
+    },
+    "CFBundleVersion" : {
+
+    },
+    "Check-in löschen" : {
+
+    },
+    "Chip" : {
+
+    },
+    "Chip-Nummer" : {
+
+    },
+    "Chipnummer" : {
+
+    },
+    "Code" : {
+
+    },
+    "Dafür braucht es gerade eine Internetverbindung." : {
+
+    },
+    "Damit %@ Freunde finden kann, brauchst du ein Konto. Das dauert eine Minute." : {
+
+    },
+    "Damit Futtermenge, Ratgeber und Erinnerungen zu %@ passen. Ungefähr reicht." : {
+
+    },
+    "Damit ein Finder die Seite öffnen kann, liegt sie auf thisdog.app. Dafür brauchst du ein Rudel – melde dich an, es dauert eine Minute." : {
+
+    },
+    "Damit nichts untergeht." : {
+
+    },
+    "Danke" : {
+
+    },
+    "Danke, wir sehen es uns an." : {
+
+    },
+    "Dann holen wir euch dazu." : {
+
+    },
+    "Dann öffnet ein Button bei Gassi die App „Wo ist?“." : {
+
+    },
+    "Daraus entstehen Alter, Lebensphase und der Geburtstag im Kalender." : {
+
+    },
+    "Darf mein Hund das fressen?" : {
+
+    },
+    "Darf mein Hund …?" : {
+
+    },
+    "Das Ende liegt vor dem Beginn." : {
+
+    },
+    "Das Rudel ist voll." : {
+
+    },
+    "Das hat nicht geklappt. Versuch es gleich noch einmal." : {
+
+    },
+    "Das hat nicht geklappt. Zeig stattdessen den QR-Code." : {
+
+    },
+    "Das ist eine Einladung von deinem eigenen Hund." : {
+
+    },
+    "Daten wiederherstellen" : {
+
+    },
+    "Datenschutz" : {
+
+    },
+    "Dein Bild im Rudel" : {
+
+    },
+    "Dein Hund" : {
+
+    },
+    "Dein Name" : {
+
+    },
+    "Dein Name im Rudel" : {
+
+    },
+    "Deine E-Mail-Adresse und deine Anmeldungen verschwinden vom Server, ebenso Rudel, in denen sonst niemand ist, mit allen Daten, Notfallpass und Freundschaften. Die anderen in einem gemeinsamen Rudel behalten die gemeinsamen Daten. Auf diesem Gerät bleibt alles." : {
+
+    },
+    "Deine Nachricht hat die Nummer %@. Die Antwort kommt per E-Mail an %@, meist innerhalb von zwei Tagen." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Deine Nachricht hat die Nummer %1$@. Die Antwort kommt per E-Mail an %2$@, meist innerhalb von zwei Tagen."
+          }
+        }
+      }
+    },
+    "Deine Nummer" : {
+
+    },
+    "Deine Termine stehen dort in einem eigenen Kalender „%@“. Ausschalten entfernt ihn wieder." : {
+
+    },
+    "Den Ort gibt es nicht" : {
+
+    },
+    "Der Code stimmt nicht." : {
+
+    },
+    "Der Link ist abgelaufen. Fordere einen neuen an." : {
+
+    },
+    "Der Name stimmt nicht" : {
+
+    },
+    "Der Stand des Passes ließ sich nicht laden. Prüf die Verbindung." : {
+
+    },
+    "Der andere Mensch hält einfach die Handykamera drauf. Der Code gilt für einen Hund." : {
+
+    },
+    "Details zum Termin" : {
+
+    },
+    "Die Daten des Rudels sind verschlüsselt, und der Schlüssel liegt nur auf euren Geräten. Tippe auf einem Gerät, das schon dabei ist, auf „Rudelmitglied einladen“ und öffne den Link hier, oder gib euren Wiederherstellungsschlüssel ein. Mit demselben Apple-Account kommt er auch von selbst über den iCloud-Schlüsselbund." : {
+
+    },
+    "Die E-Mail-Adresse stimmt nicht." : {
+
+    },
+    "Die Fälligkeit erscheint im Kalender und unter „Was ansteht“." : {
+
+    },
+    "Die Mail an %@ ist unterwegs. Öffne den Link darin auf diesem Gerät, oder gib den Code aus der Mail ein." : {
+
+    },
+    "Die Serie endet vor ihrem Beginn." : {
+
+    },
+    "Die Verbindung ist abgerissen. Versucht es noch einmal oder nehmt den QR-Code." : {
+
+    },
+    "Die gemeinsamen Termine verschwinden von diesem Gerät. Die anderen behalten sie." : {
+
+    },
+    "Diese Adresse stimmt nicht." : {
+
+    },
+    "Diese Einladung gibt es nicht." : {
+
+    },
+    "Diese Einladung ist abgelaufen. Bitte um eine neue." : {
+
+    },
+    "Diese Einladung wurde schon benutzt. Bitte um eine neue." : {
+
+    },
+    "Dieser Bereich folgt." : {
+
+    },
+    "Dieser Schlüssel gehört zu einem anderen Rudel." : {
+
+    },
+    "Dieser Schlüssel stimmt nicht. Prüf jedes Zeichen noch einmal." : {
+
+    },
+    "Dosierung, z. B. 1 Tablette morgens" : {
+
+    },
+    "Du" : {
+
+    },
+    "Du bist am Ort, %@ entfernt" : {
+
+    },
+    "Du bist angemeldet." : {
+
+    },
+    "Du bist bei %@" : {
+
+    },
+    "Du hast den Wiederherstellungsschlüssel schon gesichert." : {
+
+    },
+    "E-Mail-Adresse" : {
+
+    },
+    "Eigener Termin" : {
+
+    },
+    "Ein Freund" : {
+
+    },
+    "Ein Hund" : {
+
+    },
+    "Ein QR-Code am Halsband, falls %@ einmal wegläuft. Du findest ihn im Reiter Hund." : {
+
+    },
+    "Einchecken" : {
+
+    },
+    "Einen Moment …" : {
+
+    },
+    "Eingang" : {
+
+    },
+    "Eingecheckt um %@" : {
+
+    },
+    "Eingetragen von Menschen mit Hund" : {
+
+    },
+    "Eingetragen von ThisDog" : {
+
+    },
+    "Eingezäunt" : {
+
+    },
+    "Einige Daten im Rudel lassen sich mit dem Schlüssel dieses Geräts nicht öffnen." : {
+
+    },
+    "Einladen" : {
+
+    },
+    "Einladung teilen" : {
+
+    },
+    "Einmal geöffnet, %@." : {
+
+    },
+    "Einmalig" : {
+
+    },
+    "Einstellungen" : {
+
+    },
+    "Eintrag löschen?" : {
+
+    },
+    "Eintragen" : {
+
+    },
+    "Ende" : {
+
+    },
+    "Endet" : {
+
+    },
+    "Energie je 100 g" : {
+
+    },
+    "Entwurmung" : {
+
+    },
+    "Er liegt woanders" : {
+
+    },
+    "Erdbeeren" : {
+
+    },
+    "Erinnerungen" : {
+
+    },
+    "Erinnerungen und Kalender" : {
+
+    },
+    "Erlaube den Standort in den Einstellungen der Watch." : {
+
+    },
+    "Erlaube den Standort, dann zeigt dir ThisDog Parks und Hundezonen in der Nähe." : {
+
+    },
+    "Erlaubt" : {
+
+    },
+    "Erster Besuch" : {
+
+    },
+    "Erwachsen" : {
+
+    },
+    "Erzähl uns von %@." : {
+
+    },
+    "Etwas anderes" : {
+
+    },
+    "Eure Daten sind so verschlüsselt, dass nicht einmal wir sie lesen können. Darum gibt es einen Schlüssel, mit dem du jederzeit wieder an alles kommst. Heb ihn einmal gut auf." : {
+
+    },
+    "Eure letzte Runde: %@, %@." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Eure letzte Runde: %1$@, %2$@."
+          }
+        }
+      }
+    },
+    "Falls alle Telefone weg sind" : {
+
+    },
+    "Falls alle Telefone weg sind." : {
+
+    },
+    "Fertig" : {
+
+    },
+    "Fläche" : {
+
+    },
+    "Food-Check" : {
+
+    },
+    "Foto" : {
+
+    },
+    "Foto aufnehmen" : {
+
+    },
+    "Foto auswählen" : {
+
+    },
+    "Foto entfernen" : {
+
+    },
+    "Foto hinzufügen" : {
+
+    },
+    "Foto von %@" : {
+
+    },
+    "Foto wählen" : {
+
+    },
+    "Foto ändern oder entfernen" : {
+
+    },
+    "Fotos" : {
+
+    },
+    "Fotos von Orten zeigen besser keine Menschen, die man erkennen kann." : {
+
+    },
+    "Frage" : {
+
+    },
+    "Freigegeben" : {
+
+    },
+    "Freilaufen" : {
+
+    },
+    "Freilaufen möglich" : {
+
+    },
+    "Freund" : {
+
+    },
+    "Freunde werden" : {
+
+    },
+    "Freundschaft beenden" : {
+
+    },
+    "Frisch, BARF" : {
+
+    },
+    "Frühling" : {
+
+    },
+    "Futter" : {
+
+    },
+    "Futtermenge" : {
+
+    },
+    "Für %@ im %@" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Für %1$@ im %2$@"
+          }
+        }
+      }
+    },
+    "Für den Notfallpass" : {
+
+    },
+    "Für heute hast du schon fünf Orte eingetragen. Morgen geht es weiter." : {
+
+    },
+    "Ganz in eurer Nähe, etwa %@. Bei Gassi siehst du, wo." : {
+
+    },
+    "Ganztägige Termine um %lld Uhr am Tag selbst, Termine mit Uhrzeit eine Stunde vorher." : {
+
+    },
+    "Gassi" : {
+
+    },
+    "Gassi mit %@" : {
+
+    },
+    "Geboren am" : {
+
+    },
+    "Geburtstag" : {
+
+    },
+    "Geburtstag bekannt" : {
+
+    },
+    "Gedruckte QR-Codes führen dann ins Leere. Gibst du den Pass wieder frei, bekommt er einen neuen Code." : {
+
+    },
+    "Gehört nicht zu diesem Ort" : {
+
+    },
+    "Geimpft am" : {
+
+    },
+    "Geprüft. Die Angaben und Fotos sind jetzt zu sehen." : {
+
+    },
+    "Gerade kamen zu viele Nachrichten. Versuch es in einer Viertelstunde noch einmal." : {
+
+    },
+    "Gerade nicht unterwegs" : {
+
+    },
+    "Gerade unterwegs" : {
+
+    },
+    "Gerade unterwegs, %@ entfernt" : {
+
+    },
+    "Gerätecode" : {
+
+    },
+    "Geschlecht" : {
+
+    },
+    "Gesichert" : {
+
+    },
+    "Gestern" : {
+
+    },
+    "Gesundheit" : {
+
+    },
+    "Gewicht" : {
+
+    },
+    "Gewicht %@ kg" : {
+
+    },
+    "Gewicht eintragen" : {
+
+    },
+    "Gewicht fehlt" : {
+
+    },
+    "Gibt es" : {
+
+    },
+    "Gibt es nicht" : {
+
+    },
+    "Grenzbereich. Schattenroute wählen, Mittagshitze meiden." : {
+
+    },
+    "Große" : {
+
+    },
+    "Grundlage für Futtermenge und Wasserbedarf in den Rechnern." : {
+
+    },
+    "Grundumsatz %@ kcal × Faktor %@ (%@) = %@ kcal, gerechnet auf %@ kg." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Grundumsatz %1$@ kcal × Faktor %2$@ (%3$@) = %4$@ kcal, gerechnet auf %5$@ kg."
+          }
+        }
+      }
+    },
+    "Gurke" : {
+
+    },
+    "Guten Abend" : {
+
+    },
+    "Guten Morgen" : {
+
+    },
+    "Hallo" : {
+
+    },
+    "Hallo sagen" : {
+
+    },
+    "Herbst" : {
+
+    },
+    "Heute" : {
+
+    },
+    "Heute %@ in %@" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Heute %1$@ in %2$@"
+          }
+        }
+      }
+    },
+    "Heute, " : {
+
+    },
+    "Hier" : {
+
+    },
+    "Hier wart ihr noch nicht" : {
+
+    },
+    "Huhn (gekocht)" : {
+
+    },
+    "Hund" : {
+
+    },
+    "Hund anlegen" : {
+
+    },
+    "Hund in der Nähe" : {
+
+    },
+    "Hunde hier meist" : {
+
+    },
+    "Hunde sind hier verboten" : {
+
+    },
+    "Hundeauslauf" : {
+
+    },
+    "Hundefreilauf" : {
+
+    },
+    "Hundefreunde" : {
+
+    },
+    "Hundeschule" : {
+
+    },
+    "Hundespielplatz" : {
+
+    },
+    "Hundetränke" : {
+
+    },
+    "Hundewiese" : {
+
+    },
+    "Hundezone" : {
+
+    },
+    "Hundezone Prater - Laufberg" : {
+
+    },
+    "Hundezone Venediger-Au-Park" : {
+
+    },
+    "Höchstens ein Zehntel der Tagesenergie, sonst kippt die Nährstoffbilanz des Hauptfutters." : {
+
+    },
+    "Hündin" : {
+
+    },
+    "Ich heiße %@." : {
+
+    },
+    "Idee" : {
+
+    },
+    "Ihr kennt schon alle Orte in der Nähe. Kennst du noch einen? Trag ihn in Gassi ein." : {
+
+    },
+    "Ihr seht euch auf der Karte, solange ihr beide Gassi geht." : {
+
+    },
+    "Ihr seht euch dann auf der Karte, solange ihr beide Gassi geht." : {
+
+    },
+    "Ihr seid unterwegs." : {
+
+    },
+    "Im Food-Check nachsehen" : {
+
+    },
+    "Im Rudel anmelden" : {
+
+    },
+    "Im Rudel habt ihr dieselben Termine und Gesundheitsdaten. Was einer einträgt, haben alle." : {
+
+    },
+    "Im Rudel seit %@" : {
+
+    },
+    "Im iPhone-Kalender" : {
+
+    },
+    "Impfpass mitnehmen" : {
+
+    },
+    "Impfung" : {
+
+    },
+    "Impfung, Wurmkur, Tierarzt: ThisDog erinnert dich rechtzeitig. Dafür fragen wir gleich, ob wir dir Mitteilungen schicken dürfen." : {
+
+    },
+    "Impfungen, Entwurmungen und Medikamente stehen hier, sortiert nach dem, was zuerst fällig wird." : {
+
+    },
+    "Impressum" : {
+
+    },
+    "In %lld Tagen" : {
+
+    },
+    "In Teilen des Parks gilt Hundeverbot (laut Stadt Wien)." : {
+
+    },
+    "In der Nähe ist nichts verzeichnet." : {
+
+    },
+    "Ja" : {
+
+    },
+    "Jede Woche" : {
+
+    },
+    "Jeden Monat" : {
+
+    },
+    "Jedes Jahr" : {
+
+    },
+    "Kalender" : {
+
+    },
+    "Karotte (roh oder gekocht)" : {
+
+    },
+    "Karte verschieben, bis der Punkt stimmt." : {
+
+    },
+    "Kastriert" : {
+
+    },
+    "Kategorien" : {
+
+    },
+    "Keine Angabe" : {
+
+    },
+    "Keine Verbindung. Versuch es gleich noch einmal." : {
+
+    },
+    "Keine Verbindung. Öffne den Link gleich noch einmal." : {
+
+    },
+    "Keiner taucht auf, oder dein Gegenüber hat ein Android-Telefon?" : {
+
+    },
+    "Kleine" : {
+
+    },
+    "Knoblauch" : {
+
+    },
+    "Komm in mein Rudel bei ThisDog" : {
+
+    },
+    "Konto" : {
+
+    },
+    "Konto anlegen" : {
+
+    },
+    "Konto löschen" : {
+
+    },
+    "Konto löschen?" : {
+
+    },
+    "Kopieren" : {
+
+    },
+    "Kopiert" : {
+
+    },
+    "Kotbeutel" : {
+
+    },
+    "Krallen schneiden" : {
+
+    },
+    "Käse (hart, laktosearm)" : {
+
+    },
+    "Laut Karte" : {
+
+    },
+    "Laut Stadt Wien" : {
+
+    },
+    "Laut Stadt Wien und Karte" : {
+
+    },
+    "Laut ThisDog" : {
+
+    },
+    "Leckerli" : {
+
+    },
+    "Leeren" : {
+
+    },
+    "Letzte Runden" : {
+
+    },
+    "Link teilen" : {
+
+    },
+    "Los geht's" : {
+
+    },
+    "Lufttemperatur" : {
+
+    },
+    "Löschen" : {
+
+    },
+    "Mahlzeiten am Tag" : {
+
+    },
+    "Medikament" : {
+
+    },
+    "Medikament endet" : {
+
+    },
+    "Medikamente" : {
+
+    },
+    "Mehrere Tage" : {
+
+    },
+    "Meine Prüfungen" : {
+
+    },
+    "Melde dich im Rudel an, dann kannst du Orte eintragen." : {
+
+    },
+    "Melde dich im Rudel an, dann öffne den Link noch einmal." : {
+
+    },
+    "Melde dich mit deiner E-Mail-Adresse an, oder öffne die Einladung, die du bekommen hast. Ein Passwort brauchst du nicht." : {
+
+    },
+    "Melde dich mit deiner E-Mail-Adresse an. Du bekommst einen Link, ein Passwort brauchst du nicht." : {
+
+    },
+    "Melden" : {
+
+    },
+    "Merkliste" : {
+
+    },
+    "Milbemax" : {
+
+    },
+    "Mit diesem Link kommst du in unser Rudel. Er gilt sieben Tage." : {
+
+    },
+    "Mit diesem Link sehen sich unsere Hunde in ThisDog auf der Karte, solange wir Gassi gehen." : {
+
+    },
+    "Mit diesem Schlüssel kommst du wieder an die Termine, Impfungen und Runden deines Hundes. Heb ihn gut auf, am besten in deinen Passwörtern oder ausgedruckt bei den Impfpapieren." : {
+
+    },
+    "Mit einem Konto gleicht ThisDog mit dem Rudel ab, und du kannst Orte bewerten und Fotos hochladen." : {
+
+    },
+    "Mit einem QR-Code am Halsband sieht jeder, der %@ findet, wen er anrufen soll – ohne App, ohne Anmeldung. Wenn jemand den Pass öffnet, bekommt das Rudel eine Mitteilung." : {
+
+    },
+    "Mit geht der Gerätecode %@: Fassung, System und Gerät. Deine Daten im Rudel bleiben, wo sie sind." : {
+
+    },
+    "Mitteilungen erlauben" : {
+
+    },
+    "Mitteilungen sind für ThisDog ausgeschaltet. Einschalten unter Einstellungen › Mitteilungen › ThisDog." : {
+
+    },
+    "Mittlere" : {
+
+    },
+    "Morgen" : {
+
+    },
+    "Mülleimer" : {
+
+    },
+    "Name" : {
+
+    },
+    "Name, Geburtstag und Gewicht genügen für den Anfang. Daraus entstehen Alter, Geburtstag im Kalender und die Rechner." : {
+
+    },
+    "Name, z. B. Stella" : {
+
+    },
+    "Nass" : {
+
+    },
+    "Nein" : {
+
+    },
+    "Nein danke" : {
+
+    },
+    "Neuer Termin" : {
+
+    },
+    "Neues Abzeichen: %@" : {
+
+    },
+    "Neues Foto" : {
+
+    },
+    "Nicht eingetragen. Prüfe die Verbindung und versuche es noch einmal." : {
+
+    },
+    "Nicht geeignet" : {
+
+    },
+    "Nicht gesendet. Prüfe die Verbindung und versuch es noch einmal." : {
+
+    },
+    "Nicht gesichert. Prüfe die Verbindung und versuche es noch einmal." : {
+
+    },
+    "Nicht gesichert. Versuche es noch einmal." : {
+
+    },
+    "Nicht hochgeladen. Prüfe die Verbindung und versuche es noch einmal." : {
+
+    },
+    "Nicht laufen" : {
+
+    },
+    "Niemand außer dir kann ihn ersetzen, auch wir nicht. Und wer ihn hat und in euer Konto kommt, kann eure Daten lesen. Zeig ihn also nur Menschen, denen du deinen Hund anvertrauen würdest." : {
+
+    },
+    "Noch %@ bis zum Ort" : {
+
+    },
+    "Noch %lld Minuten" : {
+
+    },
+    "Noch %lld Monate" : {
+
+    },
+    "Noch %lld Stunden" : {
+
+    },
+    "Noch %lld Tage" : {
+
+    },
+    "Noch %lld Wochen" : {
+
+    },
+    "Noch 1 Minute" : {
+
+    },
+    "Noch 1 Stunde" : {
+
+    },
+    "Noch 1 Tag" : {
+
+    },
+    "Noch 1 Woche" : {
+
+    },
+    "Noch eine Runde" : {
+
+    },
+    "Noch einmal ansehen" : {
+
+    },
+    "Noch kaum bewertet" : {
+
+    },
+    "Noch kein Gewicht eingetragen." : {
+
+    },
+    "Noch keine Fotos. Zeig anderen, wie es hier aussieht." : {
+
+    },
+    "Noch leer. Wer beim Gassi an einem Ort eincheckt, sammelt ihn hier." : {
+
+    },
+    "Noch nicht abgeglichen" : {
+
+    },
+    "Noch nicht geöffnet." : {
+
+    },
+    "Noch niemand hat bewertet" : {
+
+    },
+    "Normal, täglich unterwegs" : {
+
+    },
+    "Notfallpass" : {
+
+    },
+    "Notfallpass freigeben" : {
+
+    },
+    "Notfallpass sperren?" : {
+
+    },
+    "Notfallpass von %@" : {
+
+    },
+    "Notiz" : {
+
+    },
+    "Notiz, z. B. „Erstes Mal ohne Leine“" : {
+
+    },
+    "Notizen" : {
+
+    },
+    "Nur mit Vorsicht" : {
+
+    },
+    "Nächste fällig" : {
+
+    },
+    "Nächster Monat" : {
+
+    },
+    "Nächstes Abzeichen %@, %@" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Nächstes Abzeichen %1$@, %2$@"
+          }
+        }
+      }
+    },
+    "Oft gefragt" : {
+
+    },
+    "Ohne Netz" : {
+
+    },
+    "Ohne Netz gesichert. Die Prüfung geht raus, sobald du wieder online bist." : {
+
+    },
+    "Ort" : {
+
+    },
+    "Ort bewerten" : {
+
+    },
+    "Ort eintragen" : {
+
+    },
+    "Ort fehlt? Eintragen" : {
+
+    },
+    "Orte" : {
+
+    },
+    "Park" : {
+
+    },
+    "Parks, Wiesen und Hundezonen in der Nähe." : {
+
+    },
+    "Partner, Eltern, Hundesitter: Mit einem Konto seht ihr alle dieselben Termine und Runden, und %@ kann andere Hunde kennenlernen. Du bekommst einen Link per Mail, ein Passwort brauchst du nicht." : {
+
+    },
+    "Passend zum %@" : {
+
+    },
+    "Pause" : {
+
+    },
+    "Person erkennbar" : {
+
+    },
+    "Praxis" : {
+
+    },
+    "Problem" : {
+
+    },
+    "Problem melden" : {
+
+    },
+    "Profil bearbeiten" : {
+
+    },
+    "Präparat, z. B. Milbemax" : {
+
+    },
+    "QR-Code fürs Halsband, falls jemand %@ findet" : {
+
+    },
+    "QR-Code teilen" : {
+
+    },
+    "QR-Code zeigen" : {
+
+    },
+    "QR-Code zum Freundewerden" : {
+
+    },
+    "QR-Code zum Notfallpass" : {
+
+    },
+    "Rasen" : {
+
+    },
+    "Rasse oder Typ, z. B. Pudel" : {
+
+    },
+    "Rasse, zum Beispiel Schnauzer" : {
+
+    },
+    "Ratgeber" : {
+
+    },
+    "Rechnen mit" : {
+
+    },
+    "Rechner" : {
+
+    },
+    "Reis (gekocht)" : {
+
+    },
+    "Revier" : {
+
+    },
+    "Richtwerte für gesunde Hunde. Bei Krankheit, Trächtigkeit oder Diät gilt die Empfehlung der Tierarztpraxis." : {
+
+    },
+    "Rosa-Jochmann-Park" : {
+
+    },
+    "Rudel" : {
+
+    },
+    "Rudel verlassen" : {
+
+    },
+    "Rudel verlassen?" : {
+
+    },
+    "Rudelmitglied einladen" : {
+
+    },
+    "Ruhig, kurze Runden" : {
+
+    },
+    "Runde beenden?" : {
+
+    },
+    "Runde beendet" : {
+
+    },
+    "Runde etwa %@, %lld Min." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Runde etwa %1$@, %2$lld Min."
+          }
+        }
+      }
+    },
+    "Runde starten" : {
+
+    },
+    "Rüde" : {
+
+    },
+    "Saisonaler Hinweis" : {
+
+    },
+    "Sauber" : {
+
+    },
+    "Schatten" : {
+
+    },
+    "Schließen" : {
+
+    },
+    "Schließt die Meldung" : {
+
+    },
+    "Schlüssel ansehen" : {
+
+    },
+    "Schlüssel fehlt" : {
+
+    },
+    "Schlüssel sichern" : {
+
+    },
+    "Schokolade" : {
+
+    },
+    "Schreibst du an thisdog.app/support, gib den Gerätecode mit an. Er nennt Fassung, System und Gerät." : {
+
+    },
+    "Schön, dass ihr da seid. Der Rest geht schnell, und alles andere kannst du auch später eintragen." : {
+
+    },
+    "Schön, ihr wart heute schon draußen." : {
+
+    },
+    "Schöne Runde." : {
+
+    },
+    "Sehr aktiv, Sport und lange Touren" : {
+
+    },
+    "Seite ansehen" : {
+
+    },
+    "Senden" : {
+
+    },
+    "Senior" : {
+
+    },
+    "Serie löschen" : {
+
+    },
+    "Serie löschen?" : {
+
+    },
+    "Sicher" : {
+
+    },
+    "Sichere den Wiederherstellungsschlüssel. Ohne ihn sind die Daten deines Hundes dann verloren, auch wir kommen nicht heran." : {
+
+    },
+    "Sichern" : {
+
+    },
+    "So sieht es der Finder" : {
+
+    },
+    "Sommer" : {
+
+    },
+    "Sonntagsrunde" : {
+
+    },
+    "Speichern" : {
+
+    },
+    "Sperren" : {
+
+    },
+    "Spielt %@ auf der Wiese mit einem anderen Hund? Tippt beide im Reiter Gassi darauf, dann seid ihr verbunden." : {
+
+    },
+    "Später" : {
+
+    },
+    "Stammgast" : {
+
+    },
+    "Standort erlauben" : {
+
+    },
+    "Standort freigeben" : {
+
+    },
+    "Standort wird gesucht …" : {
+
+    },
+    "Start" : {
+
+    },
+    "Steht auf der Verpackung, oft als „umsetzbare Energie“." : {
+
+    },
+    "Steht im Notfallpass, falls jemand anderes den Hund findet." : {
+
+    },
+    "Stella" : {
+
+    },
+    "Stimmt etwas nicht?" : {
+
+    },
+    "Strecke" : {
+
+    },
+    "Support" : {
+
+    },
+    "Tag" : {
+
+    },
+    "Teile %@ mit deinen Menschen" : {
+
+    },
+    "Telefon" : {
+
+    },
+    "Tempo" : {
+
+    },
+    "Termin anlegen" : {
+
+    },
+    "Termin bearbeiten" : {
+
+    },
+    "Termin löschen" : {
+
+    },
+    "Termin löschen?" : {
+
+    },
+    "ThisDog" : {
+
+    },
+    "ThisDog %@ (%@), %@ %@, %@" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "ThisDog %1$@ (%2$@), %3$@ %4$@, %5$@"
+          }
+        }
+      }
+    },
+    "ThisDog Wiederherstellungsschlüssel" : {
+
+    },
+    "ThisDog hat keinen Zugriff auf den Kalender. Erlauben unter Einstellungen › Apps › ThisDog › Kalender." : {
+
+    },
+    "ThisDog merkt sich euren Weg und zeigt dir Wiesen und Hundezonen in der Nähe. Dafür fragen wir gleich nach deinem Standort. Aufgezeichnet wird nur, wenn du eine Runde startest." : {
+
+    },
+    "ThisDog: Schlüssel für Rudel %lld" : {
+
+    },
+    "ThisDog: Wiederherstellungsschlüssel\n\n%@\n\nGut aufheben. Falls alle Telefone weg sind, kommst du damit wieder an die Daten deines Hundes." : {
+
+    },
+    "Tierarzt" : {
+
+    },
+    "Tierarzt: Impfung Tollwut" : {
+
+    },
+    "Tierarztpraxis am Augarten" : {
+
+    },
+    "Tipp auf Start, wenn ihr losgeht. Das Telefon kann in die Tasche." : {
+
+    },
+    "Tippt jetzt beide auf „Hund in der Nähe“. Andere sehen nur den Namen %@, solange diese Ansicht offen ist." : {
+
+    },
+    "Titel, z. B. Tierarzt" : {
+
+    },
+    "Trag zuerst eine Telefonnummer ein, sonst kann dich niemand anrufen." : {
+
+    },
+    "Trauben" : {
+
+    },
+    "Trinkwasser" : {
+
+    },
+    "Trocken" : {
+
+    },
+    "Trotzdem hochladen" : {
+
+    },
+    "Trotzdem verwenden" : {
+
+    },
+    "Trägt einen AirTag oder Tracker" : {
+
+    },
+    "Uhrzeit" : {
+
+    },
+    "Um" : {
+
+    },
+    "Unbedenklich. Trotzdem kurz mit dem Handrücken prüfen." : {
+
+    },
+    "Uneinig" : {
+
+    },
+    "Unpassend" : {
+
+    },
+    "Unterwegs" : {
+
+    },
+    "Unverträglichkeiten, Vorerkrankungen" : {
+
+    },
+    "Urlaub an der Ostsee" : {
+
+    },
+    "Venediger-Au-Park" : {
+
+    },
+    "Verlassen" : {
+
+    },
+    "Verträgt kein Huhn" : {
+
+    },
+    "Verwerfen" : {
+
+    },
+    "Von" : {
+
+    },
+    "Von ThisDog geprüft" : {
+
+    },
+    "Von der Merkliste nehmen" : {
+
+    },
+    "Vor %lld Tagen" : {
+
+    },
+    "Vor Ort geprüft" : {
+
+    },
+    "Vor Ort prüfen" : {
+
+    },
+    "Vorheriger Monat" : {
+
+    },
+    "Vorsicht" : {
+
+    },
+    "Wald" : {
+
+    },
+    "Warnzeitraum" : {
+
+    },
+    "Warst du schon mit deinem Hund hier? In einer halben Minute sagst du, ob man frei laufen kann und ob es Wasser und Schatten gibt. Alle, die mit Hund herkommen, sehen es dann." : {
+
+    },
+    "Wartet auf Freigabe" : {
+
+    },
+    "Was ansteht" : {
+
+    },
+    "Was der Finder sieht" : {
+
+    },
+    "Was es dort gibt" : {
+
+    },
+    "Was es hier gibt" : {
+
+    },
+    "Was hast du gemacht, was ist passiert, was hast du erwartet?" : {
+
+    },
+    "Was ist das?" : {
+
+    },
+    "Was ist passiert?" : {
+
+    },
+    "Was sonst ansteht" : {
+
+    },
+    "Was stimmt hier? Du kannst es später ändern." : {
+
+    },
+    "Was stimmt nicht?" : {
+
+    },
+    "Wasser" : {
+
+    },
+    "Weiter" : {
+
+    },
+    "Weiterlaufen" : {
+
+    },
+    "Weiß nicht" : {
+
+    },
+    "Welche Hunde triffst du hier meist?" : {
+
+    },
+    "Welpe" : {
+
+    },
+    "Welpe bis 12 Monate, Wachstum" : {
+
+    },
+    "Welpe bis 4 Monate, hoher Wachstumsbedarf" : {
+
+    },
+    "Wen anrufen?" : {
+
+    },
+    "Wer ist dein Hund?" : {
+
+    },
+    "Wer kümmert sich noch um %@?" : {
+
+    },
+    "Wer spielt da mit %@?" : {
+
+    },
+    "Werden unsere Hunde Freunde?" : {
+
+    },
+    "Wichtig" : {
+
+    },
+    "Wie es hier ist" : {
+
+    },
+    "Wie heißt dein Hund?" : {
+
+    },
+    "Wiederherstellungsschlüssel" : {
+
+    },
+    "Wiederholung" : {
+
+    },
+    "Wiese" : {
+
+    },
+    "Winter" : {
+
+    },
+    "Wir fragen bei %@ nach …" : {
+
+    },
+    "Wir schauen, wer in der Nähe ist …" : {
+
+    },
+    "Wir sind schon in einem Rudel" : {
+
+    },
+    "Wird abgeglichen …" : {
+
+    },
+    "Wird hochgeladen …" : {
+
+    },
+    "Wissen" : {
+
+    },
+    "Wohin heute?" : {
+
+    },
+    "Worum geht es?" : {
+
+    },
+    "Wunsch %@ kg" : {
+
+    },
+    "Wunschgewicht" : {
+
+    },
+    "Wunschgewicht %@ kg" : {
+
+    },
+    "Xylit" : {
+
+    },
+    "Zeckenschutz" : {
+
+    },
+    "Zeit" : {
+
+    },
+    "Zeit für eine Runde?" : {
+
+    },
+    "Zeit für eure erste Runde." : {
+
+    },
+    "Ziele werden gesucht …" : {
+
+    },
+    "Zu heiß. Die Ballen können verbrennen: auf Gras ausweichen oder in die kühlen Stunden verlegen." : {
+
+    },
+    "Zu viele Anfragen. Warte ein paar Minuten." : {
+
+    },
+    "Zu viele Versuche. Fordere einen neuen Link an." : {
+
+    },
+    "Zu weit vom Ort entfernt." : {
+
+    },
+    "Zuletzt" : {
+
+    },
+    "Zum ersten Mal hier" : {
+
+    },
+    "Zur Runde" : {
+
+    },
+    "Zwei Dinge für später, wenn du magst:" : {
+
+    },
+    "Zwergpudel" : {
+
+    },
+    "Zwiebel" : {
+
+    },
+    "am %@" : {
+
+    },
+    "bis" : {
+
+    },
+    "bis %@" : {
+
+    },
+    "dein Hund" : {
+
+    },
+    "deinen Hund" : {
+
+    },
+    "einer Stunde" : {
+
+    },
+    "eingetragen von %@" : {
+
+    },
+    "eingezäunt" : {
+
+    },
+    "ergänzt mit Daten der Stadt Wien (CC BY 4.0)" : {
+
+    },
+    "g Trockenleckerli" : {
+
+    },
+    "g am Tag" : {
+
+    },
+    "gleich seit %@" : {
+
+    },
+    "hat einen Termin eingetragen." : {
+
+    },
+    "heute" : {
+
+    },
+    "heute um %@" : {
+
+    },
+    "in %lld\nJahren" : {
+
+    },
+    "in %lld\nMon." : {
+
+    },
+    "in %lld\nTagen" : {
+
+    },
+    "in 1\nJahr" : {
+
+    },
+    "kcal am Tag" : {
+
+    },
+    "kg" : {
+
+    },
+    "km" : {
+
+    },
+    "km %lld" : {
+
+    },
+    "km diese Woche, %lld Runden" : {
+
+    },
+    "km diese Woche, eine Runde" : {
+
+    },
+    "mit %@" : {
+
+    },
+    "ml am Tag" : {
+
+    },
+    "morgen" : {
+
+    },
+    "multipart/form-data; boundary=%@" : {
+
+    },
+    "nicht eingetragen" : {
+
+    },
+    "nicht kastriert" : {
+
+    },
+    "noch %lld Besuche in %@" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "noch %1$lld Besuche in %2$@"
+          }
+        }
+      }
+    },
+    "noch %lld neue Orte" : {
+
+    },
+    "sehr aktiv" : {
+
+    },
+    "teilweise %@" : {
+
+    },
+    "von" : {
+
+    },
+    "vor Ort am %@" : {
+
+    },
+    "z. B. Anna" : {
+
+    },
+    "z. B. Schmerzmittel" : {
+
+    },
+    "z. B. Tollwut, SHPPi" : {
+
+    },
+    "z. B. Trauben, Käse, Banane" : {
+
+    },
+    "z. B. Wiese am Schützenhaus" : {
+
+    },
+    "zuletzt %@" : {
+
+    },
+    "Ändert sich etwas, aktualisiert ThisDog die Seite. Der QR-Code bleibt gleich." : {
+
+    },
+    "Änderungen gelten für alle Termine dieser Serie." : {
+
+    },
+    "Übermorgen" : {
+
+    },
+    "über-\nfällig" : {
+
+    },
+    "überfällig" : {
+
+    },
+    "„%@“ steht nicht in der Liste. Im Zweifel nicht füttern und in der Praxis fragen." : {
+
+    },
+    "„%@“ wird entfernt." : {
+
+    },
+    "„%@“ wird mit allen Wiederholungen entfernt." : {
+
+    }
+  },
+  "version" : "1.0"
+}

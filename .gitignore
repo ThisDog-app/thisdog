@@ -1,0 +1,20 @@
+.DS_Store
+
+# Zugangsdaten – gehören nie ins Repository
+public/api/config.php
+
+# Laufzeitdaten des Servers (Suchstatistik)
+stella-daten/
+
+# Designvorlagen – Logo, Icon-Entwürfe, Konzeptbilder. Sie liegen außerhalb
+# des Projektordners: Die ausgelieferten Grafiken entstehen daraus, die
+# Quellen selbst haben mit dem Code nichts zu tun.
+quellen/konzept/
+/Design/
+
+# Lokale Werte der iPad-Skripte (Gerät, Signatur, Server) – Vorlage: ios/scripts/lokal.env.beispiel
+ios/scripts/lokal.env
+
+# Python-Zwischenstände
+__pycache__/
+*.pyc

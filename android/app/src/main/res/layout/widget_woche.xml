@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Widget „Gassi diese Woche“: Strecke seit Montag, darunter Hitze oder die nächste Fälligkeit. -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/widget_root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="@drawable/widget_grund">
+    <TextView android:id="@+id/widget_name" android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:textColor="#EE6A24" android:textSize="13sp" android:textStyle="bold" android:maxLines="1" />
+    <TextView android:id="@+id/widget_km" android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:textColor="@color/widget_tinte" android:textSize="34sp" android:textStyle="bold" android:maxLines="1" />
+    <TextView android:id="@+id/widget_einheit" android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:textColor="@color/widget_tinte2" android:textSize="12sp" android:maxLines="1" />
+    <View android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" />
+    <TextView android:id="@+id/widget_hinweis" android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:textColor="#EE6A24" android:textSize="12sp" android:textStyle="bold" android:maxLines="2" />
+</LinearLayout>

@@ -1,0 +1,50 @@
+{
+  "sourceLanguage": "de",
+  "version": "1.0",
+  "strings": {
+    "NSLocationWhenInUseUsageDescription": {
+      "comment": "Hinweis in der Systemabfrage",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ThisDog zeichnet eure Gassirunde auf und zeigt Parks und Hundezonen in der Nähe."
+          }
+        }
+      }
+    },
+    "NSCalendarsFullAccessUsageDescription": {
+      "comment": "Hinweis in der Systemabfrage",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ThisDog trägt die Termine deines Hundes in einen eigenen Kalender „ThisDog“ ein und hält ihn aktuell."
+          }
+        }
+      }
+    },
+    "NSLocalNetworkUsageDescription": {
+      "comment": "Hinweis in der Systemabfrage",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ThisDog sucht andere Hunde in der Nähe, solange du „Hund in der Nähe“ geöffnet hast."
+          }
+        }
+      }
+    },
+    "CFBundleDisplayName": {
+      "comment": "Hinweis in der Systemabfrage",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ThisDog"
+          }
+        }
+      }
+    }
+  }
+}

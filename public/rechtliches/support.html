@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Support · ThisDog</title>
+<meta name="description" content="Frage, Problem oder Idee zu ThisDog: hier schreiben, Antwort per E-Mail.">
+<link rel="stylesheet" href="/rechtliches/stil.css">
+<style>
+	form { background: var(--surface); border-radius: 22px; padding: 20px; margin-top: 22px; display: grid; gap: 16px; }
+	label { display: grid; gap: 6px; font-size: 15px; font-weight: 600; color: var(--ink2); }
+	label small { font-weight: 400; color: var(--ink3); }
+	input, textarea { font: inherit; font-weight: 400; color: var(--ink); background: var(--bg); border: 1px solid var(--line); border-radius: 14px; padding: 12px 14px; width: 100%; }
+	textarea { min-height: 150px; resize: vertical; }
+	.arten { display: flex; gap: 8px; flex-wrap: wrap; }
+	.arten input { position: absolute; opacity: 0; width: 1px; }
+	.arten span { display: inline-block; padding: 9px 16px; border-radius: 99px; border: 1px solid var(--line); color: var(--ink2); font-weight: 600; cursor: pointer; }
+	.arten input:checked + span { background: #FDEADF; border-color: transparent; color: var(--accent); }
+	.arten input:focus-visible + span { outline: 2px solid var(--accent); outline-offset: 2px; }
+	@media (prefers-color-scheme: dark) { .arten input:checked + span { background: #3A2519; } }
+	button { font: inherit; font-weight: 600; background: var(--accent); color: #fff; border: 0; border-radius: 99px; padding: 13px 22px; cursor: pointer; justify-self: start; }
+	button:disabled { opacity: .5; }
+	.versteckt { position: absolute; left: -9999px; }
+	#antwort { font-weight: 600; }
+	#antwort.fehler { color: #C8473D; }
+</style>
+</head>
+<body>
+<main>
+<nav><a href="/datenschutz">Datenschutz</a><a href="/support" aria-current="page">Support</a><a href="/impressum">Impressum</a></nav>
+<h1>Support</h1>
+<p>Etwas funktioniert nicht, eine Frage ist offen oder du hast eine Idee? Schreib uns, die Antwort kommt per E-Mail, meist innerhalb von zwei Tagen.</p>
+<p>Am schnellsten geht es aus der App: unter Rudel › Support › „Problem melden“. Dann weiß ThisDog schon, welche Fassung du hast.</p>
+
+<form id="support" novalidate>
+	<fieldset class="arten" style="border:0">
+		<legend class="versteckt">Worum geht es?</legend>
+		<label><input type="radio" name="kind" value="problem" checked><span>Problem</span></label>
+		<label><input type="radio" name="kind" value="frage"><span>Frage</span></label>
+		<label><input type="radio" name="kind" value="idee"><span>Idee</span></label>
+	</fieldset>
+	<label>Was ist passiert?<textarea name="text" required maxlength="5000" placeholder="Was hast du gemacht, was ist passiert, was hast du erwartet?"></textarea></label>
+	<label>Deine E-Mail-Adresse<input type="email" name="email" required autocomplete="email"></label>
+	<label>Gerätecode <small>in der App unter Rudel › Support, zum Beispiel K7Q-M9X-A3T</small><input type="text" name="code" autocomplete="off" autocapitalize="characters" maxlength="11"></label>
+	<label class="versteckt">Website<input type="text" name="website" tabindex="-1" autocomplete="off"></label>
+	<button>Absenden</button>
+	<p id="antwort" role="status"></p>
+</form>
+<footer>Bitte schick keine Passwörter oder Anmeldecodes mit. Mehr dazu in der <a href="/datenschutz">Datenschutzerklärung</a>.</footer>
+</main>
+<script>
+const f = document.getElementById('support'), out = document.getElementById('antwort');
+const fehler = { invalid_email: 'Die E-Mail-Adresse stimmt nicht.', invalid_text: 'Schreib bitte ein paar Worte dazu.', invalid_code: 'Der Gerätecode stimmt nicht. Bitte in der App unter Rudel › Support noch einmal kopieren.', rate_limited: 'Gerade kamen zu viele Nachrichten. Versuch es in einer Viertelstunde noch einmal.' };
+f.addEventListener('submit', async e => {
+	e.preventDefault();
+	const d = Object.fromEntries(new FormData(f));
+	f.querySelector('button').disabled = true; out.className = ''; out.textContent = 'Wird gesendet …';
+	try {
+		const r = await fetch('/api/support.php', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(d) });
+		const a = await r.json();
+		if (!r.ok) throw new Error(a.error);
+		f.querySelectorAll('textarea, input[name=code]').forEach(x => x.value = '');
+		out.textContent = 'Danke. Deine Nachricht hat die Nummer ' + a.number + '. Die Bestätigung geht an ' + d.email + '.';
+	} catch (err) {
+		out.className = 'fehler'; out.textContent = fehler[err.message] || 'Nicht gesendet. Prüfe die Verbindung und versuch es noch einmal.';
+	}
+	f.querySelector('button').disabled = false;
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,16 @@
+[
+  {
+    "relation": [
+      "delegate_permission/common.handle_all_urls"
+    ],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "app.thisdog",
+      "sha256_cert_fingerprints": [
+        "19:3C:85:B2:67:F2:96:00:80:4E:69:82:1E:EE:EC:D7:0B:10:1A:8C:06:C6:5D:72:D4:D0:E9:B3:5E:45:F3:3A",
+        "B1:8E:CB:15:97:DC:10:7A:0C:A4:BB:5D:88:87:69:A6:BE:44:77:8D:E3:55:C1:E1:4D:85:C4:03:CA:9C:91:76",
+        "28:11:8C:50:45:D5:77:4A:E8:C4:B7:64:40:38:50:17:52:2C:7C:6C:EE:13:C6:45:F9:4D:54:52:15:30:C7:48"
+      ]
+    }
+  }
+]

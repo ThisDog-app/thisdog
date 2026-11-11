@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="widget_papier">#FDEADF</color>
+    <color name="widget_tinte">#241E2B</color>
+    <color name="widget_tinte2">#69627A</color>
+    <string name="widget_woche_name">Gassi diese Woche</string>
+    <string name="widget_woche_text">Strecke der Woche, Hitze und was beim Hund ansteht.</string>
+</resources>

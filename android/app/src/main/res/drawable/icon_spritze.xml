@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Erzeugt von android/tools/icons_aus_svg.py aus icon-spritze.svg. Nicht von Hand ändern. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android" android:width="24dp" android:height="24dp" android:viewportWidth="24" android:viewportHeight="24">
+    <path android:pathData="M14.6 5.2 C16.2 6.2 17.8 7.8 18.8 9.4" android:fillColor="#00000000" android:strokeColor="#FF000000" android:strokeWidth="1.7" android:strokeLineCap="round" android:strokeLineJoin="round" />
+    <path android:pathData="M16.6 7.3 C17.6 6.2 18.5 5.3 19.5 4.4" android:fillColor="#00000000" android:strokeColor="#FF000000" android:strokeWidth="1.7" android:strokeLineCap="round" android:strokeLineJoin="round" />
+    <path android:pathData="M15.8 6.2 C12.6 9 9.4 12.2 6.8 15.1 C7.9 16.3 8.6 17 9.8 18 C12.6 15.5 15.8 12.4 18 9" android:fillColor="#00000000" android:strokeColor="#FF000000" android:strokeWidth="1.7" android:strokeLineCap="round" android:strokeLineJoin="round" />
+    <path android:pathData="M6.8 16.6 C5.8 17.8 4.9 18.7 3.8 19.9" android:fillColor="#00000000" android:strokeColor="#FF000000" android:strokeWidth="1.7" android:strokeLineCap="round" android:strokeLineJoin="round" />
+    <path android:pathData="M10.6 11.4 C11.4 12 12 12.6 12.6 13.4" android:fillColor="#00000000" android:strokeColor="#FF000000" android:strokeWidth="1.7" android:strokeLineCap="round" android:strokeLineJoin="round" />
+</vector>

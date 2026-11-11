@@ -1,0 +1,4501 @@
+[
+	{
+		"name": "Aioli",
+		"status": "bad",
+		"category": "Soßen & Dips",
+		"reason": "Besteht überwiegend aus Knoblauch, Öl und Ei. Knoblauch ist toxisch und kann Blutarmut verursachen. Darf nicht gefüttert werden.",
+		"aliases": [
+			"Knoblauchdip",
+			"Knoblauchcreme"
+		]
+	},
+	{
+		"name": "Ananas",
+		"status": "ok",
+		"category": "Obst",
+		"reason": "Reife Ananas enthält Bromelain, das die Verdauung unterstützen kann. In kleinen Mengen und ohne Strunk geeignet.",
+		"aliases": [
+			"Ananasfrucht"
+		]
+	},
+	{
+		"name": "Apfel (mit Kernen)",
+		"status": "bad",
+		"category": "Obst",
+		"reason": "Apfelkerne enthalten Amygdalin, das im Körper Blausäure freisetzt. Kerne und Strunk dürfen nicht verfüttert werden.",
+		"aliases": [
+			"Apfelkern",
+			"Apfel mit Kern"
+		]
+	},
+	{
+		"name": "Apfel (ohne Kerne)",
+		"status": "ok",
+		"category": "Obst",
+		"reason": "Reife Apfelstücke ohne Kerne und Strunk sind gut verträglich, ballaststoffreich und enthalten Pektin, das die Verdauung unterstützt.",
+		"aliases": [
+			"Apfel",
+			"Äpfel",
+			"Apfelstück"
+		]
+	},
+	{
+		"name": "Apfelmus (mit Zucker)",
+		"status": "warn",
+		"category": "Obst",
+		"reason": "Zuckerhaltiger Apfelmus kann Gewichtszunahme und Verdauungsprobleme verursachen. Besser naturbelassen wählen.",
+		"aliases": [
+			"gezuckerter Apfelmus"
+		]
+	},
+	{
+		"name": "Apfelmus (ohne Zucker)",
+		"status": "ok",
+		"category": "Obst",
+		"reason": "Pürierter Apfel ohne Zuckerzusatz ist bei Magen-Darm-Problemen hilfreich. Nur naturbelassen und ohne Gewürze verwenden.",
+		"aliases": [
+			"Apfelmark",
+			"Apfelmus natur"
+		]
+	},
+	{
+		"name": "Avocadoöl",
+		"status": "bad",
+		"category": "Öle & Fette",
+		"reason": "Avocadoöl kann Persin enthalten, einen Stoff, der für Hunde toxisch sein kann. Aufgrund des Risikos nicht geeignet.",
+		"aliases": [
+			"Avocado Speiseöl"
+		]
+	},
+	{
+		"name": "Banane",
+		"status": "ok",
+		"category": "Obst",
+		"reason": "Bananen sind reich an Kalium und leicht verdaulich. Nur in kleinen Mengen füttern, da sie viel Zucker enthalten.",
+		"aliases": [
+			"Bananen",
+			"Babybanane"
+		]
+	},
+	{
+		"name": "Basilikum",
+		"status": "ok",
+		"category": "Kräuter & Pflanzenstoffe",
+		"reason": "In kleinen Mengen unproblematisch. Liefert Aromastoffe und geringe Mengen Antioxidantien. Große Mengen können Magenreizungen auslösen.",
+		"aliases": [
+			"Ocimum basilicum"
+		]
+	},
+	{
+		"name": "BBQ-Soße",
+		"status": "bad",
+		"category": "Soßen & Dips",
+		"reason": "BBQ-Soßen enthalten Zucker, Melasse, Raucharoma, Salz und Gewürze wie Knoblauchpulver. Diese Mischung ist für Hunde ungeeignet.",
+		"aliases": [
+			"Barbecue Sauce",
+			"BBQ Sauce"
+		]
+	},
+	{
+		"name": "BCAA",
+		"status": "bad",
+		"category": "Nahrungsergänzung",
+		"reason": "Verzweigte Aminosäuren für Bodybuilding. Kein Bedarf für Hunde. Kann Stoffwechsel belasten und zu Ungleichgewichten führen.",
+		"aliases": [
+			"Leucin",
+			"Valin",
+			"Isoleucin"
+		]
+	},
+	{
+		"name": "Bierhefe",
+		"status": "ok",
+		"category": "Nahrungsergänzung",
+		"reason": "Quelle für B‑Vitamine und Nukleotide. Kann Fellqualität unterstützen. Bei Hunden mit Hefeunverträglichkeit oder Hefepilzproblemen meiden.",
+		"aliases": [
+			"Saccharomyces cerevisiae"
+		]
+	},
+	{
+		"name": "Birne (mit Kernen)",
+		"status": "bad",
+		"category": "Obst",
+		"reason": "Kerne und Stiele von Birnen enthalten giftige cyanogene Verbindungen und dürfen nicht gefüttert werden.",
+		"aliases": [
+			"Birnenkern",
+			"Birne ganz"
+		]
+	},
+	{
+		"name": "Birne (ohne Kerne)",
+		"status": "ok",
+		"category": "Obst",
+		"reason": "Birnen sind mild und enthalten wenig Säure. Ohne Kerne gefüttert sind sie bekömmlich und reich an Ballaststoffen.",
+		"aliases": [
+			"Birne",
+			"Birnenfrucht"
+		]
+	},
+	{
+		"name": "Blumenkohl (gekocht)",
+		"status": "ok",
+		"category": "Gemüse",
+		"reason": "Blumenkohl ist ballaststoffreich und gekocht gut verträglich. Hilft bei Schonkost-Diäten.",
+		"aliases": [
+			"Blumenkohl",
+			"Karfiol"
+		]
+	},
+	{
+		"name": "Blumenkohl (roh)",
+		"status": "warn",
+		"category": "Gemüse",
+		"reason": "Roh kann Blumenkohl zu Blähungen führen. Nur gekocht füttern.",
+		"aliases": [
+			"Karfiol roh"
+		]
+	},
+	{
+		"name": "Blättermagen (gekocht)",
+		"status": "ok",
+		"category": "Innereien",
+		"reason": "Gekochter Blättermagen ist gut verträglich und enthält weiterhin verdauungsfördernde Bestandteile. Hilfreich für Hunde mit empfindlichem Magen.",
+		"aliases": [
+			"gegarter Blättermagen",
+			"gekochter Blättermagen"
+		]
+	},
+	{
+		"name": "Blättermagen (roh)",
+		"status": "ok",
+		"category": "Innereien",
+		"reason": "Blättermagen ist reich an natürlichen Darmbakterien und pflanzlichen Resten. Unterstützt Verdauung und Immunabwehr. Nur unbehandelt verfüttern.",
+		"aliases": [
+			"Blättermagen roh",
+			"Rinderblättermagen"
+		]
+	},
+	{
+		"name": "Bratensoße",
+		"status": "bad",
+		"category": "Soßen & Dips",
+		"reason": "Bratensoße enthält Fett, Salz, Gewürze und oft Zwiebel- oder Knoblaucharoma. Kann Verdauungsprobleme auslösen.",
+		"aliases": [
+			"Bratensaft",
+			"Gravy"
+		]
+	},
+	{
+		"name": "Bratwurst (gegart)",
+		"status": "bad",
+		"category": "Fertigprodukte",
+		"reason": "Gewürze, Salz, Fett und oft Zwiebel-/Knoblauchspuren. Erhöhtes Risiko für Magen-Darm-Probleme und Pankreatitis.",
+		"aliases": [
+			"Brühwurst",
+			"Bratwurst"
+		]
+	},
+	{
+		"name": "Brokkoli (gekocht)",
+		"status": "ok",
+		"category": "Gemüse",
+		"reason": "Gekochter Brokkoli enthält Antioxidantien und Ballaststoffe. In moderaten Mengen geeignet für Hunde.",
+		"aliases": [
+			"Broccoli",
+			"gekochter Brokkoli"
+		]
+	},
+	{
+		"name": "Brokkoli (roh)",
+		"status": "warn",
+		"category": "Gemüse",
+		"reason": "Roh kann Brokkoli blähend wirken. Besser gekocht und nur in kleinen Mengen füttern.",
+		"aliases": [
+			"Brokkoli roh"
+		]
+	},
+	{
+		"name": "Brötchen",
+		"status": "warn",
+		"category": "Getreide, Backwaren & Süßes",
+		"reason": "Hefe und Salz können Verdauungsprobleme verursachen. Nur selten ein kleines Stück füttern.",
+		"aliases": [
+			"Semmel",
+			"Weckerl"
+		]
+	},
+	{
+		"name": "Brühewürfel/Instantbrühe",
+		"status": "bad",
+		"category": "Fertigprodukte",
+		"reason": "Sehr salzig, oft Hefeextrakt/Glutamat, Zwiebel-/Knoblauchextrakte und Zusatzstoffe. Für Hunde ungeeignet.",
+		"aliases": [
+			"Suppenwürfel",
+			"Instant Brühe"
+		]
+	},
+	{
+		"name": "Butter",
+		"status": "warn",
+		"category": "Milchprodukte",
+		"reason": "Hoher Gehalt an gesättigten Fetten und Laktose-Resten. In sehr kleinen Mengen meist unproblematisch, bei empfindlichen Hunden oder Pankreatitis ungeeignet.",
+		"aliases": [
+			"Süßrahmbutter"
+		]
+	},
+	{
+		"name": "Buttermilch",
+		"status": "warn",
+		"category": "Milchprodukte",
+		"reason": "Enthält weniger Fett, aber weiterhin Laktose und Milchsäure. Kann zu Verdauungsbeschwerden führen.",
+		"aliases": [
+			"Buttermilch natur"
+		]
+	},
+	{
+		"name": "Butterschmalz",
+		"status": "bad",
+		"category": "Milchprodukte",
+		"reason": "Sehr hohe Fettkonzentration. Keine Nährstoffvorteile, erhöht das Pankreatitisrisiko.",
+		"aliases": [
+			"Ghee"
+		]
+	},
+	{
+		"name": "Caesar-Dressing",
+		"status": "bad",
+		"category": "Soßen & Dips",
+		"reason": "Enthält Knoblauch, Sardellen, Käse und Salz. Die Mischung ist ungeeignet und teilweise toxisch für Hunde.",
+		"aliases": [
+			"Caesar Sauce"
+		]
+	},
+	{
+		"name": "Calciumpräparate",
+		"status": "warn",
+		"category": "Nahrungsergänzung",
+		"reason": "Werden zur Mineralstoffversorgung eingesetzt. Eine Überdosierung kann zu Knochenproblemen oder Nierenbelastung führen. Nur bei selbstgekochter Ration gezielt einsetzen.",
+		"aliases": [
+			"Calciumcarbonat",
+			"Eierschalenpulver",
+			"Knochenmehl"
+		]
+	},
+	{
+		"name": "Cornflakes (gezuckert)",
+		"status": "bad",
+		"category": "Getreide, Backwaren & Süßes",
+		"reason": "Gezuckerte Frühstücksflocken enthalten Zucker und Zusatzstoffe und können den Blutzucker stark erhöhen.",
+		"aliases": [
+			"Frosties"
+		]
+	},
+	{
+		"name": "Cornflakes (ungesüßt)",
+		"status": "warn",
+		"category": "Getreide, Backwaren & Süßes",
+		"reason": "Reine, ungesüßte Cornflakes sind in kleinen Mengen unproblematisch, enthalten aber wenig Nährwert.",
+		"aliases": [
+			"Maisflakes"
+		]
+	},
+	{
+		"name": "Croissant",
+		"status": "bad",
+		"category": "Getreide, Backwaren & Süßes",
+		"reason": "Sehr fettreich und enthält Butter und Salz. Kann zu Pankreatitis führen.",
+		"aliases": [
+			"Buttercroissant"
+		]
+	},
+	{
+		"name": "Currysoße",
+		"status": "bad",
+		"category": "Soßen & Dips",
+		"reason": "Enthält oft Chili, Zucker, Knoblauch, Salz und weitere Gewürze. Stark reizend und ungeeignet.",
+		"aliases": [
+			"Curry Dip",
+			"Curry Imbisssoße"
+		]
+	},
+	{
+		"name": "Datteln",
+		"status": "warn",
+		"category": "Obst",
+		"reason": "Sehr zuckerreich und stark konzentriert. Kann zu Durchfall führen und ist nicht für regelmäßige Fütterung geeignet.",
+		"aliases": [
+			"Medjool Dattel"
+		]
+	},
+	{
+		"name": "Distelöl",
+		"status": "warn",
+		"category": "Öle & Fette",
+		"reason": "Distelöl enthält sehr viel Omega-6 und kaum Omega-3. Kann entzündliche Prozesse fördern und ist für die regelmäßige Fütterung nicht geeignet.",
+		"aliases": [
+			"Safloröl",
+			"Distel Speiseöl"
+		]
+	},
+	{
+		"name": "Dosensuppe",
+		"status": "bad",
+		"category": "Fertigprodukte",
+		"reason": "Hoher Salzgehalt, Gewürze und Zwiebel-/Knoblauch. Konservierungsstoffe möglich. Nicht für Hunde.",
+		"aliases": [
+			"Konservensuppe"
+		]
+	},
+	{
+		"name": "Drachenfrucht (Pitaya)",
+		"status": "ok",
+		"category": "Obst",
+		"reason": "Mildes Fruchtfleisch, reich an Antioxidantien. Schale entfernen und in kleinen Mengen füttern.",
+		"aliases": [
+			"Pitahaya",
+			"Dragon Fruit"
+		]
+	},
+	{
+		"name": "Eiersalat",
+		"status": "bad",
+		"category": "Eier & Eiprodukte",
+		"reason": "Enthält Mayonnaise, Zwiebeln, Senf oder Gewürze. Diese Zutaten sind ungeeignet und teilweise toxisch.",
+		"aliases": [
+			"Eiersalat aus dem Glas",
+			"Eiersalat hausgemacht"
+		]
+	},
+	{
+		"name": "Eierschalen (ganz/roh)",
+		"status": "warn",
+		"category": "Eier & Eiprodukte",
+		"reason": "Ganze Schalen können scharfkantig sein und den Magen reizen. Nur fein zermahlen und hygienisch verwenden.",
+		"aliases": [
+			"Ei mit Schale",
+			"Eierschale roh"
+		]
+	},
+	{
+		"name": "Eierschalen (gemahlen)",
+		"status": "ok",
+		"category": "Eier & Eiprodukte",
+		"reason": "Fein gemahlene Eierschalen sind eine natürliche Calciumquelle. Nur in exakt berechneter Menge einsetzen. Nicht als Snack geeignet.",
+		"aliases": [
+			"Eierschalenpulver",
+			"gemahlene Schale"
+		]
+	},
+	{
+		"name": "Eierschalenpulver (Calciumcarbonat)",
+		"status": "ok",
+		"category": "Nahrungsergänzung",
+		"reason": "Kalziumquelle zur Ca:P‑Balance bei selbst gekochten Rationen ohne Knochen. Dosierung nach Phosphorgehalt der Ration. Überdosierung führt zu Verstopfung und Mineralstoffungleichgewicht.",
+		"aliases": [
+			"Calciumcarbonat",
+			"CaCO3",
+			"Eierschale gemahlen"
+		]
+	},
+	{
+		"name": "Eierspeisen mit Gewürzen",
+		"status": "bad",
+		"category": "Eier & Eiprodukte",
+		"reason": "Eierspeisen mit Salz, Pfeffer, Zwiebel oder Milch sind ungeeignet. Diese Zusätze können Verdauungsprobleme verursachen.",
+		"aliases": [
+			"Omelette",
+			"Eiergericht gewürzt",
+			"Eierspeise"
+		]
+	},
+	{
+		"name": "Eigelb (gekocht)",
+		"status": "ok",
+		"category": "Eier & Eiprodukte",
+		"reason": "Eigelb enthält wertvolle Fettsäuren und Vitamine. In gekochter Form gut verträglich und nährstoffreich.",
+		"aliases": [
+			"gekochtes Eigelb"
+		]
+	},
+	{
+		"name": "Eigelb (roh)",
+		"status": "ok",
+		"category": "Eier & Eiprodukte",
+		"reason": "Rohes Eigelb ist gut verträglich und enthält kein Avidin wie das Eiweiß. Nur frisch und in kleinen Mengen geben.",
+		"aliases": [
+			"rohes Eigelb"
+		]
+	},
+	{
+		"name": "Eiprodukte industriell",
+		"status": "bad",
+		"category": "Eier & Eiprodukte",
+		"reason": "Eiprodukte wie Flüssigei oder Ei-Mischungen enthalten oft Gewürze, Salz oder Zusätze. Nicht geeignet für Hunde.",
+		"aliases": [
+			"Flüssigei",
+			"Ei-Mix",
+			"Eiprodukt"
+		]
+	},
+	{
+		"name": "Eiweiß (gekocht)",
+		"status": "ok",
+		"category": "Eier & Eiprodukte",
+		"reason": "Gekochtes Eiweiß ist leicht verdaulich und fettfrei. Gute Proteinquelle für sensible Hunde.",
+		"aliases": [
+			"hartgekochtes Eiweiß"
+		]
+	},
+	{
+		"name": "Eiweiß (roh)",
+		"status": "bad",
+		"category": "Eier & Eiprodukte",
+		"reason": "Roher Eiweiß enthält Avidin, das Biotin bindet und langfristig zu Nährstoffmangel führen kann. Nicht füttern.",
+		"aliases": [
+			"rohes Eiweiß"
+		]
+	},
+	{
+		"name": "Erbsen (gekocht)",
+		"status": "ok",
+		"category": "Gemüse",
+		"reason": "Erbsen sind reich an Protein und Ballaststoffen. In kleinen Mengen positiv für die Verdauung.",
+		"aliases": [
+			"Erbse",
+			"Erbsengemüse"
+		]
+	},
+	{
+		"name": "Erdbeeren",
+		"status": "ok",
+		"category": "Obst",
+		"reason": "Erdbeeren enthalten Antioxidantien und Vitamin C. Sie sind gut verträglich in kleinen Mengen.",
+		"aliases": [
+			"Erdbeere",
+			"Walderdbeere"
+		]
+	},
+	{
+		"name": "Feige frisch",
+		"status": "ok",
+		"category": "Obst",
+		"reason": "Frische Feigen sind ballaststoffreich und wirken verdauungsregulierend. Nur in kleinen Mengen füttern.",
+		"aliases": [
+			"Fruchtfeige"
+		]
+	},
+	{
+		"name": "Fertiggerichte (Allgemein)",
+		"status": "bad",
+		"category": "Fertigprodukte",
+		"reason": "Enthalten häufig Salz, Zucker, Gewürze, Zwiebel/Knoblauch und Zusatzstoffe. Keine Kontrolle über Inhaltsstoffe. Für Hunde ungeeignet.",
+		"aliases": [
+			"Convenience Food"
+		]
+	},
+	{
+		"name": "Fertigsauce (Tomatensauce, industriell)",
+		"status": "bad",
+		"category": "Fertigprodukte",
+		"reason": "Zucker, Salz, Gewürze, organische Säuren und oft Zwiebel/Knoblauch. Nicht für Hunde geeignet.",
+		"aliases": [
+			"Pasta Sauce",
+			"Sughi"
+		]
+	},
+	{
+		"name": "Fischhaut getrocknet",
+		"status": "ok",
+		"category": "Kauartikel",
+		"reason": "Getrocknete Fischhaut ist ein natürlicher Kauartikel, reich an Omega-3-Fettsäuren und unterstützt Haut und Fell. Sehr beliebt als Snack.",
+		"aliases": [
+			"Fischhautstreifen",
+			"Trockenfisch Hund"
+		]
+	},
+	{
+		"name": "Fischkonserven in Öl oder Sauce",
+		"status": "bad",
+		"category": "Fertigprodukte",
+		"reason": "Konserven enthalten Salz, Öl und oft Zwiebeln oder Tomaten. Nicht für Hunde geeignet.",
+		"aliases": [
+			"Fisch in Tomatensoße",
+			"Ölkonserve"
+		]
+	},
+	{
+		"name": "Fischstäbchen",
+		"status": "bad",
+		"category": "Fertigprodukte",
+		"reason": "Panade und Frittierfett belasten die Verdauung. Fertigprodukte enthalten Salz und Zusatzstoffe. Nicht geeignet.",
+		"aliases": [
+			"TK-Fischstäbchen",
+			"Fischstäbchen paniert"
+		]
+	},
+	{
+		"name": "Flohsamenschalen",
+		"status": "ok",
+		"category": "Nahrungsergänzung",
+		"reason": "Natürliche Ballaststoffe, die Wasser binden und die Verdauung regulieren. Unterstützen den Darm bei Durchfall und Verstopfung.",
+		"aliases": [
+			"Psyllium",
+			"Plantago ovata"
+		]
+	},
+	{
+		"name": "Forelle (gekocht)",
+		"status": "ok",
+		"category": "Fisch",
+		"reason": "Forelle ist leicht verdaulich und enthält Omega-3. Gekocht und ohne Gräten gut verträglich.",
+		"aliases": [
+			"gekochte Forelle"
+		]
+	},
+	{
+		"name": "Forelle (roh)",
+		"status": "warn",
+		"category": "Fisch",
+		"reason": "Kann Parasiten enthalten. Nur tiefgefroren und frisch in BARF-Qualität geeignet.",
+		"aliases": [
+			"Forelle roh"
+		]
+	},
+	{
+		"name": "Frischkäse",
+		"status": "warn",
+		"category": "Milchprodukte",
+		"reason": "Frischkäse enthält Fett und oft Salz oder Kräuter. Nur naturbelassen und fettarm in kleinen Mengen geben.",
+		"aliases": [
+			"Philadelphia",
+			"Frischkäse pur"
+		]
+	},
+	{
+		"name": "Fruchtsaft",
+		"status": "bad",
+		"category": "Obst",
+		"reason": "Obstsäfte enthalten viel Fruchtzucker und Säuren, die den Magen reizen. Wasser ist die einzige geeignete Flüssigkeit für Hunde.",
+		"aliases": [
+			"Orangensaft",
+			"Multivitaminsaft"
+		]
+	},
+	{
+		"name": "Garnelen (gekocht, ungewürzt)",
+		"status": "ok",
+		"category": "Meeresfrüchte",
+		"reason": "Garnelen sind proteinreich und fettarm. Immer gekocht und ohne Schale oder Gewürze füttern.",
+		"aliases": [
+			"Shrimps gekocht",
+			"Krabbenfleisch"
+		]
+	},
+	{
+		"name": "Garnelen (roh oder gewürzt)",
+		"status": "bad",
+		"category": "Meeresfrüchte",
+		"reason": "Roh können Garnelen Parasiten enthalten. Gewürzte oder panierte Varianten sind ungeeignet.",
+		"aliases": [
+			"Garnelen roh",
+			"Shrimps paniert"
+		]
+	},
+	{
+		"name": "Geflügel-Mortadella",
+		"status": "bad",
+		"category": "Fertigprodukte",
+		"reason": "Verarbeitetes Fleisch mit Emulgatoren, Salz, Phosphaten und Gewürzen. Keine ernährungsphysiologische Notwendigkeit, erhöhtes Risikoprofil.",
+		"aliases": [
+			"Mortadella"
+		]
+	},
+	{
+		"name": "Gelatine/Kollagen",
+		"status": "ok",
+		"category": "Nahrungsergänzung",
+		"reason": "Lieferant für Kollagenpeptide. Unterstützt Gelenke, Sehnen und Haut. Häufig Bestandteil von Kauartikeln und Gelenkpulvern.",
+		"aliases": [
+			"Kollagenhydrolysat",
+			"Collagen Peptide"
+		]
+	},
+	{
+		"name": "Getrocknete Bananen",
+		"status": "warn",
+		"category": "Obst",
+		"reason": "Getrocknete Bananen sind stark konzentriert und sehr zuckerreich. Können Blutzuckerspitzen verursachen.",
+		"aliases": [
+			"Bananenchips"
+		]
+	},
+	{
+		"name": "Getrocknete Feigen",
+		"status": "warn",
+		"category": "Obst",
+		"reason": "Enthalten sehr viel Zucker und Ballaststoffe. In kleinen Mengen füttern, kann Verdauung stark anregen.",
+		"aliases": [
+			"Trockenfeigen"
+		]
+	},
+	{
+		"name": "Getrocknete Mangos",
+		"status": "warn",
+		"category": "Obst",
+		"reason": "Hoher Zuckergehalt und oft mit Schwefel behandelt. Nur naturbelassen und in winzigen Mengen geeignet.",
+		"aliases": [
+			"Mangostreifen getrocknet"
+		]
+	},
+	{
+		"name": "Geweihstangen",
+		"status": "warn",
+		"category": "Kauartikel",
+		"reason": "Sehr harter Kauartikel, splittert selten und ist langlebig. Kann jedoch Zahnfrakturen verursachen. Nur für erfahrene starke Kauer geeignet und stets unter Aufsicht.",
+		"aliases": [
+			"Hirschgeweih",
+			"Elchgeweih",
+			"Antler Kauartikel"
+		]
+	},
+	{
+		"name": "Gewürzmischungen (Allzweck)",
+		"status": "bad",
+		"category": "Fertigprodukte",
+		"reason": "Oft Zwiebel-/Knoblauchpulver, Salz, Pfeffer, Zucker und Aromen. Nicht für Hunde geeignet.",
+		"aliases": [
+			"Gewürzsalz",
+			"Rub"
+		]
+	},
+	{
+		"name": "Ghee (geklärte Butter)",
+		"status": "warn",
+		"category": "Öle & Fette",
+		"reason": "Ghee enthält kaum Laktose, ist aber sehr fettreich. Kann in kleinen Mengen zur Energieversorgung verwendet werden, jedoch nur bei Hunden ohne Fettempfindlichkeit.",
+		"aliases": [
+			"Butterreinfett"
+		]
+	},
+	{
+		"name": "Glucosamin & Chondroitin",
+		"status": "ok",
+		"category": "Nahrungsergänzung",
+		"reason": "Glykosaminoglykane zur Unterstützung des Gelenkknorpels. Evidenz gemischt, Sicherheit gut. Dosis nach KGW, Wirkung erst nach Wochen beurteilbar.",
+		"aliases": [
+			"GAGs",
+			"Chondroitinsulfat",
+			"Glucosaminsulfat"
+		]
+	},
+	{
+		"name": "Granatapfelkerne",
+		"status": "warn",
+		"category": "Obst",
+		"reason": "Kerne sind schwer verdaulich und können den Magen reizen. Nur das Fruchtfleisch ohne Kerne ist in sehr kleinen Mengen tolerierbar.",
+		"aliases": [
+			"Granatapfel",
+			"Punica"
+		]
+	},
+	{
+		"name": "Grapefruit",
+		"status": "bad",
+		"category": "Obst",
+		"reason": "Grapefruit enthält Stoffe, die den Stoffwechsel von Medikamenten beeinflussen können. Nicht für Hunde geeignet.",
+		"aliases": [
+			"Pampelmuse"
+		]
+	},
+	{
+		"name": "Griechischer Joghurt (fettreich)",
+		"status": "warn",
+		"category": "Milchprodukte",
+		"reason": "Sehr hoher Fettanteil erhöht das Risiko für Verdauungsprobleme und Pankreatitis. Nur fettarme Varianten geeignet.",
+		"aliases": [
+			"Greek Yogurt",
+			"griechischer Sahnejoghurt"
+		]
+	},
+	{
+		"name": "Grüne Bohnen (gekocht)",
+		"status": "ok",
+		"category": "Gemüse",
+		"reason": "Gekochte Bohnen enthalten kein Phasin mehr und sind ballaststoffreich. In Maßen geeignet.",
+		"aliases": [
+			"Buschbohnen gekocht",
+			"Prinzessbohnen"
+		]
+	},
+	{
+		"name": "Grüne Bohnen (roh)",
+		"status": "bad",
+		"category": "Gemüse",
+		"reason": "Rohe Bohnen enthalten Phasin, das giftig ist. Niemals roh verfüttern.",
+		"aliases": [
+			"Buschbohnen roh"
+		]
+	},
+	{
+		"name": "Grünlippmuschel",
+		"status": "ok",
+		"category": "Nahrungsergänzung",
+		"reason": "Natürliche Quelle für Omega-3-Fettsäuren und Glykosaminoglykane. Unterstützt Gelenke, Knorpel und Bewegungsapparat. Besonders geeignet bei Arthrose oder Gelenkproblemen.",
+		"aliases": [
+			"Grünlippmuschelpulver",
+			"Perna canaliculus",
+			"GLM Ergänzung"
+		]
+	},
+	{
+		"name": "Guacamole",
+		"status": "bad",
+		"category": "Soßen & Dips",
+		"reason": "Avocado enthält Persin, ein giftiger Stoff für Hunde. Guacamole enthält zusätzlich Knoblauch oder Zwiebeln.",
+		"aliases": [
+			"Avocado Dip"
+		]
+	},
+	{
+		"name": "Guave",
+		"status": "ok",
+		"category": "Obst",
+		"reason": "Reife Guavenstücke ohne Kerne enthalten Vitamin C und Ballaststoffe. In kleinen Mengen geeignet.",
+		"aliases": [
+			"Tropenguave"
+		]
+	},
+	{
+		"name": "Gurke",
+		"status": "ok",
+		"category": "Gemüse",
+		"reason": "Gurken sind wassereich und kalorienarm. Sie wirken erfrischend und können roh in kleinen Stücken gefüttert werden.",
+		"aliases": [
+			"Salatgurke",
+			"Gurke roh"
+		]
+	},
+	{
+		"name": "Haferflocken",
+		"status": "ok",
+		"category": "Getreide, Backwaren & Süßes",
+		"reason": "Haferflocken enthalten lösliche Ballaststoffe und können bei empfindlichen Mägen hilfreich sein. Immer eingeweicht oder gekocht füttern.",
+		"aliases": [
+			"Haferbrei",
+			"Porridge"
+		]
+	},
+	{
+		"name": "Hagebuttenpulver",
+		"status": "ok",
+		"category": "Nahrungsergänzung",
+		"reason": "Reich an natürlichem Vitamin C und Antioxidantien. Unterstützt das Immunsystem, wirkt entzündungshemmend und wird bei Arthrose eingesetzt.",
+		"aliases": [
+			"Hagebutte gemahlen",
+			"Hagebuttenschalen",
+			"Hagebuttenextrakt"
+		]
+	},
+	{
+		"name": "Hanfsamenöl",
+		"status": "ok",
+		"category": "Öle & Fette",
+		"reason": "Hanfsamenöl enthält ein ideales Verhältnis von Omega-3- zu Omega-6-Fettsäuren. Unterstützt Immunsystem und Hautgesundheit. Nur kaltgepresste, reine Varianten verwenden.",
+		"aliases": [
+			"Hanföl",
+			"Hanf-Speiseöl"
+		]
+	},
+	{
+		"name": "Hase (gekocht)",
+		"status": "ok",
+		"category": "Fleisch",
+		"reason": "Gekochtes Hasenfleisch ist mager, gut verdaulich und hypoallergen. Geeignet für Ausschlussdiäten und sensible Hunde, sofern ohne Gewürze oder Zusätze zubereitet.",
+		"aliases": [
+			"Hasenfleisch gekocht",
+			"Wildhase gekocht"
+		]
+	},
+	{
+		"name": "Hase (roh)",
+		"status": "warn",
+		"category": "Fleisch",
+		"reason": "Rohes Hasenfleisch ist reich an Protein und hypoallergen, wird in BARF-Ernährung verwendet. Kann jedoch Parasiten und Keime enthalten. Nur in geprüfter Qualität und unter tierärztlicher Anleitung roh füttern.",
+		"aliases": [
+			"Hasenfleisch roh",
+			"Wildhase roh",
+			"Barf Hase roh"
+		]
+	},
+	{
+		"name": "Hasenohren getrocknet",
+		"status": "ok",
+		"category": "Kauartikel",
+		"reason": "Getrocknete Hasenohren sind leicht verdaulich, unterstützen die Zahngesundheit und wirken durch Fellanteile präbiotisch. Sehr gut für Allergikerhunde geeignet.",
+		"aliases": [
+			"Hasenohren",
+			"Hasensnack getrocknet"
+		]
+	},
+	{
+		"name": "Heidelbeeren",
+		"status": "ok",
+		"category": "Obst",
+		"reason": "Heidelbeeren fördern die Darmgesundheit und wirken antioxidativ. Beliebter Bestandteil natürlicher Hundesnacks.",
+		"aliases": [
+			"Blaubeeren",
+			"Blueberries"
+		]
+	},
+	{
+		"name": "Hering (eingelegt/geräuchert)",
+		"status": "bad",
+		"category": "Fisch",
+		"reason": "Eingelegte oder geräucherte Produkte enthalten Salz, Nitrite und Gewürze. Nicht geeignet für Hunde.",
+		"aliases": [
+			"Matjes",
+			"Rollmops",
+			"Bückling"
+		]
+	},
+	{
+		"name": "Hering (gekocht)",
+		"status": "ok",
+		"category": "Fisch",
+		"reason": "Hering ist fetthaltig und reich an Omega-3. Unterstützt Haut und Fell. Nur gekocht und ohne Salz füttern.",
+		"aliases": [
+			"gekochter Hering"
+		]
+	},
+	{
+		"name": "Himbeeren",
+		"status": "ok",
+		"category": "Obst",
+		"reason": "Himbeeren sind ballaststoffreich und können die Verdauung unterstützen. In mäßigen Mengen geeignet.",
+		"aliases": [
+			"Himbeere",
+			"Waldhimbeere"
+		]
+	},
+	{
+		"name": "Hirschhaut getrocknet",
+		"status": "ok",
+		"category": "Kauartikel",
+		"reason": "Hypoallergene Alternative für sensible Hunde. Reich an Protein und zäh, sorgt für natürliche Zahnreinigung.",
+		"aliases": [
+			"Hirschhaut",
+			"Wildhaut Kauartikel"
+		]
+	},
+	{
+		"name": "Hirse (gekocht)",
+		"status": "ok",
+		"category": "Getreide, Backwaren & Süßes",
+		"reason": "Gekochte Hirse ist leicht verdaulich und verträglich für Hunde mit Glutenunverträglichkeit.",
+		"aliases": [
+			"Hirsebrei"
+		]
+	},
+	{
+		"name": "Honig",
+		"status": "ok",
+		"category": "Getreide, Backwaren & Süßes",
+		"reason": "Natürlicher Honig enthält Enzyme und kann in kleinen Mengen als Zusatz verwendet werden. Enthält jedoch viel Zucker.",
+		"aliases": [
+			"Bienenhonig"
+		]
+	},
+	{
+		"name": "Hufe",
+		"status": "warn",
+		"category": "Kauartikel",
+		"reason": "Rinderhufe sind hart und geruchsarm. Sie können Zahnfrakturen verursachen und bei empfindlichen Hunden Verdauungsprobleme auslösen. Nur unter Aufsicht verwenden.",
+		"aliases": [
+			"Rinderhuf",
+			"Kuhhuf",
+			"Huf Kauartikel"
+		]
+	},
+	{
+		"name": "Huhn (gekocht)",
+		"status": "ok",
+		"category": "Fleisch",
+		"reason": "Gekochtes Hühnerfleisch ohne Haut, Salz oder Gewürze ist gut verträglich und eignet sich für Schonkost bei Magen-Darm-Problemen.",
+		"aliases": [
+			"Hühnerfleisch gekocht",
+			"gekochtes Huhn",
+			"Geflügel gekocht"
+		]
+	},
+	{
+		"name": "Huhn (roh)",
+		"status": "warn",
+		"category": "Fleisch",
+		"reason": "Rohes Hühnerfleisch enthält wertvolle Proteine, birgt aber Salmonellen- und Campylobacter-Risiko. Nur bei BARF und unter Kontrolle geeignet.",
+		"aliases": [
+			"Hühnerfleisch roh",
+			"Geflügel roh",
+			"Barf Huhn roh"
+		]
+	},
+	{
+		"name": "Hummus",
+		"status": "bad",
+		"category": "Soßen & Dips",
+		"reason": "Kichererbsen sind an sich unproblematisch, aber Hummus enthält Knoblauch, Öl und Salz. Nicht geeignet.",
+		"aliases": [
+			"Kichererbsenpaste",
+			"Humus Dip"
+		]
+	},
+	{
+		"name": "Hühnerei (gekocht)",
+		"status": "ok",
+		"category": "Eier & Eiprodukte",
+		"reason": "Gekochte Eier sind eine hochwertige Proteinquelle, gut verträglich und liefern Vitamine und Mineralstoffe. Immer ohne Schale und ohne Salz füttern.",
+		"aliases": [
+			"gekochtes Ei",
+			"hartgekochtes Ei"
+		]
+	},
+	{
+		"name": "Hühnerei (roh)",
+		"status": "warn",
+		"category": "Eier & Eiprodukte",
+		"reason": "Rohes Eiweiß enthält Avidin, das Biotin bindet und zu Mangel führen kann. Rohe Eier können Salmonellen enthalten. Nur Eigelb roh in sehr kleinen Mengen geeignet.",
+		"aliases": [
+			"rohes Ei",
+			"Ei roh"
+		]
+	},
+	{
+		"name": "Hühnerherz (gekocht)",
+		"status": "ok",
+		"category": "Innereien",
+		"reason": "Gekochte Hühnerherzen liefern hochwertiges Eiweiß und Taurin. Gut verdaulich und geeignet für Schonkost oder als Trainingssnack.",
+		"aliases": [
+			"Hühnerherzen gekocht",
+			"gekochtes Geflügelherz"
+		]
+	},
+	{
+		"name": "Hühnerherz (roh)",
+		"status": "warn",
+		"category": "Innereien",
+		"reason": "Rohes Hühnerherz ist reich an Taurin, jedoch keimanfällig. Nur in BARF-Qualität verwenden und bei empfindlichen Hunden meiden.",
+		"aliases": [
+			"Geflügelherz roh",
+			"Hühnerherzen roh"
+		]
+	},
+	{
+		"name": "Hüttenkäse",
+		"status": "ok",
+		"category": "Milchprodukte",
+		"reason": "Mild, relativ laktosearm und leicht verdaulich. Besonders geeignet bei Magen-Darm-Problemen.",
+		"aliases": [
+			"Cottage Cheese",
+			"körniger Frischkäse"
+		]
+	},
+	{
+		"name": "Inulin",
+		"status": "ok",
+		"category": "Nahrungsergänzung",
+		"reason": "Präbiotischer Ballaststoff zur Unterstützung der Darmflora. Fördert gesunde Bakterien und verbessert die Verdauung.",
+		"aliases": [
+			"FOS",
+			"Fructooligosaccharide",
+			"Präbiotisches Pulver"
+		]
+	},
+	{
+		"name": "Joghurtdressing",
+		"status": "warn",
+		"category": "Soßen & Dips",
+		"reason": "Kann in sehr kleinen Mengen verträglich sein, enthält aber oft Zucker, Salz und Kräuter wie Schnittlauch oder Knoblauch.",
+		"aliases": [
+			"Kräuterdressing",
+			"Salatdressing Joghurt"
+		]
+	},
+	{
+		"name": "Johannisbeeren",
+		"status": "warn",
+		"category": "Obst",
+		"reason": "Johannisbeeren enthalten viel Säure und können Magenreizungen hervorrufen. Nur sehr kleine Mengen erlaubt.",
+		"aliases": [
+			"Ribisel",
+			"Rotkirsche",
+			"Schwarze Ribisel"
+		]
+	},
+	{
+		"name": "Kaffeebaumholz",
+		"status": "ok",
+		"category": "Kauartikel",
+		"reason": "Natürliches Kauholz, das nicht splittert. Es franst aus und reinigt dabei mechanisch die Zähne. Geeignet für Hunde, die gerne auf Holz kauen.",
+		"aliases": [
+			"Kauholz",
+			"Kaffeebaum Kauwurzel"
+		]
+	},
+	{
+		"name": "Kaktusfeige",
+		"status": "warn",
+		"category": "Obst",
+		"reason": "Das Fruchtfleisch ist in kleinen Mengen verträglich, die Kerne und Schale enthalten jedoch Dornen und reizen den Verdauungstrakt.",
+		"aliases": [
+			"Feigenkaktus",
+			"Opuntie"
+		]
+	},
+	{
+		"name": "Kalbsfuß getrocknet",
+		"status": "warn",
+		"category": "Kauartikel",
+		"reason": "Sehr harter Kauartikel mit Knochenanteil. Kann bei falschem Kauen splittern. Nur für erfahrene Kauer unter Aufsicht.",
+		"aliases": [
+			"Kalbsschulter",
+			"Kalbsfuß",
+			"Knochen Kauartikel Kalb"
+		]
+	},
+	{
+		"name": "Kalbskopfhaut",
+		"status": "ok",
+		"category": "Kauartikel",
+		"reason": "Kalbskopfhaut ist etwas weicher als Rinderkopfhaut, aber dennoch zäh und zahnpflegend. Geeignet für mittelgroße und große Hunde.",
+		"aliases": [
+			"Kalbskopfhaut Snack",
+			"Kopfhaut Kalb"
+		]
+	},
+	{
+		"name": "Kaninchen (gekocht)",
+		"status": "ok",
+		"category": "Fleisch",
+		"reason": "Gekochtes Kaninchenfleisch ist sehr mager und gilt als hypoallergen. Besonders geeignet für Hunde mit Allergien oder sensibler Verdauung. Nur ohne Gewürze und ohne Haut verfüttern.",
+		"aliases": [
+			"Kaninchenfleisch gekocht",
+			"Hauskaninchen gekocht"
+		]
+	},
+	{
+		"name": "Kaninchen (roh)",
+		"status": "warn",
+		"category": "Fleisch",
+		"reason": "Rohes Kaninchenfleisch ist leicht verdaulich und hypoallergen, wird oft bei Futtermittelallergien eingesetzt. Rohfütterung birgt Keimrisiken und sollte nur mit geprüfter Qualität erfolgen.",
+		"aliases": [
+			"Kaninchenfleisch roh",
+			"Hauskaninchen roh",
+			"Barf Kaninchen roh"
+		]
+	},
+	{
+		"name": "Kaninchenohren mit Fell",
+		"status": "ok",
+		"category": "Kauartikel",
+		"reason": "Getrocknete Kaninchenohren mit Fell wirken wie natürliche Darmreinigung, liefern Ballaststoffe und sind hypoallergen. Besonders geeignet für sensible Hunde.",
+		"aliases": [
+			"Kaninchenohr Fell",
+			"Snack Kaninchen",
+			"Hasenohren mit Fell"
+		]
+	},
+	{
+		"name": "Karotte (roh oder gekocht)",
+		"status": "ok",
+		"category": "Gemüse",
+		"reason": "Karotten sind reich an Beta-Carotin und Ballaststoffen. Sowohl roh als auch gekocht gut verträglich und fördern die Verdauung.",
+		"aliases": [
+			"Möhre",
+			"Rüebli",
+			"Karotten"
+		]
+	},
+	{
+		"name": "Kartoffel (gekocht, ohne Schale)",
+		"status": "ok",
+		"category": "Gemüse",
+		"reason": "Gekochte Kartoffeln enthalten Stärke, die im gekochten Zustand gut verdaulich ist. Schale und grüne Stellen entfernen aufgrund von Solanin.",
+		"aliases": [
+			"Kartoffeln gekocht",
+			"Pellkartoffel ohne Schale"
+		]
+	},
+	{
+		"name": "Kartoffel (roh/grün)",
+		"status": "bad",
+		"category": "Gemüse",
+		"reason": "Rohe oder grüne Kartoffeln enthalten Solanin, das giftig für Hunde ist. Nicht verfüttern.",
+		"aliases": [
+			"rohe Kartoffel",
+			"grüne Kartoffel"
+		]
+	},
+	{
+		"name": "Kauwurzel",
+		"status": "ok",
+		"category": "Kauartikel",
+		"reason": "Aus der Baumwurzel gewonnen, sehr widerstandsfähig und splitterfrei. Eignet sich ideal zur Zahnpflege und als natürliche Beschäftigung.",
+		"aliases": [
+			"Kauwurzel Natur",
+			"Holzwurzel Kauholz"
+		]
+	},
+	{
+		"name": "Kekse",
+		"status": "warn",
+		"category": "Getreide, Backwaren & Süßes",
+		"reason": "Kekse enthalten Zucker und Fett und oft Xylit, was giftig ist. Nur hundespezifische Kekse erlauben.",
+		"aliases": [
+			"Cookies",
+			"Plätzchen"
+		]
+	},
+	{
+		"name": "Ketchup",
+		"status": "bad",
+		"category": "Soßen & Dips",
+		"reason": "Ketchup enthält viel Zucker, Salz, Essig und oft Zwiebel- oder Knoblauchpulver. Diese Zutaten können die Verdauung reizen und sind nicht für Hunde geeignet.",
+		"aliases": [
+			"Tomatenketchup",
+			"Curry Ketchup"
+		]
+	},
+	{
+		"name": "Kichererbsen (gekocht)",
+		"status": "ok",
+		"category": "Gemüse",
+		"reason": "Gekochte Kichererbsen sind proteinreich und ballaststoffhaltig. Nur in kleinen Mengen ohne Gewürze füttern.",
+		"aliases": [
+			"Kichererbse"
+		]
+	},
+	{
+		"name": "Kirsche (ohne Kern)",
+		"status": "warn",
+		"category": "Obst",
+		"reason": "Kirschen sind reich an Fruchtzucker und können Magenprobleme verursachen. Kerne enthalten Blausäure und dürfen nicht gefüttert werden.",
+		"aliases": [
+			"Süßkirsche",
+			"Sauerkirsche",
+			"Kirschen"
+		]
+	},
+	{
+		"name": "Kiwi (ohne Schale)",
+		"status": "ok",
+		"category": "Obst",
+		"reason": "Kiwi enthält Vitamin C und Antioxidantien. In kleinen Mengen ohne Schale geeignet.",
+		"aliases": [
+			"Grüne Kiwi",
+			"Goldkiwi"
+		]
+	},
+	{
+		"name": "Knoblauch",
+		"status": "bad",
+		"category": "Gemüse",
+		"reason": "Knoblauch gehört zur Gattung Allium und verursacht oxidative Schäden an roten Blutkörperchen. Bereits kleine Mengen sind gefährlich.",
+		"aliases": [
+			"Knoblauchzehe"
+		]
+	},
+	{
+		"name": "Knäckebrot",
+		"status": "warn",
+		"category": "Getreide, Backwaren & Süßes",
+		"reason": "Knäckebrot enthält Salz und oft Samen. Nur in kleinen Mengen und ohne Zusatzstoffe geeignet.",
+		"aliases": [
+			"Knusperbrot"
+		]
+	},
+	{
+		"name": "Kochschinken (ohne Gewürze)",
+		"status": "warn",
+		"category": "Fertigprodukte",
+		"reason": "Geringer Fettgehalt, aber meist Salzlake, Phosphate und Nitritpökelsalz. Kleine Mengen gelegentlich ok, regelmäßig ungeeignet.",
+		"aliases": [
+			"Schinken gekocht",
+			"Hinterschinken"
+		]
+	},
+	{
+		"name": "Kohl (weiß/rot)",
+		"status": "warn",
+		"category": "Gemüse",
+		"reason": "Kohlgemüse kann roh starke Blähungen verursachen. Gekocht nur in sehr kleinen Mengen füttern.",
+		"aliases": [
+			"Weißkohl",
+			"Rotkohl",
+			"Kraut"
+		]
+	},
+	{
+		"name": "Kokosöl",
+		"status": "warn",
+		"category": "Öle & Fette",
+		"reason": "Kokosöl enthält gesättigte Fettsäuren und mittelkettige Triglyceride (MCT). Es kann in kleinen Mengen als Energiequelle oder zur Hautpflege verwendet werden, liefert aber keinen essentiellen Nährwert und kann bei empfindlichen Hunden Durchfall verursachen.",
+		"aliases": [
+			"Kokosfett",
+			"MCT Öl",
+			"Cocosöl"
+		]
+	},
+	{
+		"name": "Kondensmilch",
+		"status": "bad",
+		"category": "Milchprodukte",
+		"reason": "Stark konzentriert und oft gezuckert. Nicht geeignet für Hunde.",
+		"aliases": [
+			"Dosenmilch",
+			"Coffee Creamer"
+		]
+	},
+	{
+		"name": "Krabbenfleisch natur",
+		"status": "ok",
+		"category": "Meeresfrüchte",
+		"reason": "Naturbelassenes Krabbenfleisch ist proteinreich und fettarm. Geeignet in kleinen Mengen.",
+		"aliases": [
+			"Nordseekrabben",
+			"Krabben gekocht"
+		]
+	},
+	{
+		"name": "Kreatin",
+		"status": "bad",
+		"category": "Nahrungsergänzung",
+		"reason": "Wird im Humanbereich als Muskelaufbau-Supplement genutzt. Belastet die Nieren und hat keinen Nutzen für Hunde.",
+		"aliases": [
+			"Creatin Monohydrat"
+		]
+	},
+	{
+		"name": "Kuchen",
+		"status": "bad",
+		"category": "Getreide, Backwaren & Süßes",
+		"reason": "Kuchen enthält Zucker, Fett, Backtriebmittel und oft schädliche Zutaten wie Schokolade oder Rosinen.",
+		"aliases": [
+			"Torte",
+			"Gebäck"
+		]
+	},
+	{
+		"name": "Kälberblase getrocknet",
+		"status": "ok",
+		"category": "Kauartikel",
+		"reason": "Getrocknete Kälberblase ist weich bis mittelhart, gut verträglich und eignet sich für Welpen und Senioren. Natürliche Quelle für Protein und ideal für Kaubedürfnis ohne Überbelastung.",
+		"aliases": [
+			"Kalbsblase",
+			"Kälberblasen Snack",
+			"Blasensnack"
+		]
+	},
+	{
+		"name": "Käse (hart, laktosearm)",
+		"status": "warn",
+		"category": "Milchprodukte",
+		"reason": "Hartkäse wie Gouda oder Emmentaler enthält wenig Laktose, aber viel Fett und Salz. Nur kleine Trainingsstücke verwenden.",
+		"aliases": [
+			"Gouda",
+			"Cheddar",
+			"Emmentaler",
+			"Hartkäse"
+		]
+	},
+	{
+		"name": "Kürbis (gekocht)",
+		"status": "ok",
+		"category": "Gemüse",
+		"reason": "Kürbis enthält Ballaststoffe und kann die Verdauung regulieren. Gekocht und ohne Kerne für Hunde sehr gut geeignet.",
+		"aliases": [
+			"Hokkaido",
+			"Butternut Kürbis"
+		]
+	},
+	{
+		"name": "Lachs (gekocht)",
+		"status": "ok",
+		"category": "Fisch",
+		"reason": "Gekochter Lachs ohne Gewürze oder Haut ist reich an Omega-3-Fettsäuren und gut verträglich. Unterstützt Haut, Fell und Gelenke. Nur hochwertige Filets verwenden.",
+		"aliases": [
+			"gekochter Lachs",
+			"Lachsfilet gekocht"
+		]
+	},
+	{
+		"name": "Lachs (roh)",
+		"status": "warn",
+		"category": "Fisch",
+		"reason": "Roh kann Lachs Parasiten wie Neorickettsia helminthoeca enthalten. Nur fangfrische, gefrostete Ware in BARF- oder Sushi-Qualität verwenden.",
+		"aliases": [
+			"roher Lachs",
+			"Lachs roh"
+		]
+	},
+	{
+		"name": "Lachsöl",
+		"status": "ok",
+		"category": "Öle & Fette",
+		"reason": "Reich an Omega-3-Fettsäuren wie EPA und DHA. Unterstützt Haut, Fell, Herz und Gelenke. Hochwertiges Lachsöl ist für viele Hunde sehr gut verträglich und wird als Ergänzung zum Barfen oder für Trockenfutter empfohlen.",
+		"aliases": [
+			"Fischöl",
+			"Lachsöl Kapseln",
+			"Omega-3 Öl",
+			"Omega-3-Öl",
+			"Seelachsöl"
+		]
+	},
+	{
+		"name": "Laktosefreie Milch",
+		"status": "ok",
+		"category": "Milchprodukte",
+		"reason": "Laktosefreie Milch ist meist besser verträglich. Trotzdem nur sehr kleine Mengen aufgrund des Fett- und Kaloriengehalts.",
+		"aliases": [
+			"laktosefrei",
+			"MinusL Milch"
+		]
+	},
+	{
+		"name": "Leberwurst (Streichwurst)",
+		"status": "bad",
+		"category": "Fertigprodukte",
+		"reason": "Fettreich, gewürzt, oft Zwiebel. Hohe Leberanteile bergen Vitamin‑A‑Überversorgungsrisiko. Nicht geeignet.",
+		"aliases": [
+			"Leberpastete"
+		]
+	},
+	{
+		"name": "Leinöl",
+		"status": "warn",
+		"category": "Öle & Fette",
+		"reason": "Hoher Anteil an ALA (pflanzliches Omega‑3). Hunde wandeln ALA nur begrenzt in EPA/DHA um. Frisch und kühl lagern, schnell ranzig. In kleinen Mengen ok, nicht Ersatz für marines Omega‑3.",
+		"aliases": [
+			"Leinsamenöl",
+			"Flachsöl"
+		]
+	},
+	{
+		"name": "Linsen (gekocht)",
+		"status": "ok",
+		"category": "Gemüse",
+		"reason": "Linsen liefern pflanzliche Proteine und Ballaststoffe, können aber Blähungen verursachen. Nur gekocht und in kleinen Mengen füttern.",
+		"aliases": [
+			"Linsengericht"
+		]
+	},
+	{
+		"name": "Mais (gekocht)",
+		"status": "ok",
+		"category": "Gemüse",
+		"reason": "Gekochter Mais liefert Ballaststoffe und Energie. Körner sind für Hunde verdaulich, der Kolben ist gefährlich und darf nicht gefüttert werden.",
+		"aliases": [
+			"Maiskörner"
+		]
+	},
+	{
+		"name": "Mango (ohne Kern)",
+		"status": "ok",
+		"category": "Obst",
+		"reason": "Mango enthält Beta-Carotin und ist für Hunde gut verträglich. Kern und Schale entfernen.",
+		"aliases": [
+			"Mangofrucht"
+		]
+	},
+	{
+		"name": "Margarine",
+		"status": "bad",
+		"category": "Öle & Fette",
+		"reason": "Margarine enthält oft gehärtete Fette, Emulgatoren, Salz und Aromen. Diese Kombination ist für Hunde ungeeignet und kann langfristig gesundheitsschädlich sein.",
+		"aliases": [
+			"Halbfettmargarine",
+			"Streichfett"
+		]
+	},
+	{
+		"name": "Mascarpone",
+		"status": "bad",
+		"category": "Milchprodukte",
+		"reason": "Sehr fettreich. Nicht geeignet aufgrund des hohen Kalorien- und Fettgehalts.",
+		"aliases": [
+			"Mascarpone Creme"
+		]
+	},
+	{
+		"name": "Mayonnaise",
+		"status": "warn",
+		"category": "Soßen & Dips",
+		"reason": "Mayonnaise enthält viel Fett und Essig oder Zitronensäure. Kein Nährwert für Hunde, kann Verdauungsbeschwerden verursachen.",
+		"aliases": [
+			"Mayo",
+			"Salatmayonnaise"
+		]
+	},
+	{
+		"name": "Milch (Kuhmilch)",
+		"status": "warn",
+		"category": "Milchprodukte",
+		"reason": "Kuhmilch enthält viel Laktose, die bei vielen Hunden zu Durchfall und Blähungen führen kann. Nur in sehr kleinen Mengen und verdünnt verwenden.",
+		"aliases": [
+			"Vollmilch",
+			"Frischmilch",
+			"Kuhmilch"
+		]
+	},
+	{
+		"name": "Milchpulver",
+		"status": "warn",
+		"category": "Milchprodukte",
+		"reason": "Milchpulver enthält Laktose und wird häufig als Zusatzstoff verwendet. Nur minimale Mengen verwenden.",
+		"aliases": [
+			"Magermilchpulver",
+			"Vollmilchpulver"
+		]
+	},
+	{
+		"name": "Miracel Whip",
+		"status": "bad",
+		"category": "Soßen & Dips",
+		"reason": "Enthält Zucker, Essig, Gewürze und modifizierte Stärke. Kein geeigneter Bestandteil für Hundeernährung.",
+		"aliases": [
+			"Salatcreme"
+		]
+	},
+	{
+		"name": "Mozzarella",
+		"status": "warn",
+		"category": "Milchprodukte",
+		"reason": "Mozzarella enthält viel Fett und Salzlake. In sehr kleinen Mengen gelegentlich möglich.",
+		"aliases": [
+			"Mozzarella di Bufala"
+		]
+	},
+	{
+		"name": "MSM",
+		"status": "ok",
+		"category": "Nahrungsergänzung",
+		"reason": "Organischer Schwefel, der zur Unterstützung der Gelenke eingesetzt wird, etwa bei Arthrose. Meist gut verträglich, der Nutzen ist von Hund zu Hund verschieden. Langsam eindosieren.",
+		"aliases": [
+			"Methylsulfonylmethan",
+			"organischer Schwefel"
+		]
+	},
+	{
+		"name": "Multivitaminpräparate",
+		"status": "warn",
+		"category": "Nahrungsergänzung",
+		"reason": "Enthalten viele synthetische Vitamine. Kann zu Überversorgung führen, insbesondere bei Hunden, die bereits Alleinfutter erhalten.",
+		"aliases": [
+			"Vitaminmix",
+			"Supplement Komplett"
+		]
+	},
+	{
+		"name": "Muscheln",
+		"status": "warn",
+		"category": "Meeresfrüchte",
+		"reason": "Muscheln enthalten Mineralstoffe und Omega-3, können aber Schadstoffe anreichern. Kleine Mengen möglich, wenn gekocht und pur.",
+		"aliases": [
+			"Miesmuschel",
+			"Muschelfleisch"
+		]
+	},
+	{
+		"name": "Müsli",
+		"status": "bad",
+		"category": "Getreide, Backwaren & Süßes",
+		"reason": "Haushaltsmüslis enthalten Zucker, Rosinen und Schokolade. Nicht für Hunde geeignet.",
+		"aliases": [
+			"Frühstücksmüsli"
+		]
+	},
+	{
+		"name": "Naturjoghurt",
+		"status": "ok",
+		"category": "Milchprodukte",
+		"reason": "Naturjoghurt ist durch Fermentation laktoseärmer, probiotisch und in kleinen Mengen gut verträglich. Ideal bei Schonkost.",
+		"aliases": [
+			"Joghurt natur",
+			"griechischer Joghurt natur (fettarm)"
+		]
+	},
+	{
+		"name": "Nektarine (ohne Kern)",
+		"status": "ok",
+		"category": "Obst",
+		"reason": "Nektarinen haben ähnliches Nährstoffprofil wie Pfirsiche. Ohne Kern in kleinen Mengen geeignet.",
+		"aliases": [
+			"Nektarine",
+			"Nektarinen"
+		]
+	},
+	{
+		"name": "Nudeln (gekocht, ohne Salz)",
+		"status": "ok",
+		"category": "Getreide, Backwaren & Süßes",
+		"reason": "Gekochte Nudeln liefern Kohlenhydrate und sind in moderaten Mengen verträglich. Gewürze und Soßen vermeiden.",
+		"aliases": [
+			"Pasta",
+			"Spaghetti"
+		]
+	},
+	{
+		"name": "Obst aus der Dose",
+		"status": "warn",
+		"category": "Obst",
+		"reason": "Oft in Zucker- oder Sirup eingelegt und enthält Konservierungsstoffe. Nicht geeignet für Hunde.",
+		"aliases": [
+			"Dosenobst",
+			"Fruchtcocktail Dose"
+		]
+	},
+	{
+		"name": "Ochsenziemer",
+		"status": "ok",
+		"category": "Kauartikel",
+		"reason": "Ochsenziemer sind fettarm, sehr hart und fördern die Zahngesundheit. Sie sind langanhaltende Beschäftigung und gut verträglich für die meisten Hunde.",
+		"aliases": [
+			"Bullenpenis getrocknet",
+			"Ziemer",
+			"Kaustange Ochse"
+		]
+	},
+	{
+		"name": "Olivenholz zum Kauen",
+		"status": "ok",
+		"category": "Kauartikel",
+		"reason": "Sehr robustes Naturholz, das nicht splittert. Gut geeignet für kaustarke Hunde, um Zahnstein abzureiben und Kaubedürfnis zu befriedigen.",
+		"aliases": [
+			"Olivenholz Kaustange",
+			"Naturholz Kauartikel"
+		]
+	},
+	{
+		"name": "Olivenöl",
+		"status": "ok",
+		"category": "Öle & Fette",
+		"reason": "Enthält einfach ungesättigte Fettsäuren und Polyphenole. In kleinen Mengen gut verträglich, kann die Verdauung fördern und das Fell pflegen. Natives, kaltgepresstes Öl verwenden und nicht überdosieren, sonst drohen Durchfall und zu viele Kalorien.",
+		"aliases": [
+			"Natives Olivenöl",
+			"Olivenöl extra vergine",
+			"EVOO"
+		]
+	},
+	{
+		"name": "Orange",
+		"status": "warn",
+		"category": "Obst",
+		"reason": "Orangen enthalten viel Säure und Zucker. Kleine Mengen Fruchtfleisch können toleriert werden, aber zu viel kann den Magen reizen.",
+		"aliases": [
+			"Mandarine",
+			"Clementine"
+		]
+	},
+	{
+		"name": "Oregano",
+		"status": "warn",
+		"category": "Kräuter & Pflanzenstoffe",
+		"reason": "Ätherische Öle können in hoher Dosis Magen-Darm reizen. Spuren als Gewürz im Futter meist tolerierbar, konzentrierte Öle meiden.",
+		"aliases": [
+			"Dost"
+		]
+	},
+	{
+		"name": "Palmöl",
+		"status": "bad",
+		"category": "Öle & Fette",
+		"reason": "Palmöl ist stark verarbeitet und enthält überwiegend gesättigte Fettsäuren. Es steht im Verdacht, oxidativen Stress zu fördern und enthält oft Rückstände von Lösungsmitteln. Nicht geeignet für Hunde.",
+		"aliases": [
+			"Palmfett",
+			"Hydriertes Palmöl"
+		]
+	},
+	{
+		"name": "Pansen getrocknet",
+		"status": "ok",
+		"category": "Kauartikel",
+		"reason": "Getrockneter Pansen unterstützt die Darmflora und ist ein natürlicher Kauartikel mit probiotischer Wirkung. Geruchsintensiv, aber sehr beliebt bei Hunden.",
+		"aliases": [
+			"Pansenstreifen",
+			"Pansen Snack"
+		]
+	},
+	{
+		"name": "Papaya (reif, ohne Kerne)",
+		"status": "ok",
+		"category": "Obst",
+		"reason": "Papaya ist reich an Enzymen wie Papain, die die Verdauung unterstützen. Fruchtfleisch ohne Kerne ist gut verträglich.",
+		"aliases": [
+			"Papaya",
+			"Papayafrucht"
+		]
+	},
+	{
+		"name": "Paprika (grün, unreif)",
+		"status": "warn",
+		"category": "Gemüse",
+		"reason": "Grüne Paprika ist unreif, kann bitter schmecken und den Magen reizen. Nur sehr kleine Mengen erlauben.",
+		"aliases": [
+			"Paprika grün"
+		]
+	},
+	{
+		"name": "Paprika (rot/gelb gereift)",
+		"status": "ok",
+		"category": "Gemüse",
+		"reason": "Reife Paprika enthält Vitamin C und Beta-Carotin. Ohne Kerne und Strunk in kleinen Mengen geeignet.",
+		"aliases": [
+			"Paprika rot",
+			"Paprika gelb"
+		]
+	},
+	{
+		"name": "Passionsfrucht (Maracuja)",
+		"status": "warn",
+		"category": "Obst",
+		"reason": "Sehr säurehaltig. Fruchtfleisch ohne Kerne kann in minimalen Mengen gefüttert werden, ist aber meist unverträglich.",
+		"aliases": [
+			"Maracuja"
+		]
+	},
+	{
+		"name": "Pesto",
+		"status": "bad",
+		"category": "Soßen & Dips",
+		"reason": "Pesto enthält Knoblauch, Käse, Salz und viel Öl. Diese Inhaltsstoffe können für Hunde toxisch oder belastend sein.",
+		"aliases": [
+			"Pesto Genovese",
+			"Basilikumpesto",
+			"Pesto Rosso"
+		]
+	},
+	{
+		"name": "Petersilie (Blätter)",
+		"status": "ok",
+		"category": "Kräuter & Pflanzenstoffe",
+		"reason": "Aromatisches Kraut mit Vitaminen und sekundären Pflanzenstoffen. In kleinen Mengen als Futterzusatz geeignet. Bei Nierenproblemen und in der Trächtigkeit vorsichtig dosieren.",
+		"aliases": [
+			"Krauspetersilie",
+			"Glatte Petersilie"
+		]
+	},
+	{
+		"name": "Pfeffer (schwarz)",
+		"status": "warn",
+		"category": "Kräuter & Pflanzenstoffe",
+		"reason": "Piperin reizt Schleimhäute und kann Medikamente beeinflussen. In der Küche anhaftende Spuren unkritisch, aktives Würzen für Hunde vermeiden.",
+		"aliases": [
+			"Schwarzer Pfeffer"
+		]
+	},
+	{
+		"name": "Pferdehaut getrocknet",
+		"status": "ok",
+		"category": "Kauartikel",
+		"reason": "Pferdehaut ist hypoallergen und besonders geeignet für Hunde mit Futtermittelunverträglichkeiten. Sehr fettarm und langanhaltend.",
+		"aliases": [
+			"Pferdehaut",
+			"Hypoallergen Kauartikel Pferd"
+		]
+	},
+	{
+		"name": "Pferdelunge getrocknet",
+		"status": "ok",
+		"category": "Kauartikel",
+		"reason": "Sehr leicht und gut verträglich, ideal für Allergiker. Kann als Trainingssnack oder Belohnung verwendet werden.",
+		"aliases": [
+			"Pferdelunge Snack",
+			"Hypoallergen Lunge Pferd"
+		]
+	},
+	{
+		"name": "Pfirsich (ohne Kern)",
+		"status": "ok",
+		"category": "Obst",
+		"reason": "Pfirsichfruchtfleisch ist gut verträglich und enthält Vitamine. Der Kern muss entfernt werden, da er Blausäure enthält.",
+		"aliases": [
+			"Pfirsich",
+			"Pfirsiche"
+		]
+	},
+	{
+		"name": "Pflaume (ohne Kern)",
+		"status": "warn",
+		"category": "Obst",
+		"reason": "Pflaumen können abführend wirken und enthalten viel Fruchtzucker. Nur in kleinen Mengen füttern.",
+		"aliases": [
+			"Zwetschge",
+			"Zwetschken",
+			"Pflaumenfrucht"
+		]
+	},
+	{
+		"name": "Pizza (mit Belag)",
+		"status": "bad",
+		"category": "Getreide, Backwaren & Süßes",
+		"reason": "Pizza enthält Gewürze, Salz, Zwiebel, Käse und verarbeitetes Fleisch. Nicht geeignet für Hunde.",
+		"aliases": [
+			"Pizzabelag",
+			"Pizza"
+		]
+	},
+	{
+		"name": "Pizza (Teigrand)",
+		"status": "warn",
+		"category": "Getreide, Backwaren & Süßes",
+		"reason": "Reiner Teigrand ohne Beläge kann in kleinen Mengen toleriert werden, enthält jedoch viel Salz und Hefe.",
+		"aliases": [
+			"Pizzarand"
+		]
+	},
+	{
+		"name": "Probiotika",
+		"status": "ok",
+		"category": "Nahrungsergänzung",
+		"reason": "Lebende Bakterienkulturen, die die Darmflora stabilisieren und Verdauungsprobleme lindern. Besonders geeignet nach Antibiotika oder bei Durchfall.",
+		"aliases": [
+			"Lactobacillus",
+			"Enterococcus faecium",
+			"Darmflora Präparat"
+		]
+	},
+	{
+		"name": "Propionat",
+		"status": "warn",
+		"category": "Nahrungsergänzung",
+		"reason": "Konservierungsstoff in Backwaren und Fertigfutter. Kann die Darmflora beeinflussen und Verdauungsprobleme auslösen.",
+		"aliases": [
+			"E282",
+			"Calciumpropionat"
+		]
+	},
+	{
+		"name": "Pute (gekocht)",
+		"status": "ok",
+		"category": "Fleisch",
+		"reason": "Gekochtes Putenfleisch ohne Haut ist fettarm und leicht verdaulich. Ideal für sensible Hunde und Ausschlussdiäten.",
+		"aliases": [
+			"Putenfleisch gekocht",
+			"Truthahn gekocht",
+			"Geflügel gekocht"
+		]
+	},
+	{
+		"name": "Pute (roh)",
+		"status": "warn",
+		"category": "Fleisch",
+		"reason": "Rohe Pute liefert mageres Protein, wird aber wie anderes Geflügel mit Vorsicht gefüttert. Risiko für Keime, nur unter BARF-Bedingungen geeignet.",
+		"aliases": [
+			"Putenfleisch roh",
+			"Truthahn roh",
+			"Barf Pute roh"
+		]
+	},
+	{
+		"name": "Quark (Magerquark)",
+		"status": "ok",
+		"category": "Milchprodukte",
+		"reason": "Magerquark enthält wenig Fett und viel Eiweiß. In kleinen Mengen sehr gut für Schonkost oder zum Untermischen geeignet.",
+		"aliases": [
+			"Topfen mager",
+			"Magerquark",
+			"Speisequark mager"
+		]
+	},
+	{
+		"name": "Quark (Vollfett)",
+		"status": "warn",
+		"category": "Milchprodukte",
+		"reason": "Hoher Fettgehalt kann empfindliche Hunde belasten. Nur kleine Mengen und selten.",
+		"aliases": [
+			"Rahmquark",
+			"Topfen Vollfett"
+		]
+	},
+	{
+		"name": "Quinoa (gekocht)",
+		"status": "ok",
+		"category": "Getreide, Backwaren & Süßes",
+		"reason": "Quinoa ist glutenfrei und liefert Aminosäuren. Nur gekocht und gut gespült geeignet.",
+		"aliases": [
+			"Quinoa Pseudogetreide"
+		]
+	},
+	{
+		"name": "Rahmsoße",
+		"status": "bad",
+		"category": "Soßen & Dips",
+		"reason": "Rahmsoßen enthalten Milchfett, Gewürze, Salz und oft Zwiebel. Nicht geeignet für Hunde mit Laktoseintoleranz oder empfindlicher Verdauung.",
+		"aliases": [
+			"Sahnesoße",
+			"Rahm Sauce"
+		]
+	},
+	{
+		"name": "Rapsöl",
+		"status": "ok",
+		"category": "Öle & Fette",
+		"reason": "Rapsöl hat ein günstiges Verhältnis von Omega-3 zu Omega-6. Es ist gut verträglich und kann zur täglichen Ergänzung verwendet werden. Nur kaltgepresst und hochwertig einsetzen.",
+		"aliases": [
+			"Canola Öl",
+			"Raps-Speiseöl"
+		]
+	},
+	{
+		"name": "Reis (gekocht)",
+		"status": "ok",
+		"category": "Getreide, Backwaren & Süßes",
+		"reason": "Gekochter weißer Reis ist leicht verdaulich und eignet sich zur Schonkost bei Durchfall und Magenproblemen.",
+		"aliases": [
+			"Weißreis",
+			"Basmatireis"
+		]
+	},
+	{
+		"name": "Reis (roh)",
+		"status": "bad",
+		"category": "Getreide, Backwaren & Süßes",
+		"reason": "Rohreis quillt im Magen auf und ist schwer verdaulich. Nicht geeignet für Hunde.",
+		"aliases": [
+			"Rohreis"
+		]
+	},
+	{
+		"name": "Remoulade",
+		"status": "bad",
+		"category": "Soßen & Dips",
+		"reason": "Stark gewürzt mit Kräutern, Gurken, Zucker und oft Knoblauch oder Senf. Die Kombination ist ungeeignet und belastet Verdauung und Leber.",
+		"aliases": [
+			"dänische Remoulade",
+			"Salatremoulade"
+		]
+	},
+	{
+		"name": "Ricotta",
+		"status": "ok",
+		"category": "Milchprodukte",
+		"reason": "Ricotta ist eiweißreich und relativ laktosearm. In kleinen Mengen gut verträglich.",
+		"aliases": [
+			"Ricotta Käse"
+		]
+	},
+	{
+		"name": "Rinderachillessehne",
+		"status": "ok",
+		"category": "Kauartikel",
+		"reason": "Sehr harter, langanhaltender Kauartikel. Unterstützt die Zahnreinigung und die Kaumuskulatur. Nur unter Aufsicht verwenden.",
+		"aliases": [
+			"Achillessehne",
+			"Rindersehne",
+			"Kaustange Sehne"
+		]
+	},
+	{
+		"name": "Rinderhaut",
+		"status": "ok",
+		"category": "Kauartikel",
+		"reason": "Natürliche Rinderhaut unterstützt das Kaubedürfnis, fördert die Zahnreinigung und ist gut verträglich. Nur naturbelassene, luftgetrocknete Produkte ohne chemische Zusätze verwenden.",
+		"aliases": [
+			"Kaustange Rind",
+			"Rinderhautknochen",
+			"Naturkauartikel Rind"
+		]
+	},
+	{
+		"name": "Rinderherz (gekocht)",
+		"status": "ok",
+		"category": "Innereien",
+		"reason": "Gekochtes Herz ist mager, reich an Taurin und gut verdaulich. Ideal als Proteinquelle in Schonkost und bei Ausschlussdiäten geeignet.",
+		"aliases": [
+			"Herz gekocht",
+			"gekochtes Rinderherz"
+		]
+	},
+	{
+		"name": "Rinderherz (roh)",
+		"status": "warn",
+		"category": "Innereien",
+		"reason": "Rohes Herz besteht aus Muskelfleisch mit hohem Taurin-Gehalt. In der BARF-Fütterung beliebt, jedoch keimbelastet. Nur in geprüfter Qualität roh verfüttern.",
+		"aliases": [
+			"Herz roh",
+			"Rinderherz roh",
+			"Barf Herz roh"
+		]
+	},
+	{
+		"name": "Rinderkopfhaut",
+		"status": "ok",
+		"category": "Kauartikel",
+		"reason": "Sehr harter Kauartikel mit langer Beschäftigungsdauer. Unterstützt Zahnreinigung und stärkt Kaumuskulatur. Fellreste können präbiotisch wirken.",
+		"aliases": [
+			"Kopfhautstreifen Rind",
+			"Kopfhaut Kaustreifen"
+		]
+	},
+	{
+		"name": "Rinderleber (gekocht)",
+		"status": "ok",
+		"category": "Innereien",
+		"reason": "Gekochte Rinderleber ist reich an Vitamin A, Eisen und B-Vitaminen. Nur in kleinen Mengen füttern, da Überdosierung zu Vitamin-A-Vergiftung führen kann.",
+		"aliases": [
+			"Leber gekocht",
+			"Rinderleber gekocht"
+		]
+	},
+	{
+		"name": "Rinderleber (roh)",
+		"status": "warn",
+		"category": "Innereien",
+		"reason": "Roh verabreichte Rinderleber liefert Vitamin A und Mineralstoffe, kann aber Parasiten und Keime enthalten. Nur in geprüfter BARF-Qualität und sehr kleinen Mengen geeignet.",
+		"aliases": [
+			"Leber roh",
+			"Rinderleber roh",
+			"Barf Leber roh"
+		]
+	},
+	{
+		"name": "Rinderlunge (gekocht)",
+		"status": "ok",
+		"category": "Innereien",
+		"reason": "Gekochte Lunge ist fettarm und leicht verdaulich. Ideal als Trainingssnack oder Schonkost für übergewichtige Hunde.",
+		"aliases": [
+			"Lunge gekocht",
+			"gekochte Rinderlunge"
+		]
+	},
+	{
+		"name": "Rinderlunge (roh)",
+		"status": "warn",
+		"category": "Innereien",
+		"reason": "Roh enthält Lunge viel Bindegewebe und ist sehr leicht. Sie ist fettarm, aber roh keimanfällig. Nur in geprüfter BARF-Qualität roh verabreichen.",
+		"aliases": [
+			"Lunge roh",
+			"Rinderlunge roh"
+		]
+	},
+	{
+		"name": "Rinderlunge getrocknet",
+		"status": "ok",
+		"category": "Kauartikel",
+		"reason": "Leichter und fettarmer Snack, schonend getrocknet. Geeignet für Senioren, Welpen und übergewichtige Hunde als Trainingssnack.",
+		"aliases": [
+			"Lungenwürfel",
+			"Rinderlunge Snack"
+		]
+	},
+	{
+		"name": "Rindermilz (gekocht)",
+		"status": "ok",
+		"category": "Innereien",
+		"reason": "Gekochte Milz ist leichter verdaulich und liefert Eisen. Nur in kleinen Mengen verwenden, da übermäßige Zufuhr zu Verdauungsproblemen führen kann.",
+		"aliases": [
+			"Milz gekocht",
+			"gekochte Rindermilz"
+		]
+	},
+	{
+		"name": "Rindermilz (roh)",
+		"status": "warn",
+		"category": "Innereien",
+		"reason": "Milz ist reich an Eisen und Blutbestandteilen, sollte jedoch nur in kleinen Mengen gefüttert werden, da sie stark durchfallsfördernd wirken kann. Roh nur unter Aufsicht und in BARF-Qualität.",
+		"aliases": [
+			"Milz roh",
+			"Rindermilz roh"
+		]
+	},
+	{
+		"name": "Rinderniere (gekocht)",
+		"status": "ok",
+		"category": "Innereien",
+		"reason": "Gekochte Niere ist proteinreich und liefert Vitamine, sollte aber nur selten verfüttert werden, da sie Stoffwechselprodukte des Tieres enthält.",
+		"aliases": [
+			"Niere gekocht",
+			"Rinderniere gekocht"
+		]
+	},
+	{
+		"name": "Rinderniere (roh)",
+		"status": "warn",
+		"category": "Innereien",
+		"reason": "Roh enthält Niere Mineralstoffe und Enzyme, birgt aber Keimrisiko. Nur aus geprüfter Herkunft und langsam anfüttern, da der hohe Purin-Gehalt empfindliche Hunde belasten kann.",
+		"aliases": [
+			"Niere roh",
+			"Rinderniere roh"
+		]
+	},
+	{
+		"name": "Rinderpansen (gekocht)",
+		"status": "ok",
+		"category": "Innereien",
+		"reason": "Gekochter Pansen ist geruchsärmer und leichter verdaulich. Er behält viele Ballaststoffe und ist für empfindliche Hunde gut geeignet.",
+		"aliases": [
+			"gekochter Pansen",
+			"Pansen gekocht"
+		]
+	},
+	{
+		"name": "Rinderpansen (roh)",
+		"status": "ok",
+		"category": "Innereien",
+		"reason": "Rohes Rinderpansen enthält natürliche Enzyme, Probiotika und vorverdaute Pflanzenfasern. Es unterstützt die Darmflora und ist ein klassischer Bestandteil der BARF-Ernährung. Nur frischen oder tiefgekühlten grünen Pansen füttern.",
+		"aliases": [
+			"Grüner Pansen roh",
+			"Barf Pansen",
+			"Rinderpansen unbehandelt"
+		]
+	},
+	{
+		"name": "Rinderzunge (gekocht)",
+		"status": "ok",
+		"category": "Innereien",
+		"reason": "Gekochte Zunge ist sehr proteinreich und gut verträglich. Aufgrund des hohen Fettgehalts in kleinen Mengen füttern.",
+		"aliases": [
+			"gekochte Rinderzunge",
+			"Zunge gekocht"
+		]
+	},
+	{
+		"name": "Rinderzunge (roh)",
+		"status": "warn",
+		"category": "Innereien",
+		"reason": "Roh ist Zunge proteinreich, aber fetthaltig und kann Keime enthalten. In der BARF-Fütterung nur in geprüfter Qualität verwenden und langsam einführen.",
+		"aliases": [
+			"Zunge roh",
+			"Rinderzunge roh"
+		]
+	},
+	{
+		"name": "Rindfleisch (gekocht)",
+		"status": "ok",
+		"category": "Fleisch",
+		"reason": "Gekochtes Rindfleisch ohne Salz oder Gewürze ist leicht verdaulich und eine gute Proteinquelle. Idealer Bestandteil von Schonkost mit Reis oder Kartoffeln.",
+		"aliases": [
+			"Rind gekocht",
+			"gekochtes Rindfleisch"
+		]
+	},
+	{
+		"name": "Rindfleisch (roh)",
+		"status": "warn",
+		"category": "Fleisch",
+		"reason": "Rohes Rindfleisch ist proteinreich und wird häufig im BARF verwendet. Es kann jedoch Bakterien wie Salmonellen enthalten. Nur bei hygienischer Qualität und langsam eingeführt füttern.",
+		"aliases": [
+			"Rinderhack roh",
+			"Barf Rind",
+			"Rind roh"
+		]
+	},
+	{
+		"name": "Rosenkohl (gekocht)",
+		"status": "warn",
+		"category": "Gemüse",
+		"reason": "Rosenkohl ist reich an Vitaminen, kann aber blähend wirken. Nur gekocht in kleinen Mengen geeignet.",
+		"aliases": [
+			"Sprossenkohl"
+		]
+	},
+	{
+		"name": "Rosinen",
+		"status": "bad",
+		"category": "Obst",
+		"reason": "Getrocknete Trauben sind noch konzentrierter toxisch und absolut verboten.",
+		"aliases": [
+			"Sultaninen",
+			"Zibeben"
+		]
+	},
+	{
+		"name": "Räucherfisch",
+		"status": "bad",
+		"category": "Fertigprodukte",
+		"reason": "Geräucherter Fisch enthält Salz und Nitrosamine. Konservierungs- und Rauchstoffe können die Leber belasten.",
+		"aliases": [
+			"Räucherlachs",
+			"Räucherforelle"
+		]
+	},
+	{
+		"name": "Rührei (mit Butter, Milch oder Gewürzen)",
+		"status": "bad",
+		"category": "Eier & Eiprodukte",
+		"reason": "Butter, Salz und Milch belasten die Verdauung. Gewürze können toxisch wirken. Nicht geeignet für Hunde.",
+		"aliases": [
+			"Rührei mit Milch",
+			"gewürztes Rührei"
+		]
+	},
+	{
+		"name": "Rührei (ohne Fett und Gewürze)",
+		"status": "ok",
+		"category": "Eier & Eiprodukte",
+		"reason": "Rührei ohne Gewürze und Fett ist leicht verdaulich und eine gute Proteinquelle. Immer ohne Milch oder Salz zubereiten.",
+		"aliases": [
+			"Natur-Rührei",
+			"Rührei pur"
+		]
+	},
+	{
+		"name": "Sahne",
+		"status": "warn",
+		"category": "Milchprodukte",
+		"reason": "Hoher Fettgehalt steigert das Risiko für Verdauungsstörungen und Pankreatitis. Nur minimal und selten.",
+		"aliases": [
+			"Schlagsahne",
+			"Obers",
+			"Rahm"
+		]
+	},
+	{
+		"name": "Salami",
+		"status": "bad",
+		"category": "Fertigprodukte",
+		"reason": "Sehr fettreich, stark gewürzt, oft Knoblauch/Zwiebelbestandteile. Hohe Salz- und Nitritbelastung. Für Hunde ungeeignet.",
+		"aliases": [
+			"Salamiwurst"
+		]
+	},
+	{
+		"name": "Salsa",
+		"status": "bad",
+		"category": "Soßen & Dips",
+		"reason": "Tomaten, Zwiebeln, Knoblauch und Chili sind typische Zutaten. Diese wirken reizend oder toxisch auf Hunde.",
+		"aliases": [
+			"Mexican Salsa",
+			"Tortilla Dip"
+		]
+	},
+	{
+		"name": "Salz",
+		"status": "bad",
+		"category": "Kräuter & Pflanzenstoffe",
+		"reason": "Natriumchlorid. Übermäßige Aufnahme führt zu Erbrechen, Durchfall, Elektrolytverschiebungen und neurologischen Symptomen. Kein Zusatz für Hunde nötig.",
+		"aliases": [
+			"Kochsalz",
+			"NaCl"
+		]
+	},
+	{
+		"name": "Sardinen (gekocht, ungewürzt)",
+		"status": "ok",
+		"category": "Fisch",
+		"reason": "Sardinen enthalten Omega-3-Fettsäuren und Kalzium aus weichen Gräten. In kleinen Mengen sehr gesund.",
+		"aliases": [
+			"gekochte Sardinen",
+			"Sardine ohne Öl"
+		]
+	},
+	{
+		"name": "Sardinen in Öl/Dose",
+		"status": "warn",
+		"category": "Fisch",
+		"reason": "Sardinen in Öl sind sehr fettreich und können Konservierungsstoffe enthalten. Nur abgetropft und ungewürzt anbieten.",
+		"aliases": [
+			"Sardinen in Sonnenblumenöl",
+			"Ölsardinen"
+		]
+	},
+	{
+		"name": "Saure Sahne",
+		"status": "warn",
+		"category": "Milchprodukte",
+		"reason": "Fettreich und säuerlich. Für empfindliche Hunde ungeeignet. Besser vermeiden oder nur sehr wenig geben.",
+		"aliases": [
+			"Sauerrahm"
+		]
+	},
+	{
+		"name": "Schmelzkäse",
+		"status": "bad",
+		"category": "Milchprodukte",
+		"reason": "Schmelzkäse enthält viel Salz, Phosphate und Zusatzstoffe. Für Hunde ungeeignet.",
+		"aliases": [
+			"Schmelzkäse Scheiben",
+			"Käseecken"
+		]
+	},
+	{
+		"name": "Schnittlauch",
+		"status": "bad",
+		"category": "Kräuter & Pflanzenstoffe",
+		"reason": "Gehört wie Zwiebel/Knoblauch zur Gattung Allium. Enthält Disulfide, die hämolytische Anämie verursachen können. Für Hunde ungeeignet.",
+		"aliases": [
+			"Allium schoenoprasum"
+		]
+	},
+	{
+		"name": "Schokolade",
+		"status": "bad",
+		"category": "Getreide, Backwaren & Süßes",
+		"reason": "Schon in geringen Mengen kann Schokolade toxisch für Hunde sein. Der Grund ist der im Kakao enthaltene Stoff Theobromin. Theobromin ist ein koffeinähnlicher Stoff, den Menschen aufgrund eines in ihrem Organismus enthaltenen Enzyms schnell abbauen und ausscheiden können – Hunden jedoch fehlt dieses Enzym.",
+		"aliases": [
+			"Schoko",
+			"Milka",
+			"Kakao",
+			"Schoki"
+		]
+	},
+	{
+		"name": "Schweineleber (gekocht)",
+		"status": "warn",
+		"category": "Innereien",
+		"reason": "Gekochte Schweineleber ist durch Erhitzen frei von Viren. Sehr vitaminreich und nur in kleinsten Mengen füttern, da ein Überschuss an Vitamin A toxisch wirken kann.",
+		"aliases": [
+			"Schweineleber gekocht"
+		]
+	},
+	{
+		"name": "Schweineleber (roh)",
+		"status": "bad",
+		"category": "Innereien",
+		"reason": "Rohes Schweineorgan kann das Aujeszky-Virus enthalten und ist tödlich für Hunde. Niemals roh verfüttern.",
+		"aliases": [
+			"Schweineleber roh",
+			"Leber vom Schwein roh"
+		]
+	},
+	{
+		"name": "Schweineohren getrocknet",
+		"status": "warn",
+		"category": "Kauartikel",
+		"reason": "Schweineohren sind fettreich und können bei empfindlichen Hunden Pankreatitis auslösen. Nur in kleinen Mengen und niemals roh wegen Virusgefahr geben.",
+		"aliases": [
+			"Schweineohr",
+			"Ohr vom Schwein getrocknet"
+		]
+	},
+	{
+		"name": "Schweineschmalz",
+		"status": "bad",
+		"category": "Öle & Fette",
+		"reason": "Sehr fettreich, hoher Anteil gesättigter Fettsäuren. Erhöht Risiko für Pankreatitis und Übergewicht. Keine ernährungsphysiologische Notwendigkeit.",
+		"aliases": [
+			"Schmalz",
+			"Griebenschmalz"
+		]
+	},
+	{
+		"name": "Seealgenmehl",
+		"status": "warn",
+		"category": "Nahrungsergänzung",
+		"reason": "Sehr jodreich und damit eine natürliche Jodquelle für die Schilddrüse. Nur in berechneten, kleinen Mengen und zeitlich begrenzt einsetzen. Zu viel Jod verursacht Schilddrüsenstörungen.",
+		"aliases": [
+			"Ascophyllum nodosum",
+			"Kelp",
+			"Kelp Pulver",
+			"Jodquelle"
+		]
+	},
+	{
+		"name": "Sellerie",
+		"status": "ok",
+		"category": "Gemüse",
+		"reason": "Sellerie enthält Vitamine und sekundäre Pflanzenstoffe. Gekocht leicht verdaulich und geeignet für Schonkost.",
+		"aliases": [
+			"Staudensellerie",
+			"Knollensellerie"
+		]
+	},
+	{
+		"name": "Senf",
+		"status": "bad",
+		"category": "Soßen & Dips",
+		"reason": "Senföle und Essig reizen Schleimhäute und können zu Magen-Darm-Beschwerden führen. Bereits kleine Mengen sind ungeeignet.",
+		"aliases": [
+			"Dijonsenf",
+			"Tafelsenf",
+			"scharfer Senf"
+		]
+	},
+	{
+		"name": "Smoothies",
+		"status": "bad",
+		"category": "Obst",
+		"reason": "Smoothies enthalten konzentrierten Fruchtzucker und oft Zitronensäure. Nicht zur Hundeverfütterung geeignet.",
+		"aliases": [
+			"Fruchtsmoothie",
+			"Saftmix"
+		]
+	},
+	{
+		"name": "Sonnenblumenöl",
+		"status": "warn",
+		"category": "Öle & Fette",
+		"reason": "Sehr reich an Omega-6-Fettsäuren, die Entzündungen fördern können, wenn sie im Futter überwiegen. In kleinen Mengen selten ok, aber nicht ideal als regelmäßige Fettquelle.",
+		"aliases": [
+			"Sunflower Oil"
+		]
+	},
+	{
+		"name": "Speiseöl gemischt",
+		"status": "bad",
+		"category": "Öle & Fette",
+		"reason": "Gemischte Speiseöle enthalten oft minderwertige oder raffinierte Bestandteile, künstliche Vitamine und sind nicht deklarationspflichtig. Nicht empfehlenswert.",
+		"aliases": [
+			"Pflanzenöl Mischung"
+		]
+	},
+	{
+		"name": "Spiegelei",
+		"status": "warn",
+		"category": "Eier & Eiprodukte",
+		"reason": "Meist in Fett gebraten und gewürzt. Nur ohne Fett und ohne Salz selten geeignet.",
+		"aliases": [
+			"gebratenes Ei",
+			"Ei aus der Pfanne"
+		]
+	},
+	{
+		"name": "Spinat (gekocht)",
+		"status": "ok",
+		"category": "Gemüse",
+		"reason": "Gekochter Spinat ist reich an Eisen und Vitaminen. Oxalsäure reduziert sich durch Hitze. In kleinen Mengen geeignet.",
+		"aliases": [
+			"Spinat gekocht"
+		]
+	},
+	{
+		"name": "Spinat (roh)",
+		"status": "warn",
+		"category": "Gemüse",
+		"reason": "Roh enthält Spinat Oxalsäure, die die Nieren belasten kann. Nur in kleinen Mengen und besser gekocht verfüttern.",
+		"aliases": [
+			"Spinat roh"
+		]
+	},
+	{
+		"name": "Spirulina",
+		"status": "warn",
+		"category": "Nahrungsergänzung",
+		"reason": "Nährstoffreiche Mikroalge. Kann in kleinen Mengen das Immunsystem unterstützen, birgt aber Risiko von Verunreinigungen bei Billigprodukten.",
+		"aliases": [
+			"Blaualge",
+			"Spirulina Pulver"
+		]
+	},
+	{
+		"name": "Surimi",
+		"status": "bad",
+		"category": "Meeresfrüchte",
+		"reason": "Surimi ist verarbeitet, enthält Stärke, Zucker, Aromastoffe und Farbstoffe. Nicht geeignet.",
+		"aliases": [
+			"Krabbenimitat",
+			"Fischstäbchenimitat"
+		]
+	},
+	{
+		"name": "Sweet-Chili-Soße",
+		"status": "bad",
+		"category": "Soßen & Dips",
+		"reason": "Enthält Chili, Zucker und Essig. Scharf und reizend für den Verdauungstrakt des Hundes und nicht geeignet.",
+		"aliases": [
+			"Asia Sweet Chili",
+			"Chili Sauce süß"
+		]
+	},
+	{
+		"name": "Süßkartoffel (gekocht)",
+		"status": "ok",
+		"category": "Gemüse",
+		"reason": "Gekochte Süßkartoffeln sind leicht verdaulich und enthalten viele Vitamine. Nur ohne Schale und ohne Gewürze füttern.",
+		"aliases": [
+			"Batate",
+			"Süßkartoffel"
+		]
+	},
+	{
+		"name": "Süßkartoffel (roh)",
+		"status": "bad",
+		"category": "Gemüse",
+		"reason": "Rohe Süßkartoffeln enthalten natürliche Toxine und können Verdauungsprobleme verursachen. Immer kochen.",
+		"aliases": [
+			"Batate roh"
+		]
+	},
+	{
+		"name": "Tapenade",
+		"status": "bad",
+		"category": "Soßen & Dips",
+		"reason": "Olivenpaste enthält oft Knoblauch, Sardellen, Kapern und viel Salz. Nicht geeignet.",
+		"aliases": [
+			"Olivenpaste"
+		]
+	},
+	{
+		"name": "Thunfisch (gekocht)",
+		"status": "warn",
+		"category": "Fisch",
+		"reason": "Enthält viel Protein und Omega-3, kann aber Schwermetalle wie Quecksilber enthalten. Nur selten und in kleinen Mengen geeignet.",
+		"aliases": [
+			"Thunfischfilet gekocht"
+		]
+	},
+	{
+		"name": "Thunfisch aus der Dose (in Wasser)",
+		"status": "warn",
+		"category": "Fisch",
+		"reason": "Ungewürzt und ohne Salz in kleinen Mengen möglich. Varianten in Öl, mit Salz oder Gewürzen sind ungeeignet.",
+		"aliases": [
+			"Dosenthunfisch",
+			"Thunfisch natur"
+		]
+	},
+	{
+		"name": "Thunfisch im Öl (Dose)",
+		"status": "warn",
+		"category": "Fertigprodukte",
+		"reason": "Schwermetallrisiko (Quecksilber), zusätzlich Öl als Kalorienquelle. Wenn überhaupt, nur selten und im eigenen Saft bevorzugen.",
+		"aliases": [
+			"Thunfisch in Öl"
+		]
+	},
+	{
+		"name": "Thunfisch roh",
+		"status": "warn",
+		"category": "Fisch",
+		"reason": "Rohes Thunfischfleisch kann Parasiten und Schwermetalle enthalten. Für Hunde nicht empfehlenswert. Ausnahme ist Thunfisch in Sushiqualität.",
+		"aliases": [
+			"roher Thunfisch"
+		]
+	},
+	{
+		"name": "Tierfett (Rind, Schwein, Geflügel)",
+		"status": "warn",
+		"category": "Öle & Fette",
+		"reason": "Tierisches Fett liefert Energie, ist aber sehr kalorienreich und kann bei übergewichtigen oder empfindlichen Hunden Verdauungsprobleme und Bauchspeicheldrüsenentzündung auslösen. Nur in winzigen Mengen geeignet.",
+		"aliases": [
+			"Schmalz",
+			"Bratfett",
+			"Fettabschnitt"
+		]
+	},
+	{
+		"name": "Tintenfisch / Calamari",
+		"status": "warn",
+		"category": "Meeresfrüchte",
+		"reason": "Naturbelassen in kleinen Mengen verträglich. Frittierte oder gewürzte Varianten unbedingt vermeiden.",
+		"aliases": [
+			"Calamari",
+			"Tintenfischstücke"
+		]
+	},
+	{
+		"name": "Tomatensoße",
+		"status": "bad",
+		"category": "Soßen & Dips",
+		"reason": "Fertige Tomatensoßen enthalten oft Zwiebeln, Knoblauch, Zucker und Salz. Nicht geeignet für Hunde.",
+		"aliases": [
+			"Pasta Sauce",
+			"Tomatensugo"
+		]
+	},
+	{
+		"name": "Trauben",
+		"status": "bad",
+		"category": "Obst",
+		"reason": "Trauben können bei Hunden akutes Nierenversagen auslösen. Schon kleine Mengen sind gefährlich.",
+		"aliases": [
+			"Weintrauben",
+			"Tafeltrauben"
+		]
+	},
+	{
+		"name": "Trockenpflaumen",
+		"status": "bad",
+		"category": "Obst",
+		"reason": "Stark abführend und fruchtzuckerreich. Führt häufig zu Durchfall und wird nicht empfohlen.",
+		"aliases": [
+			"Backpflaumen"
+		]
+	},
+	{
+		"name": "Tzatziki",
+		"status": "bad",
+		"category": "Soßen & Dips",
+		"reason": "Enthält Knoblauch, Zwiebel, Salz und Milchprodukte. Knoblauch ist toxisch und darf nicht gefüttert werden.",
+		"aliases": [
+			"Joghurtdip mit Knoblauch"
+		]
+	},
+	{
+		"name": "Vitamin A (synthetisch)",
+		"status": "warn",
+		"category": "Nahrungsergänzung",
+		"reason": "Vitamin A ist fettlöslich und kann bei Überdosierung toxisch wirken. Nur gezielt und unter tierärztlicher Kontrolle einsetzen.",
+		"aliases": [
+			"Retinolacetat",
+			"Vitamin A Tropfen"
+		]
+	},
+	{
+		"name": "Vitamin D (synthetisch)",
+		"status": "warn",
+		"category": "Nahrungsergänzung",
+		"reason": "Wichtig für Knochenstoffwechsel. Synthetische Formen können bei Überdosierung gefährlich sein und zu Organverkalkungen führen.",
+		"aliases": [
+			"Cholecalciferol",
+			"Vitamin D3"
+		]
+	},
+	{
+		"name": "Vitamin D3 (Supplement)",
+		"status": "bad",
+		"category": "Nahrungsergänzung",
+		"reason": "Hohes Toxizitätsrisiko bei Überdosierung (Hyperkalzämie, Nierenschäden). Nur nach Blutwerten und tierärztlicher Anweisung supplementieren.",
+		"aliases": [
+			"Cholecalciferol"
+		]
+	},
+	{
+		"name": "Vollkornbrot",
+		"status": "warn",
+		"category": "Getreide, Backwaren & Süßes",
+		"reason": "Enthält viele Ballaststoffe und kann bei empfindlichen Hunden Blähungen verursachen. Nur wenig geben.",
+		"aliases": [
+			"Schwarzbrot",
+			"Roggenbrot"
+		]
+	},
+	{
+		"name": "Walnussöl",
+		"status": "ok",
+		"category": "Öle & Fette",
+		"reason": "Walnussöl enthält ungesättigte Fettsäuren und Antioxidantien. In kleinen Mengen geeignet, jedoch nicht überhitzen oder lange lagern.",
+		"aliases": [
+			"Walnuss Speiseöl"
+		]
+	},
+	{
+		"name": "Weißbrot",
+		"status": "warn",
+		"category": "Getreide, Backwaren & Süßes",
+		"reason": "Weißbrot enthält Hefe und Salz. Kleine Mengen sind unproblematisch, sollten aber nicht regelmäßig gefüttert werden.",
+		"aliases": [
+			"Toast",
+			"Baguette"
+		]
+	},
+	{
+		"name": "Weißfisch (gekocht)",
+		"status": "ok",
+		"category": "Fisch",
+		"reason": "Magerer Fisch wie Kabeljau, Seelachs oder Schellfisch ist leicht verdaulich und gut für empfindliche Hunde geeignet.",
+		"aliases": [
+			"Kabeljau",
+			"Seelachs",
+			"Dorsch",
+			"gekochter Weißfisch"
+		]
+	},
+	{
+		"name": "Weißfisch (roh)",
+		"status": "warn",
+		"category": "Fisch",
+		"reason": "Kann Parasiten enthalten und muss vor dem Füttern tiefgekühlt oder gegart werden. Nur für erfahrene Barfer geeignet.",
+		"aliases": [
+			"Kabeljau roh",
+			"Dorsch roh"
+		]
+	},
+	{
+		"name": "Wiener/Würstchen",
+		"status": "bad",
+		"category": "Fertigprodukte",
+		"reason": "Hoher Fett- und Salzgehalt, Zusatzstoffe und Gewürze. Darminhalt/Knoblauchspuren möglich. Nicht geeignet.",
+		"aliases": [
+			"Frankfurter",
+			"Hot Dog Würstchen"
+		]
+	},
+	{
+		"name": "Xylit",
+		"status": "bad",
+		"category": "Getreide, Backwaren & Süßes",
+		"reason": "Xylit verursacht eine massive Insulinausschüttung und lebensbedrohliche Hypoglykämie beim Hund. Absolut verboten.",
+		"aliases": [
+			"Birkenzucker",
+			"Xylitol"
+		]
+	},
+	{
+		"name": "Zeolith",
+		"status": "warn",
+		"category": "Nahrungsergänzung",
+		"reason": "Bindet Giftstoffe im Darm, kann aber auch Mineralstoffe entziehen. Die Wirkung ist umstritten. Nur unter Anleitung verwenden.",
+		"aliases": [
+			"Klinoptilolith",
+			"Entgiftungsmineral"
+		]
+	},
+	{
+		"name": "Ziegenmilch",
+		"status": "warn",
+		"category": "Milchprodukte",
+		"reason": "Etwas besser verdaulich als Kuhmilch, enthält aber ebenfalls Laktose. Nur minimal anbieten.",
+		"aliases": [
+			"Ziegenfrischmilch"
+		]
+	},
+	{
+		"name": "Zitrone",
+		"status": "bad",
+		"category": "Obst",
+		"reason": "Zitronen sind sehr sauer und reizen den Magen. Nicht geeignet für Hunde.",
+		"aliases": [
+			"Zitronenfrucht"
+		]
+	},
+	{
+		"name": "Zucchini",
+		"status": "ok",
+		"category": "Gemüse",
+		"reason": "Zucchini ist leicht verdaulich und kalorienarm. In gekochter Form besonders verträglich. Bittere Exemplare meiden.",
+		"aliases": [
+			"Zucchini Gemüse"
+		]
+	},
+	{
+		"name": "Zucker",
+		"status": "warn",
+		"category": "Getreide, Backwaren & Süßes",
+		"reason": "Zucker liefert leere Kalorien und kann Übergewicht, Diabetes und Zahnprobleme verursachen.",
+		"aliases": [
+			"Haushaltszucker",
+			"Saccharose"
+		]
+	},
+	{
+		"name": "Zwiebel",
+		"status": "bad",
+		"category": "Gemüse",
+		"reason": "Zwiebeln enthalten N-Propyl-Disulfid, welches die roten Blutkörperchen von Hunden zerstört und zu Anämie führt.",
+		"aliases": [
+			"Zwiebel roh",
+			"rote Zwiebel",
+			"weiße Zwiebel"
+		]
+	},
+	{
+		"name": "Macadamianüsse",
+		"status": "bad",
+		"category": "Nüsse & Samen",
+		"reason": "Macadamianüsse sind für Hunde giftig. Schon wenige Nüsse können Schwäche besonders der Hinterbeine, Zittern, Erbrechen und Fieber auslösen. Der genaue Giftstoff ist unbekannt. Bei Verdacht zum Tierarzt.",
+		"aliases": [
+			"Macadamia",
+			"Macadamianuss",
+			"Queenslandnuss"
+		]
+	},
+	{
+		"name": "Walnüsse",
+		"status": "bad",
+		"category": "Nüsse & Samen",
+		"reason": "Walnüsse sind häufig von Schimmelpilzen befallen, deren Gifte (Mykotoxine) bei Hunden Krämpfe und Zittern auslösen können. Dazu kommen viel Fett und die Gefahr, sich an der Nuss zu verschlucken. Nicht füttern, auch keine heruntergefallenen Nüsse im Garten.",
+		"aliases": [
+			"Walnuss",
+			"Baumnuss",
+			"Welschnuss"
+		]
+	},
+	{
+		"name": "Pekannüsse",
+		"status": "bad",
+		"category": "Nüsse & Samen",
+		"reason": "Pekannüsse sind mit der Walnuss verwandt und können ebenfalls Schimmelgifte enthalten, die Krämpfe auslösen. Sie sind sehr fettreich und schwer verdaulich. Nicht füttern.",
+		"aliases": [
+			"Pekannuss",
+			"Pecannuss",
+			"Pecan"
+		]
+	},
+	{
+		"name": "Bittermandeln",
+		"status": "bad",
+		"category": "Nüsse & Samen",
+		"reason": "Bittermandeln enthalten Amygdalin, aus dem im Körper Blausäure entsteht. Schon kleine Mengen können für Hunde lebensgefährlich sein. Auch Backaroma mit Bittermandel nicht füttern.",
+		"aliases": [
+			"Bittermandel",
+			"Bittermandelaroma"
+		]
+	},
+	{
+		"name": "Rosskastanien",
+		"status": "bad",
+		"category": "Nüsse & Samen",
+		"reason": "Rosskastanien enthalten Aesculin und Saponine. Sie können Erbrechen, Durchfall, Krämpfe und Darmverschluss auslösen. Nicht als Spielzeug werfen, auch nicht im Herbst auf dem Spaziergang daran kauen lassen.",
+		"aliases": [
+			"Rosskastanie",
+			"Kastanie Baum",
+			"Wilde Kastanie"
+		]
+	},
+	{
+		"name": "Mandeln (süß)",
+		"status": "warn",
+		"category": "Nüsse & Samen",
+		"reason": "Süße Mandeln sind nicht giftig, aber sehr fettreich und schwer verdaulich. Ganze Mandeln können im Hals oder Darm stecken bleiben. Wenn überhaupt, nur einzeln, ungesalzen und zerkleinert. Achtung, Bittermandeln sind giftig.",
+		"aliases": [
+			"Mandel",
+			"Mandeln",
+			"Mandelmus"
+		]
+	},
+	{
+		"name": "Haselnüsse",
+		"status": "warn",
+		"category": "Nüsse & Samen",
+		"reason": "Haselnüsse sind nicht giftig, aber fettreich und schwer verdaulich. Ganze Nüsse können besonders bei kleinen Hunden im Hals oder Darm stecken bleiben. Höchstens einzeln, gemahlen und ungesalzen. Nougatcreme wegen Schokolade nicht füttern.",
+		"aliases": [
+			"Haselnuss",
+			"Haselnusskerne"
+		]
+	},
+	{
+		"name": "Cashewkerne",
+		"status": "warn",
+		"category": "Nüsse & Samen",
+		"reason": "Cashewkerne sind nicht giftig. Geröstet und ungesalzen sind einzelne Kerne in Ordnung. Sie sind aber sehr fettreich und können bei empfindlichen Hunden Durchfall oder eine Bauchspeicheldrüsenentzündung begünstigen. Gesalzene Mischungen meiden.",
+		"aliases": [
+			"Cashew",
+			"Cashewnuss",
+			"Cashewnüsse"
+		]
+	},
+	{
+		"name": "Pistazien",
+		"status": "warn",
+		"category": "Nüsse & Samen",
+		"reason": "Pistazien sind nicht giftig, aber sehr fettreich und oft gesalzen. Sie werden leicht von Schimmelpilzen befallen (Aflatoxine), die die Leber schädigen. Die Schalen können den Darm verletzen. Besser nicht füttern.",
+		"aliases": [
+			"Pistazie",
+			"Pistazienkerne"
+		]
+	},
+	{
+		"name": "Paranüsse",
+		"status": "warn",
+		"category": "Nüsse & Samen",
+		"reason": "Paranüsse sind sehr groß, sehr fettreich und enthalten viel Selen. Sie können im Hals stecken bleiben und bei mehreren Nüssen zu Verdauungsproblemen führen. Besser nicht füttern.",
+		"aliases": [
+			"Paranuss",
+			"Brasilnuss"
+		]
+	},
+	{
+		"name": "Pinienkerne",
+		"status": "warn",
+		"category": "Nüsse & Samen",
+		"reason": "Pinienkerne sind nicht giftig, aber sehr fettreich. In kleinen Mengen unbedenklich, größere Mengen können Durchfall und Erbrechen auslösen. Pesto wegen Knoblauch nicht füttern.",
+		"aliases": [
+			"Pinienkern",
+			"Pignoli"
+		]
+	},
+	{
+		"name": "Erdnüsse (ungesalzen)",
+		"status": "warn",
+		"category": "Nüsse & Samen",
+		"reason": "Erdnüsse sind eigentlich Hülsenfrüchte und nicht giftig. Ungesalzen und ohne Schale sind einzelne Erdnüsse in Ordnung. Sie sind fettreich, können Allergien auslösen und werden schnell zum Verschlucken. Gesalzene oder gewürzte Erdnüsse meiden.",
+		"aliases": [
+			"Erdnuss",
+			"Erdnüsse",
+			"Peanuts"
+		]
+	},
+	{
+		"name": "Erdnussbutter",
+		"status": "warn",
+		"category": "Nüsse & Samen",
+		"reason": "Erdnussbutter ohne Zusätze ist in kleinen Mengen erlaubt, etwa auf einer Schleckmatte. Unbedingt die Zutaten prüfen: Enthält sie Xylit (Birkenzucker, E 967), ist sie lebensgefährlich. Zucker- und salzarme Sorten wählen.",
+		"aliases": [
+			"Erdnussmus",
+			"Erdnusscreme",
+			"Peanut Butter"
+		]
+	},
+	{
+		"name": "Kokosnuss (Fruchtfleisch)",
+		"status": "ok",
+		"category": "Nüsse & Samen",
+		"reason": "Frisches Kokosfleisch ist in kleinen Mengen gut verträglich und eine Abwechslung. Es ist fettreich, deshalb nur sparsam. Die harte Schale nicht zum Kauen geben, sie kann splittern.",
+		"aliases": [
+			"Kokosnuss",
+			"Kokos",
+			"Kokosraspeln",
+			"Kokosflocken"
+		]
+	},
+	{
+		"name": "Esskastanien (gegart)",
+		"status": "ok",
+		"category": "Nüsse & Samen",
+		"reason": "Gegarte, geschälte Maronen sind für Hunde verträglich und enthalten kaum Fett. In kleinen Mengen in Ordnung. Roh sind sie schwer verdaulich. Nicht mit Rosskastanien verwechseln, die giftig sind.",
+		"aliases": [
+			"Esskastanie",
+			"Maronen",
+			"Maroni",
+			"Edelkastanie"
+		]
+	},
+	{
+		"name": "Kaffee",
+		"status": "bad",
+		"category": "Getränke",
+		"reason": "Kaffee enthält Koffein, ein Methylxanthin, auf das Hunde deutlich empfindlicher reagieren als Menschen. Mögliche Folgen sind Unruhe, Erbrechen, Herzrasen, Zittern und Krampfanfälle. Kaffeebohnen, Pulver und auch benutzter Kaffeesatz sind besonders konzentriert.",
+		"aliases": [
+			"Kaffeebohnen",
+			"Kaffeesatz",
+			"Espresso",
+			"Kaffeepulver"
+		]
+	},
+	{
+		"name": "Schwarzer und grüner Tee",
+		"status": "bad",
+		"category": "Getränke",
+		"reason": "Schwarzer und grüner Tee enthalten Koffein und können Unruhe, Herzrasen, Erbrechen und im schlimmsten Fall Krampfanfälle auslösen. Am gefährlichsten sind Teebeutel, lose Blätter und Grüntee-Extrakte.",
+		"aliases": [
+			"Schwarztee",
+			"Grüntee",
+			"Teebeutel",
+			"Eistee"
+		]
+	},
+	{
+		"name": "Kräutertee (ungesüßt)",
+		"status": "warn",
+		"category": "Getränke",
+		"reason": "Abgekühlter, ungesüßter Fencheltee gilt als unbedenklich. Minze und Kamille enthalten ätherische Öle, die in größeren Mengen Erbrechen und Durchfall auslösen können. Nur gelegentlich und schwach aufgebrüht anbieten, nie mit Zucker oder Süßstoff.",
+		"aliases": [
+			"Fencheltee",
+			"Kamillentee",
+			"Pfefferminztee",
+			"Kräuteraufguss"
+		]
+	},
+	{
+		"name": "Bier",
+		"status": "bad",
+		"category": "Getränke",
+		"reason": "Alkohol wird rasch aufgenommen und verursacht Erbrechen, Taumeln, Unterzuckerung, Unterkühlung und Atemdepression bis zum Koma. Hopfen kann zusätzlich eine lebensbedrohliche Überhitzung auslösen. Schon kleine Mengen sind für kleine Hunde gefährlich.",
+		"aliases": [
+			"Pils",
+			"Weizenbier",
+			"Radler",
+			"alkoholfreies Bier"
+		]
+	},
+	{
+		"name": "Wein",
+		"status": "bad",
+		"category": "Getränke",
+		"reason": "Wein enthält 10–20 % Alkohol und führt schon in kleinen Mengen zu Erbrechen, Taumeln, Unterzuckerung und Atemproblemen bis zum Koma.",
+		"aliases": [
+			"Rotwein",
+			"Weißwein",
+			"Sekt",
+			"Glühwein"
+		]
+	},
+	{
+		"name": "Spirituosen und Likör",
+		"status": "bad",
+		"category": "Getränke",
+		"reason": "Hochprozentiges enthält so viel Alkohol, dass schon wenige Schlucke eine schwere Alkoholvergiftung mit Unterzuckerung, Krämpfen und Atemlähmung auslösen können. Liköre enthalten oft zusätzlich Schokolade, Kaffee oder Sahne.",
+		"aliases": [
+			"Schnaps",
+			"Likör",
+			"Wodka",
+			"Cocktail"
+		]
+	},
+	{
+		"name": "Energydrinks",
+		"status": "bad",
+		"category": "Getränke",
+		"reason": "Energydrinks enthalten viel Koffein, oft zusätzlich Guarana und Zucker. Schon kleine Mengen können Herzrasen, Überhitzung, Zittern und Krampfanfälle auslösen.",
+		"aliases": [
+			"Energy Drink",
+			"Red Bull",
+			"Energieshot"
+		]
+	},
+	{
+		"name": "Cola und Limonade",
+		"status": "bad",
+		"category": "Getränke",
+		"reason": "Cola enthält Koffein, Limonaden viel Zucker oder Süßstoffe, teils Xylit. Möglich sind Unruhe, Erbrechen und Herzrasen; ohne jeden Nährwert für den Hund.",
+		"aliases": [
+			"Cola",
+			"Limo",
+			"Softdrink",
+			"Brause"
+		]
+	},
+	{
+		"name": "Kakaopulver",
+		"status": "bad",
+		"category": "Getränke",
+		"reason": "Kakaopulver enthält Theobromin und Koffein in höherer Konzentration als Backschokolade. Erbrechen, Zittern, Herzrasen und Krampfanfälle können bis zu sechs Stunden verzögert auftreten.",
+		"aliases": [
+			"Kakaogetränk",
+			"Trinkkakao",
+			"heiße Schokolade",
+			"Backkakao"
+		]
+	},
+	{
+		"name": "Kokoswasser",
+		"status": "warn",
+		"category": "Getränke",
+		"reason": "Ungesüßtes Kokoswasser ist nicht giftig und als gelegentliche kleine Erfrischung möglich, ersetzt aber kein Wasser. Gesüßte Varianten meiden und auf Xylit prüfen.",
+		"aliases": [
+			"Kokosnusswasser",
+			"Coconut Water"
+		]
+	},
+	{
+		"name": "Sojamilch",
+		"status": "warn",
+		"category": "Getränke",
+		"reason": "Soja ist nicht giftig, Sojamilch kann aber Durchfall auslösen und ist ein häufiges Allergen. Gesüßte Sorten enthalten Zucker oder Süßstoffe, teils Xylit. Höchstens ungesüßt und in kleinen Mengen.",
+		"aliases": [
+			"Sojadrink",
+			"Soy Milk"
+		]
+	},
+	{
+		"name": "Hafermilch",
+		"status": "warn",
+		"category": "Getränke",
+		"reason": "Hafermilch ist nicht giftig, liefert aber Zucker und Kalorien ohne Nutzen und kann Durchfall auslösen. Nur ungesüßt, ohne Xylit und in kleinen Mengen.",
+		"aliases": [
+			"Haferdrink",
+			"Oat Milk"
+		]
+	},
+	{
+		"name": "Mandelmilch",
+		"status": "warn",
+		"category": "Getränke",
+		"reason": "Mandelmilch ist fettreich und kann Erbrechen, Durchfall und bei empfindlichen Hunden eine Bauchspeicheldrüsenentzündung begünstigen. Gesüßte Sorten können Xylit enthalten.",
+		"aliases": [
+			"Mandeldrink",
+			"Almond Milk"
+		]
+	},
+	{
+		"name": "Kokosmilch",
+		"status": "warn",
+		"category": "Getränke",
+		"reason": "Kokosmilch ist sehr fettreich; größere Mengen verursachen Durchfall und können eine Bauchspeicheldrüsenentzündung begünstigen. Höchstens ungesüßt und in sehr kleinen Mengen.",
+		"aliases": [
+			"Kokoscreme",
+			"Coconut Milk",
+			"Kokosmilch Dose"
+		]
+	},
+	{
+		"name": "Zuchtpilze (Champignons)",
+		"status": "warn",
+		"category": "Pilze",
+		"reason": "Gewaschene Pilze aus dem Supermarkt gelten als ungiftig, bringen aber keinen Nutzen. Gefährlich wird die Zubereitung mit Zwiebeln, Knoblauch, Butter oder Gewürzen. Nur natur, gegart und in kleinen Mengen.",
+		"aliases": [
+			"Champignon",
+			"Champignons",
+			"Kulturpilze",
+			"Austernpilze"
+		]
+	},
+	{
+		"name": "Wildpilze",
+		"status": "bad",
+		"category": "Pilze",
+		"reason": "Giftige Wildpilze wie Knollenblätterpilze können Leber- und Nierenversagen, Krampfanfälle und Tod verursachen; Hunde erkennen sie nicht am Geruch. Jede Aufnahme eines Wildpilzes ist ein Notfall.",
+		"aliases": [
+			"Waldpilze",
+			"Pilze aus dem Garten",
+			"Fliegenpilz",
+			"Knollenblätterpilz"
+		]
+	},
+	{
+		"name": "Tomate (reif)",
+		"status": "ok",
+		"category": "Obst",
+		"reason": "Reife, rote Tomaten sind ungiftig und in kleinen Mengen als gelegentlicher Snack geeignet. Grüne Stellen und den Stielansatz vorher entfernen.",
+		"aliases": [
+			"Tomaten",
+			"Cocktailtomate",
+			"Kirschtomate",
+			"Paradeiser"
+		]
+	},
+	{
+		"name": "Tomate (grün, unreif)",
+		"status": "bad",
+		"category": "Obst",
+		"reason": "Unreife Tomaten enthalten Solanin und Tomatin. Größere Mengen können Erbrechen, Durchfall, Schwäche und Taumeln auslösen; kleine Hunde und Welpen sind besonders gefährdet.",
+		"aliases": [
+			"grüne Tomate",
+			"unreife Tomate"
+		]
+	},
+	{
+		"name": "Tomatenpflanze (Blätter, Stängel)",
+		"status": "bad",
+		"category": "Kräuter & Pflanzenstoffe",
+		"reason": "Blätter, Stängel und grüne Pflanzenteile enthalten die höchsten Gehalte an Solanin und Tomatin. Folgen sind Magen-Darm-Beschwerden, Schwäche, Taumeln und Desorientierung.",
+		"aliases": [
+			"Tomatenblätter",
+			"Tomatenstrauch",
+			"Tomatengrün"
+		]
+	},
+	{
+		"name": "Avocado (Fruchtfleisch)",
+		"status": "warn",
+		"category": "Obst",
+		"reason": "Das Fruchtfleisch enthält wenig Persin und ist für Hunde meist nur mild problematisch, aber sehr fettreich. Höchstens ein kleiner Löffel, nicht bei Übergewicht oder Neigung zu Bauchspeicheldrüsenentzündung.",
+		"aliases": [
+			"Avocado",
+			"Avocados",
+			"Avocadofleisch"
+		]
+	},
+	{
+		"name": "Avocado (Kern, Schale)",
+		"status": "bad",
+		"category": "Obst",
+		"reason": "Schale und Blätter enthalten Persin, das Magen-Darm-Beschwerden auslösen kann. Der große Kern kann zum Ersticken oder zu einem Darmverschluss führen, der operiert werden muss.",
+		"aliases": [
+			"Avocadokern",
+			"Avocadoschale",
+			"Avocadostein"
+		]
+	},
+	{
+		"name": "Wassermelone (ohne Kerne und Schale)",
+		"status": "ok",
+		"category": "Obst",
+		"reason": "Wasserreich, kalorienarm und gut verträglich. Kerne können zu Verstopfung oder Darmverschluss führen, die harte Schale Erbrechen und Blockaden. Nur das Fruchtfleisch in Maßen.",
+		"aliases": [
+			"Wassermelone",
+			"Melone",
+			"Wassermelonen"
+		]
+	},
+	{
+		"name": "Honigmelone",
+		"status": "ok",
+		"category": "Obst",
+		"reason": "Das Fruchtfleisch ist wasserreich und gut verträglich, enthält aber Zucker; bei Diabetes nur nach Rücksprache. Schale und Kerne vorher entfernen.",
+		"aliases": [
+			"Cantaloupe",
+			"Zuckermelone",
+			"Galiamelone",
+			"Netzmelone"
+		]
+	},
+	{
+		"name": "Aprikose (ohne Kern)",
+		"status": "ok",
+		"category": "Obst",
+		"reason": "Das Fruchtfleisch ist in kleinen Mengen gut verträglich. Kern, Stiel und Blätter müssen entfernt werden, da sie Blausäure freisetzen können. Getrocknete Aprikosen wegen des Zuckers nur sparsam.",
+		"aliases": [
+			"Aprikose",
+			"Aprikosen",
+			"Marille",
+			"Marillen"
+		]
+	},
+	{
+		"name": "Steinobstkerne",
+		"status": "bad",
+		"category": "Obst",
+		"reason": "Kerne von Aprikose, Pfirsich, Kirsche und Pflaume enthalten Amygdalin, das beim Zerkauen Blausäure freisetzt. Ganz geschluckt drohen Ersticken und Darmverschluss.",
+		"aliases": [
+			"Pfirsichkern",
+			"Kirschkern",
+			"Aprikosenkern",
+			"Pflaumenkern"
+		]
+	},
+	{
+		"name": "Brombeeren",
+		"status": "ok",
+		"category": "Obst",
+		"reason": "Brombeeren sind ein gut verträglicher Snack mit Ballaststoffen und Antioxidantien. Sie enthalten nur Spuren natürlichen Xylits, daher in üblichen kleinen Mengen unbedenklich.",
+		"aliases": [
+			"Brombeere",
+			"Kratzbeere"
+		]
+	},
+	{
+		"name": "Cranberry",
+		"status": "ok",
+		"category": "Obst",
+		"reason": "Frische oder gekochte, ungesüßte Cranberrys sind in kleinen Mengen geeignet. Zu viele können den Magen verstimmen und bei veranlagten Hunden Oxalatsteine begünstigen.",
+		"aliases": [
+			"Cranberrys",
+			"Kranichbeere",
+			"Moosbeere"
+		]
+	},
+	{
+		"name": "Cranberrys (getrocknet)",
+		"status": "warn",
+		"category": "Obst",
+		"reason": "Getrocknete Cranberrys sind meist stark gezuckert, Trockenobstmischungen enthalten oft giftige Rosinen. Nur pur und in sehr kleinen Mengen.",
+		"aliases": [
+			"Trockencranberrys",
+			"Cranberries getrocknet"
+		]
+	},
+	{
+		"name": "Sternfrucht (Karambole)",
+		"status": "bad",
+		"category": "Obst",
+		"reason": "Sternfrüchte, vor allem saure Sorten, enthalten lösliches Oxalat. Es senkt den Kalziumspiegel und kann Erbrechen, Speicheln, Zittern und Nierenschäden verursachen.",
+		"aliases": [
+			"Karambole",
+			"Sternfrüchte",
+			"Starfruit"
+		]
+	},
+	{
+		"name": "Litschi (geschält, ohne Kern)",
+		"status": "warn",
+		"category": "Obst",
+		"reason": "Nur das reife Fruchtfleisch ohne Schale und Kern in kleinen Mengen. Unreife Früchte und Samen enthalten Hypoglycin A, das zu Unterzuckerung führen kann; die Schale kann Verdauungsprobleme verursachen.",
+		"aliases": [
+			"Litschi",
+			"Litschis",
+			"Lychee"
+		]
+	},
+	{
+		"name": "Limette",
+		"status": "bad",
+		"category": "Obst",
+		"reason": "Limetten enthalten ätherische Öle, Psoralene und viel Säure. Folgen sind Erbrechen, Durchfall und Mattigkeit; Schale und Öl sind am kritischsten.",
+		"aliases": [
+			"Limetten",
+			"Limone",
+			"Lime"
+		]
+	},
+	{
+		"name": "Holunderbeeren",
+		"status": "bad",
+		"category": "Obst",
+		"reason": "Holunderbeeren, Blätter und Kerne enthalten das Blausäureglykosid Sambunigrin. Möglich sind Erbrechen und Durchfall, bei größeren Mengen Atemnot, Zittern und Krämpfe; auch gekochte Kerne gelten als nicht sicher.",
+		"aliases": [
+			"Holunder",
+			"Holler",
+			"Fliederbeeren",
+			"schwarzer Holunder"
+		]
+	},
+	{
+		"name": "Rhabarber (Stiele)",
+		"status": "warn",
+		"category": "Gemüse",
+		"reason": "Die Stiele enthalten nur wenig lösliches Oxalat, sind aber sauer und als Futter ungeeignet. Kleine versehentliche Mengen sind meist harmlos; bei Nierenproblemen ganz meiden.",
+		"aliases": [
+			"Rhabarber",
+			"Rhabarberstange",
+			"Rhabarberkompott"
+		]
+	},
+	{
+		"name": "Rhabarberblätter",
+		"status": "bad",
+		"category": "Gemüse",
+		"reason": "Die Blätter enthalten viel lösliches Oxalat. Es kann Erbrechen, Speicheln, Schwäche, Zittern, einen Kalziumabfall und Nierenschäden verursachen.",
+		"aliases": [
+			"Rhabarberlaub",
+			"Rhabarberblatt"
+		]
+	},
+	{
+		"name": "Spargel (gekocht)",
+		"status": "ok",
+		"category": "Gemüse",
+		"reason": "Gedünsteter oder gekochter Spargel ohne Butter und Salz ist in kleinen Stücken gut verträglich. Das Laub der Spargelpflanze ist dagegen giftig.",
+		"aliases": [
+			"Spargel",
+			"grüner Spargel",
+			"weißer Spargel"
+		]
+	},
+	{
+		"name": "Spargel (roh)",
+		"status": "warn",
+		"category": "Gemüse",
+		"reason": "Roher Spargel ist zäh, schwer verdaulich und kann Blähungen, Erbrechen oder Durchfall auslösen. Wenn überhaupt, nur in kleine Stücke geschnitten.",
+		"aliases": [
+			"roher Spargel",
+			"Spargelspitzen roh"
+		]
+	},
+	{
+		"name": "Artischocke (gekocht)",
+		"status": "ok",
+		"category": "Gemüse",
+		"reason": "Gekochtes Artischockenherz ohne Gewürze, Öl oder Marinade ist in kleinen Mengen verträglich. Die harten äußeren Blätter sind schwer verdaulich und sollten nicht gefüttert werden.",
+		"aliases": [
+			"Artischocke",
+			"Artischockenherz",
+			"Artischocken"
+		]
+	},
+	{
+		"name": "Aubergine (gekocht)",
+		"status": "ok",
+		"category": "Gemüse",
+		"reason": "Gekochte, ungewürzte Aubergine ist in kleinen Mengen verträglich. Ohne Öl, Knoblauch und Zwiebeln zubereiten und nur gelegentlich anbieten.",
+		"aliases": [
+			"Aubergine",
+			"Melanzani",
+			"Eierfrucht"
+		]
+	},
+	{
+		"name": "Aubergine (roh)",
+		"status": "warn",
+		"category": "Gemüse",
+		"reason": "Als Nachtschattengewächs enthält die rohe Aubergine Solanin, das in größeren Mengen Magen und Darm reizt. Gekocht ist sie besser verträglich.",
+		"aliases": [
+			"rohe Aubergine",
+			"Melanzani roh"
+		]
+	},
+	{
+		"name": "Rote Bete",
+		"status": "ok",
+		"category": "Gemüse",
+		"reason": "Gekochte, ungewürzte Rote Bete ist in Maßen geeignet. Sie enthält Oxalsäure, daher nicht für Hunde mit Neigung zu Harnsteinen. Rötlicher Urin oder Kot danach ist harmlos.",
+		"aliases": [
+			"Rote Rübe",
+			"Randen",
+			"Rote Beete"
+		]
+	},
+	{
+		"name": "Radieschen",
+		"status": "ok",
+		"category": "Gemüse",
+		"reason": "Radieschen sind in kleinen Mengen unbedenklich und liefern Ballaststoffe. Klein schneiden; das Grün kann Magen und Darm reizen.",
+		"aliases": [
+			"Radies",
+			"Radi"
+		]
+	},
+	{
+		"name": "Rettich",
+		"status": "warn",
+		"category": "Gemüse",
+		"reason": "Milder weißer Rettich ist in kleinen Mengen verträglich. Scharfe Sorten reizen Magen und Darm; Meerrettich ist nicht geeignet.",
+		"aliases": [
+			"weißer Rettich",
+			"Daikon",
+			"Bierrettich"
+		]
+	},
+	{
+		"name": "Fenchel",
+		"status": "ok",
+		"category": "Gemüse",
+		"reason": "Fenchel ist ungiftig und in kleinen Mengen roh oder gekocht verträglich. Konzentriertes Fenchelöl sollte nicht gegeben werden.",
+		"aliases": [
+			"Fenchelknolle",
+			"Gemüsefenchel"
+		]
+	},
+	{
+		"name": "Pastinake (gekocht)",
+		"status": "ok",
+		"category": "Gemüse",
+		"reason": "Gekochte Pastinake ist ein gut verträglicher Stärke- und Ballaststofflieferant. Roh ist sie schwerer verdaulich.",
+		"aliases": [
+			"Pastinaken",
+			"Pastinak",
+			"Germanenwurzel"
+		]
+	},
+	{
+		"name": "Kohlrabi",
+		"status": "ok",
+		"category": "Gemüse",
+		"reason": "Kohlrabi ist in kleinen Mengen geeignet, gekocht bekömmlicher als roh, da roher Kohl bläht. Bei Schilddrüsenerkrankungen vorher mit dem Tierarzt sprechen.",
+		"aliases": [
+			"Kohlrübe",
+			"Oberkohlrabi"
+		]
+	},
+	{
+		"name": "Grünkohl",
+		"status": "warn",
+		"category": "Gemüse",
+		"reason": "Grünkohl enthält Kalziumoxalat und Isothiocyanate, die Magen und Darm reizen und Blasensteine begünstigen können. Nur gelegentlich, gedünstet und in kleinen Mengen.",
+		"aliases": [
+			"Braunkohl",
+			"Krauskohl",
+			"Kale"
+		]
+	},
+	{
+		"name": "Mangold",
+		"status": "warn",
+		"category": "Gemüse",
+		"reason": "Mangold ist reich an Oxalsäure und daher nur in kleinen Mengen, am besten gekocht, geeignet. Bei Neigung zu Blasensteinen oder Nierenproblemen meiden.",
+		"aliases": [
+			"Krautstiel",
+			"Stielmangold",
+			"Blattmangold"
+		]
+	},
+	{
+		"name": "Blattsalat",
+		"status": "ok",
+		"category": "Gemüse",
+		"reason": "Kopfsalat, Eisberg und Römersalat sind ungiftig, kalorienarm und wasserreich. Klein schneiden und nur ohne Dressing, Zwiebeln oder Croutons geben; große Mengen können Durchfall auslösen.",
+		"aliases": [
+			"Kopfsalat",
+			"Eisbergsalat",
+			"Römersalat",
+			"Salat"
+		]
+	},
+	{
+		"name": "Rucola",
+		"status": "ok",
+		"category": "Gemüse",
+		"reason": "Rucola ist ungiftig und in kleinen Mengen unbedenklich. Wie anderer Salat nur ohne Dressing.",
+		"aliases": [
+			"Rauke",
+			"Rukola",
+			"Ruccola"
+		]
+	},
+	{
+		"name": "Chinakohl",
+		"status": "warn",
+		"category": "Gemüse",
+		"reason": "Chinakohl ist ungiftig, kann aber wie anderer Kohl stark blähen. Gekocht und in kleinen Mengen besser verträglich; bei Neigung zu Magendrehung vorsichtig sein.",
+		"aliases": [
+			"Pak Choi",
+			"Pekingkohl",
+			"Japankohl"
+		]
+	},
+	{
+		"name": "Zuckerschoten",
+		"status": "ok",
+		"category": "Gemüse",
+		"reason": "Zuckerschoten und Zuckererbsen samt Schote sind ungiftig und als gelegentlicher Snack geeignet. Größere Mengen können blähen.",
+		"aliases": [
+			"Zuckererbsen",
+			"Erbsenschoten",
+			"Kaiserschoten"
+		]
+	},
+	{
+		"name": "Kartoffelschalen (gekocht)",
+		"status": "warn",
+		"category": "Gemüse",
+		"reason": "Gekochte Schalen sind schwer verdaulich und nur in kleinen Mengen tolerierbar. Grüne oder gekeimte Schalen enthalten Solanin und dürfen nicht gefüttert werden.",
+		"aliases": [
+			"Kartoffelschale",
+			"Pellkartoffel mit Schale"
+		]
+	},
+	{
+		"name": "Lauch",
+		"status": "bad",
+		"category": "Gemüse",
+		"reason": "Lauch gehört wie Zwiebel und Knoblauch zu den Allium-Arten. Seine Schwefelverbindungen schädigen die roten Blutkörperchen und können verzögert eine Blutarmut auslösen; roh und gekocht.",
+		"aliases": [
+			"Porree",
+			"Breitlauch",
+			"Lauchzwiebel"
+		]
+	},
+	{
+		"name": "Frühlingszwiebeln",
+		"status": "bad",
+		"category": "Gemüse",
+		"reason": "Frühlingszwiebeln enthalten wie alle Zwiebelarten Stoffe, die rote Blutkörperchen zerstören. Blasse Schleimhäute, Schwäche und roter Urin können erst nach einem Tag oder später auftreten.",
+		"aliases": [
+			"Frühlingszwiebel",
+			"Jungzwiebeln",
+			"Winterzwiebel"
+		]
+	},
+	{
+		"name": "Schalotten",
+		"status": "bad",
+		"category": "Gemüse",
+		"reason": "Schalotten sind eine Zwiebelart und können in ausreichender Menge die roten Blutkörperchen zerstören. Die Blutarmut zeigt sich oft erst nach ein bis mehreren Tagen.",
+		"aliases": [
+			"Schalotte",
+			"Eschalotte"
+		]
+	},
+	{
+		"name": "Maiskolben",
+		"status": "bad",
+		"category": "Gemüse",
+		"reason": "Der harte Kolben wird nicht verdaut und ist eine häufige Ursache für Darmverschlüsse, die oft operiert werden müssen. Abgelöste, ungewürzte Körner sind dagegen unbedenklich.",
+		"aliases": [
+			"Maiskolben gegrillt",
+			"Corn on the Cob",
+			"Kolben"
+		]
+	},
+	{
+		"name": "Kartoffelbrei",
+		"status": "warn",
+		"category": "Gemüse",
+		"reason": "Purer Kartoffelbrei aus gekochten Kartoffeln ist in kleinen Mengen verträglich. Mit Butter, Milch, Salz oder Muskat zubereitet ist er für Hunde ungeeignet.",
+		"aliases": [
+			"Kartoffelpüree",
+			"Stampfkartoffeln",
+			"Erdäpfelpüree"
+		]
+	},
+	{
+		"name": "Essiggurken",
+		"status": "bad",
+		"category": "Gemüse",
+		"reason": "Eingelegte Gurken sind sehr salzhaltig und oft mit Knoblauch, Zwiebeln oder scharfen Gewürzen versetzt. Frische Gurke ist die bessere Wahl.",
+		"aliases": [
+			"Gewürzgurken",
+			"Saure Gurken",
+			"Cornichons"
+		]
+	},
+	{
+		"name": "Sauerkraut",
+		"status": "warn",
+		"category": "Gemüse",
+		"reason": "Sauerkraut ist fermentiert, aber für Hunde meist zu salzig und kann blähen. Höchstens natriumarm, ungewürzt und in sehr kleinen Mengen.",
+		"aliases": [
+			"Sauerkohl",
+			"Weinsauerkraut"
+		]
+	},
+	{
+		"name": "Oliven (entsteint)",
+		"status": "warn",
+		"category": "Gemüse",
+		"reason": "Pure, entsteinte Oliven sind selten ein Problem, eingelegte aber sehr salzig. Kerne können zu Ersticken, Zahnbruch oder Darmverschluss führen; gefüllte Oliven mit Knoblauch oder Käse meiden.",
+		"aliases": [
+			"Oliven",
+			"Olive",
+			"schwarze Oliven",
+			"grüne Oliven"
+		]
+	},
+	{
+		"name": "Tofu",
+		"status": "warn",
+		"category": "Gemüse",
+		"reason": "Tofu ist nicht giftig, aber nur pur, ungewürzt und in kleinen Mengen geeignet. Er kann stark blähen und ist bei Sojaallergie oder Neigung zu Magendrehung zu meiden.",
+		"aliases": [
+			"Sojaquark",
+			"Räuchertofu",
+			"Seidentofu"
+		]
+	},
+	{
+		"name": "Edamame (ohne Schote)",
+		"status": "ok",
+		"category": "Gemüse",
+		"reason": "Gekochte, ungesalzene Sojabohnen ohne Schote sind in kleinen Mengen verträglich. Die zähe Schote ist eine Erstickungsgefahr; Soja ist ein häufiges Allergen.",
+		"aliases": [
+			"Edamame",
+			"grüne Sojabohnen"
+		]
+	},
+	{
+		"name": "Kidneybohnen (roh)",
+		"status": "bad",
+		"category": "Gemüse",
+		"reason": "Rohe Kidneybohnen enthalten das Lektin Phytohämagglutinin, das starke Magen-Darm-Beschwerden auslöst. Sie dürfen nur vollständig gegart gefüttert werden.",
+		"aliases": [
+			"rohe Kidneybohnen",
+			"rote Bohnen roh",
+			"Trockenbohnen roh"
+		]
+	},
+	{
+		"name": "Bohnen (gekocht)",
+		"status": "warn",
+		"category": "Gemüse",
+		"reason": "Vollständig gegarte Kidney- oder weiße Bohnen ohne Gewürze sind in kleinen Mengen verträglich. Sie können stark blähen; Bohnen aus Soße oder Chili sind nicht geeignet.",
+		"aliases": [
+			"Kidneybohnen gekocht",
+			"weiße Bohnen",
+			"Bohnen aus der Dose"
+		]
+	},
+	{
+		"name": "Baked Beans",
+		"status": "bad",
+		"category": "Fertigprodukte",
+		"reason": "Gebackene Bohnen in Tomatensoße enthalten viel Zucker oder Melasse, Salz und Gewürze, oft auch Zwiebeln. Für Hunde ungeeignet.",
+		"aliases": [
+			"Bohnen in Tomatensoße",
+			"Weiße Bohnen in Soße"
+		]
+	},
+	{
+		"name": "Ingwer",
+		"status": "ok",
+		"category": "Kräuter & Pflanzenstoffe",
+		"reason": "Frischer oder gemahlener Ingwer ist in kleinen Mengen unbedenklich und kann bei Übelkeit helfen. Größere Mengen verursachen Blähungen; wirkt leicht blutverdünnend, daher nicht vor Operationen.",
+		"aliases": [
+			"Ingwerwurzel",
+			"Ingwerpulver",
+			"Ginger"
+		]
+	},
+	{
+		"name": "Kurkuma",
+		"status": "warn",
+		"category": "Kräuter & Pflanzenstoffe",
+		"reason": "Kurkuma ist nicht giftig, hohe Dosen können aber Durchfall, Blähungen und eine verstärkte Blutungsneigung verursachen und mit Schmerzmitteln wechselwirken. Als Ergänzung nur nach Rücksprache mit dem Tierarzt.",
+		"aliases": [
+			"Gelbwurz",
+			"Curcuma",
+			"Turmeric"
+		]
+	},
+	{
+		"name": "Zimt",
+		"status": "warn",
+		"category": "Kräuter & Pflanzenstoffe",
+		"reason": "Zimt ist nicht hochgiftig, aber größere Mengen (etwa ab einem Teelöffel Pulver) können Erbrechen, Durchfall und Herzrhythmusveränderungen auslösen. Eingeatmetes Pulver reizt die Atemwege, Zimtöl ist schon in kleinen Mengen gefährlich.",
+		"aliases": [
+			"Zimtpulver",
+			"Zimtstange",
+			"Ceylon-Zimt",
+			"Cassia"
+		]
+	},
+	{
+		"name": "Muskatnuss",
+		"status": "bad",
+		"category": "Kräuter & Pflanzenstoffe",
+		"reason": "Muskat enthält Myristicin. Größere Mengen können Desorientierung, Halluzinationen, Herzrasen, Bluthochdruck, Bauchschmerzen und Krampfanfälle für bis zu 48 Stunden auslösen.",
+		"aliases": [
+			"Muskat",
+			"Muskatblüte",
+			"Macis"
+		]
+	},
+	{
+		"name": "Chili",
+		"status": "bad",
+		"category": "Kräuter & Pflanzenstoffe",
+		"reason": "Scharfe Paprika- und Chilisorten enthalten Capsaicin, das Maul, Rachen und Magen-Darm-Trakt schmerzhaft reizt und Erbrechen und Durchfall auslösen kann.",
+		"aliases": [
+			"Peperoni",
+			"Cayennepfeffer",
+			"Jalapeño",
+			"Chilischote"
+		]
+	},
+	{
+		"name": "Paprikapulver",
+		"status": "warn",
+		"category": "Kräuter & Pflanzenstoffe",
+		"reason": "Edelsüßes Paprikapulver ist in Spuren meist unproblematisch, scharfe Sorten enthalten aber reizendes Capsaicin. Gewürzmischungen enthalten oft Zwiebel- oder Knoblauchpulver.",
+		"aliases": [
+			"Paprika edelsüß",
+			"Rosenpaprika",
+			"geräuchertes Paprikapulver"
+		]
+	},
+	{
+		"name": "Nelken",
+		"status": "warn",
+		"category": "Kräuter & Pflanzenstoffe",
+		"reason": "Gewürznelken enthalten Eugenol. Kleine Würzmengen sind meist unkritisch, größere Mengen und Nelkenöl können Erbrechen und Durchfall auslösen.",
+		"aliases": [
+			"Gewürznelken",
+			"Nelkenpulver",
+			"Nelkenöl"
+		]
+	},
+	{
+		"name": "Vanilleextrakt",
+		"status": "bad",
+		"category": "Kräuter & Pflanzenstoffe",
+		"reason": "Vanilleextrakt und Vanillearoma bestehen zu einem großen Teil aus Alkohol und können eine Alkoholvergiftung auslösen.",
+		"aliases": [
+			"Vanillearoma",
+			"Vanilleessenz",
+			"Bourbon-Vanilleextrakt"
+		]
+	},
+	{
+		"name": "Dill",
+		"status": "ok",
+		"category": "Kräuter & Pflanzenstoffe",
+		"reason": "Dill ist laut Giftnotruf ungiftig und als frisches Küchenkraut in kleinen Mengen unbedenklich.",
+		"aliases": [
+			"Dillspitzen",
+			"Gurkenkraut"
+		]
+	},
+	{
+		"name": "Rosmarin",
+		"status": "ok",
+		"category": "Kräuter & Pflanzenstoffe",
+		"reason": "Rosmarin ist ungiftig und in kleinen Würzmengen unbedenklich. Konzentriertes Rosmarinöl sollte nicht gegeben werden.",
+		"aliases": [
+			"Rosmarinnadeln",
+			"Rosmarinus"
+		]
+	},
+	{
+		"name": "Thymian",
+		"status": "ok",
+		"category": "Kräuter & Pflanzenstoffe",
+		"reason": "Thymian ist ungiftig und in kleinen Mengen als Küchenkraut unbedenklich.",
+		"aliases": [
+			"Gartenthymian",
+			"Quendel"
+		]
+	},
+	{
+		"name": "Salbei",
+		"status": "ok",
+		"category": "Kräuter & Pflanzenstoffe",
+		"reason": "Echter Salbei ist ungiftig und in kleinen Mengen unbedenklich. Ätherisches Salbeiöl sollte nicht gegeben werden.",
+		"aliases": [
+			"Echter Salbei",
+			"Küchensalbei",
+			"Salvia"
+		]
+	},
+	{
+		"name": "Koriander",
+		"status": "ok",
+		"category": "Kräuter & Pflanzenstoffe",
+		"reason": "Korianderblätter sind ungiftig und in kleinen Mengen unbedenklich. Größere Mengen können Magen und Darm reizen.",
+		"aliases": [
+			"Koriandergrün",
+			"Cilantro",
+			"Chinesische Petersilie"
+		]
+	},
+	{
+		"name": "Minze",
+		"status": "warn",
+		"category": "Kräuter & Pflanzenstoffe",
+		"reason": "Minze enthält ätherische Öle, die in größeren Mengen Erbrechen und Durchfall auslösen. Ein Blatt ist meist unproblematisch; Minzbonbons und Kaugummi enthalten oft Xylit.",
+		"aliases": [
+			"Pfefferminze",
+			"Grüne Minze",
+			"Nanaminze"
+		]
+	},
+	{
+		"name": "Polei-Minze",
+		"status": "bad",
+		"category": "Kräuter & Pflanzenstoffe",
+		"reason": "Polei-Minze enthält Pulegon, das schwere Leberschäden, Blutungen und Krampfanfälle verursachen kann. Besonders das Öl ist lebensgefährlich.",
+		"aliases": [
+			"Poleiminze",
+			"Flohkraut",
+			"Pennyroyal"
+		]
+	},
+	{
+		"name": "Lorbeerblätter",
+		"status": "bad",
+		"category": "Kräuter & Pflanzenstoffe",
+		"reason": "Lorbeer enthält ätherische Öle und Eugenol, die Erbrechen und Durchfall auslösen. Ganze, harte Blätter können zudem einen Darmverschluss verursachen.",
+		"aliases": [
+			"Lorbeer",
+			"Lorbeerblatt",
+			"Echter Lorbeer"
+		]
+	},
+	{
+		"name": "Kamille",
+		"status": "warn",
+		"category": "Kräuter & Pflanzenstoffe",
+		"reason": "Kamille wird vom Giftnotruf als giftig geführt: möglich sind Erbrechen, Durchfall und allergische Reaktionen, bei Langzeitgabe eine Blutungsneigung. Höchstens gelegentlich als schwacher, abgekühlter Tee.",
+		"aliases": [
+			"Kamillenblüten",
+			"Echte Kamille",
+			"Römische Kamille"
+		]
+	},
+	{
+		"name": "Bärlauch",
+		"status": "bad",
+		"category": "Kräuter & Pflanzenstoffe",
+		"reason": "Bärlauch ist eine Allium-Art wie Knoblauch. Seine Schwefelverbindungen können die roten Blutkörperchen schädigen und verzögert eine Blutarmut auslösen.",
+		"aliases": [
+			"Wilder Knoblauch",
+			"Waldknoblauch",
+			"Bärlauchpesto"
+		]
+	},
+	{
+		"name": "Zwiebel- und Knoblauchpulver",
+		"status": "bad",
+		"category": "Kräuter & Pflanzenstoffe",
+		"reason": "Getrocknetes Pulver ist besonders konzentriert: ein Teelöffel Knoblauchpulver entspricht etwa acht Zehen. Es zerstört rote Blutkörperchen und steckt in vielen Gewürzmischungen, Brühen und Fertigprodukten.",
+		"aliases": [
+			"Knoblauchpulver",
+			"Zwiebelpulver",
+			"Knoblauchgranulat",
+			"Röstzwiebeln"
+		]
+	},
+	{
+		"name": "Hopfen",
+		"status": "bad",
+		"category": "Kräuter & Pflanzenstoffe",
+		"reason": "Hopfen, frisch oder vom Bierbrauen, kann eine rasch einsetzende, lebensbedrohliche Überhitzung mit Hecheln, Herzrasen und Krampfanfällen auslösen. Windhunde, Labradore und Retriever sind besonders gefährdet.",
+		"aliases": [
+			"Hopfendolden",
+			"Brauhopfen",
+			"Hopfentreber"
+		]
+	},
+	{
+		"name": "Aloe vera",
+		"status": "bad",
+		"category": "Kräuter & Pflanzenstoffe",
+		"reason": "Die Pflanze enthält abführende Anthrachinone, die Erbrechen und Durchfall auslösen. Aloe-Saft und Pflanzenteile nicht füttern.",
+		"aliases": [
+			"Aloe",
+			"Aloe-vera-Saft",
+			"Aloe Gel"
+		]
+	},
+	{
+		"name": "Backpulver und Natron",
+		"status": "warn",
+		"category": "Getreide, Backwaren & Süßes",
+		"reason": "Kleine Mengen in Gebäck sind unbedenklich. Größere Mengen pures Natron oder Backpulver können Blähungen, Erbrechen und Elektrolytstörungen auslösen.",
+		"aliases": [
+			"Natron",
+			"Natriumhydrogencarbonat",
+			"Speisesoda",
+			"Backsoda"
+		]
+	},
+	{
+		"name": "Sojasoße",
+		"status": "bad",
+		"category": "Soßen & Dips",
+		"reason": "Sojasoße ist extrem salzhaltig. Schon kleine Mengen können bei kleinen Hunden starken Durst, Erbrechen und Durchfall auslösen, größere Mengen eine Salzvergiftung mit Zittern und Krämpfen.",
+		"aliases": [
+			"Sojasauce",
+			"Shoyu",
+			"Tamari"
+		]
+	},
+	{
+		"name": "Kürbiskerne",
+		"status": "warn",
+		"category": "Nüsse & Samen",
+		"reason": "Geschälte, ungesalzene Kürbiskerne liefern Zink und Magnesium und sind gemahlen in kleinen Mengen geeignet. Ganze Kerne mit Schale können zu Verschluss führen; gesalzene meiden.",
+		"aliases": [
+			"Kürbissamen",
+			"Kürbiskern"
+		]
+	},
+	{
+		"name": "Sonnenblumenkerne",
+		"status": "warn",
+		"category": "Nüsse & Samen",
+		"reason": "Nur geschält und ungesalzen in kleinen Mengen. Schalen können zu Darmverschluss führen, Salz zu Salzvergiftung und das hohe Fett zu Bauchspeicheldrüsenentzündung.",
+		"aliases": [
+			"Sonnenblumenkern",
+			"Sonnenblumensamen"
+		]
+	},
+	{
+		"name": "Leinsamen",
+		"status": "ok",
+		"category": "Nüsse & Samen",
+		"reason": "Geschroteter Leinsamen liefert Omega-3-Fettsäuren und Ballaststoffe; je nach Größe etwa ein halber bis zwei Teelöffel täglich. Zu viel macht Durchfall, ohne genug Wasser Verstopfung.",
+		"aliases": [
+			"Leinsaat",
+			"geschroteter Leinsamen",
+			"Flachssamen"
+		]
+	},
+	{
+		"name": "Chiasamen",
+		"status": "ok",
+		"category": "Nüsse & Samen",
+		"reason": "Chiasamen sind ungiftig und können in kleinen Mengen als Ballaststoffquelle dienen. Am besten eingeweicht und sparsam füttern.",
+		"aliases": [
+			"Chia",
+			"Chia-Samen"
+		]
+	},
+	{
+		"name": "Speck",
+		"status": "bad",
+		"category": "Fleisch",
+		"reason": "Speck und Bacon sind sehr fett und salzig. Schon eine fettreiche Portion kann eine schmerzhafte, mitunter lebensbedrohliche Bauchspeicheldrüsenentzündung auslösen.",
+		"aliases": [
+			"Bacon",
+			"Frühstücksspeck",
+			"Schinkenspeck",
+			"Bauchspeck"
+		]
+	},
+	{
+		"name": "Hackfleisch (gekocht, ungewürzt)",
+		"status": "ok",
+		"category": "Fleisch",
+		"reason": "Mageres, vollständig durchgegartes Hackfleisch ohne Salz, Zwiebeln und Gewürze ist gut geeignet. Austretendes Fett abgießen, da zu viel Fett die Bauchspeicheldrüse belastet.",
+		"aliases": [
+			"Hackfleisch",
+			"Gehacktes gekocht",
+			"Faschiertes gekocht",
+			"Rinderhack gekocht"
+		]
+	},
+	{
+		"name": "Hackfleisch (roh)",
+		"status": "bad",
+		"category": "Fleisch",
+		"reason": "Beim Hacken verteilen sich Keime wie Salmonellen und E. coli im ganzen Fleisch. Rohes Hack, besonders vom Schwein oder gemischt, ist daher riskanter als rohes Stückfleisch.",
+		"aliases": [
+			"Gehacktes roh",
+			"Faschiertes roh",
+			"gemischtes Hack roh"
+		]
+	},
+	{
+		"name": "Schweinefleisch (gekocht)",
+		"status": "ok",
+		"category": "Fleisch",
+		"reason": "Vollständig durchgegartes, mageres Schweinefleisch ohne Knochen und Gewürze ist gut verträglich. Fette Stücke meiden, da sie die Bauchspeicheldrüse belasten.",
+		"aliases": [
+			"Schweinefleisch",
+			"Schwein gekocht",
+			"Schweinefilet gekocht"
+		]
+	},
+	{
+		"name": "Schweinefleisch (roh)",
+		"status": "bad",
+		"category": "Fleisch",
+		"reason": "Rohes Schweinefleisch kann das Aujeszky-Virus übertragen, das bei Hunden immer tödlich verläuft, sowie Trichinen und Bakterien. Deutsche Hausschweine gelten als frei, das Virus kommt aber bei Wildschweinen vor.",
+		"aliases": [
+			"Schwein roh",
+			"rohes Schweinefleisch",
+			"Barf Schwein roh"
+		]
+	},
+	{
+		"name": "Wildschwein (roh)",
+		"status": "bad",
+		"category": "Fleisch",
+		"reason": "Rohes Fleisch und Innereien von Wildschweinen sind eine der häufigsten Infektionsquellen für die Aujeszkysche Krankheit. Sie verläuft beim Hund tödlich, eine Impfung gibt es nicht. Nur vollständig durchgegart füttern.",
+		"aliases": [
+			"Wildschwein roh",
+			"Schwarzwild roh",
+			"Wildschweinaufbruch"
+		]
+	},
+	{
+		"name": "Lamm (gekocht)",
+		"status": "ok",
+		"category": "Fleisch",
+		"reason": "Gegartes, mageres Lammfleisch ohne Knochen und Gewürze ist gut verträglich und wird in tierärztlichen Ausschlussdiäten verwendet.",
+		"aliases": [
+			"Lammfleisch",
+			"Lamm gekocht",
+			"Hammel gekocht"
+		]
+	},
+	{
+		"name": "Lamm (roh)",
+		"status": "warn",
+		"category": "Fleisch",
+		"reason": "Rohes Lammfleisch kann Bakterien wie Salmonellen und Parasiten übertragen. Nur frische Ware, möglichst vorher tiefgefroren, und mit guter Küchenhygiene.",
+		"aliases": [
+			"Lammfleisch roh",
+			"Barf Lamm roh"
+		]
+	},
+	{
+		"name": "Ente (gekocht)",
+		"status": "ok",
+		"category": "Fleisch",
+		"reason": "Gegartes Entenfleisch ohne Haut und Knochen ist ein gut verträgliches Protein und wird bei Futterallergien eingesetzt. Die fette Haut weglassen.",
+		"aliases": [
+			"Entenfleisch",
+			"Entenbrust gekocht",
+			"Ente"
+		]
+	},
+	{
+		"name": "Gans (gekocht)",
+		"status": "warn",
+		"category": "Fleisch",
+		"reason": "Mageres Gänsefleisch ist eine geeignete Proteinquelle, Gänsebraten ist aber sehr fett. Haut und Fett können eine Bauchspeicheldrüsenentzündung auslösen; nur mager, ohne Haut und Knochen.",
+		"aliases": [
+			"Gänsefleisch",
+			"Gänsebraten",
+			"Gänsebrust"
+		]
+	},
+	{
+		"name": "Wild (gekocht)",
+		"status": "ok",
+		"category": "Fleisch",
+		"reason": "Gegartes Reh- oder Hirschfleisch ist mager, liefert Eisen, Zink und B-Vitamine und eignet sich als neues Protein bei Futterallergien.",
+		"aliases": [
+			"Wildfleisch",
+			"Reh gekocht",
+			"Hirsch gekocht",
+			"Venison"
+		]
+	},
+	{
+		"name": "Wild (roh)",
+		"status": "warn",
+		"category": "Fleisch",
+		"reason": "Rohes Wildfleisch kann Parasiten und Bakterien übertragen. Nur tiefgefroren und nach Rücksprache mit dem Tierarzt; rohes Wildschwein ist wegen Aujeszky tabu.",
+		"aliases": [
+			"Reh roh",
+			"Hirsch roh",
+			"Barf Wild roh"
+		]
+	},
+	{
+		"name": "Ziege (gekocht)",
+		"status": "ok",
+		"category": "Fleisch",
+		"reason": "Gegartes Ziegenfleisch ohne Knochen und Gewürze ist gut verträglich und wird in tierärztlichen Ausschlussdiäten eingesetzt.",
+		"aliases": [
+			"Ziegenfleisch",
+			"Zicklein gekocht"
+		]
+	},
+	{
+		"name": "Geflügelhaut",
+		"status": "bad",
+		"category": "Fleisch",
+		"reason": "Haut von Huhn, Pute oder Ente ist sehr fett und oft mit Butter oder Gewürzen zubereitet. Sie kann eine Bauchspeicheldrüsenentzündung auslösen.",
+		"aliases": [
+			"Hähnchenhaut",
+			"Hühnerhaut",
+			"Putenhaut",
+			"knusprige Haut"
+		]
+	},
+	{
+		"name": "Knochen (gekocht oder gebraten)",
+		"status": "bad",
+		"category": "Fleisch",
+		"reason": "Gegarte Knochen werden spröde und splittern. Splitter verletzen Maul und Rachen, können steckenbleiben, den Darm verschließen oder durchbohren.",
+		"aliases": [
+			"gekochte Knochen",
+			"Geflügelknochen",
+			"Hähnchenknochen",
+			"Kotelettknochen"
+		]
+	},
+	{
+		"name": "Knochen (roh)",
+		"status": "bad",
+		"category": "Fleisch",
+		"reason": "Auch rohe Knochen können Zahnbrüche, Verstopfung, Darmverschluss oder Verletzungen verursachen und Keime wie Salmonellen übertragen. Wenn überhaupt, nur große Fleischknochen unter Aufsicht.",
+		"aliases": [
+			"rohe Knochen",
+			"Fleischknochen roh",
+			"Markknochen roh",
+			"Barf Knochen"
+		]
+	},
+	{
+		"name": "Rohschinken",
+		"status": "bad",
+		"category": "Fertigprodukte",
+		"reason": "Luftgetrockneter Schinken ist sehr salzig und fett. Möglich sind starker Durst, Erbrechen, Bauchspeicheldrüsenentzündung und bei größeren Mengen eine Salzvergiftung.",
+		"aliases": [
+			"Serranoschinken",
+			"Parmaschinken",
+			"Schwarzwälder Schinken",
+			"Prosciutto"
+		]
+	},
+	{
+		"name": "Mett",
+		"status": "bad",
+		"category": "Fertigprodukte",
+		"reason": "Mett ist rohes, gewürztes Schweinehack, oft mit Zwiebeln. Es birgt das Risiko von Trichinen, Bakterien und Aujeszky-Virus sowie einer Zwiebelvergiftung.",
+		"aliases": [
+			"Hackepeter",
+			"Zwiebelmett",
+			"Mettbrötchen",
+			"Thüringer Mett"
+		]
+	},
+	{
+		"name": "Fleischwurst",
+		"status": "bad",
+		"category": "Fertigprodukte",
+		"reason": "Brühwürste wie Fleischwurst und Lyoner sind fett, stark gesalzen und oft mit Knoblauch oder Zwiebeln gewürzt. Schon wenig kann die Natriumobergrenze eines Hundes überschreiten.",
+		"aliases": [
+			"Lyoner",
+			"Fleischkäse-Wurst",
+			"Gelbwurst",
+			"Extrawurst"
+		]
+	},
+	{
+		"name": "Leberkäse",
+		"status": "bad",
+		"category": "Fertigprodukte",
+		"reason": "Leberkäse besteht aus gesalzenem, fettem Brät mit Nitritpökelsalz und Gewürzen. Er belastet Bauchspeicheldrüse und Salzhaushalt.",
+		"aliases": [
+			"Fleischkäse",
+			"Leberkäs",
+			"Leberkässemmel"
+		]
+	},
+	{
+		"name": "Frikadellen",
+		"status": "bad",
+		"category": "Fertigprodukte",
+		"reason": "Frikadellen enthalten fast immer Zwiebeln, dazu Salz und Gewürze. Zwiebeln können die roten Blutkörperchen schädigen.",
+		"aliases": [
+			"Buletten",
+			"Fleischpflanzerl",
+			"Fleischküchle",
+			"Hackbällchen"
+		]
+	},
+	{
+		"name": "Döner",
+		"status": "bad",
+		"category": "Fertigprodukte",
+		"reason": "Döner enthält Zwiebeln, Knoblauchsoße, viel Salz, Fett und scharfe Gewürze. Für Hunde ungeeignet.",
+		"aliases": [
+			"Döner Kebab",
+			"Dürüm",
+			"Gyros",
+			"Kebab"
+		]
+	},
+	{
+		"name": "Burger",
+		"status": "bad",
+		"category": "Fertigprodukte",
+		"reason": "Fast-Food-Burger sind gesalzen, gewürzt und mit Zwiebeln, Soßen und Käse belegt. Möglich sind Magen-Darm-Beschwerden bis zur Bauchspeicheldrüsenentzündung.",
+		"aliases": [
+			"Hamburger",
+			"Cheeseburger",
+			"Fast Food"
+		]
+	},
+	{
+		"name": "Chicken Nuggets",
+		"status": "bad",
+		"category": "Fertigprodukte",
+		"reason": "Nuggets sind paniert, frittiert und gewürzt, teils mit Zwiebel- oder Knoblauchpulver. Ein einzelnes schadet kaum, als Snack sind sie ungeeignet.",
+		"aliases": [
+			"Hähnchen-Nuggets",
+			"Chicken Wings",
+			"Hähnchen paniert"
+		]
+	},
+	{
+		"name": "Knochenbrühe (selbst gekocht)",
+		"status": "ok",
+		"category": "Fleisch",
+		"reason": "Selbst gekochte Brühe ohne Salz, Zwiebeln und Knoblauch ist gut geeignet, etwa zum Anfeuchten des Futters. Knochen vollständig abseihen und Fett abschöpfen.",
+		"aliases": [
+			"Hühnerbrühe ungesalzen",
+			"Bone Broth",
+			"Fleischbrühe selbstgemacht"
+		]
+	},
+	{
+		"name": "Makrele (gekocht)",
+		"status": "warn",
+		"category": "Fisch",
+		"reason": "Gegarte, entgrätete und ungewürzte Makrele liefert Omega-3-Fettsäuren, ist aber fettreich. Königsmakrele ist wegen Quecksilber ungeeignet, geräucherte Makrele zu salzig.",
+		"aliases": [
+			"Makrele",
+			"Makrelenfilet gekocht"
+		]
+	},
+	{
+		"name": "Fischgräten",
+		"status": "bad",
+		"category": "Fisch",
+		"reason": "Gräten können im Maul, Rachen oder Darm steckenbleiben und die Organwand durchbohren. Fisch nur sorgfältig entgrätet füttern.",
+		"aliases": [
+			"Gräten",
+			"Fischknochen",
+			"Fischkopf mit Gräten"
+		]
+	},
+	{
+		"name": "Sushi",
+		"status": "bad",
+		"category": "Fertigprodukte",
+		"reason": "Sushi enthält rohen Fisch mit Parasiten- und Bakterienrisiko, gewürzten Reis und wird mit salziger Sojasoße und scharfem Wasabi serviert.",
+		"aliases": [
+			"Maki",
+			"Sashimi",
+			"Nigiri"
+		]
+	},
+	{
+		"name": "Popcorn (ungesalzen)",
+		"status": "ok",
+		"category": "Getreide, Backwaren & Süßes",
+		"reason": "Luftgepopptes Popcorn ohne Salz, Butter und Zucker ist in kleinen Mengen unbedenklich. Nicht aufgepoppte Körner können Zähne beschädigen oder zum Verschlucken führen.",
+		"aliases": [
+			"Popcorn natur",
+			"Puffmais"
+		]
+	},
+	{
+		"name": "Popcorn (gesalzen, gebuttert oder süß)",
+		"status": "bad",
+		"category": "Getreide, Backwaren & Süßes",
+		"reason": "Kino-Popcorn ist gesalzen, mit Butter oder Öl zubereitet oder karamellisiert. Das kann Salzvergiftung, Bauchspeicheldrüsenentzündung oder Magen-Darm-Beschwerden auslösen.",
+		"aliases": [
+			"Kinopopcorn",
+			"Karamellpopcorn",
+			"Butterpopcorn",
+			"Mikrowellenpopcorn"
+		]
+	},
+	{
+		"name": "Pommes frites",
+		"status": "bad",
+		"category": "Fertigprodukte",
+		"reason": "Pommes sind frittiert, gesalzen und oft gewürzt. Das viele Fett kann eine Bauchspeicheldrüsenentzündung auslösen, das Salz zu Durst und Erbrechen führen.",
+		"aliases": [
+			"Pommes",
+			"Fritten",
+			"Kartoffelstäbchen"
+		]
+	},
+	{
+		"name": "Kartoffelchips",
+		"status": "bad",
+		"category": "Getreide, Backwaren & Süßes",
+		"reason": "Chips sind sehr salzig und fettreich. Größere Mengen können Erbrechen, Durchfall, Zittern und eine Salzvergiftung auslösen.",
+		"aliases": [
+			"Chips",
+			"Crisps",
+			"Tortilla-Chips",
+			"Nachos"
+		]
+	},
+	{
+		"name": "Laugenbrezel",
+		"status": "bad",
+		"category": "Getreide, Backwaren & Süßes",
+		"reason": "Brezeln sind mit grobem Salz bestreut. Für Hunde mit Herz- oder Nierenerkrankungen besonders problematisch; größere Mengen können eine Salzvergiftung auslösen.",
+		"aliases": [
+			"Brezel",
+			"Brezn",
+			"Laugengebäck",
+			"Salzstangen"
+		]
+	},
+	{
+		"name": "Pfannkuchen",
+		"status": "warn",
+		"category": "Getreide, Backwaren & Süßes",
+		"reason": "Ein kleines Stück eines puren Pfannkuchens ist unbedenklich. Sirup, Schokolade, Nüsse, Muskat oder Butter machen ihn ungeeignet; Sirupe können Xylit enthalten.",
+		"aliases": [
+			"Eierkuchen",
+			"Palatschinken",
+			"Crêpes"
+		]
+	},
+	{
+		"name": "Hefeteig (roh)",
+		"status": "bad",
+		"category": "Getreide, Backwaren & Süßes",
+		"reason": "Roher Hefeteig geht im warmen Magen weiter auf und kann eine Magenüberblähung bis zur Magendrehung auslösen. Bei der Gärung entsteht zudem Alkohol, der zu Alkoholvergiftung führt.",
+		"aliases": [
+			"roher Teig",
+			"Pizzateig roh",
+			"Brotteig roh",
+			"Sauerteig roh"
+		]
+	},
+	{
+		"name": "Reiswaffeln",
+		"status": "warn",
+		"category": "Getreide, Backwaren & Süßes",
+		"reason": "Ungesalzene Reiswaffeln sind in kleinen Stücken unbedenklich. Gesalzene, gesüßte oder mit Schokolade überzogene Sorten sind ungeeignet.",
+		"aliases": [
+			"Reiscracker",
+			"Puffreiswaffeln"
+		]
+	},
+	{
+		"name": "Zwieback",
+		"status": "warn",
+		"category": "Getreide, Backwaren & Süßes",
+		"reason": "Zwieback ist durchgebackenes Brot und in kleinen Mengen unbedenklich, liefert aber vor allem Kohlenhydrate und oft Zucker. Kein Ersatz für Schonkost vom Tierarzt.",
+		"aliases": [
+			"Zwiebäcke",
+			"Rusk"
+		]
+	},
+	{
+		"name": "Couscous (gekocht)",
+		"status": "ok",
+		"category": "Getreide, Backwaren & Süßes",
+		"reason": "Pur gekochter Couscous ohne Salz oder Brühe ist verträglich. Weizen ist für Hunde nicht schädlich, aber ein mögliches Allergen.",
+		"aliases": [
+			"Couscous",
+			"Kuskus"
+		]
+	},
+	{
+		"name": "Bulgur (gekocht)",
+		"status": "ok",
+		"category": "Getreide, Backwaren & Süßes",
+		"reason": "Pur gekochter Bulgur ist eine verträgliche Kohlenhydratquelle. Ohne Salz, Brühe, Zwiebeln oder Gewürze zubereiten.",
+		"aliases": [
+			"Bulgur",
+			"Weizengrütze"
+		]
+	},
+	{
+		"name": "Polenta (gekocht)",
+		"status": "ok",
+		"category": "Getreide, Backwaren & Süßes",
+		"reason": "Pur gekochter Maisgrieß ist verträglich. Ohne Butter, Käse, Salz oder Zwiebeln zubereiten.",
+		"aliases": [
+			"Polenta",
+			"Maisgrieß",
+			"Maisbrei"
+		]
+	},
+	{
+		"name": "Instantnudeln",
+		"status": "bad",
+		"category": "Fertigprodukte",
+		"reason": "Das Würzpulver ist sehr salzig und enthält meist Zwiebel- und Knoblauchpulver. Die Nudeln sind zudem frittiert und fettreich.",
+		"aliases": [
+			"Ramen",
+			"Yum Yum",
+			"Fertignudeln",
+			"Cup Noodles"
+		]
+	},
+	{
+		"name": "Lebkuchen",
+		"status": "bad",
+		"category": "Getreide, Backwaren & Süßes",
+		"reason": "Lebkuchen und Weihnachtsgebäck enthalten Muskat, Nelken, viel Zucker und oft Schokolade oder Rosinen. Diese Mischung ist für Hunde ungeeignet.",
+		"aliases": [
+			"Pfefferkuchen",
+			"Spekulatius",
+			"Weihnachtsplätzchen",
+			"Printen"
+		]
+	},
+	{
+		"name": "Rosinenbrötchen",
+		"status": "bad",
+		"category": "Getreide, Backwaren & Süßes",
+		"reason": "Rosinen können schon in kleinen Mengen ein akutes Nierenversagen auslösen; eine sichere Menge gibt es nicht. Auch Stollen, Rosinenschnecken und Früchtebrot sind daher tabu.",
+		"aliases": [
+			"Stollen",
+			"Rosinenschnecke",
+			"Früchtebrot",
+			"Hefezopf mit Rosinen"
+		]
+	},
+	{
+		"name": "Kaugummi",
+		"status": "bad",
+		"category": "Getreide, Backwaren & Süßes",
+		"reason": "Zuckerfreier Kaugummi enthält oft Xylit, das schon in kleinen Mengen einen gefährlichen Unterzucker und Leberversagen auslösen kann. Ein einzelnes Stück kann für einen kleinen Hund reichen.",
+		"aliases": [
+			"Kaugummis",
+			"Chewing Gum",
+			"Bubblegum"
+		]
+	},
+	{
+		"name": "Gummibärchen",
+		"status": "warn",
+		"category": "Getreide, Backwaren & Süßes",
+		"reason": "Zuckerhaltige Fruchtgummis sind nicht giftig, größere Mengen verursachen aber Erbrechen und Durchfall. Zuckerfreie Sorten mit Xylit oder Cannabis- und Vitamin-Gummis sind ein Notfall.",
+		"aliases": [
+			"Fruchtgummi",
+			"Weingummi",
+			"Haribo",
+			"Gummitiere"
+		]
+	},
+	{
+		"name": "Lakritz",
+		"status": "warn",
+		"category": "Getreide, Backwaren & Süßes",
+		"reason": "Lakritz enthält viel Zucker und Glycyrrhizin, das in hohen Mengen den Kaliumhaushalt und Blutdruck stören kann. Kleine Mengen sind meist unkritisch; zuckerfreie Sorten auf Xylit prüfen.",
+		"aliases": [
+			"Lakritze",
+			"Salmiak",
+			"Bärendreck",
+			"Süßholz"
+		]
+	},
+	{
+		"name": "Bonbons",
+		"status": "bad",
+		"category": "Getreide, Backwaren & Süßes",
+		"reason": "Harte Bonbons können zum Ersticken führen oder im Magen verklumpen. Zuckerfreie Sorten enthalten oft Xylit, Verpackungen können einen Darmverschluss verursachen.",
+		"aliases": [
+			"Hartkaramellen",
+			"Lutschbonbons",
+			"Pfefferminzbonbons",
+			"Lollis"
+		]
+	},
+	{
+		"name": "Marshmallows",
+		"status": "bad",
+		"category": "Getreide, Backwaren & Süßes",
+		"reason": "Marshmallows bestehen fast nur aus Zucker; zu viele verursachen Erbrechen und Durchfall. Zuckerfreie Sorten können Xylit enthalten.",
+		"aliases": [
+			"Mäusespeck",
+			"Marshmallow",
+			"Schaumzucker"
+		]
+	},
+	{
+		"name": "Nuss-Nougat-Creme",
+		"status": "bad",
+		"category": "Getreide, Backwaren & Süßes",
+		"reason": "Nuss-Nougat-Creme enthält Kakao mit Theobromin sowie sehr viel Zucker und Fett. Für Hunde ungeeignet.",
+		"aliases": [
+			"Nutella",
+			"Schokoaufstrich",
+			"Nougatcreme"
+		]
+	},
+	{
+		"name": "Marmelade",
+		"status": "warn",
+		"category": "Getreide, Backwaren & Süßes",
+		"reason": "Marmelade ist sehr zuckerreich und als Futter ungeeignet; ein abgeleckter Rest ist meist harmlos. Zuckerreduzierte Sorten auf Xylit prüfen, Traubengelee ist tabu.",
+		"aliases": [
+			"Konfitüre",
+			"Fruchtaufstrich",
+			"Gelee"
+		]
+	},
+	{
+		"name": "Ahornsirup",
+		"status": "warn",
+		"category": "Getreide, Backwaren & Süßes",
+		"reason": "Reiner Ahornsirup ist nicht giftig, besteht aber fast nur aus Zucker. Pancake-Sirupe können Xylit enthalten; nur in winzigen Mengen.",
+		"aliases": [
+			"Pancake-Sirup",
+			"Maple Syrup"
+		]
+	},
+	{
+		"name": "Süßstoffe (Stevia, Erythrit)",
+		"status": "warn",
+		"category": "Getreide, Backwaren & Süßes",
+		"reason": "Stevia und Erythrit gelten als ungiftig, können in größeren Mengen aber Durchfall auslösen. Süßstoffprodukte immer auf Xylit (Birkenzucker) prüfen, das lebensgefährlich ist.",
+		"aliases": [
+			"Stevia",
+			"Erythrit",
+			"Aspartam",
+			"Sucralose"
+		]
+	},
+	{
+		"name": "Speiseeis",
+		"status": "warn",
+		"category": "Milchprodukte",
+		"reason": "Eis enthält Laktose, Zucker und Fett und verursacht oft Durchfall. Sorten mit Schokolade, Kaffee, Rosinen, Nüssen oder Xylit sind tabu; besser spezielles Hundeeis.",
+		"aliases": [
+			"Eiscreme",
+			"Eis",
+			"Softeis",
+			"Vanilleeis"
+		]
+	},
+	{
+		"name": "Blauschimmelkäse",
+		"status": "bad",
+		"category": "Milchprodukte",
+		"reason": "Edelschimmelkäse enthält Roquefortin, ein Schimmelpilzgift, das Erbrechen, Zittern, Krämpfe und Fieber auslösen kann.",
+		"aliases": [
+			"Gorgonzola",
+			"Roquefort",
+			"Blue Cheese",
+			"Bavaria Blu"
+		]
+	},
+	{
+		"name": "Feta",
+		"status": "warn",
+		"category": "Milchprodukte",
+		"reason": "Feta und Schafskäse sind sehr salzig und fettreich. Nur gelegentlich ein kleines Stück; nicht bei Hunden mit Bauchspeicheldrüsen- oder Nierenproblemen.",
+		"aliases": [
+			"Schafskäse",
+			"Hirtenkäse",
+			"Weißkäse"
+		]
+	},
+	{
+		"name": "Kefir",
+		"status": "warn",
+		"category": "Milchprodukte",
+		"reason": "Naturkefir enthält Probiotika und wenig Laktose, kann bei empfindlichen Hunden aber Durchfall auslösen. Nur ungesüßt und in kleinen Mengen.",
+		"aliases": [
+			"Milchkefir",
+			"Kefir natur"
+		]
+	},
+	{
+		"name": "Skyr (natur)",
+		"status": "ok",
+		"category": "Milchprodukte",
+		"reason": "Naturbelassener Skyr ist eiweißreich und laktosearm, ähnlich wie griechischer Joghurt. Nur ungesüßt, ohne Xylit und in kleinen Mengen.",
+		"aliases": [
+			"Skyr",
+			"isländischer Joghurt"
+		]
+	},
+	{
+		"name": "Apfelessig",
+		"status": "warn",
+		"category": "Nahrungsergänzung",
+		"reason": "Apfelessig ist nicht giftig, kann aber Magen und Speiseröhre reizen und Erbrechen, Durchfall oder Speicheln auslösen. Ein Nutzen ist nicht belegt; höchstens stark verdünnt.",
+		"aliases": [
+			"Obstessig",
+			"Apple Cider Vinegar"
+		]
+	}
+]

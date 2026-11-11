@@ -1,0 +1,14 @@
+{
+  "applinks": {
+    "details": [
+      {
+        "appIDs": ["Z42VKTJ79H.app.thisDog"],
+        "components": [
+          { "/": "/anmelden/*", "comment": "Anmeldelink aus der Mail" },
+          { "/": "/rudel/*", "comment": "Einladung ins Rudel" },
+          { "/": "/freund/*", "comment": "Einladung als Hundefreund" }
+        ]
+      }
+    ]
+  }
+}

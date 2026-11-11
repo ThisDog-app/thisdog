@@ -1,0 +1,208 @@
+# Xcode-Projekt für ThisDog. Erzeugen mit: cd ios && xcodegen
+# Die .xcodeproj entsteht daraus und wird nicht eingecheckt.
+name: ThisDog
+options:
+  deploymentTarget:
+    iOS: "27.0"
+  developmentLanguage: de
+settings:
+  base:
+    DEVELOPMENT_TEAM: Z42VKTJ79H
+    SWIFT_VERSION: "6.0"
+    MARKETING_VERSION: "0.1"
+    # Texte kommen aus Shared/Localizable.xcstrings; Xcode sammelt neue Texte beim Bauen selbst ein.
+    SWIFT_EMIT_LOC_STRINGS: YES
+    LOCALIZATION_PREFERS_STRING_CATALOGS: YES
+    CURRENT_PROJECT_VERSION: "12"
+targets:
+  ThisDog:
+    type: application
+    platform: iOS
+    sources:
+      - ThisDog
+      - Shared
+    dependencies:
+      - target: ThisDogWidgets
+      - target: ThisDogNotifications
+      - target: ThisDogWatch
+        embed: true
+        codeSign: true
+        copy:
+          destination: productsDirectory
+          subpath: $(CONTENTS_FOLDER_PATH)/Watch
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: app.thisDog
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        TARGETED_DEVICE_FAMILY: "1,2"
+        CODE_SIGN_STYLE: Automatic
+        CODE_SIGN_ENTITLEMENTS: ThisDog/ThisDog.entitlements
+        INFOPLIST_KEY_NSSupportsLiveActivities: YES
+        INFOPLIST_KEY_NSLocationWhenInUseUsageDescription: "ThisDog zeichnet eure Gassirunde auf und zeigt Parks und Hundezonen in der Nähe."
+        INFOPLIST_KEY_NSCameraUsageDescription: "Damit du Fotos von Parks und Hundezonen aufnehmen und im Food-Check Essen oder Strichcodes prüfen kannst."
+        GENERATE_INFOPLIST_FILE: YES
+        INFOPLIST_KEY_CFBundleDisplayName: ThisDog
+        INFOPLIST_KEY_UILaunchScreen_Generation: YES
+        INFOPLIST_KEY_UIApplicationSceneManifest_Generation: YES
+        INFOPLIST_KEY_UISupportedInterfaceOrientations: "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight"
+        INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad: "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight"
+        INFOPLIST_KEY_NSCalendarsFullAccessUsageDescription: "ThisDog trägt die Termine deines Hundes in einen eigenen Kalender „ThisDog“ ein und hält ihn aktuell."
+    info:
+      path: ThisDog/Info.plist
+      properties:
+        # Sprachen erst hier eintragen, wenn die Übersetzung fertig ist: Der App Store zeigt sie als unterstützt an.
+        CFBundleLocalizations: [de]
+        CFBundleDevelopmentRegion: de
+        UIAppFonts:
+          - BricolageGrotesque.ttf
+        # „Hund in der Nähe“: Zwei Telefone finden sich direkt (MultipeerConnectivity).
+        NSLocalNetworkUsageDescription: "ThisDog sucht andere Hunde in der Nähe, solange du „Hund in der Nähe“ geöffnet hast."
+        NSBonjourServices:
+          - _thisdog-hund._tcp
+          - _thisdog-hund._udp
+        # Standort im Hintergrund: Die Runde läuft weiter, wenn das Telefon in der Tasche liegt.
+        # Mitteilungen im Hintergrund: Der Server weckt die App, wenn sich im Rudel etwas ändert.
+        UIBackgroundModes:
+          - location
+          - remote-notification
+        # Mitteilungen aus dem Rudel als Mitteilung einer Person (mit Bild).
+        NSUserActivityTypes:
+          - INSendMessageIntent
+  ThisDogWidgets:
+    type: app-extension
+    platform: iOS
+    sources:
+      - ThisDogWidgets
+      - SharedWidgets
+      - Shared
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: app.thisDog.widgets
+        TARGETED_DEVICE_FAMILY: "1,2"
+        CODE_SIGN_STYLE: Automatic
+        CODE_SIGN_ENTITLEMENTS: ThisDogWidgets/ThisDogWidgets.entitlements
+        GENERATE_INFOPLIST_FILE: YES
+        INFOPLIST_KEY_CFBundleDisplayName: ThisDog
+    info:
+      path: ThisDogWidgets/Info.plist
+      properties:
+        NSExtension:
+          NSExtensionPointIdentifier: com.apple.widgetkit-extension
+  ThisDogNotifications:
+    type: app-extension
+    platform: iOS
+    sources:
+      - ThisDogNotifications
+      - path: Shared/PackDirectory.swift
+      - path: Shared/PersonNotification.swift
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: app.thisDog.notifications
+        TARGETED_DEVICE_FAMILY: "1,2"
+        CODE_SIGN_STYLE: Automatic
+        CODE_SIGN_ENTITLEMENTS: ThisDogNotifications/ThisDogNotifications.entitlements
+        GENERATE_INFOPLIST_FILE: YES
+        INFOPLIST_KEY_CFBundleDisplayName: ThisDog
+    info:
+      path: ThisDogNotifications/Info.plist
+      properties:
+        NSExtension:
+          NSExtensionPointIdentifier: com.apple.usernotifications.service
+          NSExtensionPrincipalClass: $(PRODUCT_MODULE_NAME).NotificationService
+  # Die Watch-App: nimmt Runden mit eigenem GPS auf und schickt sie ans iPhone.
+  ThisDogWatch:
+    type: application
+    platform: watchOS
+    deploymentTarget: "27.0"
+    sources:
+      - ThisDogWatch
+      - path: Shared/WalkTrack.swift
+      - path: Shared/WatchLink.swift
+      - path: Shared/Asphalt.swift
+      - path: Shared/DigestShelf.swift
+      - path: Shared/AppLocale.swift
+      - path: Shared/Localizable.xcstrings
+    dependencies:
+      - target: ThisDogWatchWidgets
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: app.thisDog.watchkitapp
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        CODE_SIGN_STYLE: Automatic
+        CODE_SIGN_ENTITLEMENTS: ThisDogWatch/ThisDogWatch.entitlements
+        GENERATE_INFOPLIST_FILE: YES
+        INFOPLIST_KEY_CFBundleDisplayName: ThisDog
+        INFOPLIST_KEY_WKCompanionAppBundleIdentifier: app.thisDog
+        INFOPLIST_KEY_WKRunsIndependentlyOfCompanionApp: YES
+        INFOPLIST_KEY_NSLocationWhenInUseUsageDescription: "ThisDog zeichnet eure Gassirunde auf."
+    info:
+      path: ThisDogWatch/Info.plist
+      properties:
+        UIBackgroundModes:
+          - location
+  # Komplikationen der Watch: Woche, Hitze, was ansteht. Liest, was die Watch-App in der App-Gruppe ablegt.
+  ThisDogWatchWidgets:
+    type: app-extension
+    platform: watchOS
+    deploymentTarget: "27.0"
+    sources:
+      - ThisDogWatchWidgets
+      - SharedWidgets
+      - path: Shared/WalkTrack.swift
+      - path: Shared/WatchLink.swift
+      - path: Shared/Asphalt.swift
+      - path: Shared/DigestShelf.swift
+      - path: Shared/AppLocale.swift
+      - path: Shared/Localizable.xcstrings
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: app.thisDog.watchkitapp.widgets
+        CODE_SIGN_STYLE: Automatic
+        CODE_SIGN_ENTITLEMENTS: ThisDogWatchWidgets/ThisDogWatchWidgets.entitlements
+        GENERATE_INFOPLIST_FILE: YES
+        INFOPLIST_KEY_CFBundleDisplayName: ThisDog
+    info:
+      path: ThisDogWatchWidgets/Info.plist
+      properties:
+        NSExtension:
+          NSExtensionPointIdentifier: com.apple.widgetkit-extension
+  ThisDogTests:
+    type: bundle.unit-test
+    platform: iOS
+    sources:
+      - ThisDogTests
+    dependencies:
+      - target: ThisDog
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: app.thisDog.tests
+        GENERATE_INFOPLIST_FILE: YES
+  ThisDogUITests:
+    type: bundle.ui-testing
+    platform: iOS
+    sources:
+      - ThisDogUITests
+    dependencies:
+      - target: ThisDog
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: app.thisDog.uitests
+        GENERATE_INFOPLIST_FILE: YES
+        TEST_TARGET_NAME: ThisDog
+schemes:
+  Aufnahmen:
+    build:
+      targets:
+        ThisDog: all
+        ThisDogUITests: [test]
+    test:
+      targets:
+        - ThisDogUITests
+  ThisDog:
+    build:
+      targets:
+        ThisDog: all
+        ThisDogTests: [test]
+    test:
+      targets:
+        - ThisDogTests

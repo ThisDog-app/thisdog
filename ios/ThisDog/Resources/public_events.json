@@ -1,0 +1,124 @@
+[
+	{
+		"title": "🔍 Zecken-Saison",
+		"start": "2026-03-01",
+		"end": "2026-11-01",
+		"notes": "Erhöhtes Zeckenrisiko, Schutz prüfen!",
+		"allDay": true,
+		"classNames": [
+			"fc-event-warning"
+		],
+		"tipSlug": "zecken-check"
+	},
+	{
+		"title": "🔍 Zecken-Saison",
+		"start": "2027-03-01",
+		"end": "2027-11-01",
+		"notes": "Erhöhtes Zeckenrisiko, Schutz prüfen!",
+		"allDay": true,
+		"classNames": [
+			"fc-event-warning"
+		],
+		"tipSlug": "zecken-check"
+	},
+	{
+		"title": "😣 Silvester",
+		"start": "2025-12-31",
+		"notes": "Stresstag. Bitte deinen Hund daruf vorbereiten.",
+		"allDay": true,
+		"classNames": [
+			"fc-event-public"
+		],
+		"tipSlug": "silvester-ruhig"
+	},
+	{
+		"title": "😣 Silvester",
+		"start": "2026-12-31",
+		"notes": "Stresstag. Bitte deinen Hund daruf vorbereiten.",
+		"allDay": true,
+		"classNames": [
+			"fc-event-public"
+		],
+		"tipSlug": "silvester-ruhig"
+	},
+	{
+		"title": "🐶 Fellwechsel",
+		"start": "2026-03-15",
+		"end": "2026-05-15",
+		"notes": "Hochsaison für Haare! Regelmäßiges Bürsten hilft.",
+		"allDay": true,
+		"classNames": [
+			"fc-event-info"
+		],
+		"tipSlug": "fellpflege-training"
+	},
+	{
+		"title": "🐶 Fellwechsel",
+		"start": "2026-09-15",
+		"end": "2026-11-15",
+		"notes": "Hochsaison für Haare! Regelmäßiges Bürsten hilft.",
+		"allDay": true,
+		"classNames": [
+			"fc-event-info"
+		],
+		"tipSlug": "fellpflege-training"
+	},
+	{
+		"title": "🐛 Entwurmungs-Check",
+		"start": "2026-01-15",
+		"notes": "Zeit für die vierteljährliche Entwurmung oder Kotprobe.",
+		"allDay": true,
+		"classNames": [
+			"fc-event-public"
+		]
+	},
+	{
+		"title": "🐛 Entwurmungs-Check",
+		"start": "2026-04-15",
+		"notes": "Zeit für die vierteljährliche Entwurmung oder Kotprobe.",
+		"allDay": true,
+		"classNames": [
+			"fc-event-public"
+		]
+	},
+	{
+		"title": "🐛 Entwurmungs-Check",
+		"start": "2026-07-15",
+		"notes": "Zeit für die vierteljährliche Entwurmung oder Kotprobe.",
+		"allDay": true,
+		"classNames": [
+			"fc-event-public"
+		]
+	},
+	{
+		"title": "🐛 Entwurmungs-Check",
+		"start": "2026-10-15",
+		"notes": "Zeit für die vierteljährliche Entwurmung oder Kotprobe.",
+		"allDay": true,
+		"classNames": [
+			"fc-event-public"
+		]
+	},
+	{
+		"title": "🎄 Weihnachts-Gefahr",
+		"start": "2025-12-24",
+		"end": "2025-12-27",
+		"notes": "Vorsicht vor Schokolade, Rosinen & Co.!",
+		"allDay": true,
+		"classNames": [
+			"fc-event-warning"
+		],
+		"tipSlug": "giftige-lebensmittel"
+	},
+	{
+		"title": "🎄 Weihnachts-Gefahr",
+		"start": "2026-12-24",
+		"end": "2026-12-27",
+		"notes": "Vorsicht vor Schokolade, Rosinen & Co.!",
+		"allDay": true,
+		"classNames": [
+			"fc-event-warning"
+		],
+		"tipSlug": "giftige-lebensmittel"
+	}
+]
