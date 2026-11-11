@@ -132,6 +132,32 @@ check "Admin sperrt: Abo endet bei Stripe, Platz verschwindet" "$(curl -s -o /de
 DEL='{"type":"customer.subscription.deleted","data":{"object":{"id":"sub_1"}}}'
 check "Die Meldung danach hebt die Sperre nicht auf" "$(hook "$DEL") $(db "SELECT status FROM sponsors WHERE id = 1")" "200 blocked"
 check "Gegend wieder frei" "$(curl -s "$U/partner.php?platz=node/1" | grep -c 'Weiter zur Kasse')" "1"
+echo "Selbst eingetragen"
+ap() { curl -s -H "$ADM" -H "Origin: $U" -H "Content-Type: application/json" -d "$2" "$U/admin-orte.php?action=$1"; }
+apc() { curl -s -o /dev/null -w "%{http_code}" -H "$ADM" -H "Origin: $U" -H "Content-Type: application/json" -d "$2" "$U/admin-orte.php?action=$1"; }
+check "Suche im Auszug" "$(ap partner_search '{"name":"klinik","where":"Prater"}' | json 'echo $d["found"][0]["id"], " ", count($d["found"]);')" "node/1 1"
+check "Nur von der eigenen Seite aus" "$(curl -s -o /dev/null -w "%{http_code}" -H "$ADM" -H "Content-Type: application/json" -d '{}' "$U/admin-orte.php?action=partner_add")" "403"
+NEU=$(ap partner_add '{"lat":48.2205,"lon":16.3905,"place":"node/1","name":"Tierklinik Prater","kind":"vet","street":"Praterstraße 12","city":"1020 Wien","text":"Notdienst rund um die Uhr","advertiser":"","email":"klinik@example.org","until":"","sendLink":true}')
+MID=$(echo "$NEU" | json 'echo $d["id"];')
+check "Eintragen ohne Stripe, unbefristet" "$(echo "$NEU" | json 'echo str_contains($d["link"], "/partner/verwalten/") ? "link" : "-";') $(db "SELECT status, paid_until, advertiser, checkout_id IS NULL FROM sponsors WHERE id = $MID") $(grep -c 'POST' "$T/stripe/log")" \
+  "link active|4102444800|Tierklinik Prater|1 3"
+check "App zeigt ihn oben, unten nicht noch einmal" "$(curl -s "$U/api/services.php?lat=48.22&lon=16.39" | json 'echo $d["sponsor"]["name"], "|", $d["sponsor"]["text"], "|", in_array("node/1", array_column($d["services"], "id")) ? "doppelt" : "einmal";')" \
+  "Tierklinik Prater|Notdienst rund um die Uhr|einmal"
+check "Mail mit Verwaltungslink an den Betrieb" "$(grep -c 'an klinik@example.org' "$T/daten/mail-dev.log")" "1"
+MLINK=$(echo "$NEU" | json 'echo basename($d["link"]);')
+check "Verwaltung: läuft, ohne Abo und Kundenbereich" "$(curl -s "$U/partner.php?verwalten=$MLINK" | grep -c 'Läuft\|verlängert sich\|Kundenbereich')" "1"
+check "Gegend belegt: zweiter Eintrag geht nicht" "$(apc partner_add '{"lat":48.2190,"lon":16.3890,"place":"node/4","name":"Café Wuff","kind":"cafe","until":""}') $(curl -s "$U/partner.php?platz=node/4" | grep -c 'Gegend vergeben')" "409 1"
+check "Admin: selbst eingetragen, unbefristet" "$(curl -s -H "$ADM" "$U/admin-orte.php" | grep -c 'läuft unbefristet\|selbst eingetragen')" "2"
+BIS=$(date -v+10d +%Y-%m-%d 2>/dev/null || date -d '+10 days' +%Y-%m-%d)
+check "Laufzeit: Vergangenes nicht, Zukunft schon (bis Tagesende)" "$(apc partner_until "{\"id\":$MID,\"until\":\"2020-01-01\"}") $(apc partner_until "{\"id\":$MID,\"until\":\"$BIS\"}") $(db "SELECT strftime('%Y-%m-%d %H:%M', paid_until, 'unixepoch', 'localtime') FROM sponsors WHERE id = $MID")" \
+  "422 200 $BIS 23:59"
+check "Gebuchte Plätze nicht über die Laufzeit ändern" "$(apc partner_until '{"id":1,"until":""}')" "422"
+check "Neuer Link: alter gilt nicht mehr" "$(ap partner_link "{\"id\":$MID}" | json 'echo str_contains($d["link"], "/partner/verwalten/") ? "link" : "-";') $(curl -s "$U/partner.php?verwalten=$MLINK" | grep -c 'gilt nicht')" "link 1"
+check "Beenden: sofort weg" "$(apc partner_end "{\"id\":$MID}") $(curl -s "$U/api/services.php?lat=48.22&lon=16.39" | json 'echo json_encode($d["sponsor"]);')" "200 null"
+check "Wieder an" "$(apc partner_until "{\"id\":$MID,\"until\":\"\"}") $(curl -s "$U/api/services.php?lat=48.22&lon=16.39" | json 'echo $d["sponsor"]["name"];')" "200 Tierklinik Prater"
+check "Ohne Treffer in OSM: Stelle von der Karte, ohne E-Mail" "$(ap partner_add '{"lat":48.3001,"lon":16.3901,"name":"Gassi-Shop Weit","kind":"shop","until":"","sendLink":true}' | json 'echo $d["link"] === null ? "kein-link" : "link";') $(db "SELECT substr(place_id, 1, 5) FROM sponsors WHERE name = 'Gassi-Shop Weit'")" \
+  "kein-link eigen"
+check "Falsche E-Mail oder Art" "$(apc partner_add '{"lat":48.5,"lon":16.5,"name":"X","kind":"shop","email":"nein"}') $(apc partner_add '{"lat":48.5,"lon":16.5,"name":"X","kind":"park"}')" "422 422"
 check "Fehler im Protokoll" "$(grep -c 'PHP \(Warning\|Fatal\|Deprecated\)' "$T/server.log")" "0"
 
 if [ $FAIL = 0 ]; then echo "Alles bestanden."; else echo "FEHLGESCHLAGEN"; grep -i 'php\|stella' "$T/server.log" | head -20; exit 1; fi

@@ -21,6 +21,16 @@ $email = admin_or_404($pdo);
 
 /* ============================ Schnittstelle der Seite ============================ */
 
+/** „Läuft bis“ aus dem Formular (JJJJ-MM-TT, leer = unbefristet): Ende dieses Tages. Null bei Unsinn oder Vergangenem. */
+function partner_until(string $day): ?int
+{
+	if ($day === '') return SPONSOR_FOREVER;
+	$d = DateTime::createFromFormat('!Y-m-d', $day);
+	if (!$d || $d->format('Y-m-d') !== $day) return null;
+	$end = $d->getTimestamp() + 86399;
+	return $end > time() && $end < SPONSOR_FOREVER ? $end : null;
+}
+
 /** Abgelehnte Fotos: Datei und Eintrag weg. */
 function drop_rejected(PDO $pdo): void
 {
@@ -138,6 +148,82 @@ if ($action !== '') {
 				try { stripe_cancel($sub); } catch (Throwable $e) { respond(['error' => 'stripe: ' . $e->getMessage()], 502); }
 			}
 			respond(['ok' => true]);
+		case 'partner_search':
+			// Betrieb aus dem Auszug suchen, um ihn als Platz einzutragen.
+			$x = services_db();
+			$name = trim((string) ($body['name'] ?? ''));
+			if ($x === null || mb_strlen($name) < 2) respond(['found' => []]);
+			$found = [];
+			foreach (services_by_name($x, $name, trim((string) ($body['where'] ?? '')), 15) as $r) {
+				if (($o = service_out($r)) !== null) $found[] = $o;
+			}
+			respond(['found' => $found]);
+		case 'partner_add':
+			// Selbst eingetragen (Barzahlung, Rechnung, Tausch, Freundschaft …): läuft ohne Stripe bis zum gewählten Tag.
+			$kind = (string) ($body['kind'] ?? '');
+			$name = trim((string) ($body['name'] ?? ''));
+			$lat = (float) ($body['lat'] ?? 0); $lon = (float) ($body['lon'] ?? 0);
+			$mail = strtolower(trim((string) ($body['email'] ?? '')));
+			$until = partner_until((string) ($body['until'] ?? ''));
+			if (!isset(SERVICE_KINDS[$kind]) || $name === '' || abs($lat) > 90 || abs($lon) > 180 || ($lat == 0 && $lon == 0)
+				|| ($mail !== '' && !filter_var($mail, FILTER_VALIDATE_EMAIL)) || $until === null) {
+				respond(['error' => 'invalid'], 422);
+			}
+			$place = (string) ($body['place'] ?? '');
+			if (!preg_match('#^(node|way|relation)/\d+$#', $place)) $place = 'eigen/' . bin2hex(random_bytes(4));
+			$tile = sponsor_tile($lat, $lon);
+			$clip = fn($k, $n) => mb_substr(trim((string) ($body[$k] ?? '')), 0, $n);
+			$pdo->exec('BEGIN IMMEDIATE');
+			try {
+				if ($h = tile_holder($pdo, $tile)) {
+					$pdo->exec('ROLLBACK');
+					respond(['error' => 'tile_taken', 'holder' => $h['name']], 409);
+				}
+				$now = time();
+				$pdo->prepare("INSERT INTO sponsors (tile, place_id, kind, name, lat, lon, street, city, phone, website, hours, text, advertiser, email,
+					status, paid_until, created_at, updated_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'active', ?, ?, ?)")
+					->execute([$tile, $place, $kind, mb_substr($name, 0, 120), round($lat, 6), round($lon, 6), $clip('street', 120), $clip('city', 80),
+						$clip('phone', 40), $clip('website', 200), $clip('hours', 200), $clip('text', 90), $clip('advertiser', 120) ?: mb_substr($name, 0, 120),
+						$mail, $until, $now, $now]);
+				$id = (int) $pdo->lastInsertId();
+				$pdo->exec('COMMIT');
+			} catch (Throwable $e) {
+				if ($pdo->inTransaction()) $pdo->exec('ROLLBACK');
+				throw $e;
+			}
+			$link = null;
+			if ($mail !== '' && !empty($body['sendLink'])) {
+				$q = $pdo->prepare('SELECT * FROM sponsors WHERE id = ?');
+				$q->execute([$id]);
+				$link = sponsor_send_link($pdo, $q->fetch(), $until >= SPONSOR_FOREVER ? '' : 'Der Platz läuft bis ' . date('j.n.Y', $until) . '.');
+			}
+			respond(['ok' => true, 'id' => $id, 'link' => $link]);
+		case 'partner_until':
+			// Laufzeit eines selbst eingetragenen Platzes ändern (leer = unbefristet).
+			$until = partner_until((string) ($body['until'] ?? ''));
+			if ($until === null) respond(['error' => 'invalid'], 422);
+			$q = $pdo->prepare('SELECT * FROM sponsors WHERE id = ?');
+			$q->execute([(int) ($body['id'] ?? 0)]);
+			$s = $q->fetch();
+			if (!$s || !sponsor_manual($s)) respond(['error' => 'not_manual'], 422);
+			if ($h = tile_holder($pdo, $s['tile'], (int) $s['id'])) respond(['error' => 'tile_taken', 'holder' => $h['name']], 409);
+			$pdo->prepare("UPDATE sponsors SET status = 'active', paid_until = ?, updated_at = ? WHERE id = ?")->execute([$until, time(), $s['id']]);
+			respond(['ok' => true]);
+		case 'partner_end':
+			// Selbst eingetragenen Platz sofort beenden (gebuchte enden über Stripe oder „Sperren“).
+			$q = $pdo->prepare('SELECT * FROM sponsors WHERE id = ?');
+			$q->execute([(int) ($body['id'] ?? 0)]);
+			$s = $q->fetch();
+			if (!$s || !sponsor_manual($s)) respond(['error' => 'not_manual'], 422);
+			$pdo->prepare("UPDATE sponsors SET status = 'ended', paid_until = MIN(paid_until, ?), updated_at = ? WHERE id = ?")->execute([time(), time(), $s['id']]);
+			respond(['ok' => true]);
+		case 'partner_link':
+			// Neuer Verwaltungslink (der alte gilt nicht mehr), per Mail und hier zum Weitergeben.
+			$q = $pdo->prepare('SELECT * FROM sponsors WHERE id = ?');
+			$q->execute([(int) ($body['id'] ?? 0)]);
+			$s = $q->fetch();
+			if (!$s || $s['status'] === 'pending') respond(['error' => 'invalid'], 422);
+			respond(['ok' => true, 'link' => sponsor_send_link($pdo, $s, '')]);
 	}
 	respond(['error' => 'unknown_action'], 400);
 }
@@ -255,7 +341,14 @@ $erkunder = $pdo->query("SELECT s.account_id, a.email, (SELECT COUNT(*) FROM pla
 	.foto button { margin: 4px 6px 0 0; }
 	button.haupt2 { background: var(--accent); color: #fff; padding: 6px 14px; font-size: 13.5px; }
 	button.leise { padding: 6px 14px; font-size: 13.5px; }
-	.zeile { display: flex; gap: 10px; } .zeile input { flex: 1; }
+	.zeile { display: flex; flex-wrap: wrap; gap: 10px; } .zeile input { flex: 1 1 200px; }
+	input[type=email], input[type=date] { width: 100%; font: inherit; padding: 9px 11px; border-radius: 10px; border: 1px solid var(--line); background: var(--paper); color: var(--ink); }
+	.feld h3 { font-size: 15px; margin: 22px 0 4px; }
+	.raster { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 0 14px; margin-top: 4px; }
+	.raster .breit { grid-column: 1 / -1; }
+	.treffer { display: flex; flex-direction: column; gap: 4px; margin: 8px 0; }
+	.treffer button { text-align: left; font-weight: 400; background: var(--paper); color: var(--ink); border-radius: 10px; padding: 8px 12px; }
+	.treffer button small { color: var(--ink-3); }
 	td.zeigen { cursor: pointer; } td.zeigen:hover { color: var(--accent); }
 	.fuss { color: var(--ink-3); font-size: 13px; margin-top: 18px; }
 	.maplibregl-popup-content { background: var(--surface); color: var(--ink); border-radius: 12px; font: 14px/1.45 system-ui; padding: 12px 14px; }
@@ -348,18 +441,49 @@ $partner = $pdo->query("SELECT s.*, (SELECT COALESCE(SUM(views), 0) FROM sponsor
 	<p><?= stripe_ready() ? 'Buchung über thisdog.app/partner ist offen (' . htmlspecialchars(euro(sponsor_price())) . ' im Monat).' : 'Buchung noch zu: STRIPE_SECRET_KEY und STRIPE_WEBHOOK_SECRET fehlen in config.php.' ?></p>
 	<?php if (!$partner): ?><p class="leer">Noch keine.</p><?php else: ?>
 	<table><thead><tr><th>Betrieb</th><th>Auftraggeber</th><th>Text</th><th>Stand</th><th>30 Tage</th><th></th></tr></thead><tbody>
-	<?php foreach ($partner as $p): $laeuft = $p['status'] === 'active' && (int) $p['paid_until'] > time() - PAID_GRACE; ?>
+	<?php foreach ($partner as $p): $laeuft = sponsor_runs($p); $selbst = sponsor_manual($p); ?>
 		<tr data-id="<?= (int) $p['id'] ?>" data-lat="<?= $p['lat'] ?>" data-lon="<?= $p['lon'] ?>">
 			<td class="zeigen"><?= htmlspecialchars($p['name']) ?><br><small><?= htmlspecialchars(SERVICE_KINDS[$p['kind']] ?? $p['kind']) ?> · <?= htmlspecialchars((string) $p['city']) ?> · Gegend <?= htmlspecialchars($p['tile']) ?></small></td>
 			<td><?= htmlspecialchars($p['advertiser']) ?><br><small><?= htmlspecialchars($p['email']) ?></small></td>
 			<td><?= htmlspecialchars($p['text']) ?></td>
-			<td><?= $laeuft ? 'läuft bis ' . date('j.n.Y', (int) $p['paid_until']) . ($p['cancels_at'] ? ', gekündigt' : '') : htmlspecialchars(['pending' => 'an der Kasse', 'ended' => 'beendet', 'blocked' => 'gesperrt'][$p['status']] ?? $p['status']) ?></td>
+			<td><?= $laeuft ? ((int) $p['paid_until'] >= SPONSOR_FOREVER ? 'läuft unbefristet' : 'läuft bis ' . date('j.n.Y', (int) $p['paid_until'])) . ($p['cancels_at'] ? ', gekündigt' : '') : htmlspecialchars(['pending' => 'an der Kasse', 'ended' => 'beendet', 'blocked' => 'gesperrt'][$p['status']] ?? $p['status']) ?>
+				<?php if ($selbst): ?><br><small>selbst eingetragen</small><?php endif; ?></td>
 			<td><?= (int) $p['v'] ?> gezeigt<br><?= (int) $p['t'] ?> geöffnet</td>
-			<td class="aktionen"><?php if ($p['text'] !== ''): ?><button class="leise" data-tu="partner_text">Text entfernen</button><?php endif; ?><?php if ($p['status'] === 'active'): ?><button class="leise" data-tu="partner_block">Sperren</button><?php endif; ?></td>
+			<td class="aktionen"><?php if ($p['text'] !== ''): ?><button class="leise" data-tu="partner_text">Text entfernen</button><?php endif; ?>
+				<?php if ($selbst): ?><button class="leise" data-tu="partner_until" data-bis="<?= (int) $p['paid_until'] < SPONSOR_FOREVER && $laeuft ? date('Y-m-d', (int) $p['paid_until']) : '' ?>"><?= $laeuft ? 'Laufzeit' : 'Wieder an' ?></button><?php if ($laeuft): ?><button class="leise" data-tu="partner_end">Beenden</button><?php endif; ?>
+				<?php elseif ($p['status'] === 'active'): ?><button class="leise" data-tu="partner_block">Sperren</button><?php endif; ?>
+				<?php if ($p['status'] !== 'pending'): ?><button class="leise" data-tu="partner_link">Link</button><?php endif; ?></td>
 		</tr>
 	<?php endforeach; ?>
 	</tbody></table>
 	<?php endif; ?>
+
+	<h3>Platz selbst eintragen</h3>
+	<p>Für Betriebe, die bar oder auf Rechnung zahlen, und für Plätze, die du verschenkst. Läuft ohne Stripe bis zum gewählten Tag; je Gegend bleibt es ein Platz.</p>
+	<form id="partner-suche" class="zeile">
+		<input type="text" id="partner-q" placeholder="Betrieb aus OpenStreetMap suchen (Name)" autocomplete="off">
+		<input type="text" id="partner-wo" placeholder="Ort oder Straße (optional)" autocomplete="off">
+		<button class="haupt2">Suchen</button>
+	</form>
+	<div id="partner-treffer" class="treffer"></div>
+	<form id="partner-neu">
+		<div class="ort" id="partner-stelle">Betrieb oben suchen – oder auf der Karte die Stelle antippen, wenn er nicht in OpenStreetMap steht.</div>
+		<div class="raster">
+			<div><label for="p-name">Name</label><input type="text" id="p-name" maxlength="120" required></div>
+			<div><label for="p-art">Art</label><select id="p-art"><?php foreach (SERVICE_KINDS as $k => $l): ?><option value="<?= $k ?>"><?= htmlspecialchars($l) ?></option><?php endforeach; ?></select></div>
+			<div><label for="p-street">Straße</label><input type="text" id="p-street" maxlength="120"></div>
+			<div><label for="p-city">Ort</label><input type="text" id="p-city" maxlength="80"></div>
+			<div><label for="p-phone">Telefon</label><input type="text" id="p-phone" maxlength="40"></div>
+			<div><label for="p-website">Website</label><input type="text" id="p-website" maxlength="200"></div>
+			<div class="breit"><label for="p-text">Text unter dem Namen (höchstens 90 Zeichen)</label><input type="text" id="p-text" maxlength="90"></div>
+			<div><label for="p-advertiser">Auftraggeber (wird als Anzeige genannt)</label><input type="text" id="p-advertiser" maxlength="120" placeholder="leer = Name"></div>
+			<div><label for="p-email">E-Mail des Betriebs (optional)</label><input type="email" id="p-email" maxlength="200"></div>
+			<div><label for="p-until">Läuft bis (leer = unbefristet)</label><input type="date" id="p-until"></div>
+		</div>
+		<div class="haken"><label><input type="checkbox" id="p-link" checked> Verwaltungslink an die E-Mail schicken (Zahlen und Text ändern)</label></div>
+		<button class="haupt2" id="p-anlegen" style="margin-top:14px">Platz eintragen</button>
+		<div class="meldung" id="partner-meldung" role="status"></div>
+	</form>
 </section>
 
 <section class="feld liste" id="erkunder">
@@ -445,7 +569,9 @@ function punkt(lon, lat, props) { return { type: 'Feature', geometry: { type: 'P
 
 async function post(action, body) {
 	const r = await fetch('?action=' + action, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) });
-	if (!r.ok) throw new Error((await r.json().catch(() => ({}))).error || r.status);
+	const d = await r.json().catch(() => ({}));
+	if (!r.ok) throw Object.assign(new Error(d.error || r.status), { data: d });
+	return d;
 }
 
 async function laden() {
@@ -506,6 +632,7 @@ karte.on('click', e => {
 	$('stelle').textContent = stelle.lat.toFixed(5) + ', ' + stelle.lng.toFixed(5);
 	(marke ||= new maplibregl.Marker({ color: getComputedStyle(document.documentElement).getPropertyValue('--accent').trim() })).setLngLat(stelle).addTo(karte);
 	$('anlegen').disabled = false;
+	partnerOrt = null; partnerStelle();
 	$('name').focus();
 });
 
@@ -537,15 +664,75 @@ for (const tr of document.querySelectorAll('#gemeldet tbody tr, #neu-von-nutzern
 			if (was === 'passt') await post('reviewed', { id: +id });
 			if (was === 'weg') await post('delete', { id: +id });
 			if (was === 'partner_text') { await post('partner_text', { id: +id }); location.reload(); return; }
+			if (was === 'partner_until') {
+				const bis = prompt('Läuft bis (JJJJ-MM-TT, leer = unbefristet):', b.dataset.bis || '');
+				if (bis === null) { b.disabled = false; return; }
+				await post('partner_until', { id: +id, until: bis.trim() }); location.reload(); return;
+			}
+			if (was === 'partner_end') {
+				if (!confirm('Diesen selbst eingetragenen Platz jetzt beenden?')) { b.disabled = false; return; }
+				await post('partner_end', { id: +id }); location.reload(); return;
+			}
+			if (was === 'partner_link') {
+				if (!confirm('Neuen Verwaltungslink erstellen? Der alte gilt danach nicht mehr. Ist eine E-Mail hinterlegt, geht er auch dorthin.')) { b.disabled = false; return; }
+				const d = await post('partner_link', { id: +id });
+				prompt('Verwaltungslink zum Weitergeben:', d.link); b.disabled = false; return;
+			}
 			if (was === 'partner_block') {
 				if (!confirm('Platz sperren und Abo bei Stripe beenden? Eine Erstattung machst du im Stripe-Dashboard.')) { b.disabled = false; return; }
 				await post('partner_block', { id: +id }); location.reload(); return;
 			}
 			tr.remove();
 			laden();
-		} catch (err) { b.disabled = false; b.textContent = 'Nicht geklappt'; }
+		} catch (err) { b.disabled = false; b.textContent = err.message === 'tile_taken' ? 'Gegend vergeben' : err.message === 'invalid' ? 'Datum prüfen' : 'Nicht geklappt'; }
 	};
 }
+
+// Platz selbst eintragen: Betrieb aus dem Auszug übernehmen oder Stelle auf der Karte.
+let partnerOrt = null;  // { lat, lon, place } aus der Suche
+function partnerStelle() {
+	const p = partnerOrt || (stelle && { lat: stelle.lat, lon: stelle.lng });
+	$('partner-stelle').textContent = partnerOrt ? 'Aus OpenStreetMap: ' + partnerOrt.place + ' (' + p.lat.toFixed(5) + ', ' + p.lon.toFixed(5) + ')'
+		: p ? 'Stelle von der Karte: ' + p.lat.toFixed(5) + ', ' + p.lon.toFixed(5) : 'Betrieb oben suchen – oder auf der Karte die Stelle antippen, wenn er nicht in OpenStreetMap steht.';
+	return p;
+}
+$('partner-suche').addEventListener('submit', async e => {
+	e.preventDefault();
+	const box = $('partner-treffer');
+	try {
+		const d = await post('partner_search', { name: $('partner-q').value, where: $('partner-wo').value });
+		box.replaceChildren(...d.found.map(f => {
+			const b = document.createElement('button'); b.type = 'button';
+			b.append(f.name + ' ', Object.assign(document.createElement('small'), { textContent: [f.label, f.street, f.city].filter(Boolean).join(' · ') }));
+			b.onclick = () => {
+				partnerOrt = { lat: f.lat, lon: f.lon, place: f.id };
+				$('p-name').value = f.name; $('p-art').value = f.kind;
+				for (const k of ['street', 'city', 'phone', 'website']) $('p-' + k).value = f[k] || '';
+				box.replaceChildren(); partnerStelle();
+				karte.flyTo({ center: [f.lon, f.lat], zoom: 16 });
+			};
+			return b;
+		}));
+		if (!d.found.length) box.textContent = 'Nichts gefunden. Dann auf der Karte die Stelle antippen und die Felder selbst ausfüllen.';
+	} catch (err) { box.textContent = 'Suche nicht möglich (' + err.message + ').'; }
+});
+$('partner-neu').addEventListener('submit', async e => {
+	e.preventDefault();
+	const p = partnerStelle();
+	if (!p) { $('partner-meldung').textContent = 'Erst einen Betrieb suchen oder auf der Karte die Stelle antippen.'; return; }
+	const v = k => $('p-' + k).value;
+	try {
+		const d = await post('partner_add', { lat: p.lat, lon: p.lon, place: partnerOrt?.place || '', name: v('name'), kind: v('art'),
+			street: v('street'), city: v('city'), phone: v('phone'), website: v('website'), text: v('text'), advertiser: v('advertiser'),
+			email: v('email'), until: v('until'), sendLink: $('p-link').checked });
+		if (d.link) prompt('Eingetragen. Verwaltungslink (ging auch per Mail):', d.link);
+		location.reload();
+	} catch (err) {
+		$('partner-meldung').textContent = err.message === 'tile_taken' ? 'Die Gegend ist schon vergeben an „' + err.data.holder + '“.'
+			: err.message === 'invalid' ? 'Name, Art und Stelle fehlen – oder E-Mail bzw. Datum stimmen nicht (Datum muss in der Zukunft liegen).'
+			: 'Nicht gespeichert (' + err.message + ').';
+	}
+});
 
 $('neu').addEventListener('submit', async e => {
 	e.preventDefault();

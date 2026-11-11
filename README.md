@@ -283,6 +283,9 @@ Google ihre eigene Abrechnung. Ablauf:
    Text ändern, Stripes Kundenbereich für Rechnungen und Kündigung.
 4. In `admin-orte.php` lässt sich ein Text entfernen oder ein Platz sperren (beendet das Abo; Erstattung im
    Stripe-Dashboard).
+5. Plätze ohne Stripe (bar, auf Rechnung, verschenkt) trägt man in `admin-orte.php` unter „Platz selbst eintragen“
+   ein: Betrieb aus dem Auszug suchen oder Stelle auf der Karte, Laufzeit bis zu einem Tag oder unbefristet,
+   auf Wunsch mit Verwaltungslink per Mail. Auch hier gilt: ein Platz je Gegend.
 
 Einrichten: `STRIPE_SECRET_KEY`, `STRIPE_WEBHOOK_SECRET`, `SPONSOR_PRICE_CENTS` in `config.php` (siehe
 `config.example.php`); im Stripe-Dashboard Zahlarten und Kundenbereich einschalten. Ohne Schlüssel zeigt

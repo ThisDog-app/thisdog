@@ -13,7 +13,7 @@ settings:
     # Texte kommen aus Shared/Localizable.xcstrings; Xcode sammelt neue Texte beim Bauen selbst ein.
     SWIFT_EMIT_LOC_STRINGS: YES
     LOCALIZATION_PREFERS_STRING_CATALOGS: YES
-    CURRENT_PROJECT_VERSION: "12"
+    CURRENT_PROJECT_VERSION: "13"
 targets:
   ThisDog:
     type: application

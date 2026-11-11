@@ -43,6 +43,8 @@ const SPONSOR_REACH = 3000;
 const CHECKOUT_HOLD = 1800;
 /** Nachfrist, falls eine Verlängerung ein paar Stunden später bezahlt wird als der Zeitraum endet. */
 const PAID_GRACE = 172800;
+/** „Läuft bis“ für selbst eingetragene Plätze ohne Ende (1.1.2100). */
+const SPONSOR_FOREVER = 4102444800;
 
 function services_db(): ?PDO
 {
@@ -157,10 +159,19 @@ function sponsor_tile(float $lat, float $lon): string
 	return sprintf('%d:%d', (int) floor($lat / TILE_LAT), (int) floor($lon / TILE_LON));
 }
 
-/** Läuft dieser Platz gerade (bezahlt, nicht gesperrt)? */
+/**
+ * Läuft dieser Platz gerade (bezahlt, nicht gesperrt)? Ein Platzhalter: die aktuelle Zeit. Gebuchte Plätze bekommen
+ * zwei Tage Nachfrist, falls Stripes Meldung zur Verlängerung spät kommt; selbst eingetragene enden pünktlich.
+ */
 function sponsor_live_sql(): string
 {
-	return "status = 'active' AND paid_until > ?";
+	// CAST: PDO bindet als Text, und ohne Spalte auf einer Seite vergleicht SQLite sonst Zahl mit Text.
+	return "status = 'active' AND paid_until > CAST(? AS INTEGER) - CASE WHEN subscription_id IS NULL THEN 0 ELSE " . PAID_GRACE . " END";
+}
+
+function sponsor_runs(array $r): bool
+{
+	return $r['status'] === 'active' && (int) $r['paid_until'] + ($r['subscription_id'] === null ? 0 : PAID_GRACE) > time();
 }
 
 /**
@@ -171,7 +182,7 @@ function tile_holder(PDO $pdo, string $tile, ?int $except = null): ?array
 {
 	$now = time();
 	$q = $pdo->prepare("SELECT * FROM sponsors WHERE tile = ? AND id IS NOT ? AND ((" . sponsor_live_sql() . ") OR (status = 'pending' AND created_at > ?)) ORDER BY id LIMIT 1");
-	$q->execute([$tile, $except, $now - PAID_GRACE, $now - CHECKOUT_HOLD]);
+	$q->execute([$tile, $except, $now, $now - CHECKOUT_HOLD]);
 	return $q->fetch() ?: null;
 }
 
@@ -182,7 +193,7 @@ function sponsor_for(PDO $pdo, float $lat, float $lon): ?array
 	$ti = (int) floor($lat / TILE_LAT); $tj = (int) floor($lon / TILE_LON);
 	for ($i = -1; $i <= 1; $i++) for ($j = -1; $j <= 1; $j++) $tiles[] = sprintf('%d:%d', $ti + $i, $tj + $j);
 	$q = $pdo->prepare('SELECT * FROM sponsors WHERE tile IN (' . implode(',', array_fill(0, 9, '?')) . ') AND ' . sponsor_live_sql());
-	$q->execute([...$tiles, time() - PAID_GRACE]);
+	$q->execute([...$tiles, time()]);
 	$own = sponsor_tile($lat, $lon);
 	$best = null; $bestKey = null;
 	foreach ($q as $r) {
@@ -212,6 +223,35 @@ function sponsor_count(PDO $pdo, int $id, string $what): void
 	$col = $what === 'taps' ? 'taps' : 'views';
 	$pdo->prepare("INSERT INTO sponsor_stats (sponsor_id, day, $col) VALUES (?, ?, 1)
 		ON CONFLICT(sponsor_id, day) DO UPDATE SET $col = $col + 1")->execute([$id, date('Y-m-d')]);
+}
+
+/** Selbst eingetragen (im Admin), nicht über Stripe gebucht. */
+function sponsor_manual(array $r): bool
+{
+	return (string) ($r['checkout_id'] ?? '') === '' && (string) ($r['subscription_id'] ?? '') === '';
+}
+
+/**
+ * Neuer Verwaltungslink für einen Platz: Das alte Geheimnis gilt danach nicht mehr. Schickt ihn an die hinterlegte
+ * Adresse und gibt ihn zurück (für den Admin, falls die Mail nicht ankommt).
+ */
+function sponsor_send_link(PDO $pdo, array $s, string $tail): string
+{
+	require_once __DIR__ . '/lib-mail.php';
+	$secret = new_secret();
+	$pdo->prepare('UPDATE sponsors SET manage_hash = ? WHERE id = ?')->execute([secret_hash($secret), $s['id']]);
+	$link = site_url() . '/partner/verwalten/' . $secret;
+	if (filter_var($s['email'], FILTER_VALIDATE_EMAIL)) {
+		try {
+			send_mail($s['email'], 'Dein Partnerplatz bei ThisDog läuft',
+				"Danke! „{$s['name']}“ steht ab sofort oben in den Adressen der ThisDog-App, gekennzeichnet als Anzeige.\n\n"
+				. "Hier siehst du, wie oft der Platz gezeigt und geöffnet wurde, und änderst deinen Text:\n$link\n\n"
+				. "Bewahre den Link gut auf – er ist dein Zugang. $tail\n\nThisDog");
+		} catch (Throwable $e) {
+			error_log('[stella] Partner-Mail: ' . $e->getMessage());
+		}
+	}
+	return $link;
 }
 
 /** Preis je Monat in Cent. */

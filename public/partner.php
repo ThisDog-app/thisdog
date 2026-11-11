@@ -120,7 +120,7 @@ $chosen = ($x && $platz !== '') ? service_by_id($x, $platz) : null;
 $results = ($x && mb_strlen($name) >= 2 && $chosen === null) ? services_by_name($x, $name, $where) : [];
 
 $live = $pdo->prepare('SELECT name, kind, city FROM sponsors WHERE ' . sponsor_live_sql() . ' ORDER BY city, name');
-$live->execute([time() - PAID_GRACE]);
+$live->execute([time()]);
 $live = $live->fetchAll();
 
 function place_line(array $p): string
@@ -196,13 +196,13 @@ function holder_note(PDO $pdo, array $p): array
 	$sum = $st->fetch();
 	$days = $pdo->prepare('SELECT day, views, taps FROM sponsor_stats WHERE sponsor_id = ? ORDER BY day DESC LIMIT 14');
 	$days->execute([$manage['id']]);
-	$runs = $manage['status'] === 'active' && (int) $manage['paid_until'] > time() - PAID_GRACE;
+	$runs = sponsor_runs($manage);
 	?>
 	<h1><?= h($manage['name']) ?></h1>
 	<p><?= h(place_line($manage)) ?></p>
 	<div class="card">
 		<div class="row"><b><?= $runs ? 'Läuft' : ($manage['status'] === 'blocked' ? 'Gesperrt' : ($manage['status'] === 'pending' ? 'Wartet auf die Zahlung' : 'Beendet')) ?></b>
-			<span class="small"><?php if ($runs && $manage['cancels_at']): ?>gekündigt zum <?= date('j.n.Y', (int) $manage['cancels_at']) ?><?php elseif ($runs): ?>verlängert sich am <?= date('j.n.Y', (int) $manage['paid_until']) ?><?php endif; ?></span></div>
+			<span class="small"><?php if ($runs && $manage['cancels_at']): ?>gekündigt zum <?= date('j.n.Y', (int) $manage['cancels_at']) ?><?php elseif ($runs && !sponsor_manual($manage)): ?>verlängert sich am <?= date('j.n.Y', (int) $manage['paid_until']) ?><?php elseif ($runs && (int) $manage['paid_until'] < SPONSOR_FOREVER): ?>bis <?= date('j.n.Y', (int) $manage['paid_until']) ?><?php endif; ?></span></div>
 		<?php if ($manage['status'] === 'blocked'): ?><p class="small" style="margin-top:8px">Wir haben den Platz gesperrt und das Abo beendet. Fragen beantworten wir über <a href="/support">den Support</a>.</p><?php endif; ?>
 	</div>
 	<h2>Letzte 30 Tage</h2>

@@ -63,17 +63,7 @@ try {
 			// Bis die erste Rechnung gemeldet ist, gilt ein Monat; invoice.paid setzt das genaue Ende.
 			activate($pdo, $s, $o['subscription'] ?? null, $o['customer'] ?? null, $now + 32 * 86400);
 			if ($first) {
-				$secret = new_secret();
-				$pdo->prepare('UPDATE sponsors SET manage_hash = ? WHERE id = ?')->execute([secret_hash($secret), $s['id']]);
-				$link = site_url() . '/partner/verwalten/' . $secret;
-				try {
-					send_mail($s['email'], 'Dein Partnerplatz bei ThisDog läuft',
-						"Danke! „{$s['name']}“ steht ab sofort oben in den Adressen der ThisDog-App, gekennzeichnet als Anzeige.\n\n"
-						. "Hier siehst du, wie oft der Platz gezeigt und geöffnet wurde, änderst deinen Text und kommst zu Rechnungen und Kündigung:\n$link\n\n"
-						. "Bewahre den Link gut auf – er ist dein Zugang. Das Abo verlängert sich monatlich und ist jederzeit zum Monatsende kündbar.\n\nThisDog");
-				} catch (Throwable $e) {
-					error_log('[stella] Partner-Mail: ' . $e->getMessage());
-				}
+				sponsor_send_link($pdo, $s, 'Rechnungen und Kündigung findest du dort im Kundenbereich. Das Abo verlängert sich monatlich und ist jederzeit zum Monatsende kündbar.');
 				notify_owner('Neuer Partnerplatz: ' . $s['name'], "{$s['advertiser']} hat einen Partnerplatz für „{$s['name']}“ gebucht (Gegend {$s['tile']}).\nText: {$s['text']}\n\nAnsehen und notfalls sperren: " . site_url() . '/admin-orte.php#partner');
 			}
 			break;
